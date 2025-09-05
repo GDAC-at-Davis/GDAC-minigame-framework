@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blmvycvgmnnxv"]
+
+[ext_resource type="Script" uid="uid://dtmlo62vwyrq0" path="res://Scripts/GodScene.gd" id="1_dvti5"]
+
+[node name="GodScene" type="Node2D"]
+script = ExtResource("1_dvti5")
