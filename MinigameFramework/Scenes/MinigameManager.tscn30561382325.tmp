@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://d37y2041mrhtw"]
+
+[ext_resource type="Script" uid="uid://bqy5pm30257dh" path="res://Scripts/minigame_manager.gd" id="1_c43xr"]
+[ext_resource type="Theme" uid="uid://b3gvhppqjl7w2" path="res://Resources/Themes/instruction_theme.tres" id="3_hj43s"]
+
+[sub_resource type="Curve" id="Curve_kvaaa"]
+_data = [Vector2(0, 1), 0.0, -2.64045, 0, 0, Vector2(0.25, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="MinigameManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_c43xr")
+total_lives = null
+difficult_rate = null
+instruction_display_time = null
+instruction_scale_curve = SubResource("Curve_kvaaa")
+transition_time = null
+metadata/_custom_type_script = "uid://bqy5pm30257dh"
+
+[node name="MinigameUILayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TimeBar" type="ProgressBar" parent="MinigameUILayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = 290.0
+offset_right = 640.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+show_percentage = false
+
+[node name="InstructionLabel" type="RichTextLabel" parent="MinigameUILayer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+pivot_offset = Vector2(640, 360)
+mouse_filter = 2
+theme = ExtResource("3_hj43s")
+text = "Instructions"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MinigameLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="HealthBar" type="ProgressBar" parent="TransitionLayer"]
+offset_right = 1280.0
+offset_bottom = 50.0
+mouse_filter = 2
+show_percentage = false
+
+[node name="DifficultyLabel" type="RichTextLabel" parent="TransitionLayer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+theme = ExtResource("3_hj43s")
+text = "Difficulty
+100%"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -72,6 +72,7 @@ func interact(interaction : String):
 			ui.play_text("I'm an abomination")
 		"door":
 			ui.play_text("get me out of here")
+			(get_parent() as GodScene).load_minigame_manager(preload("res://Resources/MinigameGroups/home_minigame_group.tres"))
 
 func _ready() -> void:
 	spawn_player()

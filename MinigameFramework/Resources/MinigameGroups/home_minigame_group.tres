@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=4 format=3 uid="uid://bt14lx2uf6axm"]
+
+[ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://Scripts/minigame_group.gd" id="1_p7nvv"]
+[ext_resource type="PackedScene" uid="uid://cgmlbwqta8dhl" path="res://Minigames/Test3D/Test3D.tscn" id="1_ryry2"]
+[ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://Minigames/BalloonPopper/BalloonPopper.tscn" id="2_l2kh3"]
+
+[resource]
+script = ExtResource("1_p7nvv")
+minigames = Array[PackedScene]([ExtResource("1_ryry2"), ExtResource("2_l2kh3")])
+final_minigame = ExtResource("2_l2kh3")
+total_minigames = 5
+total_lives = 3
+difficulty_rate = 2
+difficulty_step = 0.2
+transition_time = 3.0
+metadata/_custom_type_script = "uid://p73k0qpka7a6"

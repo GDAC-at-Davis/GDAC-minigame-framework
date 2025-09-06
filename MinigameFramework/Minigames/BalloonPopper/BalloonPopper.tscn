@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpacr2w3cuiyw"]
+
+[ext_resource type="Script" uid="uid://dycy3rg1nvlln" path="res://Minigames/BalloonPopper/balloon_minigame.gd" id="1_tqulc"]
+[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://Minigames/BalloonPopper/balloon.png" id="2_bk108"]
+
+[sub_resource type="Gradient" id="Gradient_tqulc"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(3.97079e-07, 0.225332, 0.319979, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bk108"]
+gradient = SubResource("Gradient_tqulc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tqulc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(640, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 781.62
+initial_velocity_max = 862.08
+gravity = Vector3(0, -100, 0)
+
+[node name="BalloonPopper" type="Node2D"]
+
+[node name="MinigameComponent" type="Node" parent="."]
+script = ExtResource("1_tqulc")
+instruction = "Pop!"
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_bk108")
+
+[node name="BalloonParticles" type="GPUParticles2D" parent="."]
+top_level = true
+position = Vector2(640, 834.425)
+emitting = false
+amount = 16
+texture = ExtResource("2_bk108")
+lifetime = 1.5
+one_shot = true
+visibility_rect = Rect2(-640, -900, 1280, 900)
+process_material = SubResource("ParticleProcessMaterial_tqulc")
