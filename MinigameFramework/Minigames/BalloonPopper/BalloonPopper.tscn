@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpacr2w3cuiyw"]
 
-[ext_resource type="Script" uid="uid://dycy3rg1nvlln" path="res://Minigames/BalloonPopper/balloon_minigame.gd" id="1_tqulc"]
-[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://Minigames/BalloonPopper/balloon.png" id="2_bk108"]
+[ext_resource type="Script" uid="uid://dycy3rg1nvlln" path="res://minigames/BalloonPopper/balloon_minigame.gd" id="1_tqulc"]
+[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://minigames/BalloonPopper/balloon.png" id="2_bk108"]
 
 [sub_resource type="Gradient" id="Gradient_tqulc"]
 offsets = PackedFloat32Array(0)

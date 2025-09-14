@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://4p76p5k843ck"]
 
-[ext_resource type="Script" uid="uid://rrgf5p0jv4ce" path="res://Minigames/BalloonPopper/balloon.gd" id="1_5ahiw"]
-[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://Minigames/BalloonPopper/balloon.png" id="2_5ahiw"]
+[ext_resource type="Script" uid="uid://rrgf5p0jv4ce" path="res://minigames/BalloonPopper/balloon.gd" id="1_5ahiw"]
+[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://minigames/BalloonPopper/balloon.png" id="2_5ahiw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ahiw"]
 radius = 56.5

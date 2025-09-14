@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bewm5feulmlwh"
-path="res://.godot/imported/SideWalk.png-650b112ebaa96eec3fc9bd5d77303c72.ctex"
+path="res://.godot/imported/SideWalk.png-a8845d5b07e9431c4dd7add1e9127ec2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/SideWalk.png"
-dest_files=["res://.godot/imported/SideWalk.png-650b112ebaa96eec3fc9bd5d77303c72.ctex"]
+source_file="res://assets/Player/SideWalk.png"
+dest_files=["res://.godot/imported/SideWalk.png-a8845d5b07e9431c4dd7add1e9127ec2.ctex"]
 
 [params]
 

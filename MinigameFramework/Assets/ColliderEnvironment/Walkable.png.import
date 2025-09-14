@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bndw2son6gmwh"
-path="res://.godot/imported/Walkable.png-f10f9e55255a8ba74dbb060b9731fde6.ctex"
+path="res://.godot/imported/Walkable.png-18504754b3c06ca33789cadf64c038bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ColliderEnvironment/Walkable.png"
-dest_files=["res://.godot/imported/Walkable.png-f10f9e55255a8ba74dbb060b9731fde6.ctex"]
+source_file="res://assets/ColliderEnvironment/Walkable.png"
+dest_files=["res://.godot/imported/Walkable.png-18504754b3c06ca33789cadf64c038bc.ctex"]
 
 [params]
 

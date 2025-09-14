@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpcxorg5mbxpi"
-path="res://.godot/imported/InteractableDown.png-cca0422c49e44a0fa4ac1f18ce9e4dd5.ctex"
+path="res://.godot/imported/InteractableDown.png-cb031af01f0a05c4bbf3064f63a008f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ColliderEnvironment/InteractableDown.png"
-dest_files=["res://.godot/imported/InteractableDown.png-cca0422c49e44a0fa4ac1f18ce9e4dd5.ctex"]
+source_file="res://assets/ColliderEnvironment/InteractableDown.png"
+dest_files=["res://.godot/imported/InteractableDown.png-cb031af01f0a05c4bbf3064f63a008f0.ctex"]
 
 [params]
 

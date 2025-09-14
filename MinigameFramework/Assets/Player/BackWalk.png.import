@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc7ksgum74bap"
-path="res://.godot/imported/BackWalk.png-2ed086e8f76537a7bdf5abb8a5ec7a41.ctex"
+path="res://.godot/imported/BackWalk.png-eae9ca72eccb2ad69c8303d9c0593d80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/BackWalk.png"
-dest_files=["res://.godot/imported/BackWalk.png-2ed086e8f76537a7bdf5abb8a5ec7a41.ctex"]
+source_file="res://assets/Player/BackWalk.png"
+dest_files=["res://.godot/imported/BackWalk.png-eae9ca72eccb2ad69c8303d9c0593d80.ctex"]
 
 [params]
 

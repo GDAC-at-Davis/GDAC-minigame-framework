@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://du1wfkunh1hvn"
-path="res://.godot/imported/balloon.png-73ccefff44195c436808882f2f272872.ctex"
+path="res://.godot/imported/balloon.png-a76d1d0fc0fb27e59991268e9e37521b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Minigames/BalloonPopper/balloon.png"
-dest_files=["res://.godot/imported/balloon.png-73ccefff44195c436808882f2f272872.ctex"]
+source_file="res://minigames/BalloonPopper/balloon.png"
+dest_files=["res://.godot/imported/balloon.png-a76d1d0fc0fb27e59991268e9e37521b.ctex"]
 
 [params]
 

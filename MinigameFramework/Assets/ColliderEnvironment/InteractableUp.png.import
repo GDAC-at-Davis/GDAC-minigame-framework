@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://br81i55gxnsy5"
-path="res://.godot/imported/InteractableUp.png-698bd7912641ad39137b8cc77a7e9de5.ctex"
+path="res://.godot/imported/InteractableUp.png-1936d0803e9f1a80873428849ed638f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ColliderEnvironment/InteractableUp.png"
-dest_files=["res://.godot/imported/InteractableUp.png-698bd7912641ad39137b8cc77a7e9de5.ctex"]
+source_file="res://assets/ColliderEnvironment/InteractableUp.png"
+dest_files=["res://.godot/imported/InteractableUp.png-1936d0803e9f1a80873428849ed638f3.ctex"]
 
 [params]
 

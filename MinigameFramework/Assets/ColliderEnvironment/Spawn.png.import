@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vufev4sdxsx4"
-path="res://.godot/imported/Spawn.png-c0b50887d4ab1e9c0cc8fadf547cd8bf.ctex"
+path="res://.godot/imported/Spawn.png-20274cc3f6cc86e3097132bf772a442b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/ColliderEnvironment/Spawn.png"
-dest_files=["res://.godot/imported/Spawn.png-c0b50887d4ab1e9c0cc8fadf547cd8bf.ctex"]
+source_file="res://assets/ColliderEnvironment/Spawn.png"
+dest_files=["res://.godot/imported/Spawn.png-20274cc3f6cc86e3097132bf772a442b.ctex"]
 
 [params]
 

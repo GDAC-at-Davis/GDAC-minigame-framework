@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ch0bxgtg1hsni"
-path="res://.godot/imported/WallJutJoiner.png-6c335b34c4e214503ee6210edef067d2.ctex"
+path="res://.godot/imported/WallJutJoiner.png-48fc6f6b7961daa8a670f3718035f1e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/WallJutJoiner.png"
-dest_files=["res://.godot/imported/WallJutJoiner.png-6c335b34c4e214503ee6210edef067d2.ctex"]
+source_file="res://assets/Environment/WallJutJoiner.png"
+dest_files=["res://.godot/imported/WallJutJoiner.png-48fc6f6b7961daa8a670f3718035f1e8.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buo4cbhbh6wcu"
-path="res://.godot/imported/FloorUpperWall.png-3a0c041f27f0b6b25e0f653dc0bb8f7e.ctex"
+path="res://.godot/imported/FloorUpperWall.png-ba66b1a54d7b8c4781ea2a2bfbbf135f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/FloorUpperWall.png"
-dest_files=["res://.godot/imported/FloorUpperWall.png-3a0c041f27f0b6b25e0f653dc0bb8f7e.ctex"]
+source_file="res://assets/Environment/FloorUpperWall.png"
+dest_files=["res://.godot/imported/FloorUpperWall.png-ba66b1a54d7b8c4781ea2a2bfbbf135f.ctex"]
 
 [params]
 

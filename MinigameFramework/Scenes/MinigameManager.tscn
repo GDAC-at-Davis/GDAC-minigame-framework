@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://d37y2041mrhtw"]
 
-[ext_resource type="Script" uid="uid://bqy5pm30257dh" path="res://Scripts/minigame_manager.gd" id="1_c43xr"]
-[ext_resource type="Theme" uid="uid://b3gvhppqjl7w2" path="res://Resources/Themes/instruction_theme.tres" id="3_hj43s"]
-[ext_resource type="Texture2D" uid="uid://cnkeu612ob1v6" path="res://Assets/Player/FrontIdle.png" id="3_ifwpt"]
-[ext_resource type="Texture2D" uid="uid://dk80ejp14m8qe" path="res://Assets/Player/SideIdle.png" id="4_a820n"]
-[ext_resource type="Texture2D" uid="uid://dlhunmti0rfki" path="res://Assets/Player/BackIdle.png" id="5_tondc"]
+[ext_resource type="Script" uid="uid://bqy5pm30257dh" path="res://scripts/minigame_manager.gd" id="1_lehxo"]
+[ext_resource type="Theme" uid="uid://b3gvhppqjl7w2" path="res://resources/Themes/instruction_theme.tres" id="2_lv88o"]
+[ext_resource type="Texture2D" uid="uid://cnkeu612ob1v6" path="res://assets/Player/FrontIdle.png" id="3_w5hio"]
+[ext_resource type="Texture2D" uid="uid://dk80ejp14m8qe" path="res://assets/Player/SideIdle.png" id="4_q6s6h"]
+[ext_resource type="Texture2D" uid="uid://dlhunmti0rfki" path="res://assets/Player/BackIdle.png" id="5_bsv5a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvaaa"]
 bg_color = Color(0.18, 0, 0, 1)
@@ -16,18 +16,45 @@ bg_color = Color(1, 0.335514, 0.269596, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_ifwpt")
+"texture": ExtResource("3_w5hio")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_a820n")
+"texture": ExtResource("4_q6s6h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_tondc")
+"texture": ExtResource("5_bsv5a")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_a820n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ifwpt"]
 resource_name = "spin"
@@ -58,33 +85,6 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_a820n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a820n"]
 _data = {
 &"RESET": SubResource("Animation_a820n"),
@@ -95,7 +95,7 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
-script = ExtResource("1_c43xr")
+script = ExtResource("1_lehxo")
 metadata/_custom_type_script = "uid://bqy5pm30257dh"
 
 [node name="MinigameUILayer" type="CanvasLayer" parent="."]
@@ -121,7 +121,7 @@ offset_right = 1280.0
 offset_bottom = 720.0
 pivot_offset = Vector2(640, 360)
 mouse_filter = 2
-theme = ExtResource("3_hj43s")
+theme = ExtResource("2_lv88o")
 text = "Instructions"
 fit_content = true
 horizontal_alignment = 1
@@ -148,7 +148,7 @@ offset_top = 525.0
 offset_right = 1284.0
 offset_bottom = 725.0
 mouse_filter = 2
-theme = ExtResource("3_hj43s")
+theme = ExtResource("2_lv88o")
 text = "Difficulty
 100%"
 horizontal_alignment = 1
@@ -159,7 +159,7 @@ offset_top = 525.0
 offset_right = 440.0
 offset_bottom = 725.0
 mouse_filter = 2
-theme = ExtResource("3_hj43s")
+theme = ExtResource("2_lv88o")
 text = "Remaining
 10"
 horizontal_alignment = 1
