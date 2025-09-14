@@ -2,15 +2,15 @@ class_name GodScene
 extends Node2D
 
 const scene_dict = {
-	"Home" : preload("res://Scenes/HomeRoom.tscn"),
+	"Home" : preload("res://scenes/HomeRoom.tscn"),
 }
 
 const ui_dict = {
-	"Menu" : preload("res://Scenes/Menu.tscn"),
-	"Home" : preload("res://Scenes/UI.tscn"),
+	"Menu" : preload("res://scenes/Menu.tscn"),
+	"Home" : preload("res://scenes/UI.tscn"),
 }
 
-var minigame_manager_scene: PackedScene = preload("res://Scenes/MinigameManager.tscn")
+var minigame_manager_scene: PackedScene = preload("res://scenes/MinigameManager.tscn")
 var active_scene = null
 var active_ui = null
 

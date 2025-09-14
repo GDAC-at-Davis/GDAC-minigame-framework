@@ -43,7 +43,7 @@ var _minigame_idx: int = 0:
 		return _minigame_idx
 
 # Curve for controlling the instruction pop in
-var _instruction_scale_curve: Curve = preload("res://Resources/Curves/instruction_scale_curve.tres")
+var _instruction_scale_curve: Curve = preload("res://resources/curves/instruction_scale_curve.tres")
 
 @onready var minigame_ui_layer: CanvasLayer = $MinigameUILayer
 @onready var minigame_layer: CanvasLayer = $MinigameLayer

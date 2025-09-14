@@ -1,6 +1,6 @@
 extends Node2D
 
-var player_scene = preload("res://Scenes/Player.tscn")
+var player_scene = preload("res://scenes/Player.tscn")
 var player = null
 @onready var visual_tilemap = $VisualTileMap
 @onready var collision_tilemap = $CollisionTileMap
@@ -72,7 +72,7 @@ func interact(interaction : String):
 			ui.play_text("I'm an abomination")
 		"door":
 			ui.play_text("get me out of here")
-			(get_parent() as GodScene).load_minigame_manager(preload("res://Resources/MinigameGroups/home_minigame_group.tres"))
+			(get_parent() as GodScene).load_minigame_manager(preload("res://resources/minigame_groups/home_minigame_group.tres"))
 
 func _ready() -> void:
 	spawn_player()

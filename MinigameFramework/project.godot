@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Skeleton Game"
-run/main_scene="uid://oeni4b2d8s0w"
+run/main_scene="uid://blmvycvgmnnxv"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
