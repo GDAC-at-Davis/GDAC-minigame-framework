@@ -7,7 +7,7 @@ const scene_dict = {
 
 const ui_dict = {
 	"Menu" : preload("res://scenes/Menu.tscn"),
-	"Selection" : preload("res://scenes/MinigameSelection.tscn"),
+	"Collection" : preload("res://scenes/MinigameCollection.tscn"),
 	"Home" : preload("res://scenes/UI.tscn"),
 }
 

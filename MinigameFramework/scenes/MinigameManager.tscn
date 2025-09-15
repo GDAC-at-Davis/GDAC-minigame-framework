@@ -17,7 +17,6 @@ script = ExtResource("1_lehxo")
 metadata/_custom_type_script = "uid://bqy5pm30257dh"
 
 [node name="MinigameUILayer" type="CanvasLayer" parent="."]
-layer = 2
 
 [node name="TimeBar" type="ProgressBar" parent="MinigameUILayer"]
 anchors_preset = 8
@@ -46,9 +45,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MinigameLayer" type="CanvasLayer" parent="."]
+layer = 0
 
 [node name="TransitionLayer" type="CanvasLayer" parent="."]
-layer = 0
+layer = 2
 
 [node name="HealthBar" type="ProgressBar" parent="TransitionLayer"]
 z_index = 1
@@ -85,3 +85,5 @@ text = "Remaining
 10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="TransitionLayer"]

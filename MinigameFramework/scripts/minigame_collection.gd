@@ -1,8 +1,7 @@
 extends Control
 
-## All minigames in the game
-@export var minigames: Array[MinigameInfo]
-
+## This scene will be used at the background for minigame transitions
+@export var transition_background: PackedScene
 ## Total lives the player has for this group of minigames
 @export var total_lives: int = 3
 ## Number of minigames needed to be played for the difficulty to increase
@@ -22,6 +21,7 @@ var _minigame_data: MinigameGroupData
 
 func _ready():
 	_minigame_data = MinigameGroupData.new()
+	_minigame_data.transition_background = transition_background
 	_minigame_data.total_minigames = 0
 	_minigame_data.total_lives = total_lives
 	_minigame_data.difficulty_rate = difficulty_rate
@@ -32,7 +32,7 @@ func _ready():
 	minigame_list.item_selected.connect(_on_selection)
 	menu_button.pressed.connect(_on_menu_button_pressed)
 	
-	for game: MinigameInfo in minigames:
+	for game: MinigameInfo in GameManager.minigame_collection:
 		minigame_list.add_item(game.name, game.icon, true)
 		_minigame_scenes.append(game.scene)
 
@@ -42,4 +42,5 @@ func _on_menu_button_pressed():
 func _on_selection(index: int):
 	_minigame_data.minigames.clear()
 	_minigame_data.minigames.append(_minigame_scenes[index])
+	minigame_list.deselect_all()
 	GameManager.switch_to_minigames(_minigame_data, true)

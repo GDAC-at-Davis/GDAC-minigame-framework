@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=4 format=3 uid="uid://dasddnih4eawk"]
+
+[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://minigames/balloon_popper/balloon.png" id="1_cty0u"]
+[ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="1_voqej"]
+[ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/balloon_popper/BalloonPopper.tscn" id="2_gu8ps"]
+
+[resource]
+script = ExtResource("1_voqej")
+name = "Balloon Popper"
+icon = ExtResource("1_cty0u")
+scene = ExtResource("2_gu8ps")
+metadata/_custom_type_script = "uid://vk7irpeekqp4"

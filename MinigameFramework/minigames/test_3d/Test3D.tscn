@@ -9,6 +9,7 @@
 [node name="Test3d" type="Node"]
 script = ExtResource("1_s00ru")
 instruction = "Click!"
+countdown_time = 2.0
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
