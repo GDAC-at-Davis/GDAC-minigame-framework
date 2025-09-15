@@ -1,0 +1,87 @@
+[gd_scene load_steps=5 format=3 uid="uid://d37y2041mrhtw"]
+
+[ext_resource type="Script" uid="uid://bqy5pm30257dh" path="res://scripts/minigame_manager.gd" id="1_lehxo"]
+[ext_resource type="Theme" uid="uid://b3gvhppqjl7w2" path="res://resources/themes/instruction_theme.tres" id="2_lv88o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kvaaa"]
+bg_color = Color(0.18, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj43s"]
+bg_color = Color(1, 0.335514, 0.269596, 1)
+
+[node name="MinigameManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_lehxo")
+metadata/_custom_type_script = "uid://bqy5pm30257dh"
+
+[node name="MinigameUILayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TimeBar" type="ProgressBar" parent="MinigameUILayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = 290.0
+offset_right = 640.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+show_percentage = false
+
+[node name="InstructionLabel" type="RichTextLabel" parent="MinigameUILayer"]
+offset_right = 1280.0
+offset_bottom = 720.0
+pivot_offset = Vector2(640, 360)
+mouse_filter = 2
+theme = ExtResource("2_lv88o")
+text = "Instructions"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MinigameLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="HealthBar" type="ProgressBar" parent="TransitionLayer"]
+z_index = 1
+offset_left = 40.0
+offset_top = 50.0
+offset_right = 1240.0
+offset_bottom = 100.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_kvaaa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hj43s")
+show_percentage = false
+
+[node name="DifficultyLabel" type="RichTextLabel" parent="TransitionLayer"]
+z_index = 1
+offset_left = 844.0
+offset_top = 525.0
+offset_right = 1284.0
+offset_bottom = 725.0
+mouse_filter = 2
+theme = ExtResource("2_lv88o")
+text = "Difficulty
+100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MinigamesLeftLabel" type="RichTextLabel" parent="TransitionLayer"]
+z_index = 1
+offset_top = 525.0
+offset_right = 440.0
+offset_bottom = 725.0
+mouse_filter = 2
+theme = ExtResource("2_lv88o")
+text = "Remaining
+10"
+horizontal_alignment = 1
+vertical_alignment = 1

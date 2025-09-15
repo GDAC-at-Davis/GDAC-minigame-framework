@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://u1khrpao6kjn"]
+
+[ext_resource type="Script" uid="uid://c7we4uveykfdb" path="res://scripts/player.gd" id="1_52ee3"]
+[ext_resource type="Texture2D" uid="uid://dlhunmti0rfki" path="res://assets/Player/BackIdle.png" id="1_x3wgy"]
+[ext_resource type="Texture2D" uid="uid://dc7ksgum74bap" path="res://assets/Player/BackWalk.png" id="2_3smsa"]
+[ext_resource type="Texture2D" uid="uid://cnkeu612ob1v6" path="res://assets/Player/FrontIdle.png" id="3_8erm5"]
+[ext_resource type="Texture2D" uid="uid://c6sqb3jik7u2o" path="res://assets/Player/FrontWalk.png" id="4_f1ek2"]
+[ext_resource type="Texture2D" uid="uid://dk80ejp14m8qe" path="res://assets/Player/SideIdle.png" id="5_tx1dd"]
+[ext_resource type="Texture2D" uid="uid://bewm5feulmlwh" path="res://assets/Player/SideWalk.png" id="6_gymyn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivps1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x3wgy")
+}],
+"loop": false,
+"name": &"BackIdle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_3smsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_x3wgy")
+}],
+"loop": false,
+"name": &"BackWalk",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8erm5")
+}],
+"loop": false,
+"name": &"FrontIdle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_f1ek2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8erm5")
+}],
+"loop": false,
+"name": &"FrontWalk",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tx1dd")
+}],
+"loop": false,
+"name": &"RightIdle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_gymyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tx1dd")
+}],
+"loop": false,
+"name": &"RightWalk",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn08x"]
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_52ee3")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.38419e-07, -2.38419e-07)
+scale = Vector2(0.625, 0.625)
+sprite_frames = SubResource("SpriteFrames_ivps1")
+animation = &"BackIdle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nn08x")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

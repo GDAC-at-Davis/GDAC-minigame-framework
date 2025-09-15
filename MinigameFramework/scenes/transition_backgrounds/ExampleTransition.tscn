@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://cdv476t22idne"]
+
+[ext_resource type="Script" uid="uid://csweiub724y0w" path="res://scripts/example_transition.gd" id="1_8wgno"]
+[ext_resource type="Texture2D" uid="uid://cnkeu612ob1v6" path="res://assets/player/FrontIdle.png" id="1_fm7nn"]
+[ext_resource type="Texture2D" uid="uid://dk80ejp14m8qe" path="res://assets/player/SideIdle.png" id="2_8wgno"]
+[ext_resource type="Texture2D" uid="uid://dlhunmti0rfki" path="res://assets/player/BackIdle.png" id="3_d08jo"]
+
+[sub_resource type="Gradient" id="Gradient_8wgno"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d08jo"]
+gradient = SubResource("Gradient_8wgno")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gubp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fm7nn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8wgno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d08jo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_a820n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ifwpt"]
+resource_name = "spin"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a820n"]
+_data = {
+&"RESET": SubResource("Animation_a820n"),
+&"spin": SubResource("Animation_ifwpt")
+}
+
+[node name="ExampleTransition" type="Node2D"]
+script = ExtResource("1_8wgno")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1285.0
+offset_bottom = 728.0
+texture = SubResource("GradientTexture1D_d08jo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 360)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_gubp3")
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_a820n")
+}
+speed_scale = 3.0

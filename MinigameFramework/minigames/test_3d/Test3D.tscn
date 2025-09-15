@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgmlbwqta8dhl"]
+
+[ext_resource type="Script" uid="uid://cte65f2kvwe34" path="res://minigames/test_3d/test_3d_minigame.gd" id="1_s00ru"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s00ru"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s00ru"]
+
+[node name="Test3d" type="Node3D"]
+
+[node name="MinigameComponent" type="Node" parent="."]
+script = ExtResource("1_s00ru")
+instruction = "Click!"
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.612409, 0)
+mesh = SubResource("BoxMesh_s00ru")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.924938, 0, -0.380118, 0, 1, 0, 0.380118, 0, 0.924938, -1.13822, 0.745456, 3.25783)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(14.475, 0, 0, 0, 14.475, 0, 0, 0, 14.475, 0, 0, 0)
+mesh = SubResource("PlaneMesh_s00ru")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.560639, -0.264117, -0.784809, 0, -0.947768, 0.318959, -0.82806, 0.178821, 0.531356, 0, 0, 0)
