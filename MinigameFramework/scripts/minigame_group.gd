@@ -15,5 +15,7 @@ extends Resource
 @export var difficulty_rate: int = 2
 ## Amount the difficulty increases each time
 @export var difficulty_step: float = 0.2
+## The difficulty to start at
+@export var starting_difficulty: float = 1.0
 ## How long to stay on the transition screen
 @export var transition_time: float = 3.0

@@ -29,4 +29,13 @@ grow_vertical = 2
 icon = ExtResource("1_3kf3n")
 flat = true
 
+[node name="CollectionButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 560.0
+offset_top = 400.0
+offset_right = 720.0
+offset_bottom = 431.0
+text = "Minigame Collection"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CollectionButton" to="." method="_on_collection_button_pressed"]

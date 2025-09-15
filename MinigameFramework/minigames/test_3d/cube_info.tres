@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=4 format=3 uid="uid://dr0acvuqh4ame"]
+
+[ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="1_i10wm"]
+[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="1_ig804"]
+[ext_resource type="PackedScene" uid="uid://cgmlbwqta8dhl" path="res://minigames/test_3d/Test3D.tscn" id="2_lvm8c"]
+
+[resource]
+script = ExtResource("1_i10wm")
+name = "The Cube"
+icon = ExtResource("1_ig804")
+scene = ExtResource("2_lvm8c")
+metadata/_custom_type_script = "uid://vk7irpeekqp4"

@@ -19,9 +19,7 @@ initial_velocity_min = 781.62
 initial_velocity_max = 862.08
 gravity = Vector3(0, -100, 0)
 
-[node name="BalloonPopper" type="Node2D"]
-
-[node name="MinigameComponent" type="Node" parent="."]
+[node name="BalloonPopper" type="Node"]
 script = ExtResource("1_tqulc")
 instruction = "Pop!"
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"

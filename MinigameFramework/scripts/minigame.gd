@@ -1,4 +1,4 @@
-class_name MinigameComponent
+class_name Minigame
 extends Node
 
 @export_category("Information")
@@ -12,7 +12,6 @@ extends Node
 @export var skip_time: float = 1.0
 
 var countdown_timer: Timer
-var minigame_manager: MinigameManager
 
 ## Represents the current difficulty level of the minigame. A value of 2.0 should roughly translate to the minigame being twice as difficult.
 var difficulty: float = 1.0
@@ -27,7 +26,7 @@ func _ready():
 	add_child(countdown_timer)
 	countdown_timer.timeout.connect(_on_countdown_timeout)
 	
-	difficulty = minigame_manager.difficulty_scale
+	difficulty = GameManager.minigame_manager.difficulty_scale
 	
 	start()
 	
@@ -37,7 +36,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	minigame_manager.update_time_display(countdown_timer.time_left, countdown_time)
+	GameManager.minigame_manager.update_time_display(countdown_timer.time_left, countdown_time)
 	run()
 
 
@@ -87,4 +86,4 @@ func _on_countdown_timeout():
 	if not has_won:
 		lose()
 	complete()
-	minigame_manager.minigame_completed.emit(has_won)
+	GameManager.minigame_manager.minigame_completed.emit(has_won)

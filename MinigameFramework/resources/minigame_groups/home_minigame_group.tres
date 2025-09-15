@@ -7,12 +7,13 @@
 
 [resource]
 script = ExtResource("1_p7nvv")
-minigames = Array[PackedScene]([ExtResource("1_ryry2"), ExtResource("2_l2kh3")])
+minigames = Array[PackedScene]([ExtResource("2_l2kh3"), ExtResource("1_ryry2")])
 final_minigame = ExtResource("2_l2kh3")
 transition_background = ExtResource("4_7gsfh")
 total_minigames = 5
 total_lives = 3
 difficulty_rate = 2
 difficulty_step = 0.2
+starting_difficulty = 1.0
 transition_time = 3.0
 metadata/_custom_type_script = "uid://p73k0qpka7a6"

@@ -4,7 +4,6 @@ var player_scene = preload("res://scenes/Player.tscn")
 var player = null
 @onready var visual_tilemap = $VisualTileMap
 @onready var collision_tilemap = $CollisionTileMap
-@onready var ui = get_parent().get_ui()
 
 var CELL_SIZE = 32
 var SPAWN_CELL_ID = 4
@@ -67,12 +66,12 @@ func i_am_interacting():
 func interact(interaction : String):
 	match interaction:
 		"bed":
-			ui.play_text("Oh, I sleep here.")
+			GameManager.world_manager.active_ui.play_text("Oh, I sleep here.")
 		"mirror":
-			ui.play_text("I'm an abomination")
+			GameManager.world_manager.active_ui.play_text("I'm an abomination")
 		"door":
-			ui.play_text("get me out of here")
-			(get_parent() as GodScene).load_minigame_manager(preload("res://resources/minigame_groups/home_minigame_group.tres"))
+			GameManager.world_manager.active_ui.play_text("get me out of here")
+			GameManager.switch_to_minigames(preload("res://resources/minigame_groups/home_minigame_group.tres"))
 
 func _ready() -> void:
 	spawn_player()

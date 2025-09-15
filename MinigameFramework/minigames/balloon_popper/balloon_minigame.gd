@@ -1,11 +1,11 @@
-extends MinigameComponent
+extends Minigame
 
 var balloon_packed_scene: PackedScene = preload("res://minigames/balloon_popper/Balloon.tscn")
 var balloons: Array[Area2D]
 var pop_count: int = 0
 var balloon_amount: int = 3
 
-@onready var particles: GPUParticles2D = $"../BalloonParticles"
+@onready var particles: GPUParticles2D = $BalloonParticles
 
 func start():
 	# Adjust for difficulty
