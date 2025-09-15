@@ -22,12 +22,15 @@ var difficulty_scale: float = 1.0:
 	get():
 		return difficulty_scale
 
-var minigames_left: int = 0:
+var minigames_completed: int = 0:
 	set(new_value):
-		minigames_left = new_value
-		minigames_left_label.text = "Remaining\n" + str(minigames_left)
+		minigames_completed = new_value
+		if _endless:
+			minigames_left_label.text = "Completed\n" + str(minigames_completed)
+		else:
+			minigames_left_label.text = "Remaining\n" + str(data.total_minigames - minigames_completed)
 	get():
-		return minigames_left
+		return minigames_completed
 
 var current_minigame_node: Minigame
 var instruction_timer: Timer
@@ -40,6 +43,8 @@ var _minigame_idx: int = 0:
 			_minigame_idx = 0
 	get():
 		return _minigame_idx
+
+var _endless: bool = false
 
 # Curve for controlling the instruction pop in
 var _instruction_scale_curve: Curve = preload("res://resources/curves/instruction_scale_curve.tres")
@@ -70,16 +75,17 @@ func _process(delta):
 		instruction_label.scale = Vector2(lerpf(1.0, 5.0, weight), lerpf(1.0, 5.0, weight))
 
 
-func start(minigame_data: MinigameGroupData):
+func start(minigame_data: MinigameGroupData, endless: bool = false):
 	data = minigame_data
 	minigame_completed.connect(_on_minigame_completed)
 	
 	current_minigame_node = null
+	_endless = endless
 	transition_timer.wait_time = data.transition_time
 	health_bar.max_value = data.total_lives
 	health_bar.value = data.total_lives
 	lives_left = data.total_lives
-	minigames_left = data.total_minigames
+	minigames_completed = 0
 	difficulty_scale = data.starting_difficulty
 	_minigame_idx = 0
 	
@@ -95,7 +101,7 @@ func start_minigame() -> void:
 		GameManager.switch_to_world()
 		return
 	var minigame_scene: PackedScene
-	if minigames_left == 1 and data.final_minigame:
+	if minigames_completed == data.total_minigames - 1 and data.final_minigame:
 		minigame_scene = data.final_minigame
 	else:
 		minigame_scene = data.minigames[_minigame_idx]
@@ -113,12 +119,12 @@ func start_minigame() -> void:
 func stop_minigame() -> void:
 	current_minigame_node.queue_free()
 	current_minigame_node = null
-	minigames_left -= 1
-	if (data.total_minigames - minigames_left) % data.difficulty_rate == 0:
+	minigames_completed += 1
+	if minigames_completed % data.difficulty_rate == 0:
 		difficulty_scale += data.difficulty_step
 	minigame_ui_layer.visible = false
 	transition_layer.visible = true
-	if minigames_left == 0 or lives_left == 0:
+	if (not _endless and minigames_completed == data.total_minigames) or lives_left == 0:
 		GameManager.switch_to_world()
 	else:
 		transition_timer.start()

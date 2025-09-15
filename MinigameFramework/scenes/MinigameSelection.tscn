@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://dkh3om2hous85"]
+
+[ext_resource type="Script" uid="uid://bn3sg7wides1s" path="res://scripts/minigame_selection.gd" id="1_wlfax"]
+[ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="2_mu245"]
+[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://minigames/balloon_popper/balloon.png" id="3_hfmyi"]
+[ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/balloon_popper/BalloonPopper.tscn" id="4_wdxxt"]
+[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="5_hfmyi"]
+[ext_resource type="PackedScene" uid="uid://cgmlbwqta8dhl" path="res://minigames/test_3d/Test3D.tscn" id="6_wdxxt"]
+
+[sub_resource type="Resource" id="Resource_ocpun"]
+script = ExtResource("2_mu245")
+name = "Balloon Popper"
+icon = ExtResource("3_hfmyi")
+scene = ExtResource("4_wdxxt")
+metadata/_custom_type_script = "uid://vk7irpeekqp4"
+
+[sub_resource type="Resource" id="Resource_3j84c"]
+script = ExtResource("2_mu245")
+name = "The Cube"
+icon = ExtResource("5_hfmyi")
+scene = ExtResource("6_wdxxt")
+metadata/_custom_type_script = "uid://vk7irpeekqp4"
+
+[node name="MinigameSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wlfax")
+minigames = Array[ExtResource("2_mu245")]([SubResource("Resource_ocpun"), SubResource("Resource_3j84c")])
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 162.0
+offset_bottom = 61.0
+text = "Back to Menu"
+
+[node name="MinigameList" type="ItemList" parent="."]
+layout_mode = 1
+offset_top = 69.0
+offset_right = 1280.0
+offset_bottom = 720.0
+theme_override_font_sizes/font_size = 20
+max_columns = 5
+same_column_width = true
+fixed_column_width = 256
+icon_mode = 0
+fixed_icon_size = Vector2i(128, 128)

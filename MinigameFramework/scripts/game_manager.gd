@@ -11,10 +11,10 @@ func _ready():
 	world_manager = _world_manager_scene.instantiate()
 	minigame_manager = _minigame_manager_scene.instantiate()
 
-func switch_to_minigames(minigame_data : MinigameGroupData):
+func switch_to_minigames(minigame_data : MinigameGroupData, endless: bool = false):
 	main_scene.remove_child(world_manager)
 	main_scene.add_child(minigame_manager)
-	minigame_manager.start(minigame_data)
+	minigame_manager.start(minigame_data, endless)
 
 func switch_to_world():
 	main_scene.remove_child(minigame_manager)
