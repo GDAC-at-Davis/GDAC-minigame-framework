@@ -53,11 +53,9 @@ var _instruction_scale_curve: Curve = preload("res://resources/curves/instructio
 @onready var health_bar: ProgressBar = $TransitionLayer/HealthBar
 @onready var difficulty_label: RichTextLabel = $TransitionLayer/DifficultyLabel
 @onready var minigames_left_label: RichTextLabel = $TransitionLayer/MinigamesLeftLabel
-@onready var funny_little_guy: AnimationPlayer = $TransitionLayer/AnimatedSprite2D/AnimationPlayer
 
 func _ready() -> void:
 	minigame_completed.connect(_on_minigame_completed)
-	funny_little_guy.play(&"spin") 
 	
 	instruction_timer = Timer.new()
 	instruction_timer.one_shot = true
@@ -76,6 +74,8 @@ func _ready() -> void:
 	lives_left = data.total_lives
 	minigames_left = data.total_minigames
 	
+	if data.transition_background:
+		transition_layer.add_child(data.transition_background.instantiate())
 	minigame_ui_layer.visible = false
 	
 	data.minigames.shuffle()

@@ -5,6 +5,8 @@ extends Resource
 @export var minigames: Array[PackedScene]
 ## This will replace the last minigame (boss fight)
 @export var final_minigame: PackedScene
+## This scene will be used at the background for minigame transitions
+@export var transition_background: PackedScene
 ## Total minigames to be played
 @export var total_minigames: int = 5
 ## Total lives the player has for this group of minigames

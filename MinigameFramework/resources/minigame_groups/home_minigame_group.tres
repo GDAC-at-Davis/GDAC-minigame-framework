@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=4 format=3 uid="uid://bt14lx2uf6axm"]
+[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=5 format=3 uid="uid://bt14lx2uf6axm"]
 
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="1_p7nvv"]
-[ext_resource type="PackedScene" uid="uid://cgmlbwqta8dhl" path="res://minigames/Test3D/Test3D.tscn" id="1_ryry2"]
-[ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/BalloonPopper/BalloonPopper.tscn" id="2_l2kh3"]
+[ext_resource type="PackedScene" uid="uid://cgmlbwqta8dhl" path="res://minigames/test_3d/Test3D.tscn" id="1_ryry2"]
+[ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/balloon_popper/BalloonPopper.tscn" id="2_l2kh3"]
+[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/ExampleTransition.tscn" id="4_7gsfh"]
 
 [resource]
 script = ExtResource("1_p7nvv")
 minigames = Array[PackedScene]([ExtResource("1_ryry2"), ExtResource("2_l2kh3")])
 final_minigame = ExtResource("2_l2kh3")
+transition_background = ExtResource("4_7gsfh")
 total_minigames = 5
 total_lives = 3
 difficulty_rate = 2

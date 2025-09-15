@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://oeni4b2d8s0w"]
-
-[ext_resource type="Script" uid="uid://cdew1xe6o4dv5" path="res://testing/minigame_tester.gd" id="1_tpsv2"]
-[ext_resource type="Resource" path="res://resources/MinigameGroups/home_minigame_group.tres" id="2_y77l2"]
-
-[node name="MinigameTesting" type="Node2D"]
-script = ExtResource("1_tpsv2")
-minigame_data = ExtResource("2_y77l2")
-metadata/_custom_type_script = "uid://cdew1xe6o4dv5"
