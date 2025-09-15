@@ -29,8 +29,7 @@ var minigames_left: int = 0:
 	get():
 		return minigames_left
 
-var current_minigame_node: Node
-var current_minigame_component: MinigameComponent
+var current_minigame_node: Minigame
 var instruction_timer: Timer
 var transition_timer: Timer
 
@@ -101,23 +100,19 @@ func start_minigame() -> void:
 		minigame_scene = data.minigames[_minigame_idx]
 	_minigame_idx += 1
 	current_minigame_node = minigame_scene.instantiate()
-	for child in current_minigame_node.get_children():
-		if child is MinigameComponent:
-			current_minigame_component = child
-	current_minigame_component.minigame_manager = self
+	current_minigame_node.minigame_manager = self
 	minigame_layer.add_child(current_minigame_node)
 	
 	transition_layer.visible = false
 	minigame_ui_layer.visible = true
 	instruction_label.visible = true
 	instruction_timer.start(INSTRUCTION_DISPLAY_TIME)
-	instruction_label.text = current_minigame_component.instruction
+	instruction_label.text = current_minigame_node.instruction
 
 
 func stop_minigame() -> void:
 	current_minigame_node.queue_free()
 	current_minigame_node = null
-	current_minigame_component = null
 	minigames_left -= 1
 	if (data.total_minigames - minigames_left) % data.difficulty_rate == 0:
 		difficulty_scale += data.difficulty_step

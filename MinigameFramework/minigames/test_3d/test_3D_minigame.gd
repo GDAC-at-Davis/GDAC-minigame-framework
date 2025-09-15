@@ -1,6 +1,6 @@
-extends MinigameComponent
+extends Minigame
 
-@onready var cube: MeshInstance3D = $"../MeshInstance3D"
+@onready var cube: MeshInstance3D = $MeshInstance3D
 
 func run():
 	if Input.is_action_just_pressed("primary"):

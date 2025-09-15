@@ -1,4 +1,4 @@
-class_name MinigameComponent
+class_name Minigame
 extends Node
 
 @export_category("Information")
