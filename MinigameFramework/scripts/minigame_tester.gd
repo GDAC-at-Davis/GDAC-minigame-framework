@@ -7,5 +7,5 @@ var minigame_manager_scene: PackedScene = preload("res://scenes/MinigameManager.
 
 func _ready():
 	var manager: MinigameManager = minigame_manager_scene.instantiate()
-	manager.setup_data(minigame_data)
 	add_child(manager)
+	manager.start(minigame_data)

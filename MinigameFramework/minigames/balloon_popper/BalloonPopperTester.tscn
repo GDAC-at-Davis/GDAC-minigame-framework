@@ -12,6 +12,7 @@ total_minigames = 99
 total_lives = 99
 difficulty_rate = 1
 difficulty_step = 0.5
+starting_difficulty = 1.0
 transition_time = 1.0
 metadata/_custom_type_script = "uid://p73k0qpka7a6"
 

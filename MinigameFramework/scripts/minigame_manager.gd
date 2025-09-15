@@ -53,9 +53,7 @@ var _instruction_scale_curve: Curve = preload("res://resources/curves/instructio
 @onready var difficulty_label: RichTextLabel = $TransitionLayer/DifficultyLabel
 @onready var minigames_left_label: RichTextLabel = $TransitionLayer/MinigamesLeftLabel
 
-func _ready() -> void:
-	minigame_completed.connect(_on_minigame_completed)
-	
+func _ready():
 	instruction_timer = Timer.new()
 	instruction_timer.one_shot = true
 	instruction_timer.timeout.connect(_on_instruction_timer_timeout)
@@ -64,34 +62,37 @@ func _ready() -> void:
 	transition_timer = Timer.new()
 	transition_timer.one_shot = true
 	transition_timer.timeout.connect(_on_transition_timer_timeout)
-	transition_timer.wait_time = data.transition_time
 	add_child(transition_timer)
-	transition_timer.start()
+
+func _process(delta):
+	if instruction_timer.time_left > 0:
+		var weight = _instruction_scale_curve.sample_baked((INSTRUCTION_DISPLAY_TIME - instruction_timer.time_left) / (INSTRUCTION_DISPLAY_TIME))
+		instruction_label.scale = Vector2(lerpf(1.0, 5.0, weight), lerpf(1.0, 5.0, weight))
+
+
+func start(minigame_data: MinigameGroupData):
+	data = minigame_data
+	minigame_completed.connect(_on_minigame_completed)
 	
+	current_minigame_node = null
+	transition_timer.wait_time = data.transition_time
 	health_bar.max_value = data.total_lives
 	health_bar.value = data.total_lives
 	lives_left = data.total_lives
 	minigames_left = data.total_minigames
+	difficulty_scale = data.starting_difficulty
+	_minigame_idx = 0
 	
 	if data.transition_background:
 		transition_layer.add_child(data.transition_background.instantiate())
 	minigame_ui_layer.visible = false
 	
 	data.minigames.shuffle()
-
-
-func _process(delta):
-	var weight = _instruction_scale_curve.sample_baked((INSTRUCTION_DISPLAY_TIME - instruction_timer.time_left) / (INSTRUCTION_DISPLAY_TIME))
-	instruction_label.scale = Vector2(lerpf(1.0, 5.0, weight), lerpf(1.0, 5.0, weight))
-
-
-func setup_data(minigame_data: MinigameGroupData):
-	data = minigame_data
-
+	transition_timer.start()
 
 func start_minigame() -> void:
 	if data.minigames.size() == 0:
-		(get_parent() as GodScene).load_scene("Home")
+		GameManager.switch_to_world()
 		return
 	var minigame_scene: PackedScene
 	if minigames_left == 1 and data.final_minigame:
@@ -100,7 +101,6 @@ func start_minigame() -> void:
 		minigame_scene = data.minigames[_minigame_idx]
 	_minigame_idx += 1
 	current_minigame_node = minigame_scene.instantiate()
-	current_minigame_node.minigame_manager = self
 	minigame_layer.add_child(current_minigame_node)
 	
 	transition_layer.visible = false
@@ -119,7 +119,7 @@ func stop_minigame() -> void:
 	minigame_ui_layer.visible = false
 	transition_layer.visible = true
 	if minigames_left == 0 or lives_left == 0:
-		(get_parent() as GodScene).load_scene("Home")
+		GameManager.switch_to_world()
 	else:
 		transition_timer.start()
 

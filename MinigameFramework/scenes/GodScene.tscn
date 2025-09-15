@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://blmvycvgmnnxv"]
-
-[ext_resource type="Script" uid="uid://dtmlo62vwyrq0" path="res://scripts/god_scene.gd" id="1_65nfc"]
-
-[node name="GodScene" type="Node2D"]
-script = ExtResource("1_65nfc")
-
-[node name="UICanvas" type="CanvasLayer" parent="."]
