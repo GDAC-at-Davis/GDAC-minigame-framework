@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bskc6w62le1hy"]
+[gd_scene load_steps=6 format=3 uid="uid://cl4qrry3qf5d3"]
 
 [ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/balloon_popper/BalloonPopper.tscn" id="2_gp8vr"]
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="3_mpry2"]
