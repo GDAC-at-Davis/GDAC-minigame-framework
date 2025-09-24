@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cgmlbwqta8dhl"]
 
-[ext_resource type="Script" uid="uid://cte65f2kvwe34" path="res://minigames/test_3d/test_3D_minigame.gd" id="1_s00ru"]
+[ext_resource type="Script" uid="uid://cte65f2kvwe34" path="res://minigames/test_3d/test_3d_minigame.gd" id="1_s00ru"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_s00ru"]
 

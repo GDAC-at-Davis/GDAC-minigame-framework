@@ -7,8 +7,8 @@ var minigame_manager: MinigameManager
 var minigame_collection: Array[MinigameInfo]
 
 var _minigame_folder_path: String = "res://minigames/"
-var _world_manager_scene: PackedScene = preload("res://scenes/WorldManager.tscn")
-var _minigame_manager_scene: PackedScene = preload("res://scenes/MinigameManager.tscn")
+var _world_manager_scene: PackedScene = preload("res://scenes/world_manager.tscn")
+var _minigame_manager_scene: PackedScene = preload("res://scenes/minigame_manager.tscn")
 
 func _ready():
 	world_manager = _world_manager_scene.instantiate()

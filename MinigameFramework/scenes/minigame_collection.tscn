@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkh3om2hous85"]
 
 [ext_resource type="Script" uid="uid://bn3sg7wides1s" path="res://scripts/minigame_collection.gd" id="1_n5n1k"]
-[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/ExampleTransition.tscn" id="2_u7r6c"]
+[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="2_u7r6c"]
 
 [node name="MinigameCollection" type="Control"]
 layout_mode = 3
