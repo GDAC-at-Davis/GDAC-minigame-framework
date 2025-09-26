@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkh3om2hous85"]
+[gd_scene load_steps=5 format=3 uid="uid://dkh3om2hous85"]
 
 [ext_resource type="Script" uid="uid://bn3sg7wides1s" path="res://scripts/minigame_collection.gd" id="1_n5n1k"]
 [ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="2_u7r6c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k60pc"]
+content_margin_left = 50.0
+
+[sub_resource type="Theme" id="Theme_csayh"]
+ItemList/constants/h_separation = 0
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_k60pc")
 
 [node name="MinigameCollection" type="Control"]
 layout_mode = 3
@@ -15,14 +22,24 @@ offset_right = 162.0
 offset_bottom = 61.0
 text = "Back to Menu"
 
+[node name="PlayAllButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 6.0
+offset_right = 751.0
+offset_bottom = 59.0
+text = "Play All"
+
 [node name="MinigameList" type="ItemList" parent="."]
-layout_mode = 1
+layout_mode = 0
 offset_top = 69.0
 offset_right = 1280.0
 offset_bottom = 720.0
+theme = SubResource("Theme_csayh")
 theme_override_font_sizes/font_size = 20
+text_overrun_behavior = 0
 max_columns = 5
 same_column_width = true
-fixed_column_width = 256
+fixed_column_width = 240
 icon_mode = 0
 fixed_icon_size = Vector2i(128, 128)
