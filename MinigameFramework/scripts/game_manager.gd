@@ -16,12 +16,14 @@ func _ready():
 	_load_info_from_disk(_minigame_folder_path)
 
 func switch_to_minigames(minigame_data : MinigameGroupData, endless: bool = false):
-	main_scene.remove_child(world_manager)
+	if world_manager.get_parent():
+		main_scene.remove_child(world_manager)
 	main_scene.add_child(minigame_manager)
 	minigame_manager.start(minigame_data, endless)
 
 func switch_to_world():
-	main_scene.remove_child(minigame_manager)
+	if minigame_manager.get_parent():
+		main_scene.remove_child(minigame_manager)
 	main_scene.add_child(world_manager)
 
 

@@ -17,7 +17,7 @@ func start():
 	
 	# Adjust for difficulty
 	countdown_time /= difficulty
-	balloon_amount *= difficulty
+	balloon_amount *= roundi(difficulty)
 	
 	# Spawn the balloons
 	for i in range(balloon_amount):

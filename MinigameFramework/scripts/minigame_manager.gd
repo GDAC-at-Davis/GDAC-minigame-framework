@@ -81,7 +81,7 @@ func _ready():
 	fade_timer.timeout.connect(_on_fade_timer_timeout)
 	add_child(fade_timer)
 
-func _process(delta):
+func _process(_delta):
 	if instruction_timer.time_left > 0:
 		var weight = _instruction_scale_curve.sample_baked((INSTRUCTION_DISPLAY_TIME - instruction_timer.time_left) / (INSTRUCTION_DISPLAY_TIME))
 		instruction_label.scale = Vector2(lerpf(1.0, 5.0, weight), lerpf(1.0, 5.0, weight))
