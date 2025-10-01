@@ -5,6 +5,16 @@ A game project where collections of minigames are linked together and increase i
 * Godot Version: 4.4.1
 * Window Size: 1280 x 720
 
+### Controls
+These are controls you may use in your minigame. Try to use them in a way that feels intuitive to the player.
+* W - "up"
+* A - "left"
+* S - "right"
+* D - "down"
+* Left Click - "primary"
+* Right Click - "secondary"
+* Mouse Cursor
+
 ## Minigame Contribution Guide
 ### Examples
 [Balloon Popper](https://github.com/GDAC-at-Davis/GDAC-minigame-framework/blob/4c6ed3adcabfe8e865ec73166f50ec56712f8f0a/MinigameFramework/minigames/balloon_popper/) is an example of a full minigame.
@@ -15,7 +25,7 @@ A game project where collections of minigames are linked together and increase i
 1. Clone the repository to your local device.
 2. Create a new branch off of the dev branch for your minigame in the github.
 3. Create a folder for your minigame in the [minigames folder](https://github.com/GDAC-at-Davis/GDAC-minigame-framework/blob/4c6ed3adcabfe8e865ec73166f50ec56712f8f0a/MinigameFramework/minigames/). Make sure to give it a proper name. Everything for your minigame should be added to this folder.
-4. Add a new scene to your folder and change its type to Minigame. This is the main scene that will represents and controls your minigame.
+4. Add a new scene to your folder and change its type to Minigame. This is the main scene that will represent and control your minigame.
 5. Add a new script to your folder that extends the Minigame class and attach the script to the Minigame scene. The specifications for the Minigame class can be found below.
 6. Add a new MinigameInfo resource to your folder. Fill out the resource with the name of your minigame and the icon it will appear with in the Minigame Collection. The scene data entry should be the scene for your minigame that you created in step 3.
 7. You should now be able to play your minigame from the Minigame Collection.
