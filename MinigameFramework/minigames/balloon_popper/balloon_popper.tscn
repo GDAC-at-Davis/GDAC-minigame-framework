@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpacr2w3cuiyw"]
 
-[ext_resource type="Script" uid="uid://dycy3rg1nvlln" path="res://minigames/balloon_popper/balloon_minigame.gd" id="1_tqulc"]
-[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://minigames/balloon_popper/balloon.png" id="2_bk108"]
+[ext_resource type="Script" uid="uid://dycy3rg1nvlln" path="res://minigames/balloon_popper/balloon_minigame.gd" id="1_7w8ax"]
+[ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://minigames/balloon_popper/balloon.png" id="2_81gf3"]
 
 [sub_resource type="Gradient" id="Gradient_tqulc"]
 offsets = PackedFloat32Array(0)
@@ -20,7 +20,7 @@ initial_velocity_max = 862.08
 gravity = Vector3(0, -100, 0)
 
 [node name="BalloonPopper" type="Node"]
-script = ExtResource("1_tqulc")
+script = ExtResource("1_7w8ax")
 instruction = "Pop!"
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
@@ -35,7 +35,7 @@ top_level = true
 position = Vector2(640, 834.425)
 emitting = false
 amount = 16
-texture = ExtResource("2_bk108")
+texture = ExtResource("2_81gf3")
 lifetime = 1.5
 one_shot = true
 visibility_rect = Rect2(-640, -900, 1280, 900)

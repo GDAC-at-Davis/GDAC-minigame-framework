@@ -1,18 +1,18 @@
 [gd_scene load_steps=10 format=3 uid="uid://u1khrpao6kjn"]
 
-[ext_resource type="Script" uid="uid://c7we4uveykfdb" path="res://scripts/player.gd" id="1_52ee3"]
-[ext_resource type="Texture2D" uid="uid://dlhunmti0rfki" path="res://assets/player/BackIdle.png" id="1_x3wgy"]
-[ext_resource type="Texture2D" uid="uid://dc7ksgum74bap" path="res://assets/player/BackWalk.png" id="2_3smsa"]
-[ext_resource type="Texture2D" uid="uid://cnkeu612ob1v6" path="res://assets/player/FrontIdle.png" id="3_8erm5"]
-[ext_resource type="Texture2D" uid="uid://c6sqb3jik7u2o" path="res://assets/player/FrontWalk.png" id="4_f1ek2"]
-[ext_resource type="Texture2D" uid="uid://dk80ejp14m8qe" path="res://assets/player/SideIdle.png" id="5_tx1dd"]
-[ext_resource type="Texture2D" uid="uid://bewm5feulmlwh" path="res://assets/player/SideWalk.png" id="6_gymyn"]
+[ext_resource type="Script" uid="uid://c7we4uveykfdb" path="res://scripts/player.gd" id="1_fjrip"]
+[ext_resource type="Texture2D" uid="uid://dlhunmti0rfki" path="res://assets/player/BackIdle.png" id="2_smehm"]
+[ext_resource type="Texture2D" uid="uid://dc7ksgum74bap" path="res://assets/player/BackWalk.png" id="3_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://cnkeu612ob1v6" path="res://assets/player/FrontIdle.png" id="4_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://c6sqb3jik7u2o" path="res://assets/player/FrontWalk.png" id="5_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://dk80ejp14m8qe" path="res://assets/player/SideIdle.png" id="6_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://bewm5feulmlwh" path="res://assets/player/SideWalk.png" id="7_jej6c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ivps1"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_x3wgy")
+"texture": ExtResource("2_smehm")
 }],
 "loop": false,
 "name": &"BackIdle",
@@ -20,10 +20,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_3smsa")
+"texture": ExtResource("3_ur7pv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_x3wgy")
+"texture": ExtResource("2_smehm")
 }],
 "loop": false,
 "name": &"BackWalk",
@@ -31,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_8erm5")
+"texture": ExtResource("4_y4r1p")
 }],
 "loop": false,
 "name": &"FrontIdle",
@@ -39,10 +39,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_f1ek2")
+"texture": ExtResource("5_d2wvv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_8erm5")
+"texture": ExtResource("4_y4r1p")
 }],
 "loop": false,
 "name": &"FrontWalk",
@@ -50,7 +50,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_tx1dd")
+"texture": ExtResource("6_3v2ag")
 }],
 "loop": false,
 "name": &"RightIdle",
@@ -58,10 +58,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_gymyn")
+"texture": ExtResource("7_jej6c")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_tx1dd")
+"texture": ExtResource("6_3v2ag")
 }],
 "loop": false,
 "name": &"RightWalk",
@@ -71,7 +71,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn08x"]
 
 [node name="Player" type="Area2D"]
-script = ExtResource("1_52ee3")
+script = ExtResource("1_fjrip")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.38419e-07, -2.38419e-07)

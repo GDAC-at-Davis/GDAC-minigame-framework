@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://br7i6tg7kpm64"]
 
-[ext_resource type="Script" uid="uid://b5orjr4lnibqc" path="res://scripts/ui.gd" id="1_w371h"]
+[ext_resource type="Script" uid="uid://b5orjr4lnibqc" path="res://scripts/ui.gd" id="1_nt7q6"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w371h")
+script = ExtResource("1_nt7q6")
 
 [node name="TextPanel" type="Panel" parent="."]
 layout_mode = 1

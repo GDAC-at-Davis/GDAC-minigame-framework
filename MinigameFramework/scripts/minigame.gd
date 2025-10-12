@@ -35,7 +35,7 @@ func _ready():
 		countdown_timer.start()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	GameManager.minigame_manager.update_time_display(countdown_timer.time_left, countdown_time)
 	run()
 

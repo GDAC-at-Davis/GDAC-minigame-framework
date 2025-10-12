@@ -2,13 +2,13 @@ class_name WorldManager
 extends Node2D
 
 const scene_dict = {
-	"Home" : preload("res://scenes/HomeRoom.tscn"),
+	"Home" : preload("res://scenes/home_room.tscn"),
 }
 
 const ui_dict = {
-	"Menu" : preload("res://scenes/Menu.tscn"),
-	"Collection" : preload("res://scenes/MinigameCollection.tscn"),
-	"Home" : preload("res://scenes/UI.tscn"),
+	"Menu" : preload("res://scenes/menu.tscn"),
+	"Collection" : preload("res://scenes/minigame_collection.tscn"),
+	"Home" : preload("res://scenes/ui.tscn"),
 }
 
 var active_scene = null:

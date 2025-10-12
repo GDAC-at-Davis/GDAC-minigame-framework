@@ -18,6 +18,7 @@ var _minigame_data: MinigameGroupData
 
 @onready var minigame_list: ItemList = $MinigameList
 @onready var menu_button: Button = $MenuButton
+@onready var play_all_button: Button = $PlayAllButton
 
 func _ready():
 	_minigame_data = MinigameGroupData.new()
@@ -31,6 +32,7 @@ func _ready():
 	
 	minigame_list.item_selected.connect(_on_selection)
 	menu_button.pressed.connect(_on_menu_button_pressed)
+	play_all_button.pressed.connect(_on_play_all_button_pressed)
 	
 	for game: MinigameInfo in GameManager.minigame_collection:
 		minigame_list.add_item(game.name, game.icon, true)
@@ -38,6 +40,12 @@ func _ready():
 
 func _on_menu_button_pressed():
 	GameManager.world_manager.load_ui("Menu")
+	
+func _on_play_all_button_pressed():
+	_minigame_data.minigames.clear()
+	_minigame_data.minigames = _minigame_scenes
+	minigame_list.deselect_all()
+	GameManager.switch_to_minigames(_minigame_data, true)
 
 func _on_selection(index: int):
 	_minigame_data.minigames.clear()

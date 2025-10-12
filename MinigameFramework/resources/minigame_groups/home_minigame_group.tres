@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="MinigameGroupData" load_steps=5 format=3 uid="uid://bt14lx2uf6axm"]
 
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="1_p7nvv"]
-[ext_resource type="PackedScene" uid="uid://cgmlbwqta8dhl" path="res://minigames/test_3d/Test3D.tscn" id="1_ryry2"]
-[ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/balloon_popper/BalloonPopper.tscn" id="2_l2kh3"]
-[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/ExampleTransition.tscn" id="4_7gsfh"]
+[ext_resource type="PackedScene" uid="uid://cgmlbwqta8dhl" path="res://minigames/test_3d/test_3d.tscn" id="1_ryry2"]
+[ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/balloon_popper/balloon_popper.tscn" id="2_l2kh3"]
+[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="4_7gsfh"]
 
 [resource]
 script = ExtResource("1_p7nvv")

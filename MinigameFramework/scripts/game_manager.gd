@@ -7,8 +7,8 @@ var minigame_manager: MinigameManager
 var minigame_collection: Array[MinigameInfo]
 
 var _minigame_folder_path: String = "res://minigames/"
-var _world_manager_scene: PackedScene = preload("res://scenes/WorldManager.tscn")
-var _minigame_manager_scene: PackedScene = preload("res://scenes/MinigameManager.tscn")
+var _world_manager_scene: PackedScene = preload("res://scenes/world_manager.tscn")
+var _minigame_manager_scene: PackedScene = preload("res://scenes/minigame_manager.tscn")
 
 func _ready():
 	world_manager = _world_manager_scene.instantiate()
@@ -16,12 +16,14 @@ func _ready():
 	_load_info_from_disk(_minigame_folder_path)
 
 func switch_to_minigames(minigame_data : MinigameGroupData, endless: bool = false):
-	main_scene.remove_child(world_manager)
+	if world_manager.get_parent():
+		main_scene.remove_child(world_manager)
 	main_scene.add_child(minigame_manager)
 	minigame_manager.start(minigame_data, endless)
 
 func switch_to_world():
-	main_scene.remove_child(minigame_manager)
+	if minigame_manager.get_parent():
+		main_scene.remove_child(minigame_manager)
 	main_scene.add_child(world_manager)
 
 
