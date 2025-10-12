@@ -17,9 +17,9 @@ These are controls you may use in your minigame. Try to use them in a way that f
 
 ## Minigame Contribution Guide
 ### Examples
-[Balloon Popper](https://github.com/GDAC-at-Davis/GDAC-minigame-framework/blob/4c6ed3adcabfe8e865ec73166f50ec56712f8f0a/MinigameFramework/minigames/balloon_popper/) is an example of a full minigame.
+[Balloon Popper](https://github.com/GDAC-at-Davis/GDAC-minigame-framework/tree/main/MinigameFramework/minigames/balloon_popper) is an example of a full minigame.
 
-[Test 3D](https://github.com/GDAC-at-Davis/GDAC-minigame-framework/blob/4c6ed3adcabfe8e865ec73166f50ec56712f8f0a/MinigameFramework/minigames/test_3d/) is an example of a barebones minigame using 3D assets.
+[Test 3D](https://github.com/GDAC-at-Davis/GDAC-minigame-framework/tree/main/MinigameFramework/minigames/test_3d) is an example of a barebones minigame using 3D assets.
 
 ### Steps
 1. Clone the repository to your local device.
