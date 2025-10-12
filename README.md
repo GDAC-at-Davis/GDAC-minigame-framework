@@ -2,7 +2,7 @@
 A game project where collections of minigames are linked together and increase in difficulty. GDAC members are encouraged to add their own minigames to this project.
 
 ## Project Specifications
-* Godot Version: 4.4.1
+* Godot Version: 4.5
 * Window Size: 1280 x 720
 
 ### Controls
