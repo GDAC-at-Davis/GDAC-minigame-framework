@@ -15,18 +15,20 @@ func _ready():
 	minigame_manager = _minigame_manager_scene.instantiate()
 	_load_info_from_disk(_minigame_folder_path)
 
+## Starts the minigame manager with the minigame group data
 func switch_to_minigames(minigame_data : MinigameGroupData, endless: bool = false):
 	if world_manager.get_parent():
 		main_scene.remove_child(world_manager)
 	main_scene.add_child(minigame_manager)
 	minigame_manager.start(minigame_data, endless)
 
+## Removes the minigame manager and adds the world manager
 func switch_to_world():
 	if minigame_manager.get_parent():
 		main_scene.remove_child(minigame_manager)
 	main_scene.add_child(world_manager)
 
-
+## Searches the minigames folder for data to use in the minigame collection
 func _load_info_from_disk(path: String):
 	var dir_access = DirAccess.open(path)
 	for dir_name in dir_access.get_directories():

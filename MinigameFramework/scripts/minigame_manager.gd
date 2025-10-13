@@ -93,10 +93,12 @@ func _process(_delta):
 			weight = _fade_curve.sample_baked((FADE_TIME - fade_timer.time_left) / (FADE_TIME))
 		transition_modulate.color.a = weight
 
+## Initializes the minigame manager with the data from the minigame group
 func start(minigame_data: MinigameGroupData, endless: bool = false):
 	data = minigame_data
 	minigame_completed.connect(_on_minigame_completed)
 	
+	## Initialize values
 	current_minigame_node = null
 	_endless = endless
 	transition_timer.wait_time = data.transition_time
@@ -107,13 +109,16 @@ func start(minigame_data: MinigameGroupData, endless: bool = false):
 	difficulty_scale = data.starting_difficulty
 	_minigame_idx = 0
 	
+	## Set the background
 	if data.transition_background:
 		transition_layer.add_child(data.transition_background.instantiate())
 	minigame_ui_layer.visible = false
 	
+	## Randomize the order of the minigames
 	data.minigames.shuffle()
 	transition_timer.start()
 
+## Starts the next minigame
 func start_minigame() -> void:
 	if data.minigames.size() == 0:
 		GameManager.switch_to_world()
@@ -134,6 +139,7 @@ func start_minigame() -> void:
 	instruction_label.text = current_minigame_node.instruction
 	fade_timer.start(FADE_TIME)
 
+## Stops the current minigame
 func stop_minigame() -> void:
 	playing = false
 	if lives_left > 0:
@@ -161,13 +167,14 @@ func _on_minigame_completed(has_won: bool):
 func _on_instruction_timer_timeout():
 	instruction_label.visible = false
 
-
+## Returns to the overworld if the player lost or completed all of the minigames
 func _on_transition_timer_timeout():
 	if (not _endless and minigames_completed == data.total_minigames) or lives_left == 0:
 		GameManager.switch_to_world()
 	else:
 		start_minigame()
 
+## Deletes the current minigame when it is no longer visible
 func _on_fade_timer_timeout():
 	if playing:
 		transition_layer.visible = false
