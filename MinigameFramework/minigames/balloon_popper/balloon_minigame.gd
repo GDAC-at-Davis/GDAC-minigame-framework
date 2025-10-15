@@ -1,6 +1,6 @@
 extends Minigame
 
-var balloon_packed_scene: PackedScene = preload("res://minigames/balloon_popper/Balloon.tscn")
+var balloon_packed_scene: PackedScene = preload("res://minigames/balloon_popper/balloon.tscn")
 var balloons: Array[Area2D]
 var pop_count: int = 0
 var base_balloon_amount: int = 3
