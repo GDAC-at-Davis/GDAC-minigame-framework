@@ -1,6 +1,6 @@
 extends Node2D
 
-var player_scene = preload("res://scenes/Player.tscn")
+var player_scene = preload("res://scenes/player.tscn")
 var player = null
 @onready var visual_tilemap = $VisualTileMap
 @onready var collision_tilemap = $CollisionTileMap
