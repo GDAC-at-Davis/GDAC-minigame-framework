@@ -1,10 +1,14 @@
 extends Area2D
 
-func _ready():
-	input_event.connect(_on_input_event)
+var _mouse_entered: bool = false
 
-func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int):
-	if event is InputEventMouseButton:
-		if Input.is_action_just_pressed("primary") and event.pressed:
+func _mouse_enter():
+	_mouse_entered = true
+	
+func _mouse_exit():
+	_mouse_entered = false
+
+func _process(delta):
+	if Input.is_action_just_pressed("primary") and _mouse_entered:
 			get_parent().balloon_popped()
 			queue_free()

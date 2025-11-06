@@ -36,6 +36,6 @@ func _load_info_from_disk(path: String):
 	for file_name in dir_access.get_files():
 		if file_name.get_extension() == "tres":
 			var info_path = path + "/" + file_name
-			var info : MinigameInfo = ResourceLoader.load(info_path)
-			if info:
+			var info : Resource = ResourceLoader.load(info_path)
+			if info and info is MinigameInfo:
 				minigame_collection.append(info)
