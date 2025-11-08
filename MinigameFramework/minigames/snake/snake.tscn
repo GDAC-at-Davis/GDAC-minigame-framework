@@ -10,10 +10,13 @@ radius = 50.0
 
 [node name="Snake" type="Node"]
 script = ExtResource("1_qumpe")
+instruction = "Pick up the ___s!"
+countdown_time = 10.0
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(583, 384)
+collision_layer = 9
 script = ExtResource("2_vwvtn")
 
 [node name="Icon" type="Sprite2D" parent="Player"]
@@ -23,4 +26,14 @@ texture = ExtResource("3_ak13d")
 shape = SubResource("CircleShape2D_sweun")
 
 [node name="Body" parent="." node_paths=PackedStringArray("previous_segment") instance=ExtResource("4_sweun")]
+position = Vector2(430, 297)
 previous_segment = NodePath("../Player")
+
+[node name="TopLeft" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="TopLeft"]
+
+[node name="BottomRight" type="Node2D" parent="."]
+position = Vector2(1280, 720)
+
+[node name="Marker2D" type="Marker2D" parent="BottomRight"]
