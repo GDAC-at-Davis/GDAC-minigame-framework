@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://iyhqhx083rvh"]
+
+[ext_resource type="Script" uid="uid://yiv2g3c50yqb" path="res://scripts/minigame.gd" id="1_kmya2"]
+
+[node name="Circle" type="Node"]
+script = ExtResource("1_kmya2")
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
