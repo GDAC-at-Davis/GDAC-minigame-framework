@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpgwsujt0jbir"]
+
+[ext_resource type="Script" uid="uid://rrgf5p0jv4ce" path="res://minigames/balloon_popper/balloon.gd" id="1_pg5wf"]
+[ext_resource type="Texture2D" uid="uid://v8s56xqjj7fc" path="res://minigames/shadowboxing/smallArrow.png" id="2_tbh83"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5ahiw"]
+radius = 72.0
+height = 144.0
+
+[node name="Balloon" type="Area2D"]
+script = ExtResource("1_pg5wf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tbh83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("CapsuleShape2D_5ahiw")

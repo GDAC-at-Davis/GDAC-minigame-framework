@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0fd5eqxcdio3"]
+
+[ext_resource type="Script" uid="uid://70uo6yn78g0j" path="res://minigames/shadowboxing/shadowboxing_minigame.gd" id="1_npb7n"]
+
+[sub_resource type="Gradient" id="Gradient_npb7n"]
+offsets = PackedFloat32Array(0, 0.99666667, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.88431424, 3.3450872e-06, 3.85046e-07, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xf8mx"]
+gradient = SubResource("Gradient_npb7n")
+
+[node name="Shadowboxing" type="Node"]
+script = ExtResource("1_npb7n")
+instruction = "Don't look!"
+countdown_time = 7.0
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_xf8mx")
