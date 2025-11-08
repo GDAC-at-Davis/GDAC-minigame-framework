@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4kvqs4y1apdg"]
+
+[ext_resource type="Script" uid="uid://bjtxt11mhpwla" path="res://minigames/snake/snake.gd" id="1_qumpe"]
+[ext_resource type="Script" uid="uid://btnibb6kvri2x" path="res://minigames/snake/player.gd" id="2_vwvtn"]
+[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="3_ak13d"]
+[ext_resource type="PackedScene" uid="uid://ca7yc3yllp57a" path="res://minigames/snake/body.tscn" id="4_sweun"]
+
+[node name="Snake" type="Node"]
+script = ExtResource("1_qumpe")
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(583, 384)
+script = ExtResource("2_vwvtn")
+
+[node name="Icon" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_ak13d")
+
+[node name="Body" parent="." node_paths=PackedStringArray("previous_segment") instance=ExtResource("4_sweun")]
+previous_segment = NodePath("../Player")
