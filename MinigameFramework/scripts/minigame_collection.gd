@@ -43,7 +43,7 @@ func _on_menu_button_pressed():
 	
 func _on_play_all_button_pressed():
 	_minigame_data.minigames.clear()
-	_minigame_data.minigames = _minigame_scenes
+	_minigame_data.minigames = _minigame_scenes.duplicate()
 	minigame_list.deselect_all()
 	GameManager.switch_to_minigames(_minigame_data, true)
 
