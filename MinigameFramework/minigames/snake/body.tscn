@@ -1,10 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ca7yc3yllp57a"]
+[gd_scene load_steps=4 format=3 uid="uid://ca7yc3yllp57a"]
 
 [ext_resource type="Script" uid="uid://76gil27jbnlt" path="res://minigames/snake/player_body_segment.gd" id="1_2k6r0"]
 [ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="2_0hx4b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2k6r0"]
+radius = 25.0
 
 [node name="Body" type="CharacterBody2D"]
 script = ExtResource("1_2k6r0")
 
 [node name="Icon" type="Sprite2D" parent="."]
 texture = ExtResource("2_0hx4b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_2k6r0")
