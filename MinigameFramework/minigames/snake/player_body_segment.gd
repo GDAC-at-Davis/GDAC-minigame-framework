@@ -12,3 +12,5 @@ func _physics_process(delta: float) -> void:
 	if global_position.distance_to(previous_segment.global_position) > distance:
 		global_position = (previous_segment.global_position + 
 				previous_segment.global_position.direction_to(global_position) * distance)
+				
+	rotation = lerp_angle(rotation, (previous_segment.global_position - global_position).angle(), delta * 10.0)

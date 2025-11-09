@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://1x1kcdxmvc3f"]
 
 [ext_resource type="Script" uid="uid://c27o7te067gg0" path="res://minigames/snake/pickup.gd" id="1_mxebm"]
-[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="2_b37mp"]
+[ext_resource type="Texture2D" uid="uid://byi8qxom2os1o" path="res://minigames/snake/sprite_texture/egg.png" id="2_mxebm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cb6o5"]
 
@@ -14,8 +14,7 @@ script = ExtResource("1_mxebm")
 shape = SubResource("CircleShape2D_cb6o5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.38564473, 0.96120757, 0, 1)
 scale = Vector2(0.51768494, 0.51768494)
-texture = ExtResource("2_b37mp")
+texture = ExtResource("2_mxebm")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

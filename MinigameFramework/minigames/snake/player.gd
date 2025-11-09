@@ -13,6 +13,10 @@ func _physics_process(delta: float) -> void:
 	
 	velocity = SPEED * direction / max(direction.length(), 1)
 	
+	if velocity.length() > 0:
+		var change_rotation = velocity.angle()
+		$Icon.rotation = lerp_angle($Icon.rotation, change_rotation, delta * 10.0)
+	
 	move_and_slide()
 
 

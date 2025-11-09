@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf63fgm4ejnvf"
-path="res://.godot/imported/WallCorner.png-374fd9810ba2a2a10da31c886d9557ee.ctex"
+uid="uid://ddaeqtxgok8fy"
+path="res://.godot/imported/snake_head_01.png-75f430920c1f2c655bfa78c61a188d6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/WallCorner.png"
-dest_files=["res://.godot/imported/WallCorner.png-374fd9810ba2a2a10da31c886d9557ee.ctex"]
+source_file="res://minigames/snake/sprite_texture/snake_head_01.png"
+dest_files=["res://.godot/imported/snake_head_01.png-75f430920c1f2c655bfa78c61a188d6d.ctex"]
 
 [params]
 

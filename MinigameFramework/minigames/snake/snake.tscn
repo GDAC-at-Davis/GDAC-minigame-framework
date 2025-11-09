@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bjtxt11mhpwla" path="res://minigames/snake/snake.gd" id="1_qumpe"]
 [ext_resource type="Script" uid="uid://btnibb6kvri2x" path="res://minigames/snake/player.gd" id="2_vwvtn"]
-[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="3_ak13d"]
+[ext_resource type="Texture2D" uid="uid://dk5hlp6tam8bq" path="res://minigames/snake/sprite_texture/snake_head_03.png" id="3_sweun"]
 [ext_resource type="PackedScene" uid="uid://ca7yc3yllp57a" path="res://minigames/snake/body.tscn" id="4_sweun"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweun"]
@@ -20,7 +20,7 @@ collision_layer = 9
 script = ExtResource("2_vwvtn")
 
 [node name="Icon" type="Sprite2D" parent="Player"]
-texture = ExtResource("3_ak13d")
+texture = ExtResource("3_sweun")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_sweun")
