@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ca7yc3yllp57a" path="res://minigames/snake/body.tscn" id="4_sweun"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweun"]
-radius = 50.0
+radius = 30.0
 
 [node name="Snake" type="Node"]
 script = ExtResource("1_qumpe")

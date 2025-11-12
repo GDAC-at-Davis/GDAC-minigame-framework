@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://76gil27jbnlt" path="res://minigames/snake/player_body_segment.gd" id="1_2k6r0"]
 [ext_resource type="Texture2D" uid="uid://crghkd2dptg0y" path="res://minigames/snake/sprite_texture/snake_body.png" id="2_2k6r0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2k6r0"]
-radius = 25.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2k6r0"]
+size = Vector2(80, 40)
 
 [node name="Body" type="CharacterBody2D"]
 script = ExtResource("1_2k6r0")
@@ -13,5 +13,5 @@ script = ExtResource("1_2k6r0")
 texture = ExtResource("2_2k6r0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
-shape = SubResource("CircleShape2D_2k6r0")
+position = Vector2(10, 0)
+shape = SubResource("RectangleShape2D_2k6r0")
