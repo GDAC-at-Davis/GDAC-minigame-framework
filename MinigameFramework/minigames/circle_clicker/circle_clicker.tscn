@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcd21bs3nleg6"]
+
+[ext_resource type="Script" uid="uid://f0q836s8dgbo" path="res://minigames/circle_clicker/circle_minigame.gd" id="1_bgwjo"]
+
+[sub_resource type="Gradient" id="Gradient_tqulc"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(3.97079e-07, 0.225332, 0.319979, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w47aj"]
+gradient = SubResource("Gradient_tqulc")
+
+[node name="CircleClicker" type="Node2D"]
+script = ExtResource("1_bgwjo")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_w47aj")

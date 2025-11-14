@@ -1,7 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://iyhqhx083rvh"]
+[gd_scene load_steps=4 format=3 uid="uid://iyhqhx083rvh"]
 
 [ext_resource type="Script" uid="uid://yiv2g3c50yqb" path="res://scripts/minigame.gd" id="1_kmya2"]
 
+[sub_resource type="Gradient" id="Gradient_kmya2"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w5fi4"]
+gradient = SubResource("Gradient_kmya2")
+
 [node name="Circle" type="Node"]
 script = ExtResource("1_kmya2")
+instruction = "Clicke the circles!"
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_w5fi4")
