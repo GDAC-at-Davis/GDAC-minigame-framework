@@ -8,6 +8,8 @@ var speed:float = BASE_SPEED
 
 @onready var tail: CharacterBody2D = $"../Body"
 
+func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 
 func _physics_process(delta: float) -> void:
 	var direction := Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
@@ -16,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.length() > 0:
 		var change_rotation = velocity.angle()
-		$Icon.rotation = lerp_angle($Icon.rotation, change_rotation, delta * 10.0)
+		$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, change_rotation, delta * 10.0)
 	
 	move_and_slide()
 

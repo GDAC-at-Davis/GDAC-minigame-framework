@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk5hlp6tam8bq"
-path="res://.godot/imported/snake_head_03.png-f4929901df0beb9a0e4833cb9654b497.ctex"
+uid="uid://bjb5mw6rnkbsg"
+path="res://.godot/imported/snake_head_02.png-ccdede19a499b5abda89bafb7b81fa41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/snake/sprite_texture/snake_head_03.png"
-dest_files=["res://.godot/imported/snake_head_03.png-f4929901df0beb9a0e4833cb9654b497.ctex"]
+source_file="res://minigames/snake/sprite_texture/snake_head_frames/snake_head_02.png"
+dest_files=["res://.godot/imported/snake_head_02.png-ccdede19a499b5abda89bafb7b81fa41.ctex"]
 
 [params]
 

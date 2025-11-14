@@ -1,12 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4kvqs4y1apdg"]
+[gd_scene load_steps=9 format=3 uid="uid://c4kvqs4y1apdg"]
 
 [ext_resource type="Script" uid="uid://bjtxt11mhpwla" path="res://minigames/snake/snake.gd" id="1_qumpe"]
 [ext_resource type="Script" uid="uid://btnibb6kvri2x" path="res://minigames/snake/player.gd" id="2_vwvtn"]
-[ext_resource type="Texture2D" uid="uid://dk5hlp6tam8bq" path="res://minigames/snake/sprite_texture/snake_head_03.png" id="3_sweun"]
+[ext_resource type="Texture2D" uid="uid://dk5hlp6tam8bq" path="res://minigames/snake/sprite_texture/snake_head_frames/snake_head_03.png" id="3_sweun"]
 [ext_resource type="PackedScene" uid="uid://ca7yc3yllp57a" path="res://minigames/snake/body.tscn" id="4_sweun"]
+[ext_resource type="Texture2D" uid="uid://ddaeqtxgok8fy" path="res://minigames/snake/sprite_texture/snake_head_frames/snake_head_01.png" id="4_ws505"]
+[ext_resource type="Texture2D" uid="uid://bjb5mw6rnkbsg" path="res://minigames/snake/sprite_texture/snake_head_frames/snake_head_02.png" id="5_rnmrc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sweun"]
 radius = 30.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vh0ew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ws505")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rnmrc")
+}, {
+"duration": 10.0,
+"texture": ExtResource("3_sweun")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Snake" type="Node"]
 script = ExtResource("1_qumpe")
@@ -19,11 +38,12 @@ position = Vector2(583, 384)
 collision_layer = 9
 script = ExtResource("2_vwvtn")
 
-[node name="Icon" type="Sprite2D" parent="Player"]
-texture = ExtResource("3_sweun")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_sweun")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = SubResource("SpriteFrames_vh0ew")
+frame_progress = 0.95702004
 
 [node name="Body" parent="." node_paths=PackedStringArray("previous_segment") instance=ExtResource("4_sweun")]
 position = Vector2(430, 297)
