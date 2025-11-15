@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ddaeqtxgok8fy" path="res://minigames/snake/sprite_texture/snake_head_frames/snake_head_01.png" id="4_ws505"]
 [ext_resource type="Texture2D" uid="uid://bjb5mw6rnkbsg" path="res://minigames/snake/sprite_texture/snake_head_frames/snake_head_02.png" id="5_rnmrc"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sweun"]
-radius = 30.0
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_vh0ew"]
 animations = [{
 "frames": [{
@@ -27,6 +24,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_sweun"]
+radius = 40.0
+
 [node name="Snake" type="Node"]
 script = ExtResource("1_qumpe")
 instruction = "Pick up the ___s!"
@@ -38,12 +38,12 @@ position = Vector2(583, 384)
 collision_layer = 9
 script = ExtResource("2_vwvtn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_sweun")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_vh0ew")
 frame_progress = 0.95702004
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_sweun")
 
 [node name="Body" parent="." node_paths=PackedStringArray("previous_segment") instance=ExtResource("4_sweun")]
 position = Vector2(430, 297)

@@ -20,6 +20,8 @@ func _ready() -> void:
 		countdown_time /= difficulty
 	super()
 	
+	pickup_target += difficulty 
+	
 	_spawn_pickup()
 
 
