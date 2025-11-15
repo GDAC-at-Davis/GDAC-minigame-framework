@@ -28,6 +28,7 @@ func _on_snake_pickup_gotten(current_count: int) -> void:
 
 
 func elongate() -> void:
+	tail.sprite.texture = preload("res://minigames/snake/sprite_texture/snake_body.png")
 	var new_tail: SnakeMinigameBody = BODY.instantiate()
 	get_parent().add_child(new_tail)
 	new_tail.previous_segment = tail
