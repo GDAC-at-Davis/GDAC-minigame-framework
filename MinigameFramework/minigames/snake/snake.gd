@@ -9,6 +9,7 @@ signal pickup_gotten(current_count:int)
 @onready var player: CharacterBody2D = $Player
 @onready var eggs_left: Label = $EggsLeft
 
+var difficulty_threshold = 2;
 var pickup_target:int = 3
 var pickups_gotten:int = 0
 
@@ -21,7 +22,10 @@ func _ready() -> void:
 	
 	player.speed = player.BASE_SPEED * difficulty
 	
-	pickup_target += difficulty - 1
+	#Increase pickup target by 1 every 100% difficulty change
+	if difficulty == difficulty_threshold:
+		pickup_target += 1
+		difficulty_threshold += 1
 	
 	_spawn_pickup()
 	_update_eggs_left()
