@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const BODY = preload("uid://ca7yc3yllp57a")
 
-const BASE_SPEED = 700.0
+const BASE_SPEED = 1000.0
 
 var speed:float = BASE_SPEED
 
