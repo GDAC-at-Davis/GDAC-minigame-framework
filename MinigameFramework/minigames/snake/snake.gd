@@ -8,7 +8,7 @@ signal pickup_gotten(current_count:int)
 @onready var bottom_right: Node2D = $BottomRight
 @onready var player: CharacterBody2D = $Player
 
-@export var pickup_target:int = 3
+var pickup_target:int = 3
 var pickups_gotten:int = 0
 
 # Called when the node enters the scene tree for the first time.
