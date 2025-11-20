@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.length() > 0:
 		var change_rotation = velocity.angle()
-		$AnimatedSprite2D.rotation = lerp_angle($AnimatedSprite2D.rotation, change_rotation, delta * 10.0)
+		rotation = lerp_angle(rotation, change_rotation, delta * 10.0)
 	
 	move_and_slide()
 
