@@ -7,6 +7,7 @@ signal pickup_gotten(current_count:int)
 @onready var top_left: Node2D = $TopLeft
 @onready var bottom_right: Node2D = $BottomRight
 @onready var player: CharacterBody2D = $Player
+@onready var eggs_left: Label = $EggsLeft
 
 var pickup_target:int = 3
 var pickups_gotten:int = 0
@@ -23,6 +24,7 @@ func _ready() -> void:
 	pickup_target += difficulty - 1
 	
 	_spawn_pickup()
+	_update_eggs_left()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -54,3 +56,8 @@ func _on_pickup_picked_up() -> void:
 		win()
 
 	_spawn_pickup()
+	_update_eggs_left()
+
+
+func _update_eggs_left() -> void:
+	eggs_left.text = "%d eggs left!" % max(0, pickup_target - pickups_gotten)

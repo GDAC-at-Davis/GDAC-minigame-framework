@@ -57,4 +57,10 @@ position = Vector2(1280, 720)
 
 [node name="Marker2D" type="Marker2D" parent="BottomRight"]
 
+[node name="EggsLeft" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "EGGS_LEFT"
+
 [connection signal="pickup_gotten" from="." to="Player" method="_on_snake_pickup_gotten"]
+[connection signal="pickup_gotten" from="." to="EggsLeft" method="_on_snake_pickup_gotten"]
