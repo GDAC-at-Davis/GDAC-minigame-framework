@@ -19,10 +19,8 @@ func _ready() -> void:
 		player.elongate()
 	
 	player.speed = player.BASE_SPEED * difficulty
-	if difficulty > 1:
-		countdown_time /= difficulty
 	
-	pickup_target += difficulty 
+	pickup_target += difficulty - 1
 	
 	_spawn_pickup()
 
