@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf63fgm4ejnvf"
-path="res://.godot/imported/WallCorner.png-374fd9810ba2a2a10da31c886d9557ee.ctex"
+uid="uid://d31082hdfdge3"
+path="res://.godot/imported/zeitzusammenpassen_logo.png-7a8f5426cd0888e8274e08876f37c500.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/WallCorner.png"
-dest_files=["res://.godot/imported/WallCorner.png-374fd9810ba2a2a10da31c886d9557ee.ctex"]
+source_file="res://minigames/zeitzusammenpassen/zeitzusammenpassen_logo.png"
+dest_files=["res://.godot/imported/zeitzusammenpassen_logo.png-7a8f5426cd0888e8274e08876f37c500.ctex"]
 
 [params]
 
