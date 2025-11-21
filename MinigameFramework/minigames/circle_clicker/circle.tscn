@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://iyhqhx083rvh"]
+[gd_scene load_steps=3 format=3 uid="uid://iyhqhx083rvh"]
 
-[ext_resource type="Script" uid="uid://yiv2g3c50yqb" path="res://scripts/minigame.gd" id="1_kmya2"]
+[ext_resource type="Texture2D" uid="uid://b7oulsvfeb4dg" path="res://minigames/circle_clicker/circle.png" id="1_kmya2"]
 
-[sub_resource type="Gradient" id="Gradient_kmya2"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5fi4"]
+radius = 275.51633
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_w5fi4"]
-gradient = SubResource("Gradient_kmya2")
-
-[node name="Circle" type="Node"]
-script = ExtResource("1_kmya2")
-instruction = "Clicke the circles!"
-metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+[node name="Circle" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_w5fi4")
+position = Vector2(0, 15)
+texture = ExtResource("1_kmya2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 10)
+shape = SubResource("CircleShape2D_w5fi4")
