@@ -11,6 +11,9 @@ var speed:float = BASE_SPEED
 var segment_closest_to_head: CharacterBody2D
 
 func _ready() -> void:
+	var scaled_pos = get_viewport().get_screen_transform() * global_position
+	Input.warp_mouse(scaled_pos)
+	
 	$AnimatedSprite2D.play("default")
 	segment_closest_to_head = tail
 
