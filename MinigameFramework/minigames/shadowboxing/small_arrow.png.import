@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://v8s56xqjj7fc"
-path="res://.godot/imported/smallArrow.png-f3c37e7fcd6349963ad0f8e26b0c363f.ctex"
+path="res://.godot/imported/small_arrow.png-e03cd7d6b590189c91a8a49a4f926d3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/shadowboxing/smallArrow.png"
-dest_files=["res://.godot/imported/smallArrow.png-f3c37e7fcd6349963ad0f8e26b0c363f.ctex"]
+source_file="res://minigames/shadowboxing/small_arrow.png"
+dest_files=["res://.godot/imported/small_arrow.png-e03cd7d6b590189c91a8a49a4f926d3f.ctex"]
 
 [params]
 
