@@ -3,22 +3,27 @@ extends CharacterBody2D
 const BODY = preload("uid://ca7yc3yllp57a")
 
 const BASE_SPEED = 1000.0
+const MIN_MOVE_DIST = 16
 
 var speed:float = BASE_SPEED
 
 @onready var tail: CharacterBody2D = $"../Body"
+var segment_closest_to_head: CharacterBody2D
 
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
+	segment_closest_to_head = tail
 
 func _physics_process(delta: float) -> void:
-	var direction := Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
+	var direction:Vector2 =  get_global_mouse_position() - global_position
 	
-	velocity = speed * direction / max(direction.length(), 1)
-	
-	if velocity.length() > 0:
-		var change_rotation = velocity.angle()
+	if direction.length() > MIN_MOVE_DIST:
+		velocity = speed * direction / max(direction.length(), 1)
+		
+		var change_rotation:float = direction.angle()
 		rotation = lerp_angle(rotation, change_rotation, delta * 10.0)
+	else:
+		velocity = Vector2.ZERO
 	
 	move_and_slide()
 
