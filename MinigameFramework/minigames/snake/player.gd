@@ -18,7 +18,8 @@ func _physics_process(delta: float) -> void:
 	var direction:Vector2 =  get_global_mouse_position() - global_position
 	
 	if direction.length() > MIN_MOVE_DIST:
-		velocity = speed * direction / max(direction.length(), 1)
+		var target_velocity = speed * direction / max(direction.length(), 1)
+		velocity = velocity.lerp(target_velocity, delta * 10.0)
 		
 		var change_rotation:float = direction.angle()
 		rotation = lerp_angle(rotation, change_rotation, delta * 10.0)
