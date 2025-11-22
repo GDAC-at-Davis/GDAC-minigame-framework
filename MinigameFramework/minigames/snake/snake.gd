@@ -1,16 +1,17 @@
 extends Minigame
 
 const PICKUP = preload("uid://1x1kcdxmvc3f")
+const BASE_EGG_COUNT:int = 3
 
 signal pickup_gotten(current_count:int)
+
 
 @onready var top_left: Node2D = $TopLeft
 @onready var bottom_right: Node2D = $BottomRight
 @onready var player: CharacterBody2D = $Player
 @onready var eggs_left: Label = $EggsLeft
 
-var difficulty_threshold = 2;
-var pickup_target:int = 3
+var pickup_target:int = BASE_EGG_COUNT
 var pickups_gotten:int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -23,9 +24,9 @@ func _ready() -> void:
 	player.speed = player.BASE_SPEED * difficulty
 	
 	#Increase pickup target by 1 every 100% difficulty change
-	if difficulty == difficulty_threshold:
-		pickup_target += 1
-		difficulty_threshold += 1
+	pickup_target = BASE_EGG_COUNT + floori(difficulty - 1)
+	
+	self.instruction = "Pick up %s eggs!" % pickup_target
 	
 	_spawn_pickup()
 	_update_eggs_left()

@@ -29,7 +29,7 @@ radius = 40.0
 
 [node name="Snake" type="Node"]
 script = ExtResource("1_qumpe")
-instruction = "Pick up the eggs!"
+instruction = "Pick up ___ eggs!"
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
 [node name="Player" type="CharacterBody2D" parent="."]
