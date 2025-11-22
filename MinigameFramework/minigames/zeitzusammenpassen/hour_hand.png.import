@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf63fgm4ejnvf"
-path="res://.godot/imported/WallCorner.png-374fd9810ba2a2a10da31c886d9557ee.ctex"
+uid="uid://b4xxguq120yfb"
+path="res://.godot/imported/hour_hand.png-4951781172de06fa88eeacfe551e54c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/WallCorner.png"
-dest_files=["res://.godot/imported/WallCorner.png-374fd9810ba2a2a10da31c886d9557ee.ctex"]
+source_file="res://minigames/zeitzusammenpassen/hour_hand.png"
+dest_files=["res://.godot/imported/hour_hand.png-4951781172de06fa88eeacfe551e54c6.ctex"]
 
 [params]
 

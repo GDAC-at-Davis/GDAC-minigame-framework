@@ -21,7 +21,10 @@ func start():
 	for i in range(balloon_amount):
 		var balloon: Area2D = balloon_packed_scene.instantiate()
 		add_child(balloon)
-		balloon.global_position = Vector2(randf_range(0, get_viewport().get_visible_rect().size.x), randf_range(0, get_viewport().get_visible_rect().size.y))
+		balloon.global_position = Vector2(
+				randf_range(0, get_viewport().get_visible_rect().size.x), 
+				randf_range(0, get_viewport().get_visible_rect().size.y)
+		)
 
 func win():
 	super()
