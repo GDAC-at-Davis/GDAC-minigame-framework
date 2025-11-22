@@ -4,7 +4,7 @@ var turning:bool = true
 var turning_left:bool = true
 
 var growing:bool = false
-var growing_bigger:bool = true
+var growing_bigger:bool = false
 
 func _process(_delta) -> void:
 	var difficulty:float = GameManager.minigame_manager.difficulty_scale
@@ -15,9 +15,9 @@ func _process(_delta) -> void:
 		self.offset = Vector2(150,-254)
 		
 		if turning_left:
-			self.rotation_degrees = self.rotation_degrees + 1*difficulty
+			self.rotation_degrees = self.rotation_degrees - 2*difficulty
 		else: 
-			self.rotation_degrees = self.rotation_degrees + 1*difficulty
+			self.rotation_degrees = self.rotation_degrees + 2*difficulty
 			
 		if self.rotation_degrees < -140:
 			turning_left = false
@@ -32,13 +32,13 @@ func _process(_delta) -> void:
 		self.offset = Vector2(0,0)
 		
 		if growing_bigger:
-			self.scale = self.scale + Vector2(0.01,0.01)*difficulty
+			self.global_scale = self.global_scale + Vector2(0.002,0.002)*difficulty
 		else: 
-			self.scale = self.scale - Vector2(0.01,0.01)*difficulty
+			self.global_scale = self.global_scale - Vector2(0.002,0.002)*difficulty
 			
-		if self.scale.x > 0.2:
+		if self.scale.length() > 0.28284:
 			growing_bigger = false
 		
-		if self.rotation_degrees < 0.1:
+		if self.scale.length() < 0.14142:
 			growing_bigger = true
 			
