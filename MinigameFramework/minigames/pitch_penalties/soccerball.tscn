@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dktkjfn613u72"]
+
+[ext_resource type="Script" uid="uid://dkr2fcfbqmlap" path="res://minigames/pitch_penalties/Scripts/soccerball.gd" id="1_2ngps"]
+[ext_resource type="Texture2D" uid="uid://dvqu6g026tvp1" path="res://minigames/pitch_penalties/Assets/soccerball.png" id="1_mby2e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xeoql"]
+radius = 17.0
+
+[node name="Soccerball" type="CharacterBody2D"]
+script = ExtResource("1_2ngps")
+
+[node name="Soccerball" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("1_mby2e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xeoql")

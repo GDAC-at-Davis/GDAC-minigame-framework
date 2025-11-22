@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0g8euwmhj52k"]
+
+[ext_resource type="Script" uid="uid://c7bfhjwv7f3ld" path="res://minigames/pitch_penalties/Scripts/pitch_penalties_minigame.gd" id="1_f8ec5"]
+[ext_resource type="PackedScene" uid="uid://bj16jn85f6edk" path="res://minigames/pitch_penalties/goalie.tscn" id="3_sfm2g"]
+[ext_resource type="Texture2D" uid="uid://dkd3etkbnasdw" path="res://minigames/pitch_penalties/Assets/Player.png" id="4_f8ec5"]
+[ext_resource type="PackedScene" uid="uid://dktkjfn613u72" path="res://minigames/pitch_penalties/soccerball.tscn" id="6_n7vx7"]
+[ext_resource type="Texture2D" uid="uid://bgsprlbh1n3lc" path="res://minigames/pitch_penalties/Assets/arrow.png" id="7_p6775"]
+[ext_resource type="Script" uid="uid://catenqw3hx2wh" path="res://minigames/pitch_penalties/Scripts/arrow.gd" id="8_5pvb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pvb8"]
+size = Vector2(6, 99.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnnw2"]
+size = Vector2(570, 6)
+
+[node name="PitchPenalties" type="Node"]
+script = ExtResource("1_f8ec5")
+metadata/_edit_horizontal_guides_ = [392.0]
+metadata/_edit_vertical_guides_ = [641.0]
+
+[node name="Goalie" parent="." instance=ExtResource("3_sfm2g")]
+unique_name_in_owner = true
+position = Vector2(640, 180)
+rotation = 1.5707964
+scale = Vector2(1.8, 1.8)
+
+[node name="Player" type="Sprite2D" parent="."]
+position = Vector2(640, 665)
+rotation = -1.5865043
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_f8ec5")
+
+[node name="Goal" type="StaticBody2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal"]
+position = Vector2(352, 79)
+shape = SubResource("RectangleShape2D_5pvb8")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Goal"]
+position = Vector2(928, 78.75)
+shape = SubResource("RectangleShape2D_5pvb8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Goal"]
+position = Vector2(640, 32)
+shape = SubResource("RectangleShape2D_mnnw2")
+
+[node name="Soccerball" parent="." instance=ExtResource("6_n7vx7")]
+unique_name_in_owner = true
+position = Vector2(640, 630)
+
+[node name="Arrow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(640, 570)
+rotation = -1.5707964
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_p6775")
+script = ExtResource("8_5pvb8")
