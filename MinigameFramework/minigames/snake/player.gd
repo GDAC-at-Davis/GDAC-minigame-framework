@@ -41,5 +41,7 @@ func elongate() -> void:
 	var new_tail: SnakeMinigameBody = BODY.instantiate()
 	get_parent().add_child(new_tail)
 	new_tail.previous_segment = tail
-	new_tail.global_position = tail.global_position
+	var direction = tail.global_position - tail.previous_segment.global_position
+	new_tail.global_position = tail.global_position + direction
+	new_tail.rotation = (tail.previous_segment.global_position - tail.global_position).angle()
 	tail = new_tail
