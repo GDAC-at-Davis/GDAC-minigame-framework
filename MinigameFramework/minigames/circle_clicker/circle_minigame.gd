@@ -33,8 +33,8 @@ func spawn_shape():
 	
 	## 50% chance for triangle or square
 	if randf() > 0.5:
-		shape = circle_scene.instantiate()
-		total_circles += 1 # Count the circle!
+		shape = square_scene.instantiate()
+		#total_circles += 1 # Count the circle!
 	else:
 		shape = square_scene.instantiate()
 	
