@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://b7oulsvfeb4dg" path="res://minigames/circle_clicker/circle.png" id="1_e26w1"]
 [ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="1_fl7ns"]
-
-[sub_resource type="PackedScene" id="PackedScene_fl7ns"]
+[ext_resource type="PackedScene" uid="uid://dcd21bs3nleg6" path="res://minigames/circle_clicker/circle_clicker.tscn" id="2_5l2c6"]
 
 [resource]
 script = ExtResource("1_fl7ns")
+name = "Circle clicker"
 icon = ExtResource("1_e26w1")
-scene = SubResource("PackedScene_fl7ns")
+scene = ExtResource("2_5l2c6")
 metadata/_custom_type_script = "uid://vk7irpeekqp4"

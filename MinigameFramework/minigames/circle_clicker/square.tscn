@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://bf6qp3ajmfgdc"]
+[gd_scene load_steps=4 format=3 uid="uid://bf6qp3ajmfgdc"]
+
+[ext_resource type="Script" uid="uid://cbogitqxuh8mw" path="res://minigames/circle_clicker/square.gd" id="1_wqa4o"]
+[ext_resource type="Texture2D" uid="uid://bndw2son6gmwh" path="res://assets/collider_environment/Walkable.png" id="2_yhwq1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cofgl"]
+size = Vector2(34, 34)
 
 [node name="Square" type="Area2D"]
+script = ExtResource("1_wqa4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 15)
+texture = ExtResource("2_yhwq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_cofgl")

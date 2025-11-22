@@ -9,8 +9,9 @@ colors = PackedColorArray(3.97079e-07, 0.225332, 0.319979, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_w47aj"]
 gradient = SubResource("Gradient_tqulc")
 
-[node name="CircleClicker" type="Node2D"]
+[node name="CircleClicker" type="Node"]
 script = ExtResource("1_bgwjo")
+instruction = "Find the circle!"
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 offset_right = 1280.0
