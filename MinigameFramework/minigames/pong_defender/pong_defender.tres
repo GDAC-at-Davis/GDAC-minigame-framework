@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="MinigameInfo" load_steps=3 format=3 uid="uid://ftc4yq747csk"]
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=4 format=3 uid="uid://ftc4yq747csk"]
 
 [ext_resource type="PackedScene" uid="uid://b6n8xrme5beco" path="res://minigames/pong_defender/pong_defender.tscn" id="1_k2hfp"]
+[ext_resource type="Texture2D" uid="uid://c34cyxjjq3drd" path="res://minigames/pong_defender/assets/paddle.png" id="1_k6t0p"]
 [ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="2_k6t0p"]
 
 [resource]
 script = ExtResource("2_k6t0p")
 name = "Pong Defender"
+icon = ExtResource("1_k6t0p")
 scene = ExtResource("1_k2hfp")
 metadata/_custom_type_script = "uid://vk7irpeekqp4"
