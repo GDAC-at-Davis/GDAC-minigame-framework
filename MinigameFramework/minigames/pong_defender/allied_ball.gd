@@ -1,4 +1,4 @@
-class_name Ball
+class_name AlliedBall
 extends Node2D
 
 @onready

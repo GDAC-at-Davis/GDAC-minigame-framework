@@ -69,4 +69,12 @@ shape = SubResource("RectangleShape2D_dfx4u")
 position = Vector2(2, 355)
 shape = SubResource("RectangleShape2D_dfx4u")
 
+[node name="Label" type="Label" parent="."]
+offset_left = 506.0
+offset_top = 6.0
+offset_right = 597.0
+offset_bottom = 29.0
+scale = Vector2(2, 2)
+text = "Click up to shoot"
+
 [connection signal="area_entered" from="PongBar/Area2D" to="PongBar" method="_on_area_2d_area_entered"]

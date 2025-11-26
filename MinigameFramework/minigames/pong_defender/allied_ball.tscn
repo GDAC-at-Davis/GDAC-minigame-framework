@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7g8exhe04fbl"]
+
+[ext_resource type="Script" uid="uid://cbp8o3mv5u8h6" path="res://minigames/pong_defender/allied_ball.gd" id="1_jd0np"]
+[ext_resource type="Script" uid="uid://d0gnimnaskncs" path="res://minigames/pong_defender/allied_ball_character.gd" id="2_lu78g"]
+[ext_resource type="Texture2D" uid="uid://cdagowc86ffo5" path="res://minigames/pong_defender/assets/ball.png" id="3_27s3v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvxmn"]
+radius = 10.4
+
+[node name="AlliedBall" type="Node2D"]
+script = ExtResource("1_jd0np")
+
+[node name="AlliedBallCharacter" type="CharacterBody2D" parent="."]
+script = ExtResource("2_lu78g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlliedBallCharacter"]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_fvxmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="AlliedBallCharacter/CollisionShape2D"]
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("3_27s3v")
+
+[node name="Area2D" type="Area2D" parent="AlliedBallCharacter"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlliedBallCharacter/Area2D"]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_fvxmn")
+
+[connection signal="area_entered" from="AlliedBallCharacter/Area2D" to="AlliedBallCharacter" method="_on_area_2d_area_entered"]

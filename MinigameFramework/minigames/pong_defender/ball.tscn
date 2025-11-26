@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://78e8hdfm52pn"]
+[gd_scene load_steps=5 format=3 uid="uid://78e8hdfm52pn"]
 
 [ext_resource type="Script" uid="uid://diwwmdouhy5is" path="res://minigames/pong_defender/ball.gd" id="1_l02wd"]
 [ext_resource type="Texture2D" uid="uid://cdagowc86ffo5" path="res://minigames/pong_defender/assets/ball.png" id="1_lglgl"]
+[ext_resource type="Script" uid="uid://ddq3ra5wrasey" path="res://minigames/pong_defender/ball_character.gd" id="2_nyhed"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fvxmn"]
 radius = 10.4
 
 [node name="Ball" type="Node2D"]
+script = ExtResource("1_l02wd")
 
 [node name="BallCharacter" type="CharacterBody2D" parent="."]
-script = ExtResource("1_l02wd")
+script = ExtResource("2_nyhed")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BallCharacter"]
 scale = Vector2(2.5, 2.5)
