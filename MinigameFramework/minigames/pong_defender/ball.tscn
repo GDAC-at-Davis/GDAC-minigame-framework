@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://78e8hdfm52pn"]
+
+[ext_resource type="Script" uid="uid://diwwmdouhy5is" path="res://minigames/pong_defender/ball.gd" id="1_l02wd"]
+[ext_resource type="Texture2D" uid="uid://cdagowc86ffo5" path="res://minigames/pong_defender/assets/ball.png" id="1_lglgl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fvxmn"]
+radius = 10.4
+
+[node name="Ball" type="Node2D"]
+
+[node name="BallCharacter" type="CharacterBody2D" parent="."]
+script = ExtResource("1_l02wd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BallCharacter"]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_fvxmn")
+
+[node name="Sprite2D" type="Sprite2D" parent="BallCharacter/CollisionShape2D"]
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("1_lglgl")
+
+[node name="Area2D" type="Area2D" parent="BallCharacter"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BallCharacter/Area2D"]
+scale = Vector2(2.5, 2.5)
+shape = SubResource("CircleShape2D_fvxmn")
+
+[connection signal="area_entered" from="BallCharacter/Area2D" to="BallCharacter" method="_on_area_2d_area_entered"]

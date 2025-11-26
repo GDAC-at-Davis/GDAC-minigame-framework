@@ -14,3 +14,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity = Vector2(0,0)
 	move_and_slide()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	area.get_parent().get_parent().queue_free()
+	area.queue_free()
+	print("area enetered:" + area.name)
+	pass # Replace with function body.

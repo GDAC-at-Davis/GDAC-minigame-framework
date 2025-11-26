@@ -42,7 +42,6 @@ func _physics_process(_delta):
 
 ## This is called once at the start of the minigame.
 func start() -> void:
-	print("started pong defender")
 	pass
 
 
