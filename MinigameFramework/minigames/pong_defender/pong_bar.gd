@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2(0,0)
 		
 	_time_since_press += delta
-	if Input.is_action_pressed('up') and _time_since_press > _DEBOUNCE_TIME:
+	if Input.is_action_pressed('primary') and _time_since_press > _DEBOUNCE_TIME:
 		var ball: AlliedBall = _ball_scene.instantiate() as AlliedBall
 		get_parent().add_child(ball)
 		ball.global_position = Vector2(global_position.x, global_position.y - 100)
@@ -29,9 +29,11 @@ func _physics_process(delta: float) -> void:
 		_time_since_press = 0
 	move_and_slide()
 
-
+# get rid of any balls that hit the bar
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	area.get_parent().get_parent().queue_free()
 	area.queue_free()
-	print("area enetered:" + area.name)
-	pass # Replace with function body.
+	
+	# trigger signal
+	var pongDefenderParent : PongDefender = get_parent()
+	pongDefenderParent.emit_signal("ball_destroyed")

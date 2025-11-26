@@ -18,6 +18,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		"RightWall":
 			_x_vel *= -1
 		"BallCharacter":
+			var pongDefenderParent : PongDefender = area.get_parent().get_parent().get_parent()
+			pongDefenderParent.emit_signal("ball_destroyed")
 			area.get_parent().queue_free()
 		_:
 			pass
