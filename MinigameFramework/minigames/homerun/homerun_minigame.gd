@@ -1,18 +1,24 @@
 extends Minigame
 
+const BASE_SPEED := 250
+
+@export var pitcher: Node2D
+
+
 var ball_scene: PackedScene = preload("res://minigames/homerun/ball.tscn")
 var ball: Area2D
 
+var speed: float
 var has_pitched = false
 var has_hit = false
 
-
-@export var pitcher: Node2D
+@onready var swing_hitbox: Area2D = $Player/SwingArea
 
 
 ## This is called once at the start of the minigame.
 func start() -> void:
 	print("starting homerun")
+	speed = BASE_SPEED * difficulty
 	pitch()
 
 
@@ -22,14 +28,19 @@ func _physics_process(_delta):
 	
 	if has_pitched:
 		if has_hit:
-			ball.position.y -= 100
+			ball.position.y -= speed * _delta
 		else:
-			ball.position.y += 100
+			ball.position.y += speed * _delta
 
 
 func run():
 	if Input.is_action_just_pressed("primary"):
-		win()
+		if is_valid_hit():
+			print("hit!")
+			has_hit = true
+			has_won = true
+		else:
+			print("miss!")
 
 
 ## This is called after win() or lose() is called.
@@ -42,3 +53,12 @@ func pitch() -> void:
 	add_child(ball)
 	ball.global_position = pitcher.global_position
 	has_pitched = true
+
+
+func is_valid_hit() -> bool:
+	var areas = ball.get_overlapping_areas()
+	
+	for area in areas:
+		if area.name == "SwingArea":
+			return true
+	return false
