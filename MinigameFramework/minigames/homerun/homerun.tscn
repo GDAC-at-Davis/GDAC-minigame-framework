@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://csl6fu7jmmq5v"]
+
+[ext_resource type="Script" uid="uid://dhoavl6bb6lp0" path="res://minigames/homerun/homerun_minigame.gd" id="1_yfgnu"]
+[ext_resource type="PackedScene" uid="uid://clhab5yxrgyef" path="res://minigames/homerun/ball.tscn" id="2_x5ocu"]
+[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="3_yfgnu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dhcv3"]
+
+[node name="Homerun" type="Node2D" node_paths=PackedStringArray("pitcher")]
+script = ExtResource("1_yfgnu")
+pitcher = NodePath("Pitcher")
+instruction = "Hit a home run!"
+
+[node name="Pitcher" type="Node2D" parent="."]
+position = Vector2(650, 150)
+
+[node name="Ball" parent="Pitcher" instance=ExtResource("2_x5ocu")]
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(650, 650)
+
+[node name="Area2D" type="Area2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_dhcv3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Area2D"]
+texture = ExtResource("3_yfgnu")
