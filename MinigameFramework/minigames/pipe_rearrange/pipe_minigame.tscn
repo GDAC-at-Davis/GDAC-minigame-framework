@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://jf4ygvge46o5"]
+
+[ext_resource type="Script" uid="uid://l86rvy0hbrh2" path="res://minigames/pipe_rearrange/pipe_minigame.gd" id="1_3ekdj"]
+[ext_resource type="PackedScene" uid="uid://c76m5hmeuo243" path="res://minigames/pipe_rearrange/pipe_forward.tscn" id="2_mxwfh"]
+[ext_resource type="Script" uid="uid://drv8q5pogn2fi" path="res://minigames/pipe_rearrange/pipe_rotation.gd" id="3_wu16y"]
+[ext_resource type="PackedScene" uid="uid://wr3ov3q5xq3r" path="res://minigames/pipe_rearrange/pipe_side.tscn" id="4_avxfn"]
+
+[sub_resource type="Gradient" id="Gradient_r8hod"]
+colors = PackedColorArray(0.13610455, 0.12895688, 0.05915021, 1, 0.19322821, 0.7161023, 0.6040523, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uolbg"]
+gradient = SubResource("Gradient_r8hod")
+
+[node name="Maze" type="Node"]
+script = ExtResource("1_3ekdj")
+instruction = "Connect!"
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_uolbg")
+
+[node name="PipeForward" parent="." instance=ExtResource("2_mxwfh")]
+position = Vector2(400.00003, 336)
+rotation = 1.5707964
+script = ExtResource("3_wu16y")
+correct_rotation = 90
+forward_rotation = 3
+
+[node name="PipeForward2" parent="." instance=ExtResource("2_mxwfh")]
+position = Vector2(560, 336)
+rotation = 1.5707964
+script = ExtResource("3_wu16y")
+correct_rotation = 90
+forward_rotation = 3
+
+[node name="PipeSide" parent="." instance=ExtResource("4_avxfn")]
+position = Vector2(240, 496)
+rotation = 3.1415927
+script = ExtResource("3_wu16y")
+correct_rotation = 180
+
+[node name="PipeSide2" parent="." instance=ExtResource("4_avxfn")]
+position = Vector2(240, 336)
+script = ExtResource("3_wu16y")
+
+[node name="PipeSide3" parent="." instance=ExtResource("4_avxfn")]
+position = Vector2(720, 336)
+rotation = 3.1415927
+script = ExtResource("3_wu16y")
+correct_rotation = 180
+
+[node name="PipeForward3" parent="." instance=ExtResource("2_mxwfh")]
+position = Vector2(80, 496)
+rotation = 1.5707964
+script = ExtResource("3_wu16y")
+correct_rotation = 90
+forward_rotation = 3
+
+[node name="PipeSide4" parent="." instance=ExtResource("4_avxfn")]
+position = Vector2(720, 176)
+script = ExtResource("3_wu16y")
+
+[node name="PipeForward4" parent="." instance=ExtResource("2_mxwfh")]
+position = Vector2(880, 176)
+rotation = 1.5707964
+script = ExtResource("3_wu16y")
+correct_rotation = 90
+forward_rotation = 3
+
+[node name="PipeSide5" parent="." instance=ExtResource("4_avxfn")]
+position = Vector2(1040, 176)
+rotation = 1.5707964
+script = ExtResource("3_wu16y")
+correct_rotation = 90
+
+[node name="PipeSide6" parent="." instance=ExtResource("4_avxfn")]
+position = Vector2(1040, 336)
+rotation = 4.712389
+script = ExtResource("3_wu16y")
+correct_rotation = 270
+
+[node name="PipeForward5" parent="." instance=ExtResource("2_mxwfh")]
+position = Vector2(1200, 336)
+rotation = 1.5707964
+script = ExtResource("3_wu16y")
+correct_rotation = 90
+forward_rotation = 3
