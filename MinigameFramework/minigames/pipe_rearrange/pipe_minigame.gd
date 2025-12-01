@@ -18,5 +18,20 @@ func start():
 		var pipe = pipes[randi_range(0, len(pipes) - 1)]
 		pipe.rotation_degrees += 90
 
+func _process(_delta):
+	pipe_connect_stats()
+
+
 func win():
 	super()
+
+
+func pipe_connect_stats():
+	# list of amounts of pipes that are connected
+	all_connect = 0
+	for pipe in pipes:
+		if pipe._is_correct_rotation:
+			all_connect += 1
+	print(all_connect, " Sdsdssd ", len(pipes))
+	if all_connect == len(pipes):
+		win()
