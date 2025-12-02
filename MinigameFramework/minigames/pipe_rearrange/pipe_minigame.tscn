@@ -1,15 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://jf4ygvge46o5"]
+[gd_scene load_steps=9 format=3 uid="uid://jf4ygvge46o5"]
 
 [ext_resource type="Script" uid="uid://l86rvy0hbrh2" path="res://minigames/pipe_rearrange/pipe_minigame.gd" id="1_3ekdj"]
 [ext_resource type="PackedScene" uid="uid://c76m5hmeuo243" path="res://minigames/pipe_rearrange/pipe_forward.tscn" id="2_mxwfh"]
 [ext_resource type="Script" uid="uid://drv8q5pogn2fi" path="res://minigames/pipe_rearrange/pipe_rotation.gd" id="3_wu16y"]
 [ext_resource type="PackedScene" uid="uid://wr3ov3q5xq3r" path="res://minigames/pipe_rearrange/pipe_side.tscn" id="4_avxfn"]
 
-[sub_resource type="Gradient" id="Gradient_r8hod"]
-colors = PackedColorArray(0.13610455, 0.12895688, 0.05915021, 1, 0.19322821, 0.7161023, 0.6040523, 1)
+[sub_resource type="CanvasTexture" id="CanvasTexture_a5wrp"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uolbg"]
-gradient = SubResource("Gradient_r8hod")
+[sub_resource type="Gradient" id="Gradient_a5wrp"]
+colors = PackedColorArray(0.840434, 0, 0.19282877, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_lmorm"]
+gradient = SubResource("Gradient_a5wrp")
+width = 10
+height = 10
+fill_to = Vector2(0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5h7p5"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 98, 0)
+damping_min = 38.562
+damping_max = 38.562
 
 [node name="Maze" type="Node"]
 script = ExtResource("1_3ekdj")
@@ -17,10 +33,11 @@ instruction = "Connect!"
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
 [node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.25682926, 0.19792035, 0.6415376, 1)
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
-texture = SubResource("GradientTexture1D_uolbg")
+texture = SubResource("CanvasTexture_a5wrp")
 
 [node name="PipeForward" parent="." instance=ExtResource("2_mxwfh")]
 position = Vector2(400.00003, 336)
@@ -88,3 +105,19 @@ rotation = 1.5707964
 script = ExtResource("3_wu16y")
 correct_rotation = 90
 forward_rotation = 3
+
+[node name="CelebrationParticleTL" type="GPUParticles2D" parent="."]
+position = Vector2(328, 136)
+scale = Vector2(3, 3)
+emitting = false
+amount = 1000
+texture = SubResource("GradientTexture2D_lmorm")
+process_material = SubResource("ParticleProcessMaterial_5h7p5")
+
+[node name="CelebrationParticleTR" type="GPUParticles2D" parent="."]
+position = Vector2(1064, 136)
+scale = Vector2(3, 3)
+emitting = false
+amount = 1000
+texture = SubResource("GradientTexture2D_lmorm")
+process_material = SubResource("ParticleProcessMaterial_5h7p5")
