@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://8wtw8igooh2m"]
+
+[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="1_3xxxg"]
+[ext_resource type="Script" uid="uid://bty1v4657xffx" path="res://minigames/homerun/fan.gd" id="1_lbry5"]
+
+[node name="Fan" type="Node2D"]
+script = ExtResource("1_lbry5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3xxxg")
