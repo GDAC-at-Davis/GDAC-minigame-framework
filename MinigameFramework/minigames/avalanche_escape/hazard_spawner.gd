@@ -43,5 +43,4 @@ func _spawn_hazard(difficulty_t: float) -> void:
 	var fall_speed: float = lerpf(fall_speed_min, fall_speed_max, difficulty_t) * difficulty_scale
 	hazard.set_fall_speed(fall_speed)
 	hazard.hazard_hit_player.connect(get_parent().hazard_hit_player)
-	hazard.hazard_cleared.connect(get_parent().hazard_cleared)
 	_hazard_parent.add_child(hazard)

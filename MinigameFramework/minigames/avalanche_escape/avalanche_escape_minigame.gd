@@ -41,10 +41,6 @@ func hazard_hit_player() -> void:
 	lose()
 
 
-func hazard_cleared() -> void:
-	pass
-
-
 func end():
 	spawner.active = false
 	player.disable_input()

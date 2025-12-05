@@ -2,7 +2,6 @@ class_name HazardBase
 extends Area2D
 
 signal hazard_hit_player
-signal hazard_cleared
 
 @export var base_fall_speed: float = 250.0
 @export var fall_speed_variance: float = 50.0
@@ -32,7 +31,6 @@ func _physics_process(delta: float) -> void:
 	global_position.y += _fall_speed * delta
 	if global_position.y > offscreen_y:
 		_active = false
-		hazard_cleared.emit()
 		queue_free()
 
 
