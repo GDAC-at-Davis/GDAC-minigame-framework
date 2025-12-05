@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://cva5q4y0kucmh"]
+
+[ext_resource type="Script" path="res://minigames/avalanche_escape/avalanche_escape_minigame.gd" id="1_minigame"]
+[ext_resource type="Script" path="res://minigames/avalanche_escape/hazard_spawner.gd" id="2_spawner"]
+[ext_resource type="Script" path="res://minigames/avalanche_escape/avalanche_player.gd" id="3_player"]
+[ext_resource type="PackedScene" path="res://minigames/avalanche_escape/hazards/icicle.tscn" id="4_icicle"]
+[ext_resource type="PackedScene" path="res://minigames/avalanche_escape/hazards/rock.tscn" id="5_rock"]
+[ext_resource type="PackedScene" path="res://minigames/avalanche_escape/hazards/snow_boulder.tscn" id="6_boulder"]
+
+[sub_resource type="RectangleShape2D" id="RectShape_player"]
+size = Vector2(36, 64)
+
+[node name="AvalancheEscape" type="Node"]
+script = ExtResource("1_minigame")
+instruction = "Survive!"
+countdown_time = 5.0
+skip_time = 0.5
+target_survival_time = 5.0
+left_bound = 80.0
+right_bound = 1200.0
+spawn_y = -60.0
+
+[node name="Background" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720)
+color = Color(0.09, 0.12, 0.16, 1)
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="GroundPolygon" type="Polygon2D" parent="Ground"]
+position = Vector2(0, 0)
+polygon = PackedVector2Array(0, 640, 1280, 640, 1280, 720, 0, 720)
+color = Color(0.16, 0.18, 0.2, 1)
+
+[node name="Hazards" type="Node2D" parent="."]
+
+[node name="HazardSpawner" type="Node2D" parent="."]
+script = ExtResource("2_spawner")
+spawn_interval_start = 0.35
+spawn_interval_min = 0.05
+fall_speed_min = 400.0
+fall_speed_max = 1100.0
+hazard_scenes = Array[PackedScene]([ExtResource("4_icicle"), ExtResource("5_rock"), ExtResource("6_boulder")])
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(640, 600)
+script = ExtResource("3_player")
+bounds_left = 80.0
+bounds_right = 1200.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(0, -10)
+shape = SubResource("RectShape_player")
+
+[node name="Polygon2D" type="Polygon2D" parent="Player"]
+polygon = PackedVector2Array(-18, -36, 18, -36, 24, 24, -24, 24)
+color = Color(0.34, 0.66, 1, 1)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
