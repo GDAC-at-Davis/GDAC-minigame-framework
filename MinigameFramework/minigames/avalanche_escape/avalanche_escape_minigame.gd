@@ -1,6 +1,6 @@
 extends Minigame
 
-@export var target_survival_time: float = 20.0
+@export var target_survival_time: float = 5.0
 @export var left_bound: float = 80.0
 @export var right_bound: float = 1200.0
 @export var spawn_y: float = -40.0
@@ -13,6 +13,7 @@ var elapsed_time: float = 0.0
 
 func start():
 	randomize()
+	target_survival_time = countdown_time
 	elapsed_time = 0.0
 	has_won = false
 	has_ended = false
@@ -51,6 +52,3 @@ func end():
 		if child.has_method("freeze_motion"):
 			child.freeze_motion()
 
-
-func _update_ui() -> void:
-	pass
