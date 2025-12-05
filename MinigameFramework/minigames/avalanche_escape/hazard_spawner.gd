@@ -2,10 +2,10 @@ class_name HazardSpawner
 extends Node2D
 
 @export var hazard_scenes: Array[PackedScene]
-@export var spawn_interval_start: float = 1.2
-@export var spawn_interval_min: float = 0.25
-@export var fall_speed_min: float = 220.0
-@export var fall_speed_max: float = 750.0
+@export var spawn_interval_start: float = 0.35
+@export var spawn_interval_min: float = 0.05
+@export var fall_speed_min: float = 400.0
+@export var fall_speed_max: float = 1100.0
 
 var active: bool = false
 var difficulty_scale: float = 1.0

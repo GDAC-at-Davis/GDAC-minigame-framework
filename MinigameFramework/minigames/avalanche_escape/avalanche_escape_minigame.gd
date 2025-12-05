@@ -51,4 +51,3 @@ func end():
 	for child in hazards.get_children():
 		if child.has_method("freeze_motion"):
 			child.freeze_motion()
-
