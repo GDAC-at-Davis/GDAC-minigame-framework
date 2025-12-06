@@ -12,12 +12,12 @@ var original_pos: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	original_pos = self.global_position
+	randomize_color()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	self.global_position.y -= speed * delta
-	
 	
 	speed -= GRAVITY * delta
 	
@@ -42,3 +42,12 @@ func start_jumping() -> void:
 func _start_jumping() -> void:
 	speed = BASE_JUMP_SPEED
 	is_jumping = true
+
+
+func randomize_color() -> void:
+	var sprite = $body
+	
+	var r = randf()
+	var g = randf()
+	var b = randf()
+	sprite.modulate = Color(r, g, b, 1.0)
