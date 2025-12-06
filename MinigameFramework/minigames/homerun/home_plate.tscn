@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpmr8ubxsnnin"]
+
+[ext_resource type="Texture2D" uid="uid://b1w3wyvthgpp0" path="res://assets/sports/home_plate.png" id="1_g5q6o"]
+
+[node name="HomePlate" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g5q6o")
