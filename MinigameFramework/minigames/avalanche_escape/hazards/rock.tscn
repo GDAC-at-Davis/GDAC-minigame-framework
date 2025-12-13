@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://8c2o0cx1abpne"]
+
+[ext_resource type="Script" path="res://minigames/avalanche_escape/hazard_base.gd" id="1_hazard"]
+
+[sub_resource type="RectangleShape2D" id="RectShape_rock"]
+size = Vector2(42, 42)
+
+[node name="Rock" type="Area2D"]
+script = ExtResource("1_hazard")
+base_fall_speed = 260.0
+fall_speed_variance = 60.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectShape_rock")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-20, -18, 22, -10, 18, 20, -18, 22)
+color = Color(0.5, 0.5, 0.5, 1)

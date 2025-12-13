@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvdti4jbw2p3c"]
+
+[ext_resource type="Script" path="res://minigames/avalanche_escape/hazard_base.gd" id="1_hazard"]
+
+[sub_resource type="CircleShape2D" id="CircleShape_boulder"]
+radius = 28.0
+
+[node name="SnowBoulder" type="Area2D"]
+script = ExtResource("1_hazard")
+base_fall_speed = 220.0
+fall_speed_variance = 50.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape_boulder")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, -28, 24, -18, 28, 0, 22, 22, 0, 28, -22, 22, -28, 0, -24, -18)
+color = Color(0.9, 0.9, 1, 1)
