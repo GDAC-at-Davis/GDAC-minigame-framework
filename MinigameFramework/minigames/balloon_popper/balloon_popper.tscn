@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://dycy3rg1nvlln" path="res://minigames/balloon_popper/balloon_minigame.gd" id="1_7w8ax"]
 [ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://minigames/balloon_popper/balloon.png" id="2_81gf3"]
 
-[sub_resource type="Gradient" id="Gradient_tqulc"]
+[sub_resource type="Gradient" id="Gradient_7w8ax"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(3.97079e-07, 0.225332, 0.319979, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_bk108"]
-gradient = SubResource("Gradient_tqulc")
+gradient = SubResource("Gradient_7w8ax")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tqulc"]
 particle_flag_disable_z = true
