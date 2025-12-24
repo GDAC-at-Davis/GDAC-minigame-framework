@@ -4,9 +4,10 @@ var arrow_packed_scene: PackedScene = preload("res://minigames/shadowboxing/arro
 var arrows: Array[Area2D]
 var direction: int = 0
 var move_weight: float = 0.0
-var timer: int = 0
 var lost: bool = false
-
+var delay: float = 2.0
+var speed: float = 0.2
+@onready var blink_timer = $Timer
 @export var movement_curve: Curve
 
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
@@ -16,103 +17,94 @@ var lost: bool = false
 func start():
 	# Reset variables
 	arrows.clear()
-	timer = 0
-	
 	# Adjust for difficulty
 	countdown_time /= difficulty
-	#balloon_amount *= roundi(difficulty)
-	
-	# Spawn the arrows
-	# for i in range(balloon_amount):
-	#for i in 4: 
-	#	var arrow: Area2D = arrow_packed_scene.instantiate()
-	#	arrows.append(arrow)
-	#	add_child(arrow)
-	#	#arrows.move_time = 0
-	#	if i == 0:
-	#		arrows[i].global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 - 200)
-	#		arrows[i].rotation_degrees = 270
-	#	elif i == 1:
-	#		arrows[i].global_position = Vector2(get_viewport().size.x/2 + 400, get_viewport().size.y/2)
-	#		arrows[i].rotation_degrees = 0
-	#	elif i == 2:
-	#		arrows[i].global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 + 200)
-	#		arrows[i].rotation_degrees = 90
-	#	elif i == 3:
-	#		arrows[i].global_position = Vector2(get_viewport().size.x/2 - 400, get_viewport().size.y/2)
-	#		arrows[i].rotation_degrees = 180
-	
-	#arrow.global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 - 200)
-	#arrows[0].rotation_degrees = 270
+	delay /= difficulty
+	# Spawn the arrow
+	await get_tree().create_timer(delay).timeout
+	var arrow: Area2D = arrow_packed_scene.instantiate()
+	add_child(arrow)
+	arrows.append(arrow)
+	direction = randi_range(0, 3)
+	if direction == 0:
+		arrows[0].global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 - 200)
+		arrows[0].rotation_degrees = 270
+	elif direction == 1:
+		arrows[0].global_position = Vector2(get_viewport().size.x/2 + 400, get_viewport().size.y/2)
+		arrows[0].rotation_degrees = 0
+	elif direction == 2:
+		arrows[0].global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 + 200)
+		arrows[0].rotation_degrees = 90
+	elif direction == 3:
+		arrows[0].global_position = Vector2(get_viewport().size.x/2 - 400, get_viewport().size.y/2)
+		arrows[0].rotation_degrees = 180
+	# start timer for blinks
+	blink_timer.start()
 
 func run():
-	timer += 1
-	
-	if (timer == 20):
-		var arrow: Area2D = arrow_packed_scene.instantiate()
-		arrows.append(arrow)
-		add_child(arrow)
-		direction = randi_range(0, 3)
+	if arrows.is_empty():
+		return
+	if !lost:
+		speed /= difficulty
 		if direction == 0:
-			arrows[0].global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 - 200)
-			arrows[0].rotation_degrees = 270
+			arrows[0].global_position -= Vector2(0, speed)
 		elif direction == 1:
-			arrows[0].global_position = Vector2(get_viewport().size.x/2 + 400, get_viewport().size.y/2)
-			arrows[0].rotation_degrees = 0
+			arrows[0].global_position += Vector2(speed, 0)
 		elif direction == 2:
-			arrows[0].global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 + 200)
-			arrows[0].rotation_degrees = 90
+			arrows[0].global_position += Vector2(0, speed)
 		elif direction == 3:
-			arrows[0].global_position = Vector2(get_viewport().size.x/2 - 400, get_viewport().size.y/2)
-			arrows[0].rotation_degrees = 180
-	
-	
-	
-	#if move_weight < 1:
-	#	move_weight += 0.1
-	
-	#for i in 4:
-	#	arrows[i].global_position = lerp(Vector2(get_viewport().size.x/2, get_viewport().size.y/2 + 200), Vector2(get_viewport().size.x/2, get_viewport().size.y/2 - 200), move_weight)
-	
-	
-	#for i in 4:
-	#	arrows[i].move_time += 1
-	#	if arrows[i].move_time < 30:
-	#		arrows[i].global_position += Vector2(1, 0)
-	#	elif arrows[i].move_time < 60
-	#		arrows[i].global_position += Vector2(-1, 0)
-	#	elif arrows[i].move_time == 60
+			arrows[0].global_position -= Vector2(speed, 0)
 			
-	#		arrows[i].global_position += Vector2(1, 0)
-	#	if i == 0: #up
-	#		arrows[i].global_position += Vector2(1, 0)
-	#var velocity = Vector2.ZERO # The player's movement vector.
-	if (timer > 20 && lost == false):
 		if Input.is_action_pressed(&"up"):
+			remove_arrow(arrows)
 			if (direction != 0):
 				win()
 			else:
-				lost = true
+				lose()
 		if Input.is_action_pressed(&"right"):
+			remove_arrow(arrows)
 			if (direction != 1):
 				win()
 			else:
-				lost = true
+				lose()
 		if Input.is_action_pressed(&"down"):
+			remove_arrow(arrows)
 			if (direction != 2):
 				win()
 			else:
-				lost = true
+				lose()
 		if Input.is_action_pressed(&"left"):
+			remove_arrow(arrows)
 			if (direction != 3):
 				win()
 			else:
-				lost = true
-
+				lose()
+				
+func remove_arrow(arrows_to_remove):
+	blink_timer.stop()
+	for arrow in arrows_to_remove:
+		if arrow in arrows:
+			arrows.erase(arrow)
+		if is_instance_valid(arrow):
+			arrow.queue_free()
+	
 func win():
 	super()
-
-#func balloon_popped():
-#	pop_count += 1
-#	if pop_count == balloon_amount:
-#		win()
+	show_message("You won!")
+	await $MessageTimer.timeout
+	
+func show_message(text):
+	$Message.text = text;
+	$Message.show();
+	$MessageTimer.start()
+	
+func lose():
+	lost = true
+	super()
+	show_message("You lost!")
+	await $MessageTimer.timeout
+	
+func _on_timer_timeout() -> void:
+	for arrow in arrows:
+		if is_instance_valid(arrow):
+			arrow.visible = !arrow.visible
