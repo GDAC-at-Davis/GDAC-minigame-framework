@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://bpc87bii6dkvw" path="res://minigames/circle_clicker/circle.gd" id="1_w5fi4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w5fi4"]
-radius = 34.058773
+radius = 24.020824
 
 [node name="Circle" type="Area2D"]
 script = ExtResource("1_w5fi4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 15)
-scale = Vector2(0.08, 0.08)
+scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_kmya2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
