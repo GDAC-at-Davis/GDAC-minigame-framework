@@ -1,6 +1,7 @@
 extends Minigame
 
 const PICKUP = preload("uid://1x1kcdxmvc3f")
+const VICTORY_EGG = preload("uid://wpxvsulg8wwf")
 const BASE_EGG_COUNT:int = 3
 
 signal pickup_gotten(current_count:int)
@@ -13,6 +14,7 @@ signal pickup_gotten(current_count:int)
 
 var pickup_target:int = BASE_EGG_COUNT
 var pickups_gotten:int = 0
+var game_done := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +29,7 @@ func _ready() -> void:
 	pickup_target = BASE_EGG_COUNT + floori(difficulty - 1)
 	
 	self.instruction = "Pick up %s eggs!" % pickup_target
+	self.skip_time = 5
 	
 	_spawn_pickup()
 	_update_eggs_left()
@@ -35,6 +38,26 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func win() -> void:
+	if game_done:
+		return
+	game_done = true
+	
+	super()
+	
+	var egg_spawn := Vector2(
+		(top_left.global_position.x + bottom_right.global_position.x) / 2,
+		bottom_right.global_position.y,
+	)
+	
+	for _i in 10:
+		var egg:RigidBody2D = VICTORY_EGG.instantiate()
+		self.add_child(egg)
+		egg.linear_velocity = Vector2(randfn(0, 300), -2500)
+		egg.angular_velocity = egg.linear_velocity.x / 10
+		egg.global_position = egg_spawn
 
 
 func _spawn_pickup() -> void:
