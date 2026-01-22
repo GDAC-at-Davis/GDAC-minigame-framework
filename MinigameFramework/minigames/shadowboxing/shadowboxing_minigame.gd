@@ -8,7 +8,7 @@ var lost: bool = false
 var delay: float = 2.0
 var speed: float = 0.2
 @onready var blink_timer = $Timer
-@export var movement_curve: Curve
+#@export var movement_curve: Curve
 
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
 
@@ -80,6 +80,9 @@ func run():
 			else:
 				lose()
 				
+				
+	print_debug(countdown_timer.time_left)
+	
 func remove_arrow(arrows_to_remove):
 	blink_timer.stop()
 	for arrow in arrows_to_remove:
