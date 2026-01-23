@@ -3,6 +3,8 @@ extends Area2D
 @onready var sprite = $Sprite
 @onready var current_scene = get_parent()
 
+var text_locked = false
+
 var tile_size = 32
 var INPUTS = {"right": Vector2.RIGHT,
 			"left": Vector2.LEFT,
@@ -35,8 +37,9 @@ func _ready():
 	position += Vector2.ONE * tile_size/2
 
 func _unhandled_input(event):
-	for dir in INPUTS.keys():
-		if event.is_action_pressed(dir):
-			sprite.flip_h = (dir == "left")
-			move(dir)
-			
+	if not text_locked:
+		for dir in INPUTS.keys():
+			if event.is_action_pressed(dir):
+				sprite.flip_h = (dir == "left")
+				move(dir)
+				

@@ -1,5 +1,7 @@
 extends Node2D
 
+
+
 var player_scene = preload("res://scenes/player.tscn")
 var player = null
 @onready var visual_tilemap = $VisualTileMap
@@ -22,11 +24,25 @@ var INPUTS = {"right": Vector2.RIGHT,
 			}
 
 var INTERACTABLE_TILES_DICT = {
-	Vector2i(-2, 1) : "bed",
-	Vector2i(-1, 0) : "bed",
+	Vector2i(1, 4) : "bed",
+	Vector2i(0, 5) : "bed",
 	Vector2i(-4, -2) : "mirror",
-	Vector2i(-1, -2) : "door"
+	Vector2i(1, -2) : "door",
+	Vector2i(-4, 3) : "bloon",
+	Vector2i(-3, 4) : "bloon",
+	Vector2i(-4, 5) : "bloon"
 	}
+	
+var INTERACTABLE_TEXT_DICT = {
+	"bed" = ["Oh, I sleep here."],
+	"mirror" = ["I'm an abomination"],
+	"door" = ["get me out of here"],
+	"bloon" = ["Oh, a hero!",
+	"Thank goodness you're here. I need your help, urgently.",
+	"I have many enemies, but none quite as dastardly as those godforsaken STRINGIES.",
+	"O valiant hero, I have but one mission for you.",
+	"KILL AS MANY AS YOU CAN!"]
+}
 
 # helper functions
 func spawn_player():
@@ -62,16 +78,23 @@ func i_am_interacting():
 	if player_position in INTERACTABLE_TILES_DICT:
 		interact(INTERACTABLE_TILES_DICT[player_position])
 	
+func text_lock_player():
+	player.text_locked = true
+	
+func text_unlock_player():
+	player.text_locked = false
 
 func interact(interaction : String):
 	match interaction:
 		"bed":
-			GameManager.world_manager.active_ui.play_text("Oh, I sleep here.")
+			GameManager.world_manager.active_ui.play_text(INTERACTABLE_TEXT_DICT["bed"])
 		"mirror":
-			GameManager.world_manager.active_ui.play_text("I'm an abomination")
+			GameManager.world_manager.active_ui.play_text(INTERACTABLE_TEXT_DICT["mirror"])
 		"door":
-			GameManager.world_manager.active_ui.play_text("get me out of here")
-			GameManager.switch_to_minigames(preload("res://resources/minigame_groups/home_minigame_group.tres"))
+			GameManager.world_manager.active_ui.play_text(INTERACTABLE_TEXT_DICT["door"], preload("res://resources/minigame_groups/home_minigame_group.tres"))
+		"bloon":
+			GameManager.world_manager.active_ui.play_text(INTERACTABLE_TEXT_DICT["bloon"], preload("res://resources/minigame_groups/bloon_minigames.tres"))
+		
 
 func _ready() -> void:
 	spawn_player()
