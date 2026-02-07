@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dabe2iq2grsvu"]
+
+[ext_resource type="Script" uid="uid://c3dlxmc3rr353" path="res://minigames/browser_down/Scripts/close_everything.gd" id="1_7qmrr"]
+
+[node name="CloseEverything" type="Node"]
+script = ExtResource("1_7qmrr")
+instruction = "Close all the sus windows!"
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
