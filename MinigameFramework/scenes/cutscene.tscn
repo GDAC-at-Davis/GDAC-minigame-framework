@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://l6kb54ekjomj"]
+
+[ext_resource type="Script" uid="uid://brjv4oyg7s5td" path="res://scripts/cutscene.gd" id="1_edmg7"]
+[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="2_a320b"]
+
+[node name="Cutscene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_edmg7")
+dialogues = Array[String](["Long ago, there were two tribes who could not be more different.", "One tribe was the Artisans—lovers of art, humanity, and culture.", "They valued literature and craft and the mastery of all creation.", "The other tribe, Technologists, were experts in science, logic, and mechanics.", "Their society was advanced and efficient—unlike anything the world had ever seen before.", "Both societies were asocial, never acknowledging the world outside their circle.", "But a plague struck both lands.", "Though the Technologists were able to save some of their own with their advanced medicine, those that were cured would quickly succumb to misery without the joy of the arts.", "The Artisans, though happy, had to watch their numbers deplete as their outdated medicine could not keep up with the fast-growing plague.", "The leaders of the tribes decided that this would not last. A solution had to be found or all of their people would meet an early end.", "The two tribes, despite their dislike for interaction outside of their own kind, joined hands.", "The Artisans spread the goodness of song, dance, and craft while the Technologists whipped up life-saving medicine in the blink of an eye.", "From here on, the two tribes would be good allies of one another, always depending on each other in times of need.", "All was well until the tribes were met with their greatest foe.", "A giant beast made of steam and smog terrorized their villages.", "Things should only be made for profit.", "What good is art and technology without the benefits of wealth?", "The monster spread words of discouragement and the people became downtrodden.", "The tribe leaders decided that this would not last. A solution had to be found or the foundations of their societies would crumble.", "So, they rounded up their greatest warriors.", "Make things! they said. Make things just because you want to.", "And so they did.", "They thought and thought and thought,", "Then, they came up with the ultimate culmination of all of their skills.", "VIDEO GAMES.", "With the creation of  INSERT NUMBER OF MINIGAMES HERE cornerstone games, the beast was sealed away."])
+images = Array[Texture2D]([ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b"), ExtResource("2_a320b")])
+
+[node name="BG" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 200
+
+[node name="ImageTextVBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="Image" type="TextureRect" parent="Margin/ImageTextVBox"]
+layout_mode = 2
+
+[node name="Text" type="RichTextLabel" parent="Margin/ImageTextVBox"]
+layout_mode = 2
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
