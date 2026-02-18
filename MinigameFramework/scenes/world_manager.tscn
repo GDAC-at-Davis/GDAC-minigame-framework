@@ -6,3 +6,5 @@
 script = ExtResource("1_8lmw3")
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]

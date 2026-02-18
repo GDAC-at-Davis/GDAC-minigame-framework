@@ -1,14 +1,20 @@
 class_name WorldManager
 extends Node2D
 
-const scene_dict = {
+@export var scene_dict : Dictionary[String, PackedScene] = {
 	"Home" : preload("res://scenes/home_room.tscn"),
+	"Empty" : preload("res://scenes/empty.tscn")
 }
 
-const ui_dict = {
+@export var ui_dict = {
 	"Menu" : preload("res://scenes/menu.tscn"),
 	"Collection" : preload("res://scenes/minigame_collection.tscn"),
 	"Home" : preload("res://scenes/ui.tscn"),
+	"Cutscene" : preload("res://scenes/cutscene.tscn")
+}
+
+@export var music_dict : Dictionary[String, AudioStream]= {
+	"Cutscene" : preload("res://assets/audio/cutscene_audio.wav")
 }
 
 var active_scene = null:
@@ -19,8 +25,38 @@ var active_ui = null:
 		return active_ui
 
 @onready var ui_canvas = $UICanvas
+@onready var audio : AudioStreamPlayer = $Audio
 
 # Helper functions
+
+func has_node_of_type(parent: Node, type):
+	for child in parent.get_children():
+		if is_instance_of(child, type):
+			return true
+	return false
+	
+func get_node_of_type(parent: Node, type):
+	for child in parent.get_children():
+		if is_instance_of(child, type):
+			return child
+	return null
+
+func load_level(level_name : String, delete : bool = true, keep_running : bool = false):
+	if level_name in scene_dict.keys():
+		load_scene(level_name, delete, keep_running)
+	else:
+		load_scene("Empty", delete, keep_running)
+	if level_name in ui_dict.keys():
+		load_ui(level_name, delete, keep_running)
+
+func play_music(song : String, speed : float = 1.0):
+	if song in music_dict.keys():
+		audio.stream = music_dict[song]
+		audio.pitch_scale = speed
+		audio.play()
+
+func pause_music():
+	audio.stop()
 
 func load_scene(scene_name : String, delete : bool = true, keep_running : bool = false):
 	if active_scene != null:
