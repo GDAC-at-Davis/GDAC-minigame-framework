@@ -10,7 +10,7 @@ signal pickup_gotten(current_count:int)
 @onready var top_left: Node2D = $TopLeft
 @onready var bottom_right: Node2D = $BottomRight
 @onready var player: CharacterBody2D = $Player
-@onready var eggs_left: Label = $EggsLeft
+@onready var eggs_left: Node2D = $EggsLeft
 
 var pickup_target:int = BASE_EGG_COUNT
 var pickups_gotten:int = 0
@@ -88,4 +88,4 @@ func _on_pickup_picked_up() -> void:
 
 
 func _update_eggs_left() -> void:
-	eggs_left.text = "%d eggs left!" % max(0, pickup_target - pickups_gotten)
+	eggs_left.value = max(0, pickup_target - pickups_gotten)

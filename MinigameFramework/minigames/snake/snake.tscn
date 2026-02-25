@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4kvqs4y1apdg"]
+[gd_scene load_steps=11 format=3 uid="uid://c4kvqs4y1apdg"]
 
 [ext_resource type="Script" uid="uid://bjtxt11mhpwla" path="res://minigames/snake/snake.gd" id="1_qumpe"]
 [ext_resource type="Texture2D" uid="uid://ckr6hcpng3xen" path="res://minigames/snake/sprite_texture/grass.png" id="2_rnmrc"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ca7yc3yllp57a" path="res://minigames/snake/body.tscn" id="4_sweun"]
 [ext_resource type="Texture2D" uid="uid://ddaeqtxgok8fy" path="res://minigames/snake/sprite_texture/snake_head_frames/snake_head_01.png" id="4_ws505"]
 [ext_resource type="Texture2D" uid="uid://bjb5mw6rnkbsg" path="res://minigames/snake/sprite_texture/snake_head_frames/snake_head_02.png" id="5_rnmrc"]
-[ext_resource type="Theme" uid="uid://dae76ocic23ms" path="res://resources/themes/instruction_theme.tres" id="8_hlev6"]
-[ext_resource type="FontFile" uid="uid://cnei2caius20" path="res://minigames/snake/UI/fonts/Jersey15-Regular.ttf" id="8_vh0ew"]
+[ext_resource type="PackedScene" uid="uid://c53kcgn420iw3" path="res://minigames/snake/Counter.tscn" id="8_vh0ew"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vh0ew"]
 animations = [{
@@ -41,6 +40,11 @@ position = Vector2(640, 420)
 scale = Vector2(10, 10)
 texture = ExtResource("2_rnmrc")
 
+[node name="EggsLeft" parent="." instance=ExtResource("8_vh0ew")]
+modulate = Color(1, 1, 1, 0.627451)
+position = Vector2(640, 360)
+scale = Vector2(30, 30)
+
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(56, 552)
 collision_layer = 9
@@ -66,14 +70,4 @@ position = Vector2(1280, 720)
 
 [node name="Marker2D" type="Marker2D" parent="BottomRight"]
 
-[node name="EggsLeft" type="Label" parent="."]
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 70.0
-offset_bottom = 28.0
-theme = ExtResource("8_hlev6")
-theme_override_fonts/font = ExtResource("8_vh0ew")
-text = "EGGS_LEFT"
-
 [connection signal="pickup_gotten" from="." to="Player" method="_on_snake_pickup_gotten"]
-[connection signal="pickup_gotten" from="." to="EggsLeft" method="_on_snake_pickup_gotten"]
