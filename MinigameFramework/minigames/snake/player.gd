@@ -12,7 +12,7 @@ var speed:float = BASE_SPEED
 var segment_closest_to_head: CharacterBody2D
 
 const JUMP_SPEED = 700.0
-var jump_delay: float = 1.2
+var jump_delay: float = 0.9
 var is_jumping: bool = false
 var original_sprite_y: float = 0.0
 var stuck_timer: float = 0.0
@@ -80,7 +80,6 @@ func elongate() -> void:
 
 func do_snake_jump() -> void:
 	is_jumping = true
-	z_index += 10
 	set_collision_mask_value(1, false)
 	var forward_direction = Vector2.RIGHT.rotated(rotation)
 	velocity = forward_direction * JUMP_SPEED
@@ -88,6 +87,5 @@ func do_snake_jump() -> void:
 	tween.tween_property(sprite, "position:y", original_sprite_y -30, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(sprite, "position:y", original_sprite_y, 0.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await tween.finished
-	z_index -= 10
 	set_collision_mask_value(1, true)
 	is_jumping = false
