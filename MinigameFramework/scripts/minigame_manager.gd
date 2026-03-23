@@ -41,6 +41,8 @@ var instruction_timer: Timer
 var transition_timer: Timer
 var fade_timer: Timer
 
+
+
 var _minigame_idx: int = 0:
 	set(new_value):
 		_minigame_idx = new_value
@@ -64,6 +66,7 @@ var _fade_curve: Curve = preload("res://resources/curves/fade_curve.tres")
 @onready var difficulty_label: RichTextLabel = $TransitionLayer/DifficultyLabel
 @onready var minigames_left_label: RichTextLabel = $TransitionLayer/MinigamesLeftLabel
 @onready var transition_modulate: CanvasModulate = $TransitionLayer/CanvasModulate
+@onready var music_player: AudioStreamPlayer = $MusicPlayer
 
 func _ready():
 	instruction_timer = Timer.new()
@@ -131,13 +134,18 @@ func start_minigame() -> void:
 		minigame_scene = data.minigames[_minigame_idx]
 	_minigame_idx += 1
 	current_minigame_node = minigame_scene.instantiate()
+	current_minigame_node.difficulty = GameManager.minigame_manager.difficulty_scale
 	minigame_layer.add_child(current_minigame_node)
-	
 	minigame_ui_layer.visible = true
 	instruction_label.visible = true
 	instruction_timer.start(INSTRUCTION_DISPLAY_TIME)
 	instruction_label.text = current_minigame_node.instruction
 	fade_timer.start(FADE_TIME)
+	
+	music_player.pitch_scale = current_minigame_node.track_speed_difficulty_scaling * current_minigame_node.difficulty
+	if (music_player.stream == current_minigame_node.track and current_minigame_node.restart_track) or music_player.stream != current_minigame_node.track:
+		music_player.stream = current_minigame_node.track
+		music_player.play()
 
 ## Stops the current minigame
 func stop_minigame() -> void:

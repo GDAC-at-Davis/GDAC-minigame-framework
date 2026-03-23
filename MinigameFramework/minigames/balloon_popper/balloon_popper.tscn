@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpacr2w3cuiyw"]
+[gd_scene load_steps=7 format=3 uid="uid://bpacr2w3cuiyw"]
 
 [ext_resource type="Script" uid="uid://dycy3rg1nvlln" path="res://minigames/balloon_popper/balloon_minigame.gd" id="1_7w8ax"]
 [ext_resource type="Texture2D" uid="uid://du1wfkunh1hvn" path="res://minigames/balloon_popper/balloon.png" id="2_81gf3"]
+[ext_resource type="AudioStream" uid="uid://bct4ocvnx1oie" path="res://scenes/cutscene_audio.mp3" id="2_msm32"]
 
 [sub_resource type="Gradient" id="Gradient_tqulc"]
 offsets = PackedFloat32Array(0)
@@ -22,6 +23,7 @@ gravity = Vector3(0, -100, 0)
 [node name="BalloonPopper" type="Node"]
 script = ExtResource("1_7w8ax")
 instruction = "Pop!"
+track = ExtResource("2_msm32")
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
 [node name="TextureRect" type="TextureRect" parent="."]
