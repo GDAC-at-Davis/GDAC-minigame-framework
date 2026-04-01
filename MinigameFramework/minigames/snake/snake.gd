@@ -11,6 +11,7 @@ signal pickup_gotten(current_count:int)
 @onready var bottom_right: Node2D = $BottomRight
 @onready var player: CharacterBody2D = $Player
 @onready var eggs_left: Node2D = $EggsLeft
+@onready var bite_sound: AudioStreamPlayer2D = $Player/BiteSound
 
 var pickup_target:int = BASE_EGG_COUNT
 var pickups_gotten:int = 0
@@ -85,6 +86,7 @@ func _on_pickup_picked_up() -> void:
 
 	_spawn_pickup()
 	_update_eggs_left()
+	bite_sound.play()
 
 
 func _update_eggs_left() -> void:
