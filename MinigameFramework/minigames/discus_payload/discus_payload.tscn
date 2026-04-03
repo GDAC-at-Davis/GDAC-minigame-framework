@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://iehijwaprj48"]
+
+[ext_resource type="Script" uid="uid://bxdqdgo1anvec" path="res://minigames/discus_payload/discus_payload.gd" id="1_ndfc5"]
+
+[node name="DiscusPayload" type="Node"]
+script = ExtResource("1_ndfc5")
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
