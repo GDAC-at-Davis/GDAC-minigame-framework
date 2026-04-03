@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2ctmskf0usg3"]
+
+[ext_resource type="Texture2D" uid="uid://dsqnvkbwisahp" path="res://minigames/discus_payload/temp_visuals/Payload.png" id="1_yuwja"]
+
+[node name="Payload" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.861023e-06, -0.4999962)
+scale = Vector2(0.46623093, 0.47035575)
+texture = ExtResource("1_yuwja")

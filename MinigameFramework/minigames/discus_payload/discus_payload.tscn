@@ -1,7 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://iehijwaprj48"]
+[gd_scene load_steps=7 format=3 uid="uid://iehijwaprj48"]
 
 [ext_resource type="Script" uid="uid://bxdqdgo1anvec" path="res://minigames/discus_payload/discus_payload.gd" id="1_ndfc5"]
+[ext_resource type="Script" uid="uid://bvyugtna72wra" path="res://minigames/discus_payload/management/controller.gd" id="2_pavqn"]
+[ext_resource type="PackedScene" uid="uid://bkbntpcomaxxn" path="res://minigames/discus_payload/player/player.tscn" id="2_qw3w6"]
+[ext_resource type="PackedScene" uid="uid://d2ctmskf0usg3" path="res://minigames/discus_payload/payload/payload.tscn" id="3_calfl"]
+
+[sub_resource type="Gradient" id="Gradient_ndfc5"]
+offsets = PackedFloat32Array(0.2892562, 0.5495868, 0.6570248, 0.946281)
+colors = PackedColorArray(0.81960785, 0.79607844, 0.7411765, 1, 0.86465305, 0.7859523, 0.66321725, 1, 0.8627451, 0.78431374, 0.6627451, 1, 0.81813484, 0.79497284, 0.74206793, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qw3w6"]
+gradient = SubResource("Gradient_ndfc5")
 
 [node name="DiscusPayload" type="Node"]
 script = ExtResource("1_ndfc5")
+instruction = "Left Click and Drag to spin bomb. Let go to throw."
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(692.00006, 308)
+scale = Vector2(18.031252, 3163)
+texture = SubResource("GradientTexture1D_qw3w6")
+
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_pavqn")
+player = NodePath("Player")
+
+[node name="Player" parent="Controller" instance=ExtResource("2_qw3w6")]
+position = Vector2(625, 384)
+
+[node name="Payload" parent="Controller" instance=ExtResource("3_calfl")]
+position = Vector2(617, 532)
