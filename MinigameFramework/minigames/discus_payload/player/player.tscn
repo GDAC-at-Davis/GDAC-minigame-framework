@@ -1,16 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkbntpcomaxxn"]
+[gd_scene load_steps=6 format=3 uid="uid://bkbntpcomaxxn"]
 
 [ext_resource type="Script" uid="uid://c4allwhg3t5fv" path="res://minigames/discus_payload/player/player.gd" id="1_nxqnv"]
 [ext_resource type="Texture2D" uid="uid://swk0tswpysd8" path="res://minigames/discus_payload/temp_visuals/Player.png" id="1_piokl"]
+
+[sub_resource type="Curve" id="Curve_nxqnv"]
+_limits = [0.0, 1.0, 0.0, 300.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(8.391609, 0.40541744), 0.00040267754, 0.00040267754, 0, 0, Vector2(86.014, 0.6084338), 0.002662862, 0.002662862, 0, 0, Vector2(117.48254, 0.83777976), 0.0060324143, 0.0060324143, 0, 0, Vector2(159.44057, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_0160i"]
+_limits = [0.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.04195804, 0.14564836), 0.0, 0.0, 0, 0, Vector2(1.9906759, 0.9942274), 0.32301754, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxqnv"]
 radius = 89.81091
 
 [node name="Player" type="RigidBody2D"]
 gravity_scale = 0.0
-angular_damp = 4.0
+angular_damp = 15.0
 script = ExtResource("1_nxqnv")
-speed = 600.0
+max_speed = 30000.0
+torque_curve = SubResource("Curve_nxqnv")
+time_modifier = SubResource("Curve_0160i")
 
 [node name="Col" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nxqnv")
@@ -19,3 +31,6 @@ shape = SubResource("CircleShape2D_nxqnv")
 position = Vector2(0.5000019, -1.9073486e-06)
 scale = Vector2(0.73901105, 0.77151334)
 texture = ExtResource("1_piokl")
+
+[node name="HoldPosition" type="Node2D" parent="."]
+position = Vector2(0, 168)

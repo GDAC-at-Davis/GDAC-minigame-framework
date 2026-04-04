@@ -22,9 +22,10 @@ position = Vector2(692.00006, 308)
 scale = Vector2(18.031252, 3163)
 texture = SubResource("GradientTexture1D_qw3w6")
 
-[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "payload")]
 script = ExtResource("2_pavqn")
 player = NodePath("Player")
+payload = NodePath("Payload")
 
 [node name="Player" parent="Controller" instance=ExtResource("2_qw3w6")]
 position = Vector2(625, 384)
