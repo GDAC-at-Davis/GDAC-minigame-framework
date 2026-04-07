@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://iehijwaprj48"]
+[gd_scene load_steps=9 format=3 uid="uid://iehijwaprj48"]
 
 [ext_resource type="Script" uid="uid://bxdqdgo1anvec" path="res://minigames/discus_payload/discus_payload.gd" id="1_ndfc5"]
 [ext_resource type="Script" uid="uid://bvyugtna72wra" path="res://minigames/discus_payload/management/controller.gd" id="2_pavqn"]
 [ext_resource type="PackedScene" uid="uid://bkbntpcomaxxn" path="res://minigames/discus_payload/player/player.tscn" id="2_qw3w6"]
 [ext_resource type="PackedScene" uid="uid://d2ctmskf0usg3" path="res://minigames/discus_payload/payload/payload.tscn" id="3_calfl"]
+[ext_resource type="Script" uid="uid://bsvlbe4m53pms" path="res://minigames/discus_payload/spike/spike_factory.gd" id="5_mcr5s"]
+[ext_resource type="PackedScene" uid="uid://c3xhjof0fmq0y" path="res://minigames/discus_payload/spike/spike.tscn" id="6_tkjmo"]
 
 [sub_resource type="Gradient" id="Gradient_ndfc5"]
 offsets = PackedFloat32Array(0.2892562, 0.5495868, 0.6570248, 0.946281)
@@ -23,6 +25,8 @@ scale = Vector2(18.031252, 3163)
 texture = SubResource("GradientTexture1D_qw3w6")
 
 [node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "payload")]
+position = Vector2(182.99998, 106.99999)
+scale = Vector2(0.7, 0.7)
 script = ExtResource("2_pavqn")
 player = NodePath("Player")
 payload = NodePath("Payload")
@@ -32,3 +36,10 @@ position = Vector2(625, 384)
 
 [node name="Payload" parent="Controller" instance=ExtResource("3_calfl")]
 position = Vector2(617, 532)
+
+[node name="Spikes" type="Node2D" parent="."]
+position = Vector2(623, 373)
+script = ExtResource("5_mcr5s")
+spike_scene = ExtResource("6_tkjmo")
+radius = 370.0
+num_of_intervals = 25

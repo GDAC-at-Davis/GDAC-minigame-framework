@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3xhjof0fmq0y"]
+
+[ext_resource type="Texture2D" uid="uid://c3kpyde1a54xv" path="res://minigames/discus_payload/temp_visuals/Spike.png" id="1_wgyok"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wgyok"]
+radius = 51.90875
+
+[node name="Spike" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.0000038, 0)
+scale = Vector2(0.25907168, 0.27357)
+texture = ExtResource("1_wgyok")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, 17)
+scale = Vector2(0.5599997, 0.5599997)
+shape = SubResource("CircleShape2D_wgyok")
