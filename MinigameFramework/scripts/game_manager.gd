@@ -3,6 +3,7 @@ extends Node
 var main_scene: Node
 var world_manager: WorldManager
 var minigame_manager: MinigameManager
+var music_player : AudioStreamPlayer
 
 var minigame_collection: Array[MinigameInfo]
 
@@ -14,6 +15,8 @@ func _ready():
 	world_manager = _world_manager_scene.instantiate()
 	minigame_manager = _minigame_manager_scene.instantiate()
 	_load_info_from_disk(_minigame_folder_path)
+	music_player = AudioStreamPlayer.new()
+	add_child(music_player)
 
 ## Starts the minigame manager with the minigame group data
 func switch_to_minigames(minigame_data : MinigameGroupData, endless: bool = false):
@@ -39,3 +42,18 @@ func _load_info_from_disk(path: String):
 			var info : Resource = ResourceLoader.load(info_path)
 			if info and info is MinigameInfo:
 				minigame_collection.append(info)
+
+func play_music(song, speed : float = 1.0):
+	# song is String or AudioStream
+	if song is String:
+		if FileAccess.file_exists(song):
+			music_player.stream = load(song)
+			music_player.pitch_scale = speed
+			music_player.play()
+	elif song is AudioStream:
+		music_player.stream = song
+		music_player.pitch_scale = speed
+		music_player.play()
+
+func pause_music():
+	music_player.stop()

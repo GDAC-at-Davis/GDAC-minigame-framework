@@ -142,10 +142,9 @@ func start_minigame() -> void:
 	instruction_label.text = current_minigame_node.instruction
 	fade_timer.start(FADE_TIME)
 	
-	music_player.pitch_scale = current_minigame_node.track_speed_difficulty_scaling * current_minigame_node.difficulty
+	var current_speed : float = current_minigame_node.track_speed_difficulty_scaling * current_minigame_node.difficulty
 	if (music_player.stream == current_minigame_node.track and current_minigame_node.restart_track) or music_player.stream != current_minigame_node.track:
-		music_player.stream = current_minigame_node.track
-		music_player.play()
+		GameManager.play_music(current_minigame_node.track, current_speed)
 
 ## Stops the current minigame
 func stop_minigame() -> void:
@@ -178,6 +177,7 @@ func _on_instruction_timer_timeout():
 ## Returns to the overworld if the player lost or completed all of the minigames
 func _on_transition_timer_timeout():
 	if (not _endless and minigames_completed == data.total_minigames) or lives_left == 0:
+		GameManager.pause_music()
 		GameManager.switch_to_world()
 	else:
 		start_minigame()

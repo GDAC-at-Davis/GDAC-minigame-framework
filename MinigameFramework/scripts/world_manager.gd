@@ -13,8 +13,8 @@ extends Node2D
 	"Cutscene" : preload("res://scenes/cutscene.tscn")
 }
 
-@export var music_dict : Dictionary[String, AudioStream]= {
-	"Cutscene" : preload("res://assets/audio/cutscene_audio.wav")
+@export var music_dict : Dictionary[String, String]= {
+	"Cutscene" : "res://assets/audio/cutscene_audio.wav"
 }
 
 var active_scene = null:
@@ -49,14 +49,13 @@ func load_level(level_name : String, delete : bool = true, keep_running : bool =
 	if level_name in ui_dict.keys():
 		load_ui(level_name, delete, keep_running)
 
-func play_music(song : String, speed : float = 1.0):
+func play_music(song, speed : float = 1.0):
 	if song in music_dict.keys():
-		audio.stream = music_dict[song]
-		audio.pitch_scale = speed
-		audio.play()
+			GameManager.play_music(music_dict[song], speed)
+	# Do this later
 
 func pause_music():
-	audio.stop()
+	GameManager.pause_music()
 
 func load_scene(scene_name : String, delete : bool = true, keep_running : bool = false):
 	if active_scene != null:
