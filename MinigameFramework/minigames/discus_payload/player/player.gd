@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends CharacterBody2D
 
 ## the max torque that is applied 
 @export var max_speed : float

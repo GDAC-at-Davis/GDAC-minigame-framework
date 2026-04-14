@@ -16,9 +16,7 @@ point_count = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxqnv"]
 radius = 89.81091
 
-[node name="Player" type="RigidBody2D"]
-gravity_scale = 0.0
-angular_damp = 15.0
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nxqnv")
 max_speed = 30000.0
 torque_curve = SubResource("Curve_nxqnv")
