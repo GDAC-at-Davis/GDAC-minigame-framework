@@ -10,16 +10,13 @@ var lost: bool = false
 var delay: float = 2.0
 var speed: float = 0.2
 @onready var blink_timer = $Timer
-<<<<<<< HEAD
 
 #@export var idle_curve: Curve
 #@export var bob_speed: int = 10
-=======
 #@export var movement_curve: Curve
 @export var pause_frame: int = 15  # The frame number to pause on (Remember: Frame 1 is actually 0!)
 @export var pause_duration: float = 3.5  # How many seconds to pause for
 var has_paused_this_punch: bool = false  # To stop it from pausing endlessly if it loops
->>>>>>> 9f2c84da2eb9fa21d91a11128f162122b876b060
 
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
 @onready var boxer_sprite = $Boxer/AnimatedSprite2D
