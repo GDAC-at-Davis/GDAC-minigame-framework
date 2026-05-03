@@ -9,13 +9,14 @@ var move_weight: float = 0.0
 var lost: bool = false
 var delay: float = 2.0
 var speed: float = 0.2
+@onready var flash_overlay = $FlashOverlay
 @onready var blink_timer = $Timer
 
 #@export var idle_curve: Curve
 #@export var bob_speed: int = 10
 #@export var movement_curve: Curve
 @export var pause_frame: int = 15  # The frame number to pause on (Remember: Frame 1 is actually 0!)
-@export var pause_duration: float = 3.5  # How many seconds to pause for
+@export var pause_duration: float = 0.1  # How many seconds to pause for
 var has_paused_this_punch: bool = false  # To stop it from pausing endlessly if it loops
 
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
@@ -25,6 +26,9 @@ var has_paused_this_punch: bool = false  # To stop it from pausing endlessly if 
 func start():
 	# Reset variables
 	arrows.clear()
+	flash_overlay.visible = false
+	flash_overlay.material.set_shader_param("flash_intensity", 0.0)
+
 	# Adjust for difficulty
 	countdown_time /= difficulty
 	delay /= difficulty
@@ -76,15 +80,16 @@ func run():
 			arrows[0].global_position += Vector2(0, speed)
 		elif direction == 3:
 			arrows[0].global_position -= Vector2(speed, 0)
-			boxer_sprite.pause()
-			await get_tree().create_timer(0.001, false).timeout
-			boxer_sprite.play("left_punch")
+			#boxer_sprite.pause()
+			#await get_tree().create_timer(0.001, false).timeout
+			#boxer_sprite.play("left_punch")
 		if Input.is_action_pressed(&"up"):
 			remove_arrow(arrows)
 			boxer_sprite.stop()
 			if (direction != 0):
 				win()
 			else:
+				play_red_flash()
 				lose()
 		if Input.is_action_pressed(&"right"):
 			remove_arrow(arrows)
@@ -92,6 +97,7 @@ func run():
 			if (direction != 1):
 				win()
 			else:
+				play_red_flash()
 				lose()
 		if Input.is_action_pressed(&"down"):
 			remove_arrow(arrows)
@@ -99,6 +105,7 @@ func run():
 			if (direction != 2):
 				win()
 			else:
+				play_red_flash()
 				lose()
 		if Input.is_action_pressed(&"left"):
 			remove_arrow(arrows)
@@ -106,6 +113,7 @@ func run():
 			if (direction != 3):
 				win()
 			else:
+				play_red_flash()
 				lose()
 				
 				
@@ -153,4 +161,18 @@ func _on_frame_changed() -> void:
 		
 		# 5. Resume the animation!
 		boxer_sprite.play()
-	
+		
+func play_red_flash():
+	flash_overlay.visible = true
+
+   	# Create a tween to animate the shader param
+	var tween = create_tween()
+
+   	# 1. Flash to full intensity quickly (0.05s)
+	tween.tween_property(flash_overlay.material, "shader_parameter/flash_intensity", 0.6, 0.05)
+
+   	# 2. Fade out smoothly (0.2s)
+	tween.tween_property(flash_overlay.material, "shader_parameter/flash_intensity", 0.0, 0.2)
+
+   	# 3. Hide node when finished
+	tween.tween_callback(func(): flash_overlay.visible = false)
