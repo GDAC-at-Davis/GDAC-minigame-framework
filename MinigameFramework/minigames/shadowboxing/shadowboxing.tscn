@@ -60,4 +60,6 @@ bob_speed = 50
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_npb7n")
 
+[node name="HealthBar" type="Area2D" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
