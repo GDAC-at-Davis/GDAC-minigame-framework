@@ -1,14 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0fd5eqxcdio3"]
+[gd_scene load_steps=4 format=3 uid="uid://c0fd5eqxcdio3"]
 
 [ext_resource type="Script" uid="uid://70uo6yn78g0j" path="res://minigames/shadowboxing/shadowboxing_minigame.gd" id="1_npb7n"]
 [ext_resource type="PackedScene" uid="uid://cvm5bka5p8rwr" path="res://minigames/shadowboxing/boxer.tscn" id="2_npb7n"]
-
-[sub_resource type="Gradient" id="Gradient_npb7n"]
-offsets = PackedFloat32Array(0, 0.99666667, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.88431424, 3.3450872e-06, 3.85046e-07, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xf8mx"]
-gradient = SubResource("Gradient_npb7n")
+[ext_resource type="Texture2D" uid="uid://n3hlnd14ff41" path="res://minigames/shadowboxing/shadowboxing_background.png" id="2_xf8mx"]
 
 [node name="Shadowboxing" type="Node"]
 script = ExtResource("1_npb7n")
@@ -20,7 +14,7 @@ metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
-texture = SubResource("GradientTexture1D_xf8mx")
+texture = ExtResource("2_xf8mx")
 
 [node name="Boxer" parent="." instance=ExtResource("2_npb7n")]
 position = Vector2(-356, -20)
