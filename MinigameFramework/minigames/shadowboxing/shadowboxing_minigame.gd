@@ -30,6 +30,7 @@ func start():
 	delay /= difficulty
 	
 	await get_tree().create_timer(2.0).timeout
+	get_node("Boxer").bobbing = false
 	
 	# Spawn the arrow
 	var arrow: Area2D = arrow_packed_scene.instantiate()
@@ -75,6 +76,9 @@ func run():
 			arrows[0].global_position += Vector2(0, speed)
 		elif direction == 3:
 			arrows[0].global_position -= Vector2(speed, 0)
+			boxer_sprite.pause()
+			await get_tree().create_timer(0.001, false).timeout
+			boxer_sprite.play("left_punch")
 		if Input.is_action_pressed(&"up"):
 			remove_arrow(arrows)
 			boxer_sprite.stop()
