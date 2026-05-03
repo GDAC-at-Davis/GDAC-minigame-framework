@@ -270,7 +270,7 @@ height = 258.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 process_mode = 3
-position = Vector2(2077.5, 1010)
+position = Vector2(1, 1e-45)
 scale = Vector2(3.0890625, 2.9708333)
 sprite_frames = SubResource("SpriteFrames_hbef6")
 animation = &"left_punch"

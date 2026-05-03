@@ -1,3 +1,4 @@
+@tool
 extends Minigame
 
 var arrow_packed_scene: PackedScene = preload("res://minigames/shadowboxing/arrow.tscn")
@@ -9,7 +10,9 @@ var lost: bool = false
 var delay: float = 2.0
 var speed: float = 0.2
 @onready var blink_timer = $Timer
-#@export var movement_curve: Curve
+
+#@export var idle_curve: Curve
+#@export var bob_speed: int = 10
 
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
 @onready var boxer_sprite = $Boxer/AnimatedSprite2D
@@ -46,11 +49,15 @@ func start():
 	# start timer for blinks
 	blink_timer.start()
 
+var time: float = 0
+var dir: int = 1
+
 func run():
 	if arrows.is_empty():
 		return
 	if !lost:
 		speed /= difficulty
+		
 		if direction == 0:
 			arrows[0].global_position -= Vector2(0, speed)
 		elif direction == 1:
@@ -88,7 +95,7 @@ func run():
 				lose()
 				
 				
-	print_debug(countdown_timer.time_left)
+	#print_debug(countdown_timer.time_left)
 	
 func remove_arrow(arrows_to_remove):
 	blink_timer.stop()

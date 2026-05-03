@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0fd5eqxcdio3"]
+[gd_scene load_steps=8 format=3 uid="uid://c0fd5eqxcdio3"]
 
 [ext_resource type="Script" uid="uid://70uo6yn78g0j" path="res://minigames/shadowboxing/shadowboxing_minigame.gd" id="1_npb7n"]
 [ext_resource type="PackedScene" uid="uid://cvm5bka5p8rwr" path="res://minigames/shadowboxing/boxer.tscn" id="2_npb7n"]
+[ext_resource type="Script" uid="uid://vqi1t6o84qql" path="res://minigames/shadowboxing/boxer.gd" id="3_xf8mx"]
+[ext_resource type="Curve" uid="uid://dymwctgfmkc14" path="res://minigames/shadowboxing/boxer_movement_curve.tres" id="4_dm4nt"]
 
 [sub_resource type="Gradient" id="Gradient_npb7n"]
 offsets = PackedFloat32Array(0, 0.99666667, 1)
@@ -9,6 +11,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.88431424, 3.3450872e-06, 3.85046e-07, 1,
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_xf8mx"]
 gradient = SubResource("Gradient_npb7n")
+
+[sub_resource type="Curve2D" id="Curve2D_npb7n"]
 
 [node name="Shadowboxing" type="Node"]
 script = ExtResource("1_npb7n")
@@ -45,7 +49,13 @@ wait_time = 0.07
 autostart = true
 
 [node name="Boxer" parent="." instance=ExtResource("2_npb7n")]
-position = Vector2(-401, -138)
+position = Vector2(682, 271)
 scale = Vector2(0.5, 0.5)
+script = ExtResource("3_xf8mx")
+idle_curve = ExtResource("4_dm4nt")
+bob_speed = 100
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_npb7n")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
