@@ -17,6 +17,7 @@ gradient = SubResource("Gradient_ndfc5")
 [node name="DiscusPayload" type="Node" node_paths=PackedStringArray("controller")]
 script = ExtResource("1_ndfc5")
 controller = NodePath("Controller")
+win_distance = 600.0
 instruction = "Left Click and Drag to spin bomb. Let go to throw."
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
@@ -44,3 +45,23 @@ script = ExtResource("5_mcr5s")
 spike_scene = ExtResource("6_tkjmo")
 radius = 370.0
 num_of_intervals = 25
+
+[node name="lose" type="Label" parent="."]
+visible = false
+offset_left = 430.0
+offset_top = 189.0
+offset_right = 771.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(0.5826338, 0.05159261, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "You  Will Explode!"
+
+[node name="win" type="Label" parent="."]
+visible = false
+offset_left = 464.0
+offset_top = 174.0
+offset_right = 761.0
+offset_bottom = 270.0
+theme_override_colors/font_color = Color(0, 0.5261993, 0.21203458, 1)
+theme_override_font_sizes/font_size = 70
+text = "You Win!"
