@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2ctmskf0usg3"]
+[gd_scene load_steps=3 format=3 uid="uid://d2ctmskf0usg3"]
 
-[ext_resource type="Texture2D" uid="uid://dsqnvkbwisahp" path="res://minigames/discus_payload/temp_visuals/Payload.png" id="1_yuwja"]
+[ext_resource type="Script" uid="uid://dp1tqu3hgjhsk" path="res://minigames/discus_payload/payload/payload.gd" id="1_o0b04"]
+[ext_resource type="Texture2D" uid="uid://bpsscfh64fduk" path="res://minigames/discus_payload/payload/Bomb.png" id="2_o0b04"]
 
-[node name="Payload" type="RigidBody2D"]
-gravity_scale = 0.0
+[node name="Payload" type="CharacterBody2D"]
+script = ExtResource("1_o0b04")
+speed = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.861023e-06, -0.4999962)
 scale = Vector2(0.46623093, 0.47035575)
-texture = ExtResource("1_yuwja")
+texture = ExtResource("2_o0b04")

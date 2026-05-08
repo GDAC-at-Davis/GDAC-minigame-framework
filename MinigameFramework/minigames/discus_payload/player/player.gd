@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+## track change in angle 
+@export var angle_change_speed : float = 0.0
+
+
 ## the max torque that is applied 
 @export var max_speed : float
 

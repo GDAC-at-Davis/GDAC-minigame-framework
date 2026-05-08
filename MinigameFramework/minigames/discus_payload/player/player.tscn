@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkbntpcomaxxn"]
+[gd_scene load_steps=22 format=3 uid="uid://bkbntpcomaxxn"]
 
 [ext_resource type="Script" uid="uid://c4allwhg3t5fv" path="res://minigames/discus_payload/player/player.gd" id="1_nxqnv"]
 [ext_resource type="Texture2D" uid="uid://swk0tswpysd8" path="res://minigames/discus_payload/temp_visuals/Player.png" id="1_piokl"]
+[ext_resource type="Texture2D" uid="uid://bst2cnli05gtf" path="res://minigames/discus_payload/player/Sprite_Smear_1.png" id="3_wyskf"]
+[ext_resource type="Texture2D" uid="uid://l4sg304qn525" path="res://minigames/discus_payload/player/Sprite_smear_2.png" id="4_qtx0n"]
 
 [sub_resource type="Curve" id="Curve_nxqnv"]
 _limits = [0.0, 1.0, 0.0, 300.0]
@@ -16,6 +18,113 @@ point_count = 3
 [sub_resource type="CircleShape2D" id="CircleShape2D_nxqnv"]
 radius = 89.81091
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wyskf"]
+animation = &"default"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qtx0n"]
+animation = &"smear_fast"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_55trq"]
+animation = &"smear_slow"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0lak2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pebht"]
+advance_mode = 2
+advance_expression = "angle_change_speed >= 10.0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kdui8"]
+advance_mode = 2
+advance_expression = "angle_change_speed >= 25.0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wyskf"]
+advance_mode = 2
+advance_expression = "angle_change_speed < 25.0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qtx0n"]
+advance_mode = 2
+advance_expression = "angle_change_speed < 10.0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wyskf"]
+states/default/node = SubResource("AnimationNodeAnimation_wyskf")
+states/default/position = Vector2(372, 27)
+states/smear_fast/node = SubResource("AnimationNodeAnimation_qtx0n")
+states/smear_fast/position = Vector2(556, 140)
+states/smear_slow/node = SubResource("AnimationNodeAnimation_55trq")
+states/smear_slow/position = Vector2(556, 27)
+transitions = ["Start", "default", SubResource("AnimationNodeStateMachineTransition_0lak2"), "default", "smear_slow", SubResource("AnimationNodeStateMachineTransition_pebht"), "smear_slow", "smear_fast", SubResource("AnimationNodeStateMachineTransition_kdui8"), "smear_fast", "smear_slow", SubResource("AnimationNodeStateMachineTransition_wyskf"), "smear_slow", "default", SubResource("AnimationNodeStateMachineTransition_qtx0n")]
+graph_offset = Vector2(30, -92)
+
+[sub_resource type="Animation" id="Animation_0lak2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_piokl")]
+}
+
+[sub_resource type="Animation" id="Animation_55trq"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_piokl")]
+}
+
+[sub_resource type="Animation" id="Animation_kdui8"]
+resource_name = "smear_fast"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_qtx0n")]
+}
+
+[sub_resource type="Animation" id="Animation_pebht"]
+resource_name = "smear_slow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_wyskf")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hdwya"]
+_data = {
+&"RESET": SubResource("Animation_0lak2"),
+&"default": SubResource("Animation_55trq"),
+&"smear_fast": SubResource("Animation_kdui8"),
+&"smear_slow": SubResource("Animation_pebht")
+}
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_nxqnv")
 max_speed = 30000.0
@@ -24,6 +133,16 @@ time_modifier = SubResource("Curve_0160i")
 
 [node name="Col" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nxqnv")
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_wyskf")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hdwya")
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.5000019, -1.9073486e-06)
