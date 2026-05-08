@@ -26,10 +26,12 @@ func _draw() -> void:
 			var pos : Vector2 = get_pos_on_circle(interval)
 			draw_circle(pos, 10, Color.CRIMSON, true)
 
+"""
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		generate_spikes(3, 3)
-		
+"""
+	
 # stores info on where the intervals. marks intervals with gaps
 var has_gap : Dictionary
 

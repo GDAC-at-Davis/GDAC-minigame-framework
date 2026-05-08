@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://iehijwaprj48"]
+[gd_scene load_steps=11 format=3 uid="uid://iehijwaprj48"]
 
 [ext_resource type="Script" uid="uid://bxdqdgo1anvec" path="res://minigames/discus_payload/discus_payload.gd" id="1_ndfc5"]
 [ext_resource type="Script" uid="uid://bvyugtna72wra" path="res://minigames/discus_payload/management/controller.gd" id="2_pavqn"]
@@ -6,6 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://d2ctmskf0usg3" path="res://minigames/discus_payload/payload/payload.tscn" id="3_calfl"]
 [ext_resource type="Script" uid="uid://bsvlbe4m53pms" path="res://minigames/discus_payload/spike/spike_factory.gd" id="5_mcr5s"]
 [ext_resource type="PackedScene" uid="uid://c3xhjof0fmq0y" path="res://minigames/discus_payload/spike/spike.tscn" id="6_tkjmo"]
+
+[sub_resource type="Curve" id="Curve_tkjmo"]
+_limits = [1.0, 5.0, 0.0, 2.0]
+_data = [Vector2(1.2317073, 5), 0.0, 0.0, 0, 0, Vector2(1.5304878, 3.214203), -2.5185637, -2.5185637, 0, 0, Vector2(1.902439, 1.9429574), 0.0, 0.0, 0, 0, Vector2(2, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_4j8xh"]
+_limits = [1.0, 3.0, 0.0, 2.0]
+_data = [Vector2(1.4817072, 3), 0.0, 0.0, 0, 0, Vector2(1.7682927, 1.5774156), 0.0, 0.0, 0, 0, Vector2(2, 1.2466586), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_ndfc5"]
 offsets = PackedFloat32Array(0.2892562, 0.5495868, 0.6570248, 0.946281)
@@ -18,6 +28,8 @@ gradient = SubResource("Gradient_ndfc5")
 script = ExtResource("1_ndfc5")
 controller = NodePath("Controller")
 win_distance = 600.0
+num_spike_per_gap = SubResource("Curve_tkjmo")
+num_graps = SubResource("Curve_4j8xh")
 instruction = "Left Click and Drag to spin bomb. Let go to throw."
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
