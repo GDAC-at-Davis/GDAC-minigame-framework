@@ -14,8 +14,9 @@ colors = PackedColorArray(0.81960785, 0.79607844, 0.7411765, 1, 0.86465305, 0.78
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qw3w6"]
 gradient = SubResource("Gradient_ndfc5")
 
-[node name="DiscusPayload" type="Node"]
+[node name="DiscusPayload" type="Node" node_paths=PackedStringArray("controller")]
 script = ExtResource("1_ndfc5")
+controller = NodePath("Controller")
 instruction = "Left Click and Drag to spin bomb. Let go to throw."
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 

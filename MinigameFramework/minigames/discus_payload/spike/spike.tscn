@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3xhjof0fmq0y"]
+[gd_scene load_steps=4 format=3 uid="uid://c3xhjof0fmq0y"]
 
+[ext_resource type="Script" uid="uid://cju15wg7ytyav" path="res://minigames/discus_payload/spike/spike.gd" id="1_tg2ac"]
 [ext_resource type="Texture2D" uid="uid://c3kpyde1a54xv" path="res://minigames/discus_payload/temp_visuals/Spike.png" id="1_wgyok"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wgyok"]
 radius = 51.90875
 
-[node name="Spike" type="StaticBody2D"]
+[node name="Spike" type="Area2D"]
+script = ExtResource("1_tg2ac")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.0000038, 0)
@@ -16,3 +18,5 @@ texture = ExtResource("1_wgyok")
 position = Vector2(13, 17)
 scale = Vector2(0.5599997, 0.5599997)
 shape = SubResource("CircleShape2D_wgyok")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

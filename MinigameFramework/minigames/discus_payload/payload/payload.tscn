@@ -1,9 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2ctmskf0usg3"]
+[gd_scene load_steps=10 format=3 uid="uid://d2ctmskf0usg3"]
 
 [ext_resource type="Script" uid="uid://dp1tqu3hgjhsk" path="res://minigames/discus_payload/payload/payload.gd" id="1_o0b04"]
 [ext_resource type="Texture2D" uid="uid://bpsscfh64fduk" path="res://minigames/discus_payload/payload/Bomb.png" id="2_o0b04"]
+[ext_resource type="Texture2D" uid="uid://bmspmxvynfpf6" path="res://minigames/discus_payload/payload/Smoke_Cloud.png" id="3_2tlgd"]
 
-[node name="Payload" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0b04"]
+radius = 47.07441
+
+[sub_resource type="Gradient" id="Gradient_ogb3i"]
+offsets = PackedFloat32Array(0, 0.12535612, 0.85470086, 0.97151)
+colors = PackedColorArray(0.97435206, 0.93299884, 0.6256203, 1, 0.66757554, 0.16472328, 3.85046e-07, 1, 0.8453445, 0.80503607, 0.7798065, 1, 0.09411765, 0.078431375, 0.06666667, 0.49411765)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h6pgs"]
+gradient = SubResource("Gradient_ogb3i")
+
+[sub_resource type="Curve" id="Curve_w15le"]
+_data = [Vector2(0, 0.02164948), 0.0, 0.0, 0, 0, Vector2(0.066313, 1), 0.0, 0.0, 0, 0, Vector2(0.7665783, 0.9731959), 0.0, 0.0, 0, 0, Vector2(0.8514589, 0.32319593), 0.0, 0.0, 0, 0, Vector2(0.93368703, 0.028350592), -0.9623959, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_uh7gk"]
+curve = SubResource("Curve_w15le")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ngwp2"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 76.03
+angle_min = -358.1
+angle_max = 314.50003
+radial_velocity_min = 804.81995
+radial_velocity_max = 999.99994
+radial_velocity_curve = SubResource("CurveTexture_uh7gk")
+gravity = Vector3(0, 0, 0)
+scale_max = 1.55
+color_ramp = SubResource("GradientTexture1D_h6pgs")
+
+[node name="Payload" type="CharacterBody2D" groups=["payload"]]
 script = ExtResource("1_o0b04")
 speed = 1.0
 
@@ -11,3 +42,22 @@ speed = 1.0
 position = Vector2(2.861023e-06, -0.4999962)
 scale = Vector2(0.46623093, 0.47035575)
 texture = ExtResource("2_o0b04")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_o0b04")
+
+[node name="ExplosionEffect" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 30
+texture = ExtResource("3_2tlgd")
+lifetime = 0.7
+one_shot = true
+explosiveness = 0.69
+process_material = SubResource("ParticleProcessMaterial_ngwp2")
+
+[node name="DefeatTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[connection signal="timeout" from="DefeatTimer" to="." method="_on_defeat_timer_timeout"]
