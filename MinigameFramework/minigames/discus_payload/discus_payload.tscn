@@ -77,3 +77,9 @@ offset_bottom = 270.0
 theme_override_colors/font_color = Color(0, 0.5261993, 0.21203458, 1)
 theme_override_font_sizes/font_size = 70
 text = "You Win!"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 25.0
+offset_top = 16.0
+offset_right = 348.0
+offset_bottom = 66.0
