@@ -34,8 +34,8 @@ func _physics_process(delta: float) -> void:
 			player.rotational_speed -= speed_build_up_curve.sample(absf(player.rotational_speed)) * delta
 		
 		# power up charge
-		charge += absf(player.rotational_speed) * delta * 0.05
-		charge -= 0.25 * delta
+		charge += absf(player.rotational_speed) * delta * 0.03
+		charge -= 0.3 * delta
 		
 		if charge < 0: 
 			charge = 0
