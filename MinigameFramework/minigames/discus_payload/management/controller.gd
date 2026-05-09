@@ -4,6 +4,9 @@ extends Node2D
 @export var payload : CharacterBody2D
 @export var charge_progress_bar : ProgressBar
 
+## the curve for how the velocity changes in release to the keys
+@export var speed_build_up_curve : Curve
+
 ## track if holding mouse 
 enum State {START, SPINNING, RELEASED}
 var state : State
@@ -17,10 +20,40 @@ var charge : float
 @export var charge_to_speed_graph : Curve
 
 func _ready() -> void:
-	state = State.START
+	state = State.SPINNING
 	old_angle = 0
 
 func _physics_process(delta: float) -> void:
+	if state == State.SPINNING:
+		# update the payload position
+		payload.global_position = player.find_child("HoldPosition").global_position
+		
+		if Input.is_action_pressed("up"):
+			player.rotational_speed += speed_build_up_curve.sample(absf(player.rotational_speed)) * delta
+		elif Input.is_action_pressed("down"):
+			player.rotational_speed -= speed_build_up_curve.sample(absf(player.rotational_speed)) * delta
+		
+		# power up charge
+		charge += absf(player.rotational_speed) * delta * 0.05
+		charge -= 0.25 * delta
+		
+		if charge < 0: 
+			charge = 0
+		elif charge > 1: 
+			charge = 1
+		
+		charge_progress_bar.value = charge
+	
+		if Input.is_action_just_pressed("primary"):
+			state = State.RELEASED
+			var dir : Vector2 = player.find_child("HoldPosition").global_position - player.global_position
+			payload.velocity = dir * payload.speed * charge_to_speed_graph.sample(charge)
+			player.rotational_speed = 0
+			
+	elif state == State.RELEASED:
+		payload.move_and_slide() 
+	
+	"""
 	if state == State.START and Input.is_action_just_pressed("primary"):
 		state = State.SPINNING
 	
@@ -63,3 +96,4 @@ func _physics_process(delta: float) -> void:
 	
 	elif state == State.RELEASED:
 		payload.move_and_slide()
+	"""

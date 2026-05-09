@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://iehijwaprj48"]
+[gd_scene load_steps=19 format=3 uid="uid://iehijwaprj48"]
 
 [ext_resource type="Script" uid="uid://bxdqdgo1anvec" path="res://minigames/discus_payload/discus_payload.gd" id="1_ndfc5"]
 [ext_resource type="Script" uid="uid://bvyugtna72wra" path="res://minigames/discus_payload/management/controller.gd" id="2_pavqn"]
@@ -24,10 +24,43 @@ colors = PackedColorArray(0.81960785, 0.79607844, 0.7411765, 1, 0.86465305, 0.78
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qw3w6"]
 gradient = SubResource("Gradient_ndfc5")
 
+[sub_resource type="Curve" id="Curve_r53ko"]
+_limits = [0.0, 10.0, 0.0, 30.0]
+_data = [Vector2(0, 7.859757), 0.0, 0.0, 0, 0, Vector2(0.45871568, 10), -0.28800777, -0.28800777, 0, 0, Vector2(23.85321, 3.1036596), 0.0, 0.0, 0, 0, Vector2(26.330276, 0.4059577), -0.1296037, 0.0, 0, 0, Vector2(30, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
 [sub_resource type="Curve" id="Curve_rj4o5"]
 _limits = [0.0, 15.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.52204174, 0.47517014), 0.0, 0.0, 0, 0, Vector2(0.8561485, 3.8891335), 27.35331, 27.35331, 0, 0, Vector2(0.96983755, 13.099315), 217.78476, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_4j8xh"]
+offsets = PackedFloat32Array(0, 0.6177474, 0.8088737)
+colors = PackedColorArray(0.26546216, 0.27738696, 0.27168387, 1, 0.65352404, 0.65297383, 0.6648089, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rj4o5"]
+noise_type = 2
+frequency = 0.0106
+offset = Vector3(24.95, 310.68, 77.67)
+cellular_distance_function = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_r53ko"]
+noise = SubResource("FastNoiseLite_rj4o5")
+color_ramp = SubResource("Gradient_4j8xh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tkjmo"]
+texture = SubResource("NoiseTexture2D_r53ko")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4j8xh"]
+bg_color = Color(1, 0.8156863, 0.33333334, 0.45882353)
+
+[sub_resource type="Theme" id="Theme_1po8w"]
+ProgressBar/colors/font_color = Color(1, 1, 1, 1)
+ProgressBar/colors/font_outline_color = Color(0, 0, 0, 1)
+ProgressBar/constants/outline_size = 25
+ProgressBar/font_sizes/font_size = 30
+ProgressBar/styles/background = SubResource("StyleBoxTexture_tkjmo")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_4j8xh")
 
 [node name="DiscusPayload" type="Node" node_paths=PackedStringArray("controller")]
 script = ExtResource("1_ndfc5")
@@ -36,6 +69,7 @@ win_distance = 600.0
 num_spike_per_gap = SubResource("Curve_tkjmo")
 num_graps = SubResource("Curve_4j8xh")
 instruction = "Left Click and Drag to spin bomb. Let go to throw."
+countdown_time = 10.0
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -50,10 +84,12 @@ script = ExtResource("2_pavqn")
 player = NodePath("Player")
 payload = NodePath("Payload")
 charge_progress_bar = NodePath("ProgressBar")
+speed_build_up_curve = SubResource("Curve_r53ko")
 charge_to_speed_graph = SubResource("Curve_rj4o5")
 
 [node name="Player" parent="Controller" instance=ExtResource("2_qw3w6")]
 position = Vector2(625, 384)
+drag = 1.2
 
 [node name="Payload" parent="Controller" instance=ExtResource("3_calfl")]
 position = Vector2(617, 532)
@@ -64,6 +100,7 @@ offset_left = -225.71425
 offset_top = -129.99997
 offset_right = 97.28575
 offset_bottom = -79.99997
+theme = SubResource("Theme_1po8w")
 max_value = 1.0
 
 [node name="Spikes" type="Node2D" parent="."]
