@@ -68,7 +68,7 @@ controller = NodePath("Controller")
 win_distance = 600.0
 num_spike_per_gap = SubResource("Curve_tkjmo")
 num_graps = SubResource("Curve_4j8xh")
-instruction = "Left Click and Drag to spin bomb. Let go to throw."
+instruction = "Use W and S to charge up throw. Left Click to release bomb"
 countdown_time = 10.0
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
