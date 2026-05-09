@@ -2,7 +2,7 @@ extends Node2D
 
 @export var player : CharacterBody2D
 @export var payload : CharacterBody2D
-
+@export var charge_progress_bar : ProgressBar
 
 ## track if holding mouse 
 enum State {START, SPINNING, RELEASED}
@@ -11,6 +11,10 @@ var state : State
 ## track change in angle 
 var rotational_speed : float 
 var old_angle : float
+
+# global variables for spin charge
+var charge : float
+@export var charge_to_speed_graph : Curve
 
 func _ready() -> void:
 	state = State.START
@@ -23,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	elif state == State.SPINNING and Input.is_action_just_released("primary"):
 		state = State.RELEASED
 		var dir : Vector2 = player.find_child("HoldPosition").global_position - player.global_position
-		payload.velocity = dir * payload.speed * abs(player.rotational_speed)  #* player.
+		payload.velocity = dir * payload.speed * charge_to_speed_graph.sample(charge)
 		player.rotational_speed = 0
 	
 	elif state == State.SPINNING:
@@ -45,18 +49,17 @@ func _physics_process(delta: float) -> void:
 		
 		# calculate the new rotation speed
 		player.rotational_speed = mouse_rotational_speed
-		"""
-			
-		player.rotation = mouse_angle
 		
-		# move the payload 
-		payload.global_position = player.find_child("HoldPosition").global_position
+		# power up charge
+		charge += absf(player.rotational_speed) * delta * 0.05
+		charge -= 0.25 * delta
 		
-		# calculate speed
-		angle_change_speed = (mouse_angle - old_angle) / delta
-		player.angle_change_speed = angle_change_speed
-		old_angle = mouse_angle
-		"""
+		if charge < 0: 
+			charge = 0
+		elif charge > 1: 
+			charge = 1
+		
+		charge_progress_bar.value = charge
 	
 	elif state == State.RELEASED:
 		payload.move_and_slide()

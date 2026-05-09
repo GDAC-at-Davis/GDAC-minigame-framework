@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://iehijwaprj48"]
+[gd_scene load_steps=12 format=3 uid="uid://iehijwaprj48"]
 
 [ext_resource type="Script" uid="uid://bxdqdgo1anvec" path="res://minigames/discus_payload/discus_payload.gd" id="1_ndfc5"]
 [ext_resource type="Script" uid="uid://bvyugtna72wra" path="res://minigames/discus_payload/management/controller.gd" id="2_pavqn"]
@@ -24,6 +24,11 @@ colors = PackedColorArray(0.81960785, 0.79607844, 0.7411765, 1, 0.86465305, 0.78
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qw3w6"]
 gradient = SubResource("Gradient_ndfc5")
 
+[sub_resource type="Curve" id="Curve_rj4o5"]
+_limits = [0.0, 15.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.52204174, 0.47517014), 0.0, 0.0, 0, 0, Vector2(0.8561485, 3.8891335), 27.35331, 27.35331, 0, 0, Vector2(0.96983755, 13.099315), 217.78476, 0.0, 0, 0]
+point_count = 4
+
 [node name="DiscusPayload" type="Node" node_paths=PackedStringArray("controller")]
 script = ExtResource("1_ndfc5")
 controller = NodePath("Controller")
@@ -38,18 +43,28 @@ position = Vector2(692.00006, 308)
 scale = Vector2(18.031252, 3163)
 texture = SubResource("GradientTexture1D_qw3w6")
 
-[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "payload")]
+[node name="Controller" type="Node2D" parent="." node_paths=PackedStringArray("player", "payload", "charge_progress_bar")]
 position = Vector2(182.99998, 106.99999)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("2_pavqn")
 player = NodePath("Player")
 payload = NodePath("Payload")
+charge_progress_bar = NodePath("ProgressBar")
+charge_to_speed_graph = SubResource("Curve_rj4o5")
 
 [node name="Player" parent="Controller" instance=ExtResource("2_qw3w6")]
 position = Vector2(625, 384)
 
 [node name="Payload" parent="Controller" instance=ExtResource("3_calfl")]
 position = Vector2(617, 532)
+speed = 2.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Controller"]
+offset_left = -225.71425
+offset_top = -129.99997
+offset_right = 97.28575
+offset_bottom = -79.99997
+max_value = 1.0
 
 [node name="Spikes" type="Node2D" parent="."]
 position = Vector2(623, 373)
@@ -77,9 +92,3 @@ offset_bottom = 270.0
 theme_override_colors/font_color = Color(0, 0.5261993, 0.21203458, 1)
 theme_override_font_sizes/font_size = 70
 text = "You Win!"
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 25.0
-offset_top = 16.0
-offset_right = 348.0
-offset_bottom = 66.0
