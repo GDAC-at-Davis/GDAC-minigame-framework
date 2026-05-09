@@ -16,6 +16,9 @@ func _ready():
 func _process(delta: float) -> void:
 	if controller.payload.global_position.distance_to(controller.player.global_position) > win_distance:
 		win()
+	if countdown_timer.time_left < skip_time and \
+	controller.payload.state == controller.payload.State.INTACT:
+		controller.payload.detonate_visuals()
 	
 func win() -> void:
 	$win.visible = true
