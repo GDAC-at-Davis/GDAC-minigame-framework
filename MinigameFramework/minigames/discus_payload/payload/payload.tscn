@@ -1,11 +1,38 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2ctmskf0usg3"]
+[gd_scene load_steps=21 format=3 uid="uid://d2ctmskf0usg3"]
 
 [ext_resource type="Script" uid="uid://dp1tqu3hgjhsk" path="res://minigames/discus_payload/payload/payload.gd" id="1_o0b04"]
 [ext_resource type="Texture2D" uid="uid://bpsscfh64fduk" path="res://minigames/discus_payload/payload/Bomb.png" id="2_o0b04"]
+[ext_resource type="Texture2D" uid="uid://cmr5kuiw24wu5" path="res://minigames/discus_payload/payload/wick.png" id="2_ogb3i"]
+[ext_resource type="Shader" uid="uid://d1ofvrwo2ac05" path="res://minigames/discus_payload/payload/wick.gdshader" id="2_w15le"]
 [ext_resource type="Texture2D" uid="uid://bmspmxvynfpf6" path="res://minigames/discus_payload/payload/Smoke_Cloud.png" id="3_2tlgd"]
+[ext_resource type="Texture2D" uid="uid://cr0j1q10vg6sk" path="res://minigames/discus_payload/payload/flame.svg" id="4_h6pgs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uh7gk"]
+shader = ExtResource("2_w15le")
+shader_parameter/burn_cover = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o0b04"]
 radius = 47.07441
+
+[sub_resource type="Gradient" id="Gradient_w15le"]
+offsets = PackedFloat32Array(0, 0.24014337, 0.6989247, 1)
+colors = PackedColorArray(0.974467, 0.9032218, 0.58763325, 1, 0.99686974, 0.48531145, 2.117753e-06, 1, 0.8064581, 0, 0.08598182, 1, 0.26666668, 0, 0, 0.06666667)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uh7gk"]
+gradient = SubResource("Gradient_w15le")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_djnim"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 12.8
+direction = Vector3(0, -1, 0)
+spread = 13.743
+initial_velocity_min = 55.0
+initial_velocity_max = 55.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.19
+color_ramp = SubResource("GradientTexture1D_uh7gk")
 
 [sub_resource type="Gradient" id="Gradient_ogb3i"]
 offsets = PackedFloat32Array(0, 0.12535612, 0.85470086, 0.97151)
@@ -34,11 +61,226 @@ gravity = Vector3(0, 0, 0)
 scale_max = 1.55
 color_ramp = SubResource("GradientTexture1D_h6pgs")
 
+[sub_resource type="Animation" id="Animation_w15le"]
+resource_name = "count_down"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7.9666667, 8.166667),
+"transitions": PackedFloat32Array(1, 0.39229208, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fire:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-57, -93), Vector2(-34, -62)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplosionEffect:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("wick:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7.9666667, 8.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("wick:material:shader_parameter/burn_cover")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7.9666667),
+"transitions": PackedFloat32Array(1, 0.39229217),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("main_bomb:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uh7gk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fire:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-57, -93)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ExplosionEffect:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("wick:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("wick:material:shader_parameter/burn_cover")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("main_bomb:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ngwp2"]
+resource_name = "explosion"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fire:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("wick:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("main_bomb:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ExplosionEffect:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uh7gk"]
+_data = {
+&"RESET": SubResource("Animation_uh7gk"),
+&"count_down": SubResource("Animation_w15le"),
+&"explosion": SubResource("Animation_ngwp2")
+}
+
 [node name="Payload" type="CharacterBody2D" groups=["payload"]]
 script = ExtResource("1_o0b04")
 speed = 1.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="wick" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_uh7gk")
+position = Vector2(-41.000004, -70)
+scale = Vector2(0.16666667, 0.13188405)
+texture = ExtResource("2_ogb3i")
+
+[node name="main_bomb" type="Sprite2D" parent="."]
 position = Vector2(2.861023e-06, -0.4999962)
 scale = Vector2(0.46623093, 0.47035575)
 texture = ExtResource("2_o0b04")
@@ -46,6 +288,14 @@ texture = ExtResource("2_o0b04")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_o0b04")
+
+[node name="Fire" type="GPUParticles2D" parent="."]
+position = Vector2(-57, -93)
+amount = 4
+texture = ExtResource("4_h6pgs")
+lifetime = 0.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_djnim")
 
 [node name="ExplosionEffect" type="GPUParticles2D" parent="."]
 emitting = false
@@ -59,5 +309,10 @@ process_material = SubResource("ParticleProcessMaterial_ngwp2")
 [node name="DefeatTimer" type="Timer" parent="."]
 wait_time = 0.8
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_uh7gk")
+}
 
 [connection signal="timeout" from="DefeatTimer" to="." method="_on_defeat_timer_timeout"]

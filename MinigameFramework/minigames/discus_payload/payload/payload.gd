@@ -9,16 +9,12 @@ var state
 
 func _ready() -> void:
 	state = State.INTACT
+	$AnimationPlayer.play("count_down")
 
 func detonate() -> void:
 	defeated.emit()
 
 func detonate_visuals() -> void:
 	state = State.DESTROYED 
-	$ExplosionEffect.emitting = true
-	$Sprite2D.visible = false
-	#$DefeatTimer.start()
+	$AnimationPlayer.play("explosion")
 	velocity = Vector2.ZERO
-
-#func _on_defeat_timer_timeout() -> void:
-#	defeated.emit()
