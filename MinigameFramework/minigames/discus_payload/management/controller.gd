@@ -29,10 +29,18 @@ func _physics_process(delta: float) -> void:
 		payload.global_position = player.find_child("HoldPosition").global_position
 		
 		if Input.is_action_pressed("up"):
-			player.rotational_speed += speed_build_up_curve.sample(absf(player.rotational_speed)) * delta
+			if player.rotational_speed > 0.0:
+				player.rotational_speed += speed_build_up_curve.sample(absf(player.rotational_speed)) * delta
+			else:
+				player.rotational_speed += 45.0 * delta
+				charge -= 0.5 * delta
 		elif Input.is_action_pressed("down"):
-			player.rotational_speed -= speed_build_up_curve.sample(absf(player.rotational_speed)) * delta
-		
+			if player.rotational_speed < 0.0: 
+				player.rotational_speed -= speed_build_up_curve.sample(absf(player.rotational_speed)) * delta
+			else:
+				player.rotational_speed -= 45.0 * delta
+				charge -= 0.5 * delta
+		 
 		# power up charge
 		charge += absf(player.rotational_speed) * delta * 0.03
 		charge -= 0.3 * delta
