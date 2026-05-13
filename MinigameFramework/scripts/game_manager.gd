@@ -4,6 +4,7 @@ var main_scene: Node
 var world_manager: WorldManager
 var minigame_manager: MinigameManager
 var music_player : AudioStreamPlayer
+var currently_playing : String = ""
 
 var minigame_collection: Array[MinigameInfo]
 
@@ -43,12 +44,18 @@ func _load_info_from_disk(path: String):
 			if info and info is MinigameInfo:
 				minigame_collection.append(info)
 
-func play_music(song, speed : float = 1.0):
+func play_music(song, speed : float = 1.0, reset : bool = true):
 	# song is String or AudioStream
-	if song is String:
+	var resetting : bool = true
+	if not reset: # user does not want to reset the song, implying that the original song should be left playing if it is a match
+		if (song is String  and song == currently_playing) or (song is AudioStream and song == music_player.stream):
+			resetting = false
+	
+	if song is String and resetting:
 		if FileAccess.file_exists(song):
 			music_player.stream = load(song)
 			music_player.pitch_scale = speed
+			currently_playing = song
 			music_player.play()
 	elif song is AudioStream:
 		music_player.stream = song
