@@ -55,6 +55,7 @@ func play_music(song, speed : float = 1.0, reset : bool = true):
 		if FileAccess.file_exists(song):
 			music_player.stream = load(song)
 			music_player.pitch_scale = speed
+			currently_playing = song
 			music_player.play()
 	elif song is AudioStream:
 		music_player.stream = song

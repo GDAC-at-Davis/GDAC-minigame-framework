@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://l6kb54ekjomj"]
 
 [ext_resource type="Script" uid="uid://brjv4oyg7s5td" path="res://scripts/cutscene.gd" id="1_edmg7"]
-[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://icon.svg" id="2_a320b"]
+[ext_resource type="Texture2D" path="res://minigames/browser_down/icon.svg" id="2_a320b"]
 
 [node name="Cutscene" type="Control"]
 layout_mode = 3
