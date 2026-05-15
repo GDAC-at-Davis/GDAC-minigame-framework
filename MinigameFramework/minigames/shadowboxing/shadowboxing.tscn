@@ -38,8 +38,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4fpx"]
 size = Vector2(133, 59)
 
+[ext_resource type="Script" uid="uid://70uo6yn78g0j" path="res://minigames/shadowboxing/shadowboxing_minigame.gd" id="1_npb7n"]
+[ext_resource type="PackedScene" uid="uid://cvm5bka5p8rwr" path="res://minigames/shadowboxing/boxer.tscn" id="2_npb7n"]
+[ext_resource type="Texture2D" uid="uid://n3hlnd14ff41" path="res://minigames/shadowboxing/shadowboxing_background.png" id="2_xf8mx"]
+[ext_resource type="Script" path="res://minigames/shadowboxing/boxer.gd" id="3_xf8mx"]
+[ext_resource type="Curve" path="res://minigames/shadowboxing/boxer_movement_curve_y.tres" id="4_dm4nt"]
+[ext_resource type="Curve" path="res://minigames/shadowboxing/boxer_movement_curve_x.tres" id="4_dscpv"]
+[ext_resource type="Shader" uid="uid://d400xa5b4vfk" path="res://minigames/shadowboxing/red_overlay.gdshader" id="7_qia5q"]
+
+[sub_resource type="Curve2D" id="Curve2D_npb7n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tpqw4"]
+shader = ExtResource("7_qia5q")
+shader_parameter/red_tint = Color(1, 0, 0, 0.5)
+shader_parameter/intensity = 0.5
+
 [node name="Shadowboxing" type="Node"]
 script = ExtResource("1_npb7n")
+pause_duration = 3.5
 instruction = "Don't look!"
 countdown_time = 7.0
 
@@ -51,6 +67,29 @@ offset_bottom = 908.0
 mouse_filter = 2
 texture = ExtResource("2_tpqw4")
 expand_mode = 1
+texture = ExtResource("2_xf8mx")
+
+[node name="Boxer" parent="." instance=ExtResource("2_npb7n")]
+position = Vector2(682, 305)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_xf8mx")
+idle_curve_x = ExtResource("4_dscpv")
+idle_curve_y = ExtResource("4_dm4nt")
+bob_speed = 50
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -71,6 +110,16 @@ bob_speed = 50
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_npb7n")
 
+[node name="OverlayLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="OverlayLayer"]
+visible = false
+material = SubResource("ShaderMaterial_tpqw4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 [node name="HealthBar" type="Area2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HealthBar"]
