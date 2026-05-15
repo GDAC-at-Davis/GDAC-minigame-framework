@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n3hlnd14ff41"
-path="res://.godot/imported/shadowboxing_background.png-6445c10f786c597347b244836ba7490b.ctex"
+uid="uid://wp1gqv8br7hn"
+path="res://.godot/imported/boxerpunch_normal_spritesheet.png-d73ed3a53f81784c8727dafd0c43a5d3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minigames/shadowboxing/shadowboxing_background.png"
-dest_files=["res://.godot/imported/shadowboxing_background.png-6445c10f786c597347b244836ba7490b.ctex"]
+source_file="res://minigames/shadowboxing/boxerpunch_normal_spritesheet.png"
+dest_files=["res://.godot/imported/boxerpunch_normal_spritesheet.png-d73ed3a53f81784c8727dafd0c43a5d3.ctex"]
 
 [params]
 

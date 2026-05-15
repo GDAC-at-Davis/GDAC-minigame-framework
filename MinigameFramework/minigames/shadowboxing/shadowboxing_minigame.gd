@@ -20,6 +20,7 @@ var has_paused_this_punch: bool = false  # To stop it from pausing endlessly if 
 
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
 @onready var boxer_sprite = $Boxer/AnimatedSprite2D
+@onready var healthbar_sprite = $HealthBar/AnimatedSprite2D
 @onready var particles: GPUParticles2D = $BalloonParticles
 
 func start():
@@ -28,16 +29,17 @@ func start():
 	# Adjust for difficulty
 	countdown_time /= difficulty
 	delay /= difficulty
+	healthbar_sprite.play("health_flash")
 	
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(delay).timeout
 	get_node("Boxer").bobbing = false
 	
+	#await get_tree().create_timer(delay).timeout
 	# Spawn the arrow
 	var arrow: Area2D = arrow_packed_scene.instantiate()
 	add_child(arrow)
 	arrows.append(arrow)
-	direction = 3
-	#direction = randi_range(0, 3)
+	direction = randi_range(0, 3)
 	if direction == 0:
 		arrows[0].global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 - 200)
 		arrows[0].rotation_degrees = 270
@@ -45,15 +47,10 @@ func start():
 		arrows[0].global_position = Vector2(get_viewport().size.x/2 + 400, get_viewport().size.y/2)
 		arrows[0].rotation_degrees = 0
 	elif direction == 2:
-		boxer_sprite.scale = Vector2(4, 4)
-		
-		boxer_sprite.play("bottom_punch")
 		arrows[0].global_position = Vector2(get_viewport().size.x/2, get_viewport().size.y/2 + 200)
 		arrows[0].rotation_degrees = 90
 	elif direction == 3:
 		boxer_sprite.play("left_punch")
-		boxer_sprite.frame_changed.connect(_on_frame_changed)
-
 		arrows[0].global_position = Vector2(get_viewport().size.x/2 - 400, get_viewport().size.y/2)
 		arrows[0].rotation_degrees = 180
 	# start timer for blinks
@@ -63,6 +60,7 @@ var time: float = 0
 var dir: int = 1
 
 func run():
+	$Camera2D.position.y += 1
 	if arrows.is_empty():
 		return
 	if !lost:
@@ -70,44 +68,61 @@ func run():
 		
 		if direction == 0:
 			arrows[0].global_position -= Vector2(0, speed)
+			boxer_sprite.pause()
+			#await get_tree().create_timer(0.001, false).timeout
+			boxer_sprite.play("uppercut_punch")
+			boxer_sprite.speed_scale = 1 + difficulty/5
+			if boxer_sprite.frame >= 23:
+				got_hit()
 		elif direction == 1:
 			arrows[0].global_position += Vector2(speed, 0)
+			boxer_sprite.pause()
+			#await get_tree().create_timer(0.001, false).timeout
+			boxer_sprite.play("side_punch")
+			boxer_sprite.speed_scale = 1 + difficulty/5
+			if boxer_sprite.frame >= 33:
+				got_hit()
 		elif direction == 2:
 			arrows[0].global_position += Vector2(0, speed)
+			boxer_sprite.pause()
+			#await get_tree().create_timer(0.001, false).timeout
+			boxer_sprite.play("forward_punch")
+			boxer_sprite.speed_scale = 1 + difficulty/5
+			if boxer_sprite.frame >= 18:
+				got_hit()
 		elif direction == 3:
 			arrows[0].global_position -= Vector2(speed, 0)
 			boxer_sprite.pause()
-			await get_tree().create_timer(0.001, false).timeout
-			boxer_sprite.play("left_punch")
+			#await get_tree().create_timer(0.001, false).timeout
+			boxer_sprite.play("side_punch")
+			boxer_sprite.speed_scale = 1 + difficulty/5
+			boxer_sprite.flip_h = true
+			if boxer_sprite.frame >= 33:
+				got_hit()
 		if Input.is_action_pressed(&"up"):
 			remove_arrow(arrows)
-			boxer_sprite.stop()
 			if (direction != 0):
 				win()
 			else:
 				lose()
 		if Input.is_action_pressed(&"right"):
 			remove_arrow(arrows)
-			boxer_sprite.stop()
 			if (direction != 1):
 				win()
 			else:
 				lose()
 		if Input.is_action_pressed(&"down"):
 			remove_arrow(arrows)
-			boxer_sprite.stop()
 			if (direction != 2):
 				win()
 			else:
 				lose()
 		if Input.is_action_pressed(&"left"):
 			remove_arrow(arrows)
-			boxer_sprite.stop()
 			if (direction != 3):
 				win()
 			else:
 				lose()
-				
 				
 	#print_debug(countdown_timer.time_left)
 	
@@ -129,6 +144,10 @@ func show_message(text):
 	$Message.show();
 	$MessageTimer.start()
 	
+func got_hit():
+	healthbar_sprite.play("health_broken")
+	lose()
+	
 func lose():
 	lost = true
 	super()
@@ -139,18 +158,3 @@ func _on_timer_timeout() -> void:
 	for arrow in arrows:
 		if is_instance_valid(arrow):
 			arrow.visible = !arrow.visible
-func _on_frame_changed() -> void:
-	if boxer_sprite.animation == "left_punch" and boxer_sprite.frame == pause_frame and not has_paused_this_punch:
-		
-		# 2. Lock it so it doesn't trigger again on accident
-		has_paused_this_punch = true 
-		
-		# 3. Freeze the animation on this exact frame
-		boxer_sprite.pause() 
-		
-		# 4. Wait for the desired amount of time
-		await get_tree().create_timer(pause_duration).timeout 
-		
-		# 5. Resume the animation!
-		boxer_sprite.play()
-	

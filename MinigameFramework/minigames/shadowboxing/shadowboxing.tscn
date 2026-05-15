@@ -1,45 +1,56 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0fd5eqxcdio3"]
+[gd_scene load_steps=14 format=3 uid="uid://c0fd5eqxcdio3"]
 
 [ext_resource type="Script" uid="uid://70uo6yn78g0j" path="res://minigames/shadowboxing/shadowboxing_minigame.gd" id="1_npb7n"]
 [ext_resource type="PackedScene" uid="uid://cvm5bka5p8rwr" path="res://minigames/shadowboxing/boxer.tscn" id="2_npb7n"]
+[ext_resource type="Texture2D" uid="uid://d2eqjp376tvx4" path="res://minigames/shadowboxing/shadowboxing_bg.jpg" id="2_tpqw4"]
 [ext_resource type="Script" uid="uid://vqi1t6o84qql" path="res://minigames/shadowboxing/boxer.gd" id="3_xf8mx"]
 [ext_resource type="Curve" uid="uid://dymwctgfmkc14" path="res://minigames/shadowboxing/boxer_movement_curve_y.tres" id="4_dm4nt"]
 [ext_resource type="Curve" uid="uid://cjx801rxnink0" path="res://minigames/shadowboxing/boxer_movement_curve_x.tres" id="4_dscpv"]
-
-[sub_resource type="Gradient" id="Gradient_npb7n"]
-offsets = PackedFloat32Array(0, 0.99666667, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.88431424, 3.3450872e-06, 3.85046e-07, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xf8mx"]
-gradient = SubResource("Gradient_npb7n")
+[ext_resource type="Texture2D" uid="uid://c8x0igwqtdm14" path="res://minigames/shadowboxing/healthbar_broken.png" id="7_hhov7"]
+[ext_resource type="Texture2D" uid="uid://cgo88cv5j3pgo" path="res://minigames/shadowboxing/healthbar_red.png" id="7_xxoxp"]
+[ext_resource type="Texture2D" uid="uid://bqsffqxekmkyf" path="res://minigames/shadowboxing/healthbar_yellow.png" id="8_hhov7"]
+[ext_resource type="AudioStream" uid="uid://djmlrarwk33kr" path="res://minigames/shadowboxing/shadowboxing.ogg" id="10_hhov7"]
 
 [sub_resource type="Curve2D" id="Curve2D_npb7n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dscpv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_hhov7")
+}],
+"loop": true,
+"name": &"health_broken",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_xxoxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hhov7")
+}],
+"loop": true,
+"name": &"health_flash",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e4fpx"]
+size = Vector2(133, 59)
 
 [node name="Shadowboxing" type="Node"]
 script = ExtResource("1_npb7n")
 instruction = "Don't look!"
 countdown_time = 7.0
-metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1280.0
-offset_bottom = 720.0
+offset_left = -164.0
+offset_top = -97.0
+offset_right = 1456.0
+offset_bottom = 908.0
 mouse_filter = 2
-texture = SubResource("GradientTexture1D_xf8mx")
-
-[node name="Message" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
+texture = ExtResource("2_tpqw4")
+expand_mode = 1
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -50,8 +61,8 @@ wait_time = 0.07
 autostart = true
 
 [node name="Boxer" parent="." instance=ExtResource("2_npb7n")]
-position = Vector2(682, 305)
-scale = Vector2(0.5, 0.5)
+position = Vector2(627, 400)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("3_xf8mx")
 idle_curve_x = ExtResource("4_dscpv")
 idle_curve_y = ExtResource("4_dm4nt")
@@ -61,5 +72,36 @@ bob_speed = 50
 curve = SubResource("Curve2D_npb7n")
 
 [node name="HealthBar" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HealthBar"]
+position = Vector2(362.46075, 24.25)
+scale = Vector2(0.53305787, 0.53305787)
+sprite_frames = SubResource("SpriteFrames_dscpv")
+animation = &"health_flash"
+frame_progress = 0.75285155
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthBar"]
+position = Vector2(148.46075, 107.25)
+shape = SubResource("RectangleShape2D_e4fpx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_hhov7")
+autoplay = true
+
+[node name="Message" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -34.5
+offset_right = 20.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
