@@ -9,7 +9,6 @@ var move_weight: float = 0.0
 var lost: bool = false
 var delay: float = 2.0
 var speed: float = 0.2
-@onready var flash_overlay = $FlashOverlay
 @onready var blink_timer = $Timer
 
 #@export var idle_curve: Curve
@@ -17,7 +16,6 @@ var speed: float = 0.2
 #@export var movement_curve: Curve
 @export var pause_frame: int = 15  # The frame number to pause on (Remember: Frame 1 is actually 0!)
 @export var pause_duration: float = 3.5  # How many seconds to pause for
-@export var pause_duration: float = 0.1  # How many seconds to pause for
 var has_paused_this_punch: bool = false  # To stop it from pausing endlessly if it loops
 
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
@@ -28,9 +26,6 @@ var has_paused_this_punch: bool = false  # To stop it from pausing endlessly if 
 func start():
 	# Reset variables
 	arrows.clear()
-	flash_overlay.visible = false
-	flash_overlay.material.set_shader_param("flash_intensity", 0.0)
-
 	# Adjust for difficulty
 	countdown_time /= difficulty
 	delay /= difficulty
@@ -109,28 +104,24 @@ func run():
 			if (direction != 0):
 				win()
 			else:
-				play_red_flash()
 				lose()
 		if Input.is_action_pressed(&"right"):
 			remove_arrow(arrows)
 			if (direction != 1):
 				win()
 			else:
-				play_red_flash()
 				lose()
 		if Input.is_action_pressed(&"down"):
 			remove_arrow(arrows)
 			if (direction != 2):
 				win()
 			else:
-				play_red_flash()
 				lose()
 		if Input.is_action_pressed(&"left"):
 			remove_arrow(arrows)
 			if (direction != 3):
 				win()
 			else:
-				play_red_flash()
 				lose()
 				
 	#print_debug(countdown_timer.time_left)
@@ -167,32 +158,3 @@ func _on_timer_timeout() -> void:
 	for arrow in arrows:
 		if is_instance_valid(arrow):
 			arrow.visible = !arrow.visible
-func _on_frame_changed() -> void:
-	if boxer_sprite.animation == "left_punch" and boxer_sprite.frame == pause_frame and not has_paused_this_punch:
-		
-		# 2. Lock it so it doesn't trigger again on accident
-		has_paused_this_punch = true 
-		
-		# 3. Freeze the animation on this exact frame
-		boxer_sprite.pause() 
-		
-		# 4. Wait for the desired amount of time
-		await get_tree().create_timer(pause_duration).timeout 
-		
-		# 5. Resume the animation!
-		boxer_sprite.play()
-		
-func play_red_flash():
-	flash_overlay.visible = true
-
-   	# Create a tween to animate the shader param
-	var tween = create_tween()
-
-   	# 1. Flash to full intensity quickly (0.05s)
-	tween.tween_property(flash_overlay.material, "shader_parameter/flash_intensity", 0.6, 0.05)
-
-   	# 2. Fade out smoothly (0.2s)
-	tween.tween_property(flash_overlay.material, "shader_parameter/flash_intensity", 0.0, 0.2)
-
-   	# 3. Hide node when finished
-	tween.tween_callback(func(): flash_overlay.visible = false)
