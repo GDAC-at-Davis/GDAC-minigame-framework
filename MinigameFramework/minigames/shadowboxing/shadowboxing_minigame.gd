@@ -18,10 +18,12 @@ var speed: float = 0.2
 @export var pause_duration: float = 3.5  # How many seconds to pause for
 var has_paused_this_punch: bool = false  # To stop it from pausing endlessly if it loops
 
+
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
 @onready var boxer_sprite = $Boxer/AnimatedSprite2D
 @onready var healthbar_sprite = $HealthBar/AnimatedSprite2D
 @onready var particles: GPUParticles2D = $BalloonParticles
+@onready var red_flash  = $ColorRect
 
 func start():
 	# Reset variables
@@ -104,25 +106,25 @@ func run():
 			if (direction != 0):
 				win()
 			else:
-				lose()
+				got_hit()
 		if Input.is_action_pressed(&"right"):
 			remove_arrow(arrows)
 			if (direction != 1):
 				win()
 			else:
-				lose()
+				got_hit()
 		if Input.is_action_pressed(&"down"):
 			remove_arrow(arrows)
 			if (direction != 2):
 				win()
 			else:
-				lose()
+				got_hit()
 		if Input.is_action_pressed(&"left"):
 			remove_arrow(arrows)
 			if (direction != 3):
 				win()
 			else:
-				lose()
+				got_hit()
 				
 	#print_debug(countdown_timer.time_left)
 	
@@ -136,7 +138,7 @@ func remove_arrow(arrows_to_remove):
 	
 func win():
 	super()
-	show_message("You won!")
+	show_message("YOU WON!")
 	await $MessageTimer.timeout
 	
 func show_message(text):
@@ -145,13 +147,14 @@ func show_message(text):
 	$MessageTimer.start()
 	
 func got_hit():
+	red_flash.animate_red_flash()
 	healthbar_sprite.play("health_broken")
 	lose()
-	
+
 func lose():
 	lost = true
 	super()
-	show_message("You lost!")
+	show_message("YOU LOST!")
 	await $MessageTimer.timeout
 	
 func _on_timer_timeout() -> void:

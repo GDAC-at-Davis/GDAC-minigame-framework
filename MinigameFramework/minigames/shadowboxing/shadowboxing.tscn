@@ -1,15 +1,22 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0fd5eqxcdio3"]
+[gd_scene load_steps=17 format=3 uid="uid://c0fd5eqxcdio3"]
 
 [ext_resource type="Script" uid="uid://70uo6yn78g0j" path="res://minigames/shadowboxing/shadowboxing_minigame.gd" id="1_npb7n"]
 [ext_resource type="PackedScene" uid="uid://cvm5bka5p8rwr" path="res://minigames/shadowboxing/boxer.tscn" id="2_npb7n"]
 [ext_resource type="Texture2D" uid="uid://d2eqjp376tvx4" path="res://minigames/shadowboxing/shadowboxing_bg.jpg" id="2_tpqw4"]
-[ext_resource type="Script" uid="uid://vqi1t6o84qql" path="res://minigames/shadowboxing/boxer.gd" id="3_xf8mx"]
+[ext_resource type="Script" path="res://minigames/shadowboxing/boxer.gd" id="3_xf8mx"]
 [ext_resource type="Curve" uid="uid://dymwctgfmkc14" path="res://minigames/shadowboxing/boxer_movement_curve_y.tres" id="4_dm4nt"]
 [ext_resource type="Curve" uid="uid://cjx801rxnink0" path="res://minigames/shadowboxing/boxer_movement_curve_x.tres" id="4_dscpv"]
 [ext_resource type="Texture2D" uid="uid://c8x0igwqtdm14" path="res://minigames/shadowboxing/healthbar_broken.png" id="7_hhov7"]
 [ext_resource type="Texture2D" uid="uid://cgo88cv5j3pgo" path="res://minigames/shadowboxing/healthbar_red.png" id="7_xxoxp"]
 [ext_resource type="Texture2D" uid="uid://bqsffqxekmkyf" path="res://minigames/shadowboxing/healthbar_yellow.png" id="8_hhov7"]
 [ext_resource type="AudioStream" uid="uid://djmlrarwk33kr" path="res://minigames/shadowboxing/shadowboxing.ogg" id="10_hhov7"]
+[ext_resource type="Shader" uid="uid://jfn4j5f0fx1h" path="res://minigames/shadowboxing/red_effect.gdshader" id="11_e4fpx"]
+[ext_resource type="Script" uid="uid://bti2kg2xrch30" path="res://minigames/shadowboxing/color_rect.gd" id="12_a70mm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a70mm"]
+shader = ExtResource("11_e4fpx")
+shader_parameter/red_tint = Color(1, 0, 0, 0.5)
+shader_parameter/intensity = 0.0
 
 [sub_resource type="Curve2D" id="Curve2D_npb7n"]
 
@@ -42,6 +49,16 @@ size = Vector2(133, 59)
 script = ExtResource("1_npb7n")
 instruction = "Don't look!"
 countdown_time = 7.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 100
+material = SubResource("ShaderMaterial_a70mm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_a70mm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -164.0
