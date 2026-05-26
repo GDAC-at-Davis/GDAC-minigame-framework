@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0fd5eqxcdio3"]
+[gd_scene load_steps=31 format=3 uid="uid://c0fd5eqxcdio3"]
 
 [ext_resource type="Script" uid="uid://70uo6yn78g0j" path="res://minigames/shadowboxing/shadowboxing_minigame.gd" id="1_npb7n"]
 [ext_resource type="PackedScene" uid="uid://cvm5bka5p8rwr" path="res://minigames/shadowboxing/boxer.tscn" id="2_npb7n"]
@@ -12,7 +12,10 @@
 [ext_resource type="AudioStream" uid="uid://djmlrarwk33kr" path="res://minigames/shadowboxing/shadowboxing.ogg" id="10_hhov7"]
 [ext_resource type="Shader" uid="uid://jfn4j5f0fx1h" path="res://minigames/shadowboxing/red_effect.gdshader" id="11_e4fpx"]
 [ext_resource type="Script" uid="uid://bti2kg2xrch30" path="res://minigames/shadowboxing/color_rect.gd" id="12_a70mm"]
+[ext_resource type="Script" uid="uid://ds4mfkuxydhip" path="res://minigames/shadowboxing/player.gd" id="13_o3cty"]
 [ext_resource type="Texture2D" uid="uid://cejvue0f7eune" path="res://minigames/shadowboxing/player_dodgeleft.webp" id="13_vfety"]
+[ext_resource type="Curve" uid="uid://bcbl2kudtf7rw" path="res://minigames/shadowboxing/player_movement_curve_x.tres" id="14_fptos"]
+[ext_resource type="Curve" uid="uid://oelm6us1cvax" path="res://minigames/shadowboxing/player_movement_curve_y.tres" id="15_mnu18"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a70mm"]
 shader = ExtResource("11_e4fpx")
@@ -46,16 +49,71 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e4fpx"]
 size = Vector2(133, 59)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfety"]
+atlas = ExtResource("13_vfety")
+region = Rect2(0, 0, 496, 371)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3cty"]
+atlas = ExtResource("13_vfety")
+region = Rect2(496, 0, 496, 371)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk5do"]
+atlas = ExtResource("13_vfety")
+region = Rect2(992, 0, 496, 371)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fptos"]
+atlas = ExtResource("13_vfety")
+region = Rect2(1488, 0, 496, 371)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnu18"]
+atlas = ExtResource("13_vfety")
+region = Rect2(1984, 0, 496, 371)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpuxt"]
+atlas = ExtResource("13_vfety")
+region = Rect2(0, 371, 496, 371)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dcpd"]
+atlas = ExtResource("13_vfety")
+region = Rect2(496, 371, 496, 371)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uqqh"]
+atlas = ExtResource("13_vfety")
+region = Rect2(992, 371, 496, 371)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_o3cty"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_vfety")
+"texture": SubResource("AtlasTexture_vfety")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3cty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk5do")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fptos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnu18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpuxt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dcpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uqqh")
 }],
-"loop": true,
+"loop": false,
 "name": &"left_dodge",
-"speed": 5.0
+"speed": 12.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vfety"]
 
 [node name="Shadowboxing" type="Node"]
 script = ExtResource("1_npb7n")
@@ -134,9 +192,17 @@ theme_override_font_sizes/font_size = 50
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" type="Area2D" parent="."]
+position = Vector2(500, 610)
+scale = Vector2(1.5, 1.5)
+script = ExtResource("13_o3cty")
+idle_curve_x = ExtResource("14_fptos")
+idle_curve_y = ExtResource("15_mnu18")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_o3cty")
 animation = &"left_dodge"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CapsuleShape2D_vfety")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

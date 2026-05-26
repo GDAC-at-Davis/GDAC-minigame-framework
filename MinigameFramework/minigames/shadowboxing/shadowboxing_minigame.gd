@@ -22,6 +22,7 @@ var has_paused_this_punch: bool = false  # To stop it from pausing endlessly if 
 # 0: up, 1: right, 2: down, 3: left (think of compass, never eat soggy waffles!)
 @onready var boxer_sprite = $Boxer/AnimatedSprite2D
 @onready var healthbar_sprite = $HealthBar/AnimatedSprite2D
+@onready var player_sprite = $Player/AnimatedSprite2D
 @onready var particles: GPUParticles2D = $BalloonParticles
 @onready var red_flash  = $ColorRect
 
@@ -35,6 +36,7 @@ func start():
 	
 	await get_tree().create_timer(delay).timeout
 	get_node("Boxer").bobbing = false
+	get_node("Player").bobbing = false
 	
 	#await get_tree().create_timer(delay).timeout
 	# Spawn the arrow
@@ -120,6 +122,8 @@ func run():
 			else:
 				got_hit()
 		if Input.is_action_pressed(&"left"):
+			player_sprite.pause()
+			player_sprite.play("left_dodge")
 			remove_arrow(arrows)
 			if (direction != 3):
 				win()
