@@ -4,7 +4,10 @@
 
 [node name="WorldManager" type="Node2D"]
 script = ExtResource("1_8lmw3")
-
-[node name="UICanvas" type="CanvasLayer" parent="."]
+metadata/_custom_type_script = "uid://dtmlo62vwyrq0"
 
 [node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="WorldLayer" type="CanvasLayer" parent="."]
+
+[node name="UILayer" type="CanvasLayer" parent="."]

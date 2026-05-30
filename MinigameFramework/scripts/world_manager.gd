@@ -1,33 +1,37 @@
 class_name WorldManager
 extends Node2D
 
-@export var scene_dict : Dictionary[String, PackedScene] = {
-	"Home" : preload("res://scenes/home_room.tscn"),
-	"Empty" : preload("res://scenes/empty.tscn")
+signal story_state_completed
+
+enum StoryState {
+	STORY_INTRO,
+	OPEN_LAB_INTRO,
+	MINIGAMES,
+	SMOKE_BEAST,
+	FINAL_BATTLE,
 }
 
-@export var ui_dict = {
-	"Menu" : preload("res://scenes/menu.tscn"),
-	"Collection" : preload("res://scenes/minigame_collection.tscn"),
-	"Home" : preload("res://scenes/ui.tscn"),
-	"Cutscene" : preload("res://scenes/cutscene.tscn")
-}
-
-@export var music_dict : Dictionary[String, String]= {
-	"Cutscene" : "res://assets/audio/cutscene_audio.wav"
-}
-
-var active_scene = null:
+var active_scene: Node = null:
 	get():
 		return active_scene
 var active_ui = null:
 	get():
 		return active_ui
 
-@onready var ui_canvas = $UICanvas
+var current_story_state: StoryState = StoryState.STORY_INTRO
+
+@onready var ui_layer = $UILayer
+@onready var world_layer = $WorldLayer
 @onready var audio : AudioStreamPlayer = $Audio
 
-# Helper functions
+func progress_story():
+	match current_story_state:
+		StoryState.STORY_INTRO:
+			load_ui("res://scenes/cutscene.tscn")
+			await story_state_completed
+			delete_ui()
+			load_world("res://scenes/home_room.tscn")
+			
 
 func has_node_of_type(parent: Node, type):
 	for child in parent.get_children():
@@ -41,51 +45,36 @@ func get_node_of_type(parent: Node, type):
 			return child
 	return null
 
-func load_level(level_name : String, delete : bool = true, keep_running : bool = false):
-	if level_name in scene_dict.keys():
-		load_scene(level_name, delete, keep_running)
-	else:
-		load_scene("Empty", delete, keep_running)
-	if level_name in ui_dict.keys():
-		load_ui(level_name, delete, keep_running)
-
-func play_music(song, speed : float = 1.0):
-	if song in music_dict.keys():
-			GameManager.play_music(music_dict[song], speed)
+#func play_music(song, speed : float = 1.0):
+	#if song in music_dict.keys():
+			#GameManager.play_music(music_dict[song], speed)
 	# Do this later
 
 func pause_music():
 	GameManager.pause_music()
 
-func load_scene(scene_name : String, delete : bool = true, keep_running : bool = false):
+func load_world(scene_path : String):
 	if active_scene != null:
-		if delete:
-			active_scene.queue_free()
-		elif keep_running:
-			active_scene.visible = false
-		else:
-			remove_child(active_scene)
+		active_scene.queue_free()
 		active_scene = null
-	var new_scene = scene_dict.get(scene_name)
+	var new_scene = load(scene_path)
 	if new_scene:
 		active_scene = new_scene.instantiate()
-		add_child(active_scene)
+		world_layer.add_child(active_scene)
 
-func load_ui(ui_name : String, delete : bool = true, keep_running : bool = false):
+func delete_world():
+	if active_scene != null:
+		active_scene.queue_free()
+
+func load_ui(ui_path : String):
 	if active_ui != null:
-		if delete:
-			active_ui.queue_free()
-		elif keep_running:
-			active_ui.visible = false
-		else:
-			ui_canvas.remove_child(active_ui)
+		active_ui.queue_free()
 		active_ui = null
-	var new_ui = ui_dict.get(ui_name)
-	if new_ui:
-		active_ui = new_ui.instantiate()
-		ui_canvas.add_child(active_ui)
+	var new_scene = load(ui_path)
+	if new_scene:
+		active_ui = new_scene.instantiate()
+		ui_layer.add_child(active_ui)
 
-# End of helper functions
-
-func _ready() -> void:
-	load_scene("Menu")
+func delete_ui():
+	if active_ui != null:
+		active_ui.queue_free()
