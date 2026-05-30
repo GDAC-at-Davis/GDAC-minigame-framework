@@ -9,6 +9,7 @@ extends Minigame
 func _ready():
 	super._ready()
 	controller.payload.defeated.connect(func() : lose())
+	GameManager.play_music("res://minigames/discus_payload/DiscusPayload.mp3")
 
 	print(difficulty, " ", num_graps.sample(difficulty), " ", num_spike_per_gap.sample(difficulty))
 	$Spikes.generate_spikes(num_graps.sample(difficulty), num_spike_per_gap.sample(difficulty))
@@ -22,8 +23,10 @@ func _process(delta: float) -> void:
 	
 func win() -> void:
 	$win.visible = true
+	GameManager.pause_music()
 	super.win()
 	
 func lose() -> void:
 	$lose.visible = true
+	GameManager.pause_music()
 	super.lose()
