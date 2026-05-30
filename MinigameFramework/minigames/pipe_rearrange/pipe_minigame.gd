@@ -9,6 +9,7 @@ var all_connect: int = 0
 
 func start():
 	# im getting all the pipes into a list and returning to their default
+	GameManager.play_music("res://minigames/pipe_rearrange/ConnectingPipes.wav", difficulty)
 	for pipe in get_children():
 		if pipe is Pipe:
 			pipes.append(pipe)
@@ -39,3 +40,4 @@ func pipe_connect_stats():
 			all_connect += 1
 	if all_connect == len(pipes):
 		win()
+		GameManager.pause_music()
