@@ -1,4 +1,5 @@
 extends Control
+class_name IntroCutscene
 
 @export var dialogues : Array[String]
 @export var images : Array[Texture2D]
@@ -13,6 +14,8 @@ var text_threshold : float = 0.1
 var text_counter : float = 0.0
 
 var playing_text : bool = false
+
+var complete : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,7 +36,7 @@ func _process(delta: float) -> void:
 			if current_dialogue < len(dialogues):
 				start_text()
 			else:
-				GameManager.world_manager.story_state_completed.emit()
+				complete = true
 
 func start_text():
 	text.text = dialogues[current_dialogue]
