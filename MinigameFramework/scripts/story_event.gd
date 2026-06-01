@@ -1,6 +1,8 @@
 class_name StoryEvent
 extends Node
 
+var overworld: Overworld
+
 func enter():
 	on_enter()
 

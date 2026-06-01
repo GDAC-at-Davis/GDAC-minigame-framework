@@ -1,3 +1,4 @@
+class_name DialogueBox
 extends Control
 
 @onready var scene = get_parent()

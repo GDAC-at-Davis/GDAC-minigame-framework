@@ -3,9 +3,12 @@ extends Node
 
 var story_events: Array[StoryEvent]
 var story_event_idx = -1
+var overworld: Overworld
 
 func _ready():
+	overworld = get_parent()
 	for event: StoryEvent in get_children():
+		event.overworld = overworld
 		story_events.append(event)
 
 func _physics_process(delta):

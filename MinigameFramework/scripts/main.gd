@@ -3,5 +3,4 @@ extends Node
 
 func _ready() -> void:
 	GameManager.main_scene = self
-	GameManager.switch_to_world()
-	GameManager.world_manager.load_ui("res://scenes/menu.tscn")
+	GameManager.switch_scenes(load("res://scenes/menu.tscn"))

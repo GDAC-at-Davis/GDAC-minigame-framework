@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://blmvycvgmnnxv"]
+
+[ext_resource type="Script" uid="uid://dtmlo62vwyrq0" path="res://scripts/world_manager.gd" id="1_3gvrs"]
+[ext_resource type="Script" uid="uid://bww3o28wdg8me" path="res://scripts/story_manager.gd" id="2_eab5i"]
+[ext_resource type="Script" uid="uid://i52imqyc37cx" path="res://scripts/story_events/introduction.gd" id="3_fkyvp"]
+[ext_resource type="Script" uid="uid://ddvugymy76wgj" path="res://scripts/story_events/open_lab.gd" id="4_qjxaj"]
+[ext_resource type="PackedScene" uid="uid://byvkspg3purui" path="res://scenes/ui.tscn" id="5_e184d"]
+[ext_resource type="PackedScene" uid="uid://blugenr688iy7" path="res://scenes/home_room.tscn" id="5_eab5i"]
+
+[node name="Overworld" type="Node2D"]
+script = ExtResource("1_3gvrs")
+metadata/_custom_type_script = "uid://dtmlo62vwyrq0"
+
+[node name="StoryManager" type="Node" parent="."]
+script = ExtResource("2_eab5i")
+metadata/_custom_type_script = "uid://bww3o28wdg8me"
+
+[node name="Introduction" type="Node" parent="StoryManager"]
+script = ExtResource("3_fkyvp")
+metadata/_custom_type_script = "uid://dhiep453gufag"
+
+[node name="OpenLab" type="Node" parent="StoryManager"]
+script = ExtResource("4_qjxaj")
+metadata/_custom_type_script = "uid://dhiep453gufag"
+
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="WorldLayer" type="CanvasLayer" parent="."]
+offset = Vector2(294.495, 71.625)
+transform = Transform2D(1, 0, 0, 1, 294.495, 71.625)
+
+[node name="Environment" parent="WorldLayer" instance=ExtResource("5_eab5i")]
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" parent="UILayer" instance=ExtResource("5_e184d")]
+
+[editable path="UILayer/DialogueBox"]

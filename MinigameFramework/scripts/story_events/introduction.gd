@@ -2,11 +2,17 @@ extends StoryEvent
 
 var cutscene: IntroCutscene
 
+var text: Array[String] = [
+	"Hifdsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+	"Hello",
+	"Bye"
+]
+
 func on_enter():
-	cutscene = GameManager.world_manager.load_ui("res://scenes/cutscene.tscn")
+	overworld.dialogue_box.play_text(text)
 
 func on_complete():
-	GameManager.world_manager.delete_ui()
+	overworld.delete_ui()
 
 func is_event_completed():
 	if cutscene:

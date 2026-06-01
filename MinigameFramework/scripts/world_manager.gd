@@ -1,4 +1,4 @@
-class_name WorldManager
+class_name Overworld
 extends Node2D
 
 var active_scene: Node = null:
@@ -10,10 +10,13 @@ var active_ui: Node = null:
 
 
 
-@onready var ui_layer = $UILayer
+@onready var dialogue_box: DialogueBox = $UILayer/DialogueBox
 @onready var world_layer = $WorldLayer
 @onready var audio : AudioStreamPlayer = $Audio
 @onready var story_manager: StoryManager = $StoryManager
+
+func _ready():
+	story_manager.progress_story()
 
 func has_node_of_type(parent: Node, type):
 	for child in parent.get_children():
@@ -50,18 +53,6 @@ func load_world(scene_path : String) -> Node:
 func delete_world():
 	if active_scene != null:
 		active_scene.queue_free()
-
-func load_ui(ui_path : String) -> Node:
-	if active_ui != null:
-		active_ui.queue_free()
-		active_ui = null
-	var new_scene = load(ui_path)
-	if new_scene:
-		active_ui = new_scene.instantiate()
-		ui_layer.add_child(active_ui)
-		return active_ui
-	else:
-		return null
 
 func delete_ui():
 	if active_ui != null:

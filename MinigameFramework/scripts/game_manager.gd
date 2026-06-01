@@ -1,36 +1,24 @@
 extends Node
 
 var main_scene: Node
-var world_manager: WorldManager
-var minigame_manager: MinigameManager
+var current_scene: Node
 var music_player : AudioStreamPlayer
 var currently_playing : String = ""
 
 var minigame_collection: Array[MinigameInfo]
 
 var _minigame_folder_path: String = "res://minigames/"
-var _world_manager_scene: PackedScene = preload("res://scenes/world_manager.tscn")
-var _minigame_manager_scene: PackedScene = preload("res://scenes/minigame_manager.tscn")
 
 func _ready():
-	world_manager = _world_manager_scene.instantiate()
-	minigame_manager = _minigame_manager_scene.instantiate()
 	_load_info_from_disk(_minigame_folder_path)
 	music_player = AudioStreamPlayer.new()
 	add_child(music_player)
-
-## Starts the minigame manager with the minigame group data
-func switch_to_minigames(minigame_data : MinigameGroupData, endless: bool = false):
-	if world_manager.get_parent():
-		main_scene.remove_child(world_manager)
-	main_scene.add_child(minigame_manager)
-	minigame_manager.start(minigame_data, endless)
-
-## Removes the minigame manager and adds the world manager
-func switch_to_world():
-	if minigame_manager.get_parent():
-		main_scene.remove_child(minigame_manager)
-	main_scene.add_child(world_manager)
+	
+func switch_scenes(new_scene: PackedScene):
+	if current_scene:
+		current_scene.queue_free()
+	current_scene = new_scene.instantiate()
+	main_scene.add_child(current_scene)
 
 ## Searches the minigames folder for data to use in the minigame collection
 func _load_info_from_disk(path: String):
