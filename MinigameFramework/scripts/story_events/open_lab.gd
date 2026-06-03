@@ -1,10 +1,10 @@
 extends StoryEvent
 
 func on_enter():
-	GameManager.world_manager.load_world("res://scenes/home_room.tscn")
+	var open_lab: Node = load("res://scenes/home_room.tscn").instantiate()
+	overworld.add_to_world(open_lab)
+	overworld.add_to_world(overworld.player)
+	overworld.controller.possessed = overworld.player
 
-func on_complete():
+func on_exit():
 	pass
-
-func is_event_completed():
-	return false

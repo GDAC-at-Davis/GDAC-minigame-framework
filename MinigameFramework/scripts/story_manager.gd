@@ -14,13 +14,14 @@ func _ready():
 func _physics_process(delta):
 	if story_event_idx < 0:
 		return
-	if story_events[story_event_idx].is_event_completed():
-		progress_story()
 	story_events[story_event_idx].update()
 
 func progress_story():
 	if story_events[story_event_idx]:
-		story_events[story_event_idx].complete()
+		story_events[story_event_idx].exit()
 	story_event_idx += 1
 	if story_events[story_event_idx]:
 		story_events[story_event_idx].enter()
+
+func story_event_completed():
+	progress_story()

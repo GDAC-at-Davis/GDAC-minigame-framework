@@ -9,8 +9,11 @@ func enter():
 func update():
 	on_update()
 
+func exit():
+	on_exit()
+
 func complete():
-	on_complete()
+	overworld.story_manager.story_event_completed()
 
 ## Called when the event is first entered.
 func on_enter():
@@ -20,10 +23,6 @@ func on_enter():
 func on_update():
 	pass
 
-## Called when the event is completed.
-func on_complete():
+## Called when the event is exited.
+func on_exit():
 	pass
-
-## Condition for whether the event has been completed. This is checked every frame.
-func is_event_completed():
-	return false

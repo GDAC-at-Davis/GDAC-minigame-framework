@@ -1,9 +1,5 @@
 extends Node2D
 
-
-
-var player_scene = preload("res://scenes/player.tscn")
-var player = null
 @onready var visual_tilemap = $VisualTileMap
 @onready var collision_tilemap = $CollisionTileMap
 
@@ -44,46 +40,6 @@ var INTERACTABLE_TEXT_DICT = {
 	"KILL AS MANY AS YOU CAN!"]
 }
 
-# helper functions
-func spawn_player():
-	# find spawn tile
-	var spawn_tile = collision_tilemap.get_used_cells_by_id(SPAWN_CELL_ID)[0]
-	
-	# spawn player
-	player = player_scene.instantiate()
-	
-	player.position = collision_tilemap.map_to_local(spawn_tile) - Vector2(0.5, 0.5)
-	
-	add_child(player)
-
-func mother_may_i_move(dir :String) -> bool:
-	var target_cell_pos = collision_tilemap.local_to_map(player.position + (CELL_SIZE * INPUTS[dir]))
-	var target_cell = collision_tilemap.get_cell_source_id(target_cell_pos)
-	if target_cell in WALKABLE_CELLS:
-		return true
-	else:
-		return false
-		
-func mother_can_i_interact() -> String:
-	var current_cell_pos = collision_tilemap.local_to_map(player.position)
-	var current_cell = collision_tilemap.get_cell_source_id(current_cell_pos)
-	if current_cell in INTERACTION_DICT:
-		return INTERACTION_DICT[current_cell]
-	else:
-		return ''
-# end helper functions
-
-func i_am_interacting():
-	var player_position =  Vector2i(collision_tilemap.local_to_map(player.position))
-	if player_position in INTERACTABLE_TILES_DICT:
-		interact(INTERACTABLE_TILES_DICT[player_position])
-	
-func text_lock_player():
-	player.text_locked = true
-	
-func text_unlock_player():
-	player.text_locked = false
-
 func interact(interaction : String):
 	match interaction:
 		"bed":
@@ -95,6 +51,3 @@ func interact(interaction : String):
 		"bloon":
 			GameManager.world_manager.active_ui.play_text(INTERACTABLE_TEXT_DICT["bloon"], preload("res://resources/minigame_groups/bloon_minigames.tres"))
 		
-
-func _ready() -> void:
-	spawn_player()

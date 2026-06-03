@@ -1,6 +1,8 @@
 class_name DialogueBox
 extends Control
 
+signal dialogue_completed
+
 @onready var scene = get_parent()
 @onready var text = $TextPanel/Text
 @onready var panel = $TextPanel
@@ -41,6 +43,7 @@ func _input(event):
 			else:
 				playing = false
 				panel.visible = false
+				dialogue_completed.emit()
 				if next_scene != null:
 					GameManager.switch_to_minigames(next_scene)
 				

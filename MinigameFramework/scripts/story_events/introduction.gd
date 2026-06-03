@@ -9,13 +9,11 @@ var text: Array[String] = [
 ]
 
 func on_enter():
+	overworld.dialogue_box.dialogue_completed.connect(_on_dialogue_completed)
 	overworld.dialogue_box.play_text(text)
 
-func on_complete():
-	overworld.delete_ui()
+func on_exit():
+	overworld.dialogue_box.dialogue_completed.disconnect(_on_dialogue_completed)
 
-func is_event_completed():
-	if cutscene:
-		return cutscene.complete
-	else:
-		return false
+func _on_dialogue_completed():
+	complete()
