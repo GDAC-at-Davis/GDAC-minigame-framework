@@ -33,8 +33,9 @@ func close():
 	var overworld: Overworld = GameManager.current_scene as Overworld
 	overworld.controller.enabled = true
 	panel.visible = false
-	dialogue_completed.emit()
+	_character_timer.stop()
 	process_mode = Node.PROCESS_MODE_DISABLED
+	dialogue_completed.emit()
 
 func play_text_index():
 	if _line_idx >= lines.size():

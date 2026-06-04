@@ -7,6 +7,7 @@ var _player_scene: PackedScene = preload("res://scenes/player.tscn")
 
 @onready var dialogue_box: DialogueBox = $UILayer/DialogueBox
 @onready var world_layer = $WorldLayer
+@onready var overlay_layer = $OverlayLayer
 @onready var ui_layer = $UILayer
 @onready var audio : AudioStreamPlayer = $Audio
 @onready var story_manager: StoryManager = $StoryManager
@@ -36,6 +37,7 @@ func get_node_of_type(parent: Node, type):
 
 func play_minigames(minigame_group: MinigameGroupData):
 	remove_child(world_layer)
+	remove_child(overlay_layer)
 	remove_child(ui_layer)
 	GameManager.minigame_manager.all_minigames_completed.connect(_on_minigames_completed)
 	GameManager.minigame_manager.start(minigame_group)
@@ -49,7 +51,14 @@ func add_to_world(node: Node):
 func remove_from_world(node: Node):
 	world_layer.remove_child(node)
 
+func add_to_overlay(node: Node):
+	overlay_layer.add_child(node)
+
+func remove_from_overlay(node: Node):
+	overlay_layer.remove_child(node)
+
 func _on_minigames_completed(won: bool):
 	GameManager.minigame_manager.all_minigames_completed.disconnect(_on_minigames_completed)
 	add_child(world_layer)
+	add_child(overlay_layer)
 	add_child(ui_layer)

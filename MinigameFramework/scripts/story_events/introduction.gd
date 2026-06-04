@@ -1,7 +1,5 @@
 extends StoryEvent
 
-var cutscene: IntroCutscene
-
 var text: Array[String] = [
 	"Long ago, there were two tribes who could not be more different.",
 	"One tribe was the Artisans—lovers of art, humanity, and culture.",
@@ -30,7 +28,6 @@ var text: Array[String] = [
 	"Then, they came up with the ultimate culmination of all of their skills.",
 	"VIDEO GAMES.",
 	"With the creation of INSERT NUMBER OF MINIGAMES HERE cornerstone games, the beast was sealed away.",
-
 ]
 
 func on_enter():
