@@ -1,6 +1,5 @@
-[gd_scene load_steps=44 format=4 uid="uid://blugenr688iy7"]
+[gd_scene load_steps=43 format=4 uid="uid://blugenr688iy7"]
 
-[ext_resource type="Script" uid="uid://b0f7uaviabxqe" path="res://scripts/home_room.gd" id="1_l37yc"]
 [ext_resource type="Texture2D" uid="uid://bpcxorg5mbxpi" path="res://assets/collider_environment/InteractableDown.png" id="2_lvja3"]
 [ext_resource type="Texture2D" uid="uid://bj8wfbi4eknw6" path="res://assets/collider_environment/InteractableLeft.png" id="3_dax6w"]
 [ext_resource type="Texture2D" uid="uid://bq4foyryhbnq" path="res://assets/collider_environment/InteractableRight.png" id="4_g7nv8"]
@@ -19,9 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://b5dkscfeciho2" path="res://assets/environment/WallDoubleCorner.png" id="17_e808c"]
 [ext_resource type="Texture2D" uid="uid://b00qgwvyci14b" path="res://assets/environment/WallJutCorner.png" id="18_g0mfh"]
 [ext_resource type="Texture2D" uid="uid://yqob7l3osu7n" path="res://assets/environment/Door.png" id="19_x3gfm"]
+[ext_resource type="Script" uid="uid://dh23numijpv1d" path="res://scripts/minigame_interactable.gd" id="20_ijakw"]
 [ext_resource type="Texture2D" uid="uid://dimpxn7q7dko1" path="res://assets/interactables/bloon.png" id="20_mohvt"]
-[ext_resource type="Script" uid="uid://c3prj1h5n1bt6" path="res://scripts/interactable.gd" id="21_ijakw"]
-[ext_resource type="Resource" uid="uid://78pfofl0yt3k" path="res://resources/minigame_groups/bloon_minigames.tres" id="22_pts8f"]
+[ext_resource type="Resource" uid="uid://78pfofl0yt3k" path="res://resources/minigame_groups/bloon_minigames.tres" id="21_ijakw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n1h35"]
 texture = ExtResource("2_lvja3")
@@ -166,11 +165,10 @@ sources/9 = SubResource("TileSetAtlasSource_p2d2v")
 sources/10 = SubResource("TileSetAtlasSource_sxl3h")
 sources/11 = SubResource("TileSetAtlasSource_uxmcf")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijakw"]
-size = Vector2(30, 31)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mohvt"]
+size = Vector2(30, 30)
 
 [node name="Environment" type="Node2D"]
-script = ExtResource("1_l37yc")
 
 [node name="CollisionTileMap" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD7/wIABQAAAAAAAAD7/wEABQAAAAAAAAD7/wAABQAAAAAAAAD7////BQAAAAAAAAD7//7/BQAAAAAAAAABAAUABQAAAAAAAAD7/wMABQAAAAAAAAD7/wQABQAAAAAAAAD7/wUABQAAAAAAAAD7/wYABQAAAAAAAAD8/wYABQAAAAAAAAD9/wYABQAAAAAAAAD+/wYABQAAAAAAAAD//wYABQAAAAAAAAAAAAYABQAAAAAAAAABAAYABQAAAAAAAAACAAYABQAAAAAAAAACAAUABQAAAAAAAAACAAQABQAAAAAAAAACAAMABQAAAAAAAAACAAIABQAAAAAAAAACAAEABQAAAAAAAAACAAAABQAAAAAAAAACAP//BQAAAAAAAAACAP7/BQAAAAAAAAABAP7/BQAAAAAAAAAAAP7/BQAAAAAAAAD///7/BQAAAAAAAAD+//7/BQAAAAAAAAD9//7/BQAAAAAAAAD8//7/BQAAAAAAAAD8/wQABQAAAAAAAAA=")
@@ -184,11 +182,10 @@ tile_set = SubResource("TileSet_gpkxl")
 position = Vector2(-112, 144)
 texture = ExtResource("20_mohvt")
 
-[node name="Interactable" type="Area2D" parent="."]
-script = ExtResource("21_ijakw")
-minigame_group = ExtResource("22_pts8f")
-metadata/_custom_type_script = "uid://c3prj1h5n1bt6"
+[node name="MinigameInteractable" type="Area2D" parent="Bloon"]
+script = ExtResource("20_ijakw")
+minigame_group = ExtResource("21_ijakw")
+metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-112, 143.5)
-shape = SubResource("RectangleShape2D_ijakw")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloon/MinigameInteractable"]
+shape = SubResource("RectangleShape2D_mohvt")
