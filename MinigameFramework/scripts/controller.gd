@@ -16,14 +16,14 @@ func _physics_process(delta):
 		possessed.move(move_direction, movement_speed)
 		if not move_direction == Vector2.ZERO:
 			_prev_direction = move_direction
-		if possessed.velocity.y > 0.0:
+		if _prev_direction.y > 0.0:
 			possessed.play_animation(&"FrontWalk")
-		elif possessed.velocity.y < 0.0:
+		elif _prev_direction.y < 0.0:
 			possessed.play_animation(&"BackWalk")
-		if possessed.velocity.x < 0.0:
+		elif _prev_direction.x < 0.0:
 			possessed.set_sprite_flipped(true)
 			possessed.play_animation(&"RightWalk")
-		elif possessed.velocity.x > 0.0:
+		elif _prev_direction.x > 0.0:
 			possessed.set_sprite_flipped(false)
 			possessed.play_animation(&"RightWalk")
 		if Input.is_action_just_pressed("primary"):

@@ -24,6 +24,6 @@ func on_enter():
 func on_update():
 	pass
 
-## Called when the event is exited.
+## Called when the event is exited. Signals should be disconnected and nodes that are no longer needed should be freed.
 func on_exit():
 	pass

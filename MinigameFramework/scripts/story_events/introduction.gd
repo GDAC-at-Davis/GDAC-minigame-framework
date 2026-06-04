@@ -35,18 +35,26 @@ var _dialogue_2: Array[String] = [
 ]
 
 func on_enter():
+	# We want the next set of dialogue to play when the first finishes
 	overworld.dialogue_box.dialogue_completed.connect(_on_dialogue_completed)
+	# Background images can be shown like this
 	overworld.fullscreen_image.texture = load("res://assets/player/FrontIdle.png")
+	# Use the GameManager to play music
 	GameManager.play_music(load("res://assets/audio/cutscene_audio.wav"))
+	# Play the first set of dialogue
 	overworld.dialogue_box.play_text(_dialogue_1)
 
 func on_exit():
+	# Make sure to disconnect the signal or else wierd things might happen
 	overworld.dialogue_box.dialogue_completed.disconnect(_on_dialogue_completed)
 
 func _on_dialogue_completed():
 	_story_progress += 1
+	# Dialogue is broken into different parts because the dialogue box will simply play the enter array of strings
+	# We have to brake up the dialogue to perform actions intermediately
 	if _story_progress == 2:
 		GameManager.pause_music()
+		# We can clear the background with this
 		overworld.fullscreen_image.texture = null
 		overworld.dialogue_box.play_text(_dialogue_2)
 	else:

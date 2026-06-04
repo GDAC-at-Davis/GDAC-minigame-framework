@@ -13,6 +13,7 @@ var _dialogue_2: Array[String] = [
 
 func on_enter():
 	_story_progress = 1
+	# Create the open lab along with the characters
 	var open_lab: Node = load("res://scenes/home_room.tscn").instantiate()
 	overworld.add_to_world(open_lab)
 	overworld.add_to_world(overworld.dakki)
