@@ -1,6 +1,8 @@
 extends StoryEvent
 
-var text: Array[String] = [
+var _story_progress: int = 1
+
+var _dialogue_1: Array[String] = [
 	"Long ago, there were two tribes who could not be more different.",
 	"One tribe was the Artisans—lovers of art, humanity, and culture.",
 	"They valued literature and craft and the mastery of all creation.",
@@ -9,7 +11,9 @@ var text: Array[String] = [
 	"Both societies were asocial, never acknowledging the world outside their circle.",
 	"But a plague struck both lands.",
 	"Though the Technologists were able to save some of their own with their advanced medicine, those that were cured would quickly succumb to misery without the joy of the arts.",
-	# Vamp around here
+]
+
+var _dialogue_2: Array[String] = [
 	"The Artisans, though happy, had to watch their numbers deplete as their outdated medicine could not keep up with the fast-growing plague.",
 	"The leaders of the tribes decided that this would not last. A solution had to be found or all of their people would meet an early end.",
 	"The two tribes, despite their dislike for interaction outside of their own kind, joined hands.",
@@ -32,10 +36,18 @@ var text: Array[String] = [
 
 func on_enter():
 	overworld.dialogue_box.dialogue_completed.connect(_on_dialogue_completed)
-	overworld.dialogue_box.play_text(text)
+	overworld.fullscreen_image.texture = load("res://assets/player/FrontIdle.png")
+	GameManager.play_music(load("res://assets/audio/cutscene_audio.wav"))
+	overworld.dialogue_box.play_text(_dialogue_1)
 
 func on_exit():
 	overworld.dialogue_box.dialogue_completed.disconnect(_on_dialogue_completed)
 
 func _on_dialogue_completed():
-	complete()
+	_story_progress += 1
+	if _story_progress == 2:
+		GameManager.pause_music()
+		overworld.fullscreen_image.texture = null
+		overworld.dialogue_box.play_text(_dialogue_2)
+	else:
+		complete()

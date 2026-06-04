@@ -33,19 +33,13 @@ func _load_info_from_disk(path: String):
 			if info and info is MinigameInfo:
 				minigame_collection.append(info)
 
-func play_music(song, speed : float = 1.0, reset : bool = true):
+func play_music(song: AudioStream, speed : float = 1.0, reset : bool = true):
 	# song is String or AudioStream
 	var resetting : bool = true
 	if not reset: # user does not want to reset the song, implying that the original song should be left playing if it is a match
-		if (song is String  and song == currently_playing) or (song is AudioStream and song == music_player.stream):
+		if song is AudioStream and song == music_player.stream:
 			resetting = false
-	
-	if song is String and resetting:
-		if FileAccess.file_exists(song):
-			music_player.stream = load(song)
-			music_player.pitch_scale = speed
-			currently_playing = song
-			music_player.play()
+
 	elif song is AudioStream:
 		music_player.stream = song
 		music_player.pitch_scale = speed
