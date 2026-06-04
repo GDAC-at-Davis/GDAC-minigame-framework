@@ -15,7 +15,9 @@ func on_enter():
 	_story_progress = 1
 	var open_lab: Node = load("res://scenes/home_room.tscn").instantiate()
 	overworld.add_to_world(open_lab)
-	overworld.add_to_world(overworld.player)
+	overworld.add_to_world(overworld.dakki)
+	overworld.gee.global_position = overworld.dakki.global_position + Vector2.RIGHT * 50.0
+	overworld.add_to_world(overworld.gee)
 	overworld.dialogue_box.dialogue_completed.connect(_on_dialogue_completed)
 	overworld.dialogue_box.play_text(_dialogue_1)
 

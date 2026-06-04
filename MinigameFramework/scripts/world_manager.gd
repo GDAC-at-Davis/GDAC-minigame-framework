@@ -1,9 +1,11 @@
 class_name Overworld
 extends Node2D
 
-var player: Character
+var dakki: Character
+var gee: Character
 
-var _player_scene: PackedScene = preload("res://scenes/player.tscn")
+var _dakki_scene: PackedScene = preload("res://scenes/player.tscn")
+var _gee_scene: PackedScene = preload("res://scenes/gee.tscn")
 
 @onready var dialogue_box: DialogueBox = $UILayer/DialogueBox
 @onready var world_layer = $WorldLayer
@@ -15,7 +17,8 @@ var _player_scene: PackedScene = preload("res://scenes/player.tscn")
 @onready var camera: Camera2D = $WorldLayer/Camera2D
 
 func _ready():
-	player = _player_scene.instantiate()
+	dakki = _dakki_scene.instantiate()
+	gee = _gee_scene.instantiate()
 	story_manager.progress_story()
 
 func has_node_of_type(parent: Node, type):

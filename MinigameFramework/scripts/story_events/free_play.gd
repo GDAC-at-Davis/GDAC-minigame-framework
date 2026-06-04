@@ -1,4 +1,4 @@
 extends StoryEvent
 
 func on_enter():
-	overworld.controller.possessed = overworld.player
+	overworld.controller.possessed = overworld.dakki

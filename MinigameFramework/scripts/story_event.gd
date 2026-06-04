@@ -12,6 +12,7 @@ func update():
 func exit():
 	on_exit()
 
+## Call this when the next story event should play.
 func complete():
 	overworld.story_manager.story_event_completed()
 

@@ -29,6 +29,7 @@ func _on_dialogue_completed():
 	_story_progress += 1
 	if _story_progress == 2:
 		overworld.dialogue_box.play_text(_dialogue)
+		overworld.remove_from_world(overworld.gee)
 	elif _story_progress == 3:
 		_smoke_timer.start(_smoke_cutscene_length)
 		_smoke.modulate.a = 1.0
