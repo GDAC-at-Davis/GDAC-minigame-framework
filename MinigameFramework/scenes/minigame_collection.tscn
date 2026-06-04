@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkh3om2hous85"]
+[gd_scene load_steps=5 format=3 uid="uid://dkh3om2hous85"]
 
 [ext_resource type="Script" uid="uid://bn3sg7wides1s" path="res://scripts/minigame_collection.gd" id="1_n5n1k"]
 [ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="2_u7r6c"]
-[ext_resource type="PackedScene" uid="uid://d37y2041mrhtw" path="res://scenes/minigame_manager.tscn" id="3_csayh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k60pc"]
 content_margin_left = 50.0
@@ -43,6 +42,3 @@ same_column_width = true
 fixed_column_width = 240
 icon_mode = 0
 fixed_icon_size = Vector2i(128, 128)
-
-[node name="MinigameManager" parent="." instance=ExtResource("3_csayh")]
-layout_mode = 0

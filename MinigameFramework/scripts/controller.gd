@@ -4,10 +4,13 @@ extends Node
 @export var movement_speed: float = 50.0
 
 var possessed: Character
+var enabled: bool = true
 
 var _prev_direction: Vector2 
 
 func _physics_process(delta):
+	if not enabled:
+		return
 	if possessed:
 		var move_direction = Vector2(Input.get_axis("left", "right"), Input.get_axis("up", "down"))
 		possessed.move(move_direction, movement_speed)

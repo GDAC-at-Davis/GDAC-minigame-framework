@@ -11,9 +11,6 @@
 script = ExtResource("1_3gvrs")
 metadata/_custom_type_script = "uid://dtmlo62vwyrq0"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
-
 [node name="StoryManager" type="Node" parent="."]
 script = ExtResource("2_eab5i")
 metadata/_custom_type_script = "uid://bww3o28wdg8me"
@@ -31,12 +28,15 @@ metadata/_custom_type_script = "uid://dhiep453gufag"
 [node name="WorldLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
+[node name="Camera2D" type="Camera2D" parent="WorldLayer"]
+zoom = Vector2(2, 2)
+
+[node name="Controller" type="Node" parent="WorldLayer"]
+script = ExtResource("7_fkyvp")
+metadata/_custom_type_script = "uid://cvopbp8lac0yb"
+
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="DialogueBox" parent="UILayer" instance=ExtResource("5_e184d")]
-
-[node name="Controller" type="Node" parent="."]
-script = ExtResource("7_fkyvp")
-metadata/_custom_type_script = "uid://cvopbp8lac0yb"
 
 [editable path="UILayer/DialogueBox"]

@@ -7,10 +7,11 @@ var _player_scene: PackedScene = preload("res://scenes/player.tscn")
 
 @onready var dialogue_box: DialogueBox = $UILayer/DialogueBox
 @onready var world_layer = $WorldLayer
+@onready var ui_layer = $UILayer
 @onready var audio : AudioStreamPlayer = $Audio
 @onready var story_manager: StoryManager = $StoryManager
-@onready var controller: Controller = $Controller
-@onready var camera: Camera2D = $Camera2D
+@onready var controller: Controller = $WorldLayer/Controller
+@onready var camera: Camera2D = $WorldLayer/Camera2D
 
 func _ready():
 	player = _player_scene.instantiate()
@@ -33,6 +34,12 @@ func get_node_of_type(parent: Node, type):
 			#GameManager.play_music(music_dict[song], speed)
 	# Do this later
 
+func play_minigames(minigame_group: MinigameGroupData):
+	remove_child(world_layer)
+	remove_child(ui_layer)
+	GameManager.minigame_manager.all_minigames_completed.connect(_on_minigames_completed)
+	GameManager.minigame_manager.start(minigame_group)
+
 func pause_music():
 	GameManager.pause_music()
 
@@ -41,3 +48,8 @@ func add_to_world(node: Node):
 
 func remove_from_world(node: Node):
 	world_layer.remove_child(node)
+
+func _on_minigames_completed(won: bool):
+	GameManager.minigame_manager.all_minigames_completed.disconnect(_on_minigames_completed)
+	add_child(world_layer)
+	add_child(ui_layer)

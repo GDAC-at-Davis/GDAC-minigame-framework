@@ -2,6 +2,7 @@ extends Node
 
 var main_scene: Node
 var current_scene: Node
+var minigame_manager: MinigameManager
 var music_player : AudioStreamPlayer
 var currently_playing : String = ""
 

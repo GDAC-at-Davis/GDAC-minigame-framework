@@ -7,56 +7,53 @@ signal dialogue_completed
 @onready var text = $TextPanel/Text
 @onready var panel = $TextPanel
 
-@export var text_speed : float = 1.0
-var speed_threshold : float = 0.05
-var playing : bool = false # is text scrolling
-var speed_tracker : float = 0.0
-var current_text : Array = []
-var current_text_counter : int = 0
-var ready_to_advance : bool = false
-var next_scene : MinigameGroupData = null
+var single_character_delay : float = 0.05
+var lines : Array[String]
 
-func play_text(playtext : Array, optional_next_scene : MinigameGroupData = null):
+var _line_idx : int = 0
+var _character_timer: Timer
+
+func _ready():
+	_character_timer = Timer.new()
+	_character_timer.one_shot = false
+	_character_timer.autostart = false
+	_character_timer.timeout.connect(_on_character_timer_timeout)
+	add_child(_character_timer)
+
+func play_text(playtext : Array):
+	var overworld: Overworld = GameManager.current_scene as Overworld
+	overworld.controller.enabled = false
 	panel.visible = true
-	next_scene = optional_next_scene
-	current_text = playtext
-	text.text = playtext[0]
-	current_text_counter = 0
-	text.visible_characters = 0
-	playing = true
-	ready_to_advance = false
-	
-func play_text_index(index : int):
-	if index >= len(current_text):
-		return
-	text.text = current_text[index]
-	current_text_counter = index
-	text.visible_characters = 0
-	playing = true
-	
-func _input(event):
-	if playing and ready_to_advance and event.is_action_pressed("primary"):
-			ready_to_advance = false
-			
-			if current_text_counter < len(current_text) - 1:
-				play_text_index(current_text_counter + 1)
-			else:
-				playing = false
-				panel.visible = false
-				dialogue_completed.emit()
-				if next_scene != null:
-					GameManager.switch_to_minigames(next_scene)
-				
-	if playing and not ready_to_advance and event.is_action_pressed("primary"):
-		text.visible_characters = len(text.text)
+	lines = playtext
+	_line_idx = 0
+	play_text_index()
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	
-func _process(delta: float) -> void:
-	if playing and not ready_to_advance:
-		if text.visible_characters < len(text.text):
-			speed_tracker += delta * text_speed
-			if speed_tracker >= speed_threshold:
-				text.visible_characters += 1
-				speed_tracker = 0.0
+func close():
+	var overworld: Overworld = GameManager.current_scene as Overworld
+	overworld.controller.enabled = true
+	panel.visible = false
+	dialogue_completed.emit()
+	process_mode = Node.PROCESS_MODE_DISABLED
+
+func play_text_index():
+	if _line_idx >= lines.size():
+		close()
+		return
+	text.text = lines[_line_idx]
+	text.visible_characters = 0
+	_character_timer.start(single_character_delay)
+	_line_idx += 1
+
+func _process(delta):
+	if Input.is_action_just_pressed("primary") or Input.is_action_pressed("secondary"):
+		if text.visible_characters < text.text.length():
+			text.visible_characters = text.text.length()
 		else:
-			ready_to_advance = true
+			play_text_index()
+
+func _on_character_timer_timeout():
+	if text.visible_characters < text.text.length():
+		text.visible_characters += 1
+	else:
+		_character_timer.stop()
