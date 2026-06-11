@@ -11,6 +11,14 @@ extends Node
 ## Time in seconds to skip the countdown timer to when the minigame ends
 @export var skip_time: float = 1.0
 
+@export_category("Music")
+## The audio track to play during the minigame.
+@export var track: AudioStream
+## Whether the track should restart each time the minigame ends.
+@export var restart_track: bool = true
+## Scales how fast the track should play with the current difficulty. 1.0 means the track will play at double speed if difficulty is 2.0. Set to 0.0 to disable the track speedup.
+@export var track_speed_difficulty_scaling: float = 1.0
+
 var countdown_timer: Timer
 
 ## Represents the current difficulty level of the minigame. A value of 2.0 should roughly translate to the minigame being twice as difficult.
@@ -20,13 +28,12 @@ var has_won: bool = false
 ## True after win() or lose() is called.
 var has_ended: bool = false
 
+var manager: MinigameManager
 
 func _ready():
 	countdown_timer = Timer.new()
 	add_child(countdown_timer)
 	countdown_timer.timeout.connect(_on_countdown_timeout)
-	
-	difficulty = GameManager.minigame_manager.difficulty_scale
 	
 	start()
 	
@@ -36,7 +43,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	GameManager.minigame_manager.update_time_display(countdown_timer.time_left, countdown_time)
+	manager.update_time_display(countdown_timer.time_left, countdown_time)
 	run()
 
 
@@ -86,4 +93,4 @@ func _on_countdown_timeout():
 	if not has_won:
 		lose()
 	complete()
-	GameManager.minigame_manager.minigame_completed.emit(has_won)
+	manager.minigame_completed.emit(has_won)

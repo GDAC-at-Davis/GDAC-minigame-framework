@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=4 format=3 uid="uid://dljthynigm0c2"]
+
+[ext_resource type="Texture2D" uid="uid://d31082hdfdge3" path="res://minigames/zeitzusammenpassen/zeitzusammenpassen_logo.png" id="1_8d4ly"]
+[ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="1_xx7jc"]
+[ext_resource type="PackedScene" uid="uid://devbppk0jgcyg" path="res://minigames/zeitzusammenpassen/zeitzusammenpassen.tscn" id="2_5r57o"]
+
+[resource]
+script = ExtResource("1_xx7jc")
+name = "Zeitzusammenpassen"
+icon = ExtResource("1_8d4ly")
+scene = ExtResource("2_5r57o")
+metadata/_custom_type_script = "uid://vk7irpeekqp4"

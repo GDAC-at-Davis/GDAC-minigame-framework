@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj16jn85f6edk"]
+
+[ext_resource type="Texture2D" uid="uid://by42b0owsawr6" path="res://minigames/pitch_penalties/Assets/Goalie.png" id="1_1thrs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwev2"]
+height = 32.0
+
+[node name="Goalie" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_vwev2")
+
+[node name="Goalie" type="Sprite2D" parent="."]
+texture = ExtResource("1_1thrs")
