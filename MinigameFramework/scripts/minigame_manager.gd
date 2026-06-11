@@ -88,6 +88,7 @@ func _ready():
 	visibility_changed.connect(_on_visibility_changed)
 	visible = false
 
+
 func _process(_delta):
 	if instruction_timer.time_left > 0:
 		var weight = _instruction_scale_curve.sample_baked((INSTRUCTION_DISPLAY_TIME - instruction_timer.time_left) / (INSTRUCTION_DISPLAY_TIME))

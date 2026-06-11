@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://clhab5yxrgyef"]
+
+[ext_resource type="Texture2D" uid="uid://bre6eoeehjkq" path="res://minigames/homerun/sports/ball_spritesheet.png" id="1_5f5lj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6lodc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_et1ag"]
+atlas = ExtResource("1_5f5lj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocloe"]
+atlas = ExtResource("1_5f5lj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffvac"]
+atlas = ExtResource("1_5f5lj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1464h"]
+atlas = ExtResource("1_5f5lj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8inw3"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_et1ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocloe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffvac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1464h")
+}],
+"loop": true,
+"name": &"spin",
+"speed": 5.0
+}]
+
+[node name="Ball" type="Area2D"]
+scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(8, 8)
+shape = SubResource("CircleShape2D_6lodc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_8inw3")
+animation = &"spin"
+frame_progress = 0.3789622
+speed_scale = 2.0

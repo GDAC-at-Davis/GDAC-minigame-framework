@@ -1,0 +1,245 @@
+[gd_scene load_steps=31 format=3 uid="uid://csl6fu7jmmq5v"]
+
+[ext_resource type="Script" uid="uid://dhoavl6bb6lp0" path="res://minigames/homerun/homerun_minigame.gd" id="1_yfgnu"]
+[ext_resource type="Texture2D" uid="uid://oa8f0j351x8m" path="res://minigames/homerun/sports/grass.png" id="2_c2tpd"]
+[ext_resource type="Texture2D" uid="uid://bx584hch5or1n" path="res://minigames/homerun/sports/pitcher_spritesheet.png" id="2_x5ocu"]
+[ext_resource type="Texture2D" uid="uid://c3sdckibkddpy" path="res://minigames/homerun/sports/batter_spritesheet.png" id="3_l3nlo"]
+[ext_resource type="PackedScene" uid="uid://8wtw8igooh2m" path="res://minigames/homerun/fan.tscn" id="3_x5ocu"]
+[ext_resource type="PackedScene" uid="uid://cpmr8ubxsnnin" path="res://minigames/homerun/home_plate.tscn" id="5_l3nlo"]
+[ext_resource type="Script" uid="uid://dxx8pjdu0g2e3" path="res://minigames/homerun/sound_player.gd" id="7_15ph3"]
+[ext_resource type="AudioStream" uid="uid://bobs3j8cr0k3i" path="res://minigames/homerun/sports/swoosh.mp3" id="8_t6048"]
+[ext_resource type="AudioStream" uid="uid://67yxsbdgou0w" path="res://minigames/homerun/sports/hit.mp3" id="9_7sldw"]
+[ext_resource type="AudioStream" uid="uid://dtof4ocg2dsnw" path="res://minigames/homerun/sports/booing.mp3" id="10_27gps"]
+[ext_resource type="AudioStream" uid="uid://b2vrdvmkny7e5" path="res://minigames/homerun/sports/cheering.mp3" id="11_3b87g"]
+[ext_resource type="AudioStream" uid="uid://d20bajhkee3qr" path="res://minigames/homerun/sports/talking.mp3" id="12_uyy0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhcv3"]
+size = Vector2(80, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2tpd"]
+atlas = ExtResource("2_x5ocu")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15ph3"]
+atlas = ExtResource("2_x5ocu")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6048"]
+atlas = ExtResource("2_x5ocu")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sldw"]
+atlas = ExtResource("2_x5ocu")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8nww"]
+atlas = ExtResource("2_x5ocu")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx8mf"]
+atlas = ExtResource("2_x5ocu")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27gps"]
+atlas = ExtResource("2_x5ocu")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3b87g"]
+atlas = ExtResource("2_x5ocu")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uyy0q"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2tpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15ph3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6048")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sldw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8nww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx8mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27gps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3b87g")
+}],
+"loop": false,
+"name": &"pitch",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5ocu"]
+atlas = ExtResource("3_l3nlo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04rsy"]
+atlas = ExtResource("3_l3nlo")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3no7n"]
+atlas = ExtResource("3_l3nlo")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsb36"]
+atlas = ExtResource("3_l3nlo")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipv0g"]
+atlas = ExtResource("3_l3nlo")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13lvq"]
+atlas = ExtResource("3_l3nlo")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5lcs"]
+atlas = ExtResource("3_l3nlo")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2gqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5ocu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04rsy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3no7n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsb36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipv0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13lvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5lcs")
+}],
+"loop": false,
+"name": &"swing",
+"speed": 5.0
+}]
+
+[node name="Homerun" type="Node" node_paths=PackedStringArray("pitcher", "player", "swing_area", "swing_collision_shape", "fans", "bat_sounds_player", "crowd_sounds_player")]
+script = ExtResource("1_yfgnu")
+pitcher = NodePath("Pitcher")
+player = NodePath("Player")
+swing_area = NodePath("Player/SwingArea")
+swing_collision_shape = NodePath("Player/SwingArea/SwingShape")
+swing_rect = SubResource("RectangleShape2D_dhcv3")
+debug_box = true
+fans = NodePath("Fans")
+bat_sounds_player = NodePath("BatSoundsPlayer")
+crowd_sounds_player = NodePath("CrowdSoundsPlayer")
+instruction = "Hit a home run!"
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="Grass" type="Sprite2D" parent="."]
+position = Vector2(531.99994, 276)
+scale = Vector2(50, 50)
+texture = ExtResource("2_c2tpd")
+
+[node name="Pitcher" type="Node2D" parent="."]
+position = Vector2(640, 101)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pitcher"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_uyy0q")
+animation = &"pitch"
+speed_scale = 2.0
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(540, 562)
+
+[node name="SwingArea" type="Area2D" parent="Player"]
+
+[node name="SwingShape" type="CollisionShape2D" parent="Player/SwingArea"]
+position = Vector2(100, -10)
+shape = SubResource("RectangleShape2D_dhcv3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/SwingArea"]
+position = Vector2(60, -10)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_q2gqg")
+animation = &"swing"
+speed_scale = 4.0
+
+[node name="Fans" type="Node2D" parent="."]
+
+[node name="Fan" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(62, 202.00003)
+
+[node name="Fan2" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(1080.0001, 195)
+
+[node name="Fan3" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(42.00006, 259)
+
+[node name="Fan4" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(1210, 389)
+
+[node name="Fan5" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(166, 114)
+
+[node name="Fan6" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(1205, 223)
+
+[node name="Fan7" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(65.000015, 385)
+
+[node name="Fan8" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(991.99994, 113.000015)
+
+[node name="Fan9" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(1150, 84)
+
+[node name="Fan10" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(1137, 317)
+
+[node name="Fan11" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(1185, 441.99997)
+
+[node name="Fan12" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(159.00012, 263)
+
+[node name="Fan13" parent="Fans" instance=ExtResource("3_x5ocu")]
+position = Vector2(85, 98)
+
+[node name="HomePlate" parent="." instance=ExtResource("5_l3nlo")]
+position = Vector2(641.00006, 595.00006)
+scale = Vector2(2.5, 2.5)
+
+[node name="BatSoundsPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("7_15ph3")
+tracks = Array[AudioStream]([ExtResource("8_t6048"), ExtResource("9_7sldw")])
+
+[node name="CrowdSoundsPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("7_15ph3")
+tracks = Array[AudioStream]([ExtResource("10_27gps"), ExtResource("11_3b87g"), ExtResource("12_uyy0q")])

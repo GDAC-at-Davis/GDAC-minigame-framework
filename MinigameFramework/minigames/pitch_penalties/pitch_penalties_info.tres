@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=4 format=3 uid="uid://dasddnih4eawk"]
+
+[ext_resource type="Texture2D" uid="uid://dvqu6g026tvp1" path="res://minigames/pitch_penalties/Assets/soccerball.png" id="1_oe8vd"]
+[ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="1_voqej"]
+[ext_resource type="PackedScene" uid="uid://c0g8euwmhj52k" path="res://minigames/pitch_penalties/pitch_penalties.tscn" id="2_oe8vd"]
+
+[resource]
+script = ExtResource("1_voqej")
+name = "Pitch Penalties"
+icon = ExtResource("1_oe8vd")
+scene = ExtResource("2_oe8vd")
+metadata/_custom_type_script = "uid://vk7irpeekqp4"

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://wr3ov3q5xq3r"]
+
+[ext_resource type="Texture2D" uid="uid://b1sun8bvgpfxq" path="res://minigames/pipe_rearrange/pipe_side.png" id="1_8hgjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpoyu"]
+size = Vector2(160, 160)
+
+[node name="PipeSide" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_8hgjj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qpoyu")

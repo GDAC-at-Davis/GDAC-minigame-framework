@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://8wtw8igooh2m"]
+
+[ext_resource type="Script" uid="uid://bty1v4657xffx" path="res://minigames/homerun/fan.gd" id="1_lbry5"]
+[ext_resource type="Texture2D" uid="uid://dcafi82yfwdra" path="res://minigames/homerun/sports/fan_head.png" id="2_3pl6w"]
+[ext_resource type="Texture2D" uid="uid://brg4cuf062kuf" path="res://minigames/homerun/sports/fan_body.png" id="3_w3awb"]
+
+[node name="Fan" type="Node2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_lbry5")
+
+[node name="head" type="Sprite2D" parent="."]
+position = Vector2(0, -19)
+texture = ExtResource("2_3pl6w")
+
+[node name="body" type="Sprite2D" parent="."]
+texture = ExtResource("3_w3awb")
