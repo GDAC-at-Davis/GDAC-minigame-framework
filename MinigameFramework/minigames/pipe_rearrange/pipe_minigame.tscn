@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://jf4ygvge46o5"]
+[gd_scene load_steps=10 format=3 uid="uid://jf4ygvge46o5"]
 
 [ext_resource type="Script" uid="uid://l86rvy0hbrh2" path="res://minigames/pipe_rearrange/pipe_minigame.gd" id="1_3ekdj"]
+[ext_resource type="AudioStream" uid="uid://dhqy8vm317e5c" path="res://minigames/pipe_rearrange/ConnectingPipes.wav" id="2_lmorm"]
 [ext_resource type="PackedScene" uid="uid://c76m5hmeuo243" path="res://minigames/pipe_rearrange/pipe_forward.tscn" id="2_mxwfh"]
 [ext_resource type="Script" uid="uid://drv8q5pogn2fi" path="res://minigames/pipe_rearrange/pipe_rotation.gd" id="3_wu16y"]
 [ext_resource type="PackedScene" uid="uid://wr3ov3q5xq3r" path="res://minigames/pipe_rearrange/pipe_side.tscn" id="4_avxfn"]
@@ -30,6 +31,7 @@ damping_max = 38.562
 [node name="Maze" type="Node"]
 script = ExtResource("1_3ekdj")
 instruction = "Connect!"
+track = ExtResource("2_lmorm")
 metadata/_custom_type_script = "uid://yiv2g3c50yqb"
 
 [node name="TextureRect" type="TextureRect" parent="."]
