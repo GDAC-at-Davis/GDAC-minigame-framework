@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://1x1kcdxmvc3f"]
+
+[ext_resource type="Script" uid="uid://c27o7te067gg0" path="res://minigames/snake/pickup.gd" id="1_mxebm"]
+[ext_resource type="Texture2D" uid="uid://byi8qxom2os1o" path="res://minigames/snake/sprite_texture/egg.png" id="2_mxebm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mxebm"]
+radius = 29.0
+height = 72.0
+
+[node name="Pickup" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_mxebm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.51768494, 0.51768494)
+texture = ExtResource("2_mxebm")
+offset = Vector2(-5, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_mxebm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

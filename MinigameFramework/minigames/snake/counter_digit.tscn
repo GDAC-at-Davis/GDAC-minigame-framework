@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpwjerilx72yn"]
+
+[ext_resource type="Texture2D" uid="uid://do8h3kjrbbqmq" path="res://minigames/snake/sprite_texture/numerals.png" id="1_at0ji"]
+[ext_resource type="Script" uid="uid://evqb0ff8vaah" path="res://minigames/snake/counter_digit.gd" id="2_37h6v"]
+
+[node name="CounterDigit" type="Sprite2D"]
+texture = ExtResource("1_at0ji")
+region_enabled = true
+region_rect = Rect2(0, 0, 8, 10)
+script = ExtResource("2_37h6v")

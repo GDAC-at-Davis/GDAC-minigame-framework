@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c53kcgn420iw3"]
+
+[ext_resource type="Script" uid="uid://ywnivfiu7ol6" path="res://minigames/snake/counter.gd" id="1_tfemf"]
+[ext_resource type="PackedScene" uid="uid://dpwjerilx72yn" path="res://minigames/snake/counter_digit.tscn" id="2_tfemf"]
+
+[node name="Counter" type="Node2D"]
+script = ExtResource("1_tfemf")
+
+[node name="DigitHolder" type="Node2D" parent="."]
+
+[node name="CounterDigit" parent="DigitHolder" instance=ExtResource("2_tfemf")]
+visible = false
+position = Vector2(-16, 0)
+
+[node name="CounterDigit2" parent="DigitHolder" instance=ExtResource("2_tfemf")]
+visible = false
+position = Vector2(-8, 0)
+region_rect = Rect2(0, 10, 8, 10)
+value = 1
+
+[node name="CounterDigit3" parent="DigitHolder" instance=ExtResource("2_tfemf")]
