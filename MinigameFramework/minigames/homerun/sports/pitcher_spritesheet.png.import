@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcafi82yfwdra"
-path="res://.godot/imported/fan_head.png-6ee57baea49f721ac44f0f78a9d7e54a.ctex"
+uid="uid://bx584hch5or1n"
+path="res://.godot/imported/pitcher_spritesheet.png-a2d91cf46906756807d53082385e116c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sports/fan_head.png"
-dest_files=["res://.godot/imported/fan_head.png-6ee57baea49f721ac44f0f78a9d7e54a.ctex"]
+source_file="res://minigames/homerun/sports/pitcher_spritesheet.png"
+dest_files=["res://.godot/imported/pitcher_spritesheet.png-a2d91cf46906756807d53082385e116c.ctex"]
 
 [params]
 

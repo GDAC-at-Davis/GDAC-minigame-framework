@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://clhab5yxrgyef"]
 
-[ext_resource type="Texture2D" uid="uid://bre6eoeehjkq" path="res://assets/sports/ball_spritesheet.png" id="1_5f5lj"]
+[ext_resource type="Texture2D" uid="uid://bre6eoeehjkq" path="res://minigames/homerun/sports/ball_spritesheet.png" id="1_5f5lj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6lodc"]
 

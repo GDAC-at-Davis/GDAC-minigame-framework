@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3sdckibkddpy"
-path="res://.godot/imported/batter_spritesheet.png-628727c14901b7bea8e6ad44c10933ab.ctex"
+uid="uid://bre6eoeehjkq"
+path="res://.godot/imported/ball_spritesheet.png-3990dc181f55f05a29d36c41e973e895.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sports/batter_spritesheet.png"
-dest_files=["res://.godot/imported/batter_spritesheet.png-628727c14901b7bea8e6ad44c10933ab.ctex"]
+source_file="res://minigames/homerun/sports/ball_spritesheet.png"
+dest_files=["res://.godot/imported/ball_spritesheet.png-3990dc181f55f05a29d36c41e973e895.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1w3wyvthgpp0"
-path="res://.godot/imported/home_plate.png-85959f743de41af91ac224607635e6a5.ctex"
+uid="uid://dcafi82yfwdra"
+path="res://.godot/imported/fan_head.png-bc2e682ffc97b29cf01fd74187ad178b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sports/home_plate.png"
-dest_files=["res://.godot/imported/home_plate.png-85959f743de41af91ac224607635e6a5.ctex"]
+source_file="res://minigames/homerun/sports/fan_head.png"
+dest_files=["res://.godot/imported/fan_head.png-bc2e682ffc97b29cf01fd74187ad178b.ctex"]
 
 [params]
 
