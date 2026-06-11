@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://ps06j5ynswsa"]
+
+[ext_resource type="Script" uid="uid://dhkjcndlnc5gw" path="res://minigames/react_wasd/react_wasd_minigame.gd" id="1_react"]
+
+[node name="ReactWASD" type="Node"]
+script = ExtResource("1_react")
+instruction = "Type the pattern!"
+countdown_time = 7.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+mouse_filter = 2
+color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="KeyContainer" type="HBoxContainer" parent="."]
+offset_left = 68.0
+offset_top = 269.0
+offset_right = 468.0
+offset_bottom = 429.0
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="FeedbackLabel" type="Label" parent="."]
+offset_left = 640.0
+offset_top = 520.0
+offset_right = 640.0
+offset_bottom = 520.0
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+offset_left = 640.0
+offset_top = 600.0
+offset_right = 640.0
+offset_bottom = 600.0
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
