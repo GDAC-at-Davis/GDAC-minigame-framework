@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="1_p7nvv"]
 [ext_resource type="PackedScene" uid="uid://cgmlbwqta8dhl" path="res://minigames/test_3d/test_3d.tscn" id="1_ryry2"]
 [ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/balloon_popper/balloon_popper.tscn" id="2_l2kh3"]
-[ext_resource type="PackedScene" path="res://minigames/avalanche_escape/avalanche_escape.tscn" id="3_n4dsh"]
+[ext_resource type="PackedScene" uid="uid://cva5q4y0kucmh" path="res://minigames/avalanche_escape/avalanche_escape.tscn" id="3_n4dsh"]
 [ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="4_7gsfh"]
 
 [resource]

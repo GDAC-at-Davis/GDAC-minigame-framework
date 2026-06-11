@@ -35,7 +35,6 @@ var pitcher_animation_player: AnimatedSprite2D
 
 ## This is called once at the start of the minigame.
 func start() -> void:
-	print("starting homerun")
 	speed = BASE_SPEED * difficulty
 	
 	hit_random_x = randf_range(-120, 120)

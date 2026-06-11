@@ -42,7 +42,6 @@ func _load_info_from_disk(path: String):
 			var info_path = path + "/" + file_name
 			var info : Resource = ResourceLoader.load(info_path)
 			if info and info is MinigameInfo:
-				print("loaded: " + info.to_string())
 				minigame_collection.append(info)
 
 func play_music(song, speed : float = 1.0, reset : bool = true):
