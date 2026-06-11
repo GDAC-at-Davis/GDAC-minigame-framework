@@ -16,9 +16,10 @@ extends Control
 var _minigame_scenes: Array[PackedScene]
 var _minigame_data: MinigameGroupData
 
-@onready var minigame_list: ItemList = $MinigameList
-@onready var menu_button: Button = $MenuButton
-@onready var play_all_button: Button = $PlayAllButton
+@onready var ui_layer: CanvasLayer = $UILayer
+@onready var minigame_list: ItemList = $UILayer/MinigameList
+@onready var menu_button: Button = $UILayer/MenuButton
+@onready var play_all_button: Button = $UILayer/PlayAllButton
 
 func _ready():
 	_minigame_data = MinigameGroupData.new()
@@ -33,22 +34,28 @@ func _ready():
 	minigame_list.item_selected.connect(_on_selection)
 	menu_button.pressed.connect(_on_menu_button_pressed)
 	play_all_button.pressed.connect(_on_play_all_button_pressed)
+	GameManager.minigame_manager.all_minigames_completed.connect(_on_all_minigames_completed)
 	
 	for game: MinigameInfo in GameManager.minigame_collection:
 		minigame_list.add_item(game.name, game.icon, true)
 		_minigame_scenes.append(game.scene)
 
 func _on_menu_button_pressed():
-	GameManager.world_manager.load_ui("Menu")
+	GameManager.switch_scenes(load("res://scenes/menu.tscn"))
 	
 func _on_play_all_button_pressed():
 	_minigame_data.minigames.clear()
 	_minigame_data.minigames = _minigame_scenes.duplicate()
 	minigame_list.deselect_all()
-	GameManager.switch_to_minigames(_minigame_data, true)
+	ui_layer.visible = false
+	GameManager.minigame_manager.start(_minigame_data, true)
 
 func _on_selection(index: int):
 	_minigame_data.minigames.clear()
 	_minigame_data.minigames.append(_minigame_scenes[index])
 	minigame_list.deselect_all()
-	GameManager.switch_to_minigames(_minigame_data, true)
+	ui_layer.visible = false
+	GameManager.minigame_manager.start(_minigame_data, true)
+
+func _on_all_minigames_completed(won: bool):
+	ui_layer.visible = true

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvoq46s0x4xp7"]
+
+[ext_resource type="Script" uid="uid://bpicfkju8tf4g" path="res://minigames/zeitzusammenpassen/clock.gd" id="1_i17hh"]
+[ext_resource type="Texture2D" uid="uid://dat5iiscqnv13" path="res://minigames/zeitzusammenpassen/minute_hand.png" id="3_7dnuq"]
+[ext_resource type="Texture2D" uid="uid://b4xxguq120yfb" path="res://minigames/zeitzusammenpassen/hour_hand.png" id="4_vv8a4"]
+[ext_resource type="Texture2D" uid="uid://delwnexp6ixve" path="res://minigames/zeitzusammenpassen/Clock-No-Hands-PNG-Clipart.png" id="5_m46k7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t85tm"]
+radius = 1250.0
+
+[node name="Clock" type="Area2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_i17hh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t85tm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("5_m46k7")
+
+[node name="MinuteHand" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="MinuteHand"]
+scale = Vector2(20, 4.2)
+texture = ExtResource("3_7dnuq")
+
+[node name="HourHand" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="HourHand"]
+scale = Vector2(20, 4.2)
+texture = ExtResource("4_vv8a4")

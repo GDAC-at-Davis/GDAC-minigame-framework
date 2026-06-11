@@ -16,22 +16,21 @@ anchors_preset = 0
 script = ExtResource("1_n5n1k")
 transition_background = ExtResource("2_u7r6c")
 
-[node name="MenuButton" type="Button" parent="."]
-layout_mode = 0
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="MenuButton" type="Button" parent="UILayer"]
 offset_right = 162.0
 offset_bottom = 61.0
 text = "Back to Menu"
 
-[node name="PlayAllButton" type="Button" parent="."]
-layout_mode = 0
+[node name="PlayAllButton" type="Button" parent="UILayer"]
 offset_left = 493.0
 offset_top = 6.0
 offset_right = 751.0
 offset_bottom = 59.0
 text = "Play All"
 
-[node name="MinigameList" type="ItemList" parent="."]
-layout_mode = 0
+[node name="MinigameList" type="ItemList" parent="UILayer"]
 offset_top = 69.0
 offset_right = 1280.0
 offset_bottom = 720.0

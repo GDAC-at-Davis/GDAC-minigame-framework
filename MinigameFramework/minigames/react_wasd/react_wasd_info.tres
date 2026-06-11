@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/minigame_info.gd" id="1_info"]
+[ext_resource type="PackedScene" path="res://minigames/react_wasd/react_wasd.tscn" id="2_scene"]
+
+[resource]
+script = ExtResource("1_info")
+name = "React WASD"
+icon = null
+scene = ExtResource("2_scene")

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=4 format=3 uid="uid://dyj4hdne6ew1w"]
+
+[ext_resource type="PackedScene" uid="uid://ciprtloujbesb" path="res://minigames/timing_bar/timing_bar.tscn" id="1_08pke"]
+[ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="1_n7f3h"]
+[ext_resource type="Texture2D" uid="uid://ct6dnpvausgyu" path="res://minigames/timing_bar/game_icon.png" id="1_rjxs6"]
+
+[resource]
+script = ExtResource("1_n7f3h")
+name = "timed click"
+icon = ExtResource("1_rjxs6")
+scene = ExtResource("1_08pke")
+metadata/_custom_type_script = "uid://vk7irpeekqp4"

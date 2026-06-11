@@ -1,91 +1,48 @@
-class_name WorldManager
+class_name Overworld
 extends Node2D
 
-@export var scene_dict : Dictionary[String, PackedScene] = {
-	"Home" : preload("res://scenes/home_room.tscn"),
-	"Empty" : preload("res://scenes/empty.tscn")
-}
+var dakki: Character
+var gee: Character
 
-@export var ui_dict = {
-	"Menu" : preload("res://scenes/menu.tscn"),
-	"Collection" : preload("res://scenes/minigame_collection.tscn"),
-	"Home" : preload("res://scenes/ui.tscn"),
-	"Cutscene" : preload("res://scenes/cutscene.tscn")
-}
+var _dakki_scene: PackedScene = preload("res://scenes/player.tscn")
+var _gee_scene: PackedScene = preload("res://scenes/gee.tscn")
 
-@export var music_dict : Dictionary[String, String]= {
-	"Cutscene" : "res://assets/audio/cutscene_audio.wav"
-}
+@onready var dialogue_box: DialogueBox = $UILayer/DialogueBox
+@onready var world_layer = $WorldLayer
+@onready var overlay_layer = $OverlayLayer
+@onready var ui_layer = $UILayer
+@onready var sound_player : AudioStreamPlayer = $SoundPlayer
+@onready var story_manager: StoryManager = $StoryManager
+@onready var controller: Controller = $WorldLayer/Controller
+@onready var camera: Camera2D = $WorldLayer/Camera2D
+@onready var fullscreen_image: TextureRect = $UILayer/FullscreenImage
 
-var active_scene = null:
-	get():
-		return active_scene
-var active_ui = null:
-	get():
-		return active_ui
+func _ready():
+	dakki = _dakki_scene.instantiate()
+	gee = _gee_scene.instantiate()
+	story_manager.progress_story()
 
-@onready var ui_canvas = $UICanvas
-@onready var audio : AudioStreamPlayer = $Audio
+func play_minigames(minigame_group: MinigameGroupData):
+	remove_child(world_layer)
+	remove_child(overlay_layer)
+	remove_child(ui_layer)
+	GameManager.minigame_manager.all_minigames_completed.connect(_on_minigames_completed)
+	GameManager.minigame_manager.start(minigame_group)
 
-# Helper functions
+func add_to_world(node: Node):
+	world_layer.add_child(node)
 
-func has_node_of_type(parent: Node, type):
-	for child in parent.get_children():
-		if is_instance_of(child, type):
-			return true
-	return false
-	
-func get_node_of_type(parent: Node, type):
-	for child in parent.get_children():
-		if is_instance_of(child, type):
-			return child
-	return null
+func remove_from_world(node: Node):
+	world_layer.remove_child(node)
 
-func load_level(level_name : String, delete : bool = true, keep_running : bool = false):
-	if level_name in scene_dict.keys():
-		load_scene(level_name, delete, keep_running)
-	else:
-		load_scene("Empty", delete, keep_running)
-	if level_name in ui_dict.keys():
-		load_ui(level_name, delete, keep_running)
+func add_to_overlay(node: Node):
+	overlay_layer.add_child(node)
 
-func play_music(song, speed : float = 1.0):
-	if song in music_dict.keys():
-			GameManager.play_music(music_dict[song], speed)
-	# Do this later
+func remove_from_overlay(node: Node):
+	overlay_layer.remove_child(node)
 
-func pause_music():
-	GameManager.pause_music()
-
-func load_scene(scene_name : String, delete : bool = true, keep_running : bool = false):
-	if active_scene != null:
-		if delete:
-			active_scene.queue_free()
-		elif keep_running:
-			active_scene.visible = false
-		else:
-			remove_child(active_scene)
-		active_scene = null
-	var new_scene = scene_dict.get(scene_name)
-	if new_scene:
-		active_scene = new_scene.instantiate()
-		add_child(active_scene)
-
-func load_ui(ui_name : String, delete : bool = true, keep_running : bool = false):
-	if active_ui != null:
-		if delete:
-			active_ui.queue_free()
-		elif keep_running:
-			active_ui.visible = false
-		else:
-			ui_canvas.remove_child(active_ui)
-		active_ui = null
-	var new_ui = ui_dict.get(ui_name)
-	if new_ui:
-		active_ui = new_ui.instantiate()
-		ui_canvas.add_child(active_ui)
-
-# End of helper functions
-
-func _ready() -> void:
-	load_scene("Menu")
+func _on_minigames_completed(won: bool):
+	GameManager.minigame_manager.all_minigames_completed.disconnect(_on_minigames_completed)
+	add_child(world_layer)
+	add_child(overlay_layer)
+	add_child(ui_layer)
