@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6n8xrme5beco"]
+
+[ext_resource type="Script" uid="uid://c11sitiwinils" path="res://minigames/pong_defender/pong_defender.gd" id="1_dfx4u"]
+[ext_resource type="Script" uid="uid://dhqvb07iga7g4" path="res://minigames/pong_defender/pong_bar.gd" id="2_dfx4u"]
+[ext_resource type="Texture2D" uid="uid://c34cyxjjq3drd" path="res://minigames/pong_defender/assets/paddle.png" id="3_u1o8y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_laoqk"]
+radius = 5.0
+height = 34.79999
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dfx4u"]
+size = Vector2(20, 724)
+
+[node name="PongDefenderGame" type="Node"]
+script = ExtResource("1_dfx4u")
+metadata/_custom_type_script = "uid://yiv2g3c50yqb"
+
+[node name="PongBar" type="CharacterBody2D" parent="."]
+position = Vector2(606, 646)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_dfx4u")
+
+[node name="Sprite2D" type="Sprite2D" parent="PongBar"]
+rotation = 1.5707964
+scale = Vector2(5, 5)
+texture = ExtResource("3_u1o8y")
+
+[node name="Area2D" type="Area2D" parent="PongBar"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PongBar/Area2D"]
+position = Vector2(2, 2)
+rotation = 1.5707964
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_laoqk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PongBar"]
+position = Vector2(2, 2)
+rotation = 1.5707964
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_laoqk")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+position = Vector2(572, -6)
+collision_layer = 6
+collision_mask = 6
+
+[node name="Area2D" type="Area2D" parent="RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall/Area2D"]
+position = Vector2(714, 361)
+shape = SubResource("RectangleShape2D_dfx4u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(714, 361)
+shape = SubResource("RectangleShape2D_dfx4u")
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(2, 355)
+shape = SubResource("RectangleShape2D_dfx4u")
+
+[node name="Area2D" type="Area2D" parent="LeftWall"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="LeftWall/Area2D"]
+position = Vector2(2, 355)
+shape = SubResource("RectangleShape2D_dfx4u")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 506.0
+offset_top = 6.0
+offset_right = 597.0
+offset_bottom = 29.0
+scale = Vector2(2, 2)
+text = "Stop the balls!
+Click to shoot"
+
+[connection signal="area_entered" from="PongBar/Area2D" to="PongBar" method="_on_area_2d_area_entered"]
