@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4u6t6lb46h1m"]
+
+[ext_resource type="Script" uid="uid://8gmk8tvcs2gi" path="res://minigames/circle_clicker/triangle.gd" id="1_f5krt"]
+[ext_resource type="Texture2D" uid="uid://bb81vo25lgajq" path="res://minigames/circle_clicker/triangle.png" id="2_7bu1n"]
+
+[node name="Triangle" type="Area2D"]
+script = ExtResource("1_f5krt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_7bu1n")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -22, -26, 23, 26, 22)
