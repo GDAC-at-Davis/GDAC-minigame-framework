@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b2o705ci553fr"]
 
-[ext_resource type="Script" uid="uid://c7we4uveykfdb" path="res://scripts/player.gd" id="1_fjrip"]
+[ext_resource type="Script" uid="uid://c7we4uveykfdb" path="res://scripts/character.gd" id="1_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dlhunmti0rfki" path="res://assets/player/BackIdle.png" id="2_smehm"]
 [ext_resource type="Texture2D" uid="uid://dc7ksgum74bap" path="res://assets/player/BackWalk.png" id="3_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://cnkeu612ob1v6" path="res://assets/player/FrontIdle.png" id="4_y4r1p"]
@@ -68,19 +68,22 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn08x"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fjrip"]
+radius = 4.0
+height = 18.0
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_fjrip")
+animated_sprite = NodePath("Sprite")
+metadata/_custom_type_script = "uid://c7we4uveykfdb"
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.38419e-07, -2.38419e-07)
 scale = Vector2(0.625, 0.625)
 sprite_frames = SubResource("SpriteFrames_ivps1")
-animation = &"BackIdle"
+animation = &"RightWalk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_nn08x")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+position = Vector2(0, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_fjrip")

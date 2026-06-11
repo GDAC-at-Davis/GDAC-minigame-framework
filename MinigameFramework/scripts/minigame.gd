@@ -28,6 +28,8 @@ var has_won: bool = false
 ## True after win() or lose() is called.
 var has_ended: bool = false
 
+var manager: MinigameManager
+
 func _ready():
 	countdown_timer = Timer.new()
 	add_child(countdown_timer)
@@ -41,7 +43,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	GameManager.minigame_manager.update_time_display(countdown_timer.time_left, countdown_time)
+	manager.update_time_display(countdown_timer.time_left, countdown_time)
 	run()
 
 
@@ -91,4 +93,4 @@ func _on_countdown_timeout():
 	if not has_won:
 		lose()
 	complete()
-	GameManager.minigame_manager.minigame_completed.emit(has_won)
+	manager.minigame_completed.emit(has_won)

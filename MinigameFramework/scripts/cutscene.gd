@@ -1,4 +1,5 @@
 extends Control
+class_name IntroCutscene
 
 @export var dialogues : Array[String]
 @export var images : Array[Texture2D]
@@ -14,20 +15,32 @@ var text_counter : float = 0.0
 
 var playing_text : bool = false
 
+var complete : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	start_text()
-	GameManager.world_manager.play_music("Cutscene")
+	#GameManager.world_manager.play_music("Cutscene")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if playing_text:
 		text_counter += delta * text_speed
 		play_text()
+	if Input.is_action_just_pressed("primary") or Input.is_action_pressed("secondary"):
+		if playing_text:
+			text.visible_characters = len(text.text)
+			playing_text = false
+		else:
+			current_dialogue += 1
+			if current_dialogue < len(dialogues):
+				start_text()
+			else:
+				complete = true
 
 func start_text():
 	text.text = dialogues[current_dialogue]
-	image.texture = images[current_dialogue]
+	#image.texture = images[current_dialogue]
 	playing_text = true
 	text.visible_characters = 0
 
@@ -38,17 +51,4 @@ func play_text():
 		else:
 			playing_text = false
 			text_counter = 0
-
-
-func _on_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("primary"):
-		if playing_text:
-			text.visible_characters = len(text.text)
-			playing_text = false
-		else:
-			current_dialogue += 1
-			if current_dialogue < len(dialogues):
-				start_text()
-			else:
-				GameManager.world_manager.pause_music()
-				GameManager.world_manager.load_level("Home")
+		

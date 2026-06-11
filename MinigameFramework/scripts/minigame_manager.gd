@@ -1,6 +1,7 @@
 class_name MinigameManager
 extends Control
 
+signal all_minigames_completed(won: bool)
 signal minigame_completed
 
 ## How long to display instructions in seconds
@@ -83,6 +84,9 @@ func _ready():
 	fade_timer.one_shot = true
 	fade_timer.timeout.connect(_on_fade_timer_timeout)
 	add_child(fade_timer)
+	
+	visibility_changed.connect(_on_visibility_changed)
+	visible = false
 
 func _process(_delta):
 	if instruction_timer.time_left > 0:
@@ -120,6 +124,7 @@ func start(minigame_data: MinigameGroupData, endless: bool = false):
 	## Randomize the order of the minigames
 	data.minigames.shuffle()
 	transition_timer.start()
+	visible = true
 
 ## Starts the next minigame
 func start_minigame() -> void:
@@ -134,7 +139,8 @@ func start_minigame() -> void:
 		minigame_scene = data.minigames[_minigame_idx]
 	_minigame_idx += 1
 	current_minigame_node = minigame_scene.instantiate()
-	current_minigame_node.difficulty = GameManager.minigame_manager.difficulty_scale
+	current_minigame_node.manager = self
+	current_minigame_node.difficulty = difficulty_scale
 	minigame_layer.add_child(current_minigame_node)
 	minigame_ui_layer.visible = true
 	instruction_label.visible = true
@@ -178,7 +184,8 @@ func _on_instruction_timer_timeout():
 func _on_transition_timer_timeout():
 	if (not _endless and minigames_completed == data.total_minigames) or lives_left == 0:
 		GameManager.pause_music()
-		GameManager.switch_to_world()
+		visible = false
+		all_minigames_completed.emit(minigames_completed == data.total_minigames)
 	else:
 		start_minigame()
 
@@ -190,4 +197,8 @@ func _on_fade_timer_timeout():
 		current_minigame_node.queue_free()
 		current_minigame_node = null
 		minigame_layer.visible = false
-		
+
+func _on_visibility_changed():
+	minigame_ui_layer.visible = visible
+	minigame_layer.visible = visible
+	transition_layer.visible = visible
