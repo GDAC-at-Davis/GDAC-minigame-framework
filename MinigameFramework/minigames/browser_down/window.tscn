@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=3 uid="uid://1s7hj2p5uy2b"]
+
+[ext_resource type="Texture2D" uid="uid://koi7f081tg27" path="res://minigames/browser_down/icon.svg" id="1_l8gl1"]
+[ext_resource type="Script" uid="uid://cpq7ptx8jkq27" path="res://minigames/browser_down/Scripts/window.gd" id="1_rpr86"]
+[ext_resource type="Texture2D" uid="uid://5o2fck614loy" path="res://minigames/browser_down/Assets/illegal1.png" id="3_tfacp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tfacp"]
+bg_color = Color(0.8563939, 0, 0.34899518, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0ypn"]
+
+[node name="Window" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_rpr86")
+metadata/_edit_use_anchors_ = true
+
+[node name="WindowVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Drag" type="Panel" parent="WindowVBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tfacp")
+
+[node name="ButtonHBox" type="HBoxContainer" parent="WindowVBox/Drag"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="Close" type="TextureRect" parent="WindowVBox/Drag/ButtonHBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("1_l8gl1")
+expand_mode = 5
+
+[node name="Full" type="TextureRect" parent="WindowVBox/Drag/ButtonHBox"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("1_l8gl1")
+expand_mode = 5
+
+[node name="Panel" type="Panel" parent="WindowVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_q0ypn")
+
+[node name="Image" type="TextureRect" parent="WindowVBox/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_tfacp")
+expand_mode = 1
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="WindowVBox/Drag" to="." method="_on_drag_gui_input"]
+[connection signal="gui_input" from="WindowVBox/Drag/ButtonHBox/Close" to="." method="_on_close_gui_input"]
