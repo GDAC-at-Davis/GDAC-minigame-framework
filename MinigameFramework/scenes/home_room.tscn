@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://blugenr688iy7"]
+[gd_scene format=4 uid="uid://blugenr688iy7"]
 
 [ext_resource type="Texture2D" uid="uid://fvvibh30mjku" path="res://assets/environment/backroom north wall 2.png" id="2_ufu6x"]
 [ext_resource type="Texture2D" uid="uid://drojkncnaqyqm" path="res://assets/environment/backroom north wall 3- bottom.png" id="3_wpd0c"]
@@ -85,7 +85,7 @@ texture_region_size = Vector2i(32, 32)
 texture = ExtResource("6_tg0b6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.780735, -1.0795212, 16, -0.15421677, 16, -16, 4.4723015, -16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3hfew"]
 texture = ExtResource("7_g3hol")
@@ -96,6 +96,7 @@ texture_region_size = Vector2i(32, 32)
 texture = ExtResource("8_q6ki4")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, 8.173515, -12.183165, 9.715691, -13.108467, -16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pvkc"]
 texture = ExtResource("9_pkam6")
@@ -178,6 +179,7 @@ texture_region_size = Vector2i(32, 32)
 texture = ExtResource("24_f73bo")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -10.332556, 6.3229103, -10.024122, 6.3229103, 1.0795212, -16, 1.696392)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dheim"]
 texture = ExtResource("25_yvr48")
@@ -353,103 +355,103 @@ sources/42 = SubResource("TileSetAtlasSource_i570p")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mohvt"]
 size = Vector2(30, 30)
 
-[node name="Environment" type="Node2D"]
+[node name="Environment" type="Node2D" unique_id=1089362101]
 
-[node name="CollisionTileMap" type="TileMapLayer" parent="."]
+[node name="CollisionTileMap" type="TileMapLayer" parent="." unique_id=509821705]
 tile_map_data = PackedByteArray("AAD//wAABwAAAAAAAAD//wEABwAAAAAAAAD//wIABwAAAAAAAAD//wMABwAAAAAAAAD//wQABwAAAAAAAAD//wUABwAAAAAAAAD/////BwAAAAAAAAAAAP//BwAAAAAAAAABAP//BwAAAAAAAAACAP//BwAAAAAAAAADAP//BwAAAAAAAAAEAP//BwAAAAAAAAAFAP//BwAAAAAAAAAGAP//BwAAAAAAAAAHAP//BwAAAAAAAAABAAAABwAAAAAAAAACAAAABwAAAAAAAAADAAAABwAAAAAAAAAEAAAABwAAAAAAAAAFAAAABwAAAAAAAAAGAAAABwAAAAAAAAAHAAAABwAAAAAAAAAIAP//BwAAAAAAAAAIAAAABwAAAAAAAAAIAAEABwAAAAAAAAAIAAIABwAAAAAAAAAIAAMABwAAAAAAAAAIAAQABwAAAAAAAAAIAAUABwAAAAAAAAA=")
 tile_set = SubResource("TileSet_le8eo")
 
-[node name="Floor" type="TileMapLayer" parent="."]
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1500601511]
 tile_map_data = PackedByteArray("AAAAAAAAFwAAAAAAAAAAAAEAFwAAAAAAAAAAAAIAFwAAAAAAAAAAAAMAFwAAAAAAAAAAAAQAFwAAAAAAAAABAAAAFwAAAAAAAAABAAEAFwAAAAAAAAABAAIAFwAAAAAAAAABAAMAFwAAAAAAAAABAAQAFwAAAAAAAAACAAAAFwAAAAAAAAACAAEAFwAAAAAAAAACAAIAFwAAAAAAAAACAAMAFwAAAAAAAAACAAQAFwAAAAAAAAADAAAAFwAAAAAAAAADAAEAFwAAAAAAAAADAAIAFwAAAAAAAAADAAMAFwAAAAAAAAADAAQAFwAAAAAAAAAEAAAAFwAAAAAAAAAEAAEAFwAAAAAAAAAEAAIAFwAAAAAAAAAEAAMAFwAAAAAAAAAEAAQAFwAAAAAAAAAFAAAAFwAAAAAAAAAFAAEAFwAAAAAAAAAFAAIAFwAAAAAAAAAFAAMAFwAAAAAAAAAFAAQAFwAAAAAAAAAGAAAAFwAAAAAAAAAGAAEAFwAAAAAAAAAGAAIAFwAAAAAAAAAGAAMAFwAAAAAAAAAGAAQAFwAAAAAAAAAHAAAAFwAAAAAAAAAHAAEAFwAAAAAAAAAHAAIAFwAAAAAAAAAHAAMAFwAAAAAAAAAHAAQAFwAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="NorthWalls" type="TileMapLayer" parent="."]
+[node name="NorthWalls" type="TileMapLayer" parent="." unique_id=1677193602]
 tile_map_data = PackedByteArray("AAAAAAAAGAAAAAAAAAABAAAAIgAAAAAAAAACAAAAIgAAAAAAAAADAAAAIgAAAAAAAAAFAAAAIgAAAAAAAAAEAAAAIgAAAAAAAAAGAAAAHgAAAAAAAAAHAAAAHwAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="NorthComputers" type="TileMapLayer" parent="."]
+[node name="NorthComputers" type="TileMapLayer" parent="." unique_id=2015571272]
 tile_map_data = PackedByteArray("AAABAAAAIQAAAAAAAAACAAAAIQAAAAAAAAADAAAAIQAAAAAAAAAEAAAAIQAAAAAAAAAFAAAAIQAAAAAAAAAGAAAAGQAAAAAAAAAHAAAAFgAAAAAAAAAHAAEAFQAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="BackroomsOffset" type="TileMapLayer" parent="."]
+[node name="BackroomsOffset" type="TileMapLayer" parent="." unique_id=1352031668]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAGAAEAKQAAAAAAAAAHAAEAKgAAAAAAAAAHAAIAEwAAAAAAAAAFAAIAEQAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="BackroomsOffset2" type="TileMapLayer" parent="."]
+[node name="BackroomsOffset2" type="TileMapLayer" parent="." unique_id=116206005]
 tile_map_data = PackedByteArray("AAAHAAAAGgAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="BackroomsOffset3" type="TileMapLayer" parent="."]
+[node name="BackroomsOffset3" type="TileMapLayer" parent="." unique_id=816237595]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAHAAAAJgAAAAAAAAAHAAEAJwAAAAAAAAAHAAIAKAAAAAAAAAAFAAIACAAAAAAAAAAGAAIAEgAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="BackroomsOffset4" type="TileMapLayer" parent="."]
+[node name="BackroomsOffset4" type="TileMapLayer" parent="." unique_id=2088977002]
 position = Vector2(0, 24)
 tile_map_data = PackedByteArray("AAAHAAIAHQAAAAAAAAAGAAIAHAAAAAAAAAAFAAIAGwAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="Tables" type="TileMapLayer" parent="."]
+[node name="Tables" type="TileMapLayer" parent="." unique_id=1222182440]
 y_sort_enabled = true
 position = Vector2(0, 12)
 tile_map_data = PackedByteArray("AAAAAAMAJQAAAAMAAAAAAAQAJQAAAAQAAAABAAEAJQABAAEAAAABAAMAJQABAAMAAAABAAQAJQABAAQAAAACAAEAJQACAAEAAAACAAMAJQACAAMAAAACAAQAJQACAAQAAAADAAEAJQADAAEAAAADAAMAJQADAAMAAAADAAQAJQADAAQAAAAEAAEAJQAEAAEAAAAEAAMAJQAEAAMAAAAEAAQAJQAEAAQAAAAAAAEAIAAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="Tables2" type="TileMapLayer" parent="."]
+[node name="Tables2" type="TileMapLayer" parent="." unique_id=1266318848]
 z_index = 2
 position = Vector2(0, 12)
 tile_map_data = PackedByteArray("AAAAAAIAJQAAAAIAAAABAAAAJQABAAAAAAABAAIAJQABAAIAAAACAAAAJQACAAAAAAADAAAAJQADAAAAAAADAAIAJQADAAIAAAAEAAAAJQAEAAAAAAAEAAIAJQAEAAIAAAAAAAEAIAAAAAAAAAACAAIAJQACAAIAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="StorageRoom" type="TileMapLayer" parent="."]
+[node name="StorageRoom" type="TileMapLayer" parent="." unique_id=98374206]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAHAAMACwAAAAAAAAAGAAIACgAAAAAAAAAGAAMACQAAAAAAAAAFAAMABwAAAAAAAAAFAAQAEAAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="StorageRoom1" type="TileMapLayer" parent="."]
+[node name="StorageRoom1" type="TileMapLayer" parent="." unique_id=85173642]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAFAAMADwAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="StorageRoom2" type="TileMapLayer" parent="."]
+[node name="StorageRoom2" type="TileMapLayer" parent="." unique_id=889058266]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAFAAMADQAAAAAAAAAHAAQABQAAAAAAAAAHAAMABgAAAAAAAAAFAAQADgAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="SouthWalls" type="TileMapLayer" parent="."]
+[node name="SouthWalls" type="TileMapLayer" parent="." unique_id=1534619515]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAAAAQAJAAAAAAAAAABAAQAJAAAAAAAAAACAAQAJAAAAAAAAAADAAQAJAAAAAAAAAAEAAQAJAAAAAAAAAAGAAQAJAAAAAAAAAAHAAQAJAAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="Bloon" type="Sprite2D" parent="."]
+[node name="Bloon" type="Sprite2D" parent="." unique_id=919401237]
 position = Vector2(-112, 144)
 texture = ExtResource("20_mohvt")
 
-[node name="MinigameInteractable" type="Area2D" parent="Bloon"]
+[node name="MinigameInteractable" type="Area2D" parent="Bloon" unique_id=513514268]
 script = ExtResource("20_ijakw")
 minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloon/MinigameInteractable"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloon/MinigameInteractable" unique_id=249481839]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Chair1" type="Sprite2D" parent="."]
+[node name="Chair1" type="Sprite2D" parent="." unique_id=1674325451]
 position = Vector2(42, 114)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("43_tg0b6")
 
-[node name="Chair2" type="Sprite2D" parent="."]
+[node name="Chair2" type="Sprite2D" parent="." unique_id=1064047298]
 position = Vector2(83, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("44_g3hol")
 
-[node name="Chair3" type="Sprite2D" parent="."]
+[node name="Chair3" type="Sprite2D" parent="." unique_id=2051507756]
 position = Vector2(120, 107)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("45_q6ki4")
 
-[node name="Chair4" type="Sprite2D" parent="."]
+[node name="Chair4" type="Sprite2D" parent="." unique_id=9682680]
 position = Vector2(83, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("46_pkam6")
