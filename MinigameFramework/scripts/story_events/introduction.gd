@@ -50,8 +50,8 @@ func on_exit():
 
 func _on_dialogue_completed():
 	_story_progress += 1
-	# Dialogue is broken into different parts because the dialogue box will simply play the enter array of strings
-	# We have to brake up the dialogue to perform actions intermediately
+	# Dialogue is broken into different parts because the dialogue box will simply play the entire array of strings
+	# We have to break up the dialogue to perform actions intermediately
 	if _story_progress == 2:
 		GameManager.pause_music()
 		# We can clear the background with this
