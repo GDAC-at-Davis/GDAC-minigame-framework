@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blmvycvgmnnxv"]
+[gd_scene format=3 uid="uid://blmvycvgmnnxv"]
 
 [ext_resource type="Script" uid="uid://dtmlo62vwyrq0" path="res://scripts/world_manager.gd" id="1_3gvrs"]
 [ext_resource type="Script" uid="uid://bww3o28wdg8me" path="res://scripts/story_manager.gd" id="2_eab5i"]
@@ -10,54 +10,55 @@
 [ext_resource type="Script" uid="uid://uas83n70i0qd" path="res://scripts/story_events/free_play.gd" id="6_qjxaj"]
 [ext_resource type="Script" uid="uid://cvopbp8lac0yb" path="res://scripts/controller.gd" id="7_fkyvp"]
 
-[node name="Overworld" type="Node2D"]
+[node name="Overworld" type="Node2D" unique_id=478872875]
 script = ExtResource("1_3gvrs")
 metadata/_custom_type_script = "uid://dtmlo62vwyrq0"
 
-[node name="StoryManager" type="Node" parent="."]
+[node name="StoryManager" type="Node" parent="." unique_id=1924875288]
 script = ExtResource("2_eab5i")
 metadata/_custom_type_script = "uid://bww3o28wdg8me"
 
-[node name="Introduction" type="Node" parent="StoryManager"]
+[node name="Introduction" type="Node" parent="StoryManager" unique_id=77304087]
 script = ExtResource("3_fkyvp")
 metadata/_custom_type_script = "uid://dhiep453gufag"
 
-[node name="Storytime" type="Node" parent="StoryManager"]
+[node name="Storytime" type="Node" parent="StoryManager" unique_id=451857497]
 script = ExtResource("4_qjxaj")
 metadata/_custom_type_script = "uid://dhiep453gufag"
 
-[node name="Smoke" type="Node" parent="StoryManager"]
+[node name="Smoke" type="Node" parent="StoryManager" unique_id=1873003058]
 script = ExtResource("5_qjxaj")
 metadata/_custom_type_script = "uid://dhiep453gufag"
 
-[node name="Stars" type="Node" parent="StoryManager"]
+[node name="Stars" type="Node" parent="StoryManager" unique_id=687710938]
 script = ExtResource("6_e184d")
 metadata/_custom_type_script = "uid://dhiep453gufag"
 
-[node name="FreePlay" type="Node" parent="StoryManager"]
+[node name="FreePlay" type="Node" parent="StoryManager" unique_id=343798008]
 script = ExtResource("6_qjxaj")
 metadata/_custom_type_script = "uid://dhiep453gufag"
 
-[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="." unique_id=1384400614]
 
-[node name="WorldLayer" type="CanvasLayer" parent="."]
+[node name="WorldLayer" type="CanvasLayer" parent="." unique_id=1063765367]
 follow_viewport_enabled = true
 
-[node name="Camera2D" type="Camera2D" parent="WorldLayer"]
-zoom = Vector2(2, 2)
+[node name="Camera2D" type="Camera2D" parent="WorldLayer" unique_id=486846600]
+position = Vector2(154, 65)
+zoom = Vector2(3, 3)
 
-[node name="Controller" type="Node" parent="WorldLayer"]
+[node name="Controller" type="Node" parent="WorldLayer" unique_id=1864275417]
 script = ExtResource("7_fkyvp")
 metadata/_custom_type_script = "uid://cvopbp8lac0yb"
 
-[node name="OverlayLayer" type="CanvasLayer" parent="."]
+[node name="OverlayLayer" type="CanvasLayer" parent="." unique_id=1073148689]
 
-[node name="UILayer" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1883732570]
 
-[node name="FullscreenImage" type="TextureRect" parent="UILayer"]
+[node name="FullscreenImage" type="TextureRect" parent="UILayer" unique_id=17016885]
 offset_right = 1280.0
 offset_bottom = 720.0
 
-[node name="DialogueBox" parent="UILayer" instance=ExtResource("5_e184d")]
+[node name="DialogueBox" parent="UILayer" unique_id=464938360 instance=ExtResource("5_e184d")]
 
 [editable path="UILayer/DialogueBox"]

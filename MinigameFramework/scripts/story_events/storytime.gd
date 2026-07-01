@@ -17,7 +17,7 @@ func on_enter():
 	var open_lab: Node = load("res://scenes/home_room.tscn").instantiate()
 	overworld.add_to_world(open_lab)
 	overworld.add_to_world(overworld.dakki)
-	overworld.dakki.global_position = overworld.dakki.global_position + Vector2.RIGHT * 10.0
+	overworld.dakki.global_position = overworld.dakki.global_position + Vector2.RIGHT * 10.0 + Vector2.DOWN * 10.0
 	overworld.gee.global_position = overworld.dakki.global_position + Vector2.RIGHT * 50.0
 	overworld.add_to_world(overworld.gee)
 	overworld.dialogue_box.dialogue_completed.connect(_on_dialogue_completed)
