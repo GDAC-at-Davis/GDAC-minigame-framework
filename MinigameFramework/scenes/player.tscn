@@ -73,6 +73,7 @@ radius = 4.0
 height = 18.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+z_index = 1
 script = ExtResource("1_fjrip")
 animated_sprite = NodePath("Sprite")
 metadata/_custom_type_script = "uid://c7we4uveykfdb"
