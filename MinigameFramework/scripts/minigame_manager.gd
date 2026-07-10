@@ -116,6 +116,7 @@ func start(minigame_data: MinigameGroupData, endless: bool = false):
 	minigames_completed = 0
 	difficulty_scale = data.starting_difficulty
 	_minigame_idx = 0
+	instruction_label.visible = false
 	
 	## Set the background
 	if data.transition_background:

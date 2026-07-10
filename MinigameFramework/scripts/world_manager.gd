@@ -4,8 +4,12 @@ extends Node2D
 var dakki: Character
 var gee: Character
 
+var _completed_minigames: Array[StringName]
+
 var _dakki_scene: PackedScene = preload("res://scenes/player.tscn")
 var _gee_scene: PackedScene = preload("res://scenes/gee.tscn")
+var _base_minigame_data: MinigameGroupData = preload("res://resources/minigame_groups/overworld_minigame_group.tres")
+
 
 @onready var dialogue_box: DialogueBox = $UILayer/DialogueBox
 @onready var world_layer = $WorldLayer
@@ -22,12 +26,14 @@ func _ready():
 	gee = _gee_scene.instantiate()
 	story_manager.progress_story()
 
-func play_minigames(minigame_group: MinigameGroupData):
+func play_minigames(minigame_scene: PackedScene):
 	remove_child(world_layer)
 	remove_child(overlay_layer)
 	remove_child(ui_layer)
 	GameManager.minigame_manager.all_minigames_completed.connect(_on_minigames_completed)
-	GameManager.minigame_manager.start(minigame_group)
+	var minigame_data: MinigameGroupData = _base_minigame_data.duplicate()
+	minigame_data.minigames = [minigame_scene]
+	GameManager.minigame_manager.start(minigame_data)
 
 func add_to_world(node: Node):
 	world_layer.add_child(node)
@@ -40,6 +46,13 @@ func add_to_overlay(node: Node):
 
 func remove_from_overlay(node: Node):
 	overlay_layer.remove_child(node)
+
+func get_completed_minigame_count() -> int:
+	return _completed_minigames.size()
+
+func add_completed_minigame(minigame_id: StringName):
+	if not _completed_minigames.has(minigame_id):
+		_completed_minigames.append(minigame_id)
 
 func _on_minigames_completed(won: bool):
 	GameManager.minigame_manager.all_minigames_completed.disconnect(_on_minigames_completed)

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://blugenr688iy7"]
+[gd_scene load_steps=98 format=4 uid="uid://blugenr688iy7"]
 
 [ext_resource type="Texture2D" uid="uid://fvvibh30mjku" path="res://assets/environment/backroom north wall 2.png" id="2_ufu6x"]
 [ext_resource type="Texture2D" uid="uid://drojkncnaqyqm" path="res://assets/environment/backroom north wall 3- bottom.png" id="3_wpd0c"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://cf8sq3ldjnske" path="res://assets/environment/game room shelf 2.png" id="20_gegn2"]
 [ext_resource type="Script" uid="uid://dh23numijpv1d" path="res://scripts/minigame_interactable.gd" id="20_ijakw"]
 [ext_resource type="Texture2D" uid="uid://dimpxn7q7dko1" path="res://assets/interactables/bloon.png" id="20_mohvt"]
-[ext_resource type="Resource" uid="uid://78pfofl0yt3k" path="res://resources/minigame_groups/bloon_minigames.tres" id="21_ijakw"]
 [ext_resource type="Texture2D" uid="uid://bmg0ogahrsg7b" path="res://assets/environment/game room shelf 3.png" id="21_ld2nv"]
 [ext_resource type="Texture2D" uid="uid://doebv17v8wpcl" path="res://assets/environment/Garage door left.png" id="22_tevjs"]
 [ext_resource type="Texture2D" uid="uid://crmrn3x8blenn" path="res://assets/environment/Garage door right.png" id="23_702t6"]
@@ -43,6 +42,7 @@
 [ext_resource type="Texture2D" uid="uid://bobkjgeh6vwwn" path="res://assets/environment/backroom north wall 1.png" id="38_bbr2d"]
 [ext_resource type="Texture2D" uid="uid://c8bedde3eiajx" path="res://assets/environment/backroom north wall 2- bottom.png" id="39_k6px3"]
 [ext_resource type="Texture2D" uid="uid://cjiu1c1h7rkdr" path="res://assets/interactables/snake.png" id="40_g3hol"]
+[ext_resource type="PackedScene" uid="uid://c4kvqs4y1apdg" path="res://minigames/snake/snake.tscn" id="42_m6dmn"]
 [ext_resource type="Texture2D" uid="uid://cftt7cff66a5u" path="res://assets/interactables/ninja.png" id="43_mto7r"]
 [ext_resource type="Texture2D" uid="uid://gtxcwovyd3ea" path="res://assets/environment/Teal_LChair.png" id="43_tg0b6"]
 [ext_resource type="Texture2D" uid="uid://ouiwpkcltdig" path="res://assets/environment/Yellow_LChair.png" id="44_g3hol"]
@@ -380,234 +380,226 @@ sources/42 = SubResource("TileSetAtlasSource_i570p")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mohvt"]
 size = Vector2(30, 30)
 
-[node name="Environment" type="Node2D" unique_id=1089362101]
+[node name="Environment" type="Node2D"]
 
-[node name="CollisionTileMap" type="TileMapLayer" parent="." unique_id=509821705]
+[node name="CollisionTileMap" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD//wAABwAAAAAAAAD//wEABwAAAAAAAAD//wIABwAAAAAAAAD//wMABwAAAAAAAAD//wQABwAAAAAAAAD//wUABwAAAAAAAAD/////BwAAAAAAAAAAAP//BwAAAAAAAAABAP//BwAAAAAAAAACAP//BwAAAAAAAAADAP//BwAAAAAAAAAEAP//BwAAAAAAAAAFAP//BwAAAAAAAAAGAP//BwAAAAAAAAAHAP//BwAAAAAAAAABAAAABwAAAAAAAAACAAAABwAAAAAAAAADAAAABwAAAAAAAAAEAAAABwAAAAAAAAAFAAAABwAAAAAAAAAGAAAABwAAAAAAAAAHAAAABwAAAAAAAAAIAP//BwAAAAAAAAAIAAAABwAAAAAAAAAIAAEABwAAAAAAAAAIAAIABwAAAAAAAAAIAAMABwAAAAAAAAAIAAQABwAAAAAAAAAIAAUABwAAAAAAAAA=")
 tile_set = SubResource("TileSet_le8eo")
 
-[node name="Floor" type="TileMapLayer" parent="." unique_id=1500601511]
+[node name="Floor" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAFwAAAAAAAAAAAAEAFwAAAAAAAAAAAAIAFwAAAAAAAAAAAAMAFwAAAAAAAAAAAAQAFwAAAAAAAAABAAAAFwAAAAAAAAABAAEAFwAAAAAAAAABAAIAFwAAAAAAAAABAAMAFwAAAAAAAAABAAQAFwAAAAAAAAACAAAAFwAAAAAAAAACAAEAFwAAAAAAAAACAAIAFwAAAAAAAAACAAMAFwAAAAAAAAACAAQAFwAAAAAAAAADAAAAFwAAAAAAAAADAAEAFwAAAAAAAAADAAIAFwAAAAAAAAADAAMAFwAAAAAAAAADAAQAFwAAAAAAAAAEAAAAFwAAAAAAAAAEAAEAFwAAAAAAAAAEAAIAFwAAAAAAAAAEAAMAFwAAAAAAAAAEAAQAFwAAAAAAAAAFAAAAFwAAAAAAAAAFAAEAFwAAAAAAAAAFAAIAFwAAAAAAAAAFAAMAFwAAAAAAAAAFAAQAFwAAAAAAAAAGAAAAFwAAAAAAAAAGAAEAFwAAAAAAAAAGAAIAFwAAAAAAAAAGAAMAFwAAAAAAAAAGAAQAFwAAAAAAAAAHAAAAFwAAAAAAAAAHAAEAFwAAAAAAAAAHAAIAFwAAAAAAAAAHAAMAFwAAAAAAAAAHAAQAFwAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="NorthWalls" type="TileMapLayer" parent="." unique_id=1677193602]
+[node name="NorthWalls" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAAAAAGAAAAAAAAAABAAAAIgAAAAAAAAACAAAAIgAAAAAAAAADAAAAIgAAAAAAAAAFAAAAIgAAAAAAAAAEAAAAIgAAAAAAAAAGAAAAHgAAAAAAAAAHAAAAHwAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="NorthComputers" type="TileMapLayer" parent="." unique_id=2015571272]
+[node name="NorthComputers" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAAAAIQAAAAAAAAACAAAAIQAAAAAAAAADAAAAIQAAAAAAAAAEAAAAIQAAAAAAAAAFAAAAIQAAAAAAAAAGAAAAGQAAAAAAAAAHAAAAFgAAAAAAAAAHAAEAFQAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="BackroomsOffset" type="TileMapLayer" parent="." unique_id=1352031668]
+[node name="BackroomsOffset" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAGAAEAKQAAAAAAAAAHAAEAKgAAAAAAAAAHAAIAEwAAAAAAAAAFAAIAEQAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="BackroomsOffset2" type="TileMapLayer" parent="." unique_id=116206005]
+[node name="BackroomsOffset2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAHAAAAGgAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="BackroomsOffset3" type="TileMapLayer" parent="." unique_id=816237595]
+[node name="BackroomsOffset3" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAHAAAAJgAAAAAAAAAHAAEAJwAAAAAAAAAHAAIAKAAAAAAAAAAFAAIACAAAAAAAAAAGAAIAEgAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="BackroomsOffset4" type="TileMapLayer" parent="." unique_id=2088977002]
+[node name="BackroomsOffset4" type="TileMapLayer" parent="."]
 position = Vector2(0, 24)
 tile_map_data = PackedByteArray("AAAHAAIAHQAAAAAAAAAGAAIAHAAAAAAAAAAFAAIAGwAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="Tables" type="TileMapLayer" parent="." unique_id=1222182440]
+[node name="Tables" type="TileMapLayer" parent="."]
 position = Vector2(0, 12)
 tile_map_data = PackedByteArray("AAAAAAMAJQAAAAMAAAAAAAQAJQAAAAQAAAABAAEAJQABAAEAAAABAAMAJQABAAMAAAABAAQAJQABAAQAAAACAAEAJQACAAEAAAACAAMAJQACAAMAAAACAAQAJQACAAQAAAADAAEAJQADAAEAAAADAAMAJQADAAMAAAADAAQAJQADAAQAAAAEAAEAJQAEAAEAAAAEAAMAJQAEAAMAAAAEAAQAJQAEAAQAAAAAAAEAIAAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="Tables2" type="TileMapLayer" parent="." unique_id=1266318848]
+[node name="Tables2" type="TileMapLayer" parent="."]
 z_index = 2
 position = Vector2(0, 12)
 tile_map_data = PackedByteArray("AAAAAAIAJQAAAAIAAAABAAAAJQABAAAAAAABAAIAJQABAAIAAAACAAAAJQACAAAAAAADAAAAJQADAAAAAAADAAIAJQADAAIAAAAEAAAAJQAEAAAAAAAEAAIAJQAEAAIAAAACAAIAJQACAAIAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="StorageRoom" type="TileMapLayer" parent="." unique_id=98374206]
+[node name="StorageRoom" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAHAAMACwAAAAAAAAAGAAIACgAAAAAAAAAGAAMACQAAAAAAAAAFAAMABwAAAAAAAAAFAAQAEAAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="StorageRoom1" type="TileMapLayer" parent="." unique_id=85173642]
+[node name="StorageRoom1" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAFAAMADwAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="StorageRoom2" type="TileMapLayer" parent="." unique_id=889058266]
+[node name="StorageRoom2" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAFAAMADQAAAAAAAAAHAAQABQAAAAAAAAAHAAMABgAAAAAAAAAFAAQADgAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="SouthWalls" type="TileMapLayer" parent="." unique_id=1534619515]
+[node name="SouthWalls" type="TileMapLayer" parent="."]
 position = Vector2(0, 8)
 tile_map_data = PackedByteArray("AAAAAAQAJAAAAAAAAAABAAQAJAAAAAAAAAACAAQAJAAAAAAAAAADAAQAJAAAAAAAAAAEAAQAJAAAAAAAAAAGAAQAJAAAAAAAAAAHAAQAJAAAAAAAAAA=")
 tile_set = SubResource("TileSet_gpkxl")
 
-[node name="Snake" type="Sprite2D" parent="." unique_id=653832072]
+[node name="Snake" type="Sprite2D" parent="."]
 position = Vector2(213, 63)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("40_g3hol")
 
-[node name="MinigameInteractable" type="Area2D" parent="Snake" unique_id=1377407781]
+[node name="MinigameInteractable" type="Area2D" parent="Snake"]
 script = ExtResource("20_ijakw")
+minigame_id = &"snake"
 interaction_text = Array[String](["hihi!", "ooo itssss ssssso bright!", "ooo sssssso warm!", "aw ssssnap, I'm hungry...", "my eyesssssss ,itssss too bright!", "Can you show me where all da food is!", "Thankssssss "])
-minigame_group = ExtResource("21_ijakw")
+minigame_scene = ExtResource("42_m6dmn")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake/MinigameInteractable" unique_id=729077498]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Ninja" type="Sprite2D" parent="." unique_id=1655921150]
+[node name="Ninja" type="Sprite2D" parent="."]
 position = Vector2(234, 153)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("43_mto7r")
 
-[node name="MinigameInteractable" type="Area2D" parent="Ninja" unique_id=1939424318]
+[node name="MinigameInteractable" type="Area2D" parent="Ninja"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["That monster! He has some technique, some forbidden jutsu.", "You! You might be the one who'll take him down!", "Mikey Tysen, \"The Monster\"", "I can tell you fight, just by the way you move. You might be a match for him!", "Keep an eye out for his signature move, the \"project every punch\".", "I've been fighting him for decades, but I still can't figure out how to beat it!", "But you, you might be able to do it!", "I know you've been training your whole life for this opportunity. You've got this!"])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ninja/MinigameInteractable" unique_id=353218759]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ninja/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Bloon" type="Sprite2D" parent="." unique_id=919401237]
+[node name="Bloon" type="Sprite2D" parent="."]
 position = Vector2(54, 133)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("20_mohvt")
 
-[node name="MinigameInteractable" type="Area2D" parent="Bloon" unique_id=513514268]
+[node name="MinigameInteractable" type="Area2D" parent="Bloon"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Oh, a valiant hero! Thank goodness you're here!", "I've been trapped here for a thousand years... slowly deflating...", "Fulfill my last wishes, please!", "My brother must be avenged... kill the Stringies!", "Use those mighty limbs of yours and pop as many as you can!"])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloon/MinigameInteractable" unique_id=249481839]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bloon/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Browser" type="Sprite2D" parent="." unique_id=537266660]
+[node name="Browser" type="Sprite2D" parent="."]
 position = Vector2(8, 69)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("45_dyf5v")
 flip_h = true
 
-[node name="MinigameInteractable" type="Area2D" parent="Browser" unique_id=1684639081]
+[node name="MinigameInteractable" type="Area2D" parent="Browser"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["AAAAAAAAAA!", "The cops-I mean, my parents are gonna kill me!", "I left all my browser tabs open!", "You'll help me right? I don't have the APM to do it before \"they\" get here- uh, home!", "Help me close all the weird tabs, okay?", "You've got it, k thx bye bye!"])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Browser/MinigameInteractable" unique_id=1005398908]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Browser/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Avalanche" type="Sprite2D" parent="." unique_id=866989536]
+[node name="Avalanche" type="Sprite2D" parent="."]
 position = Vector2(216, 33)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("46_ovnv5")
 flip_h = true
 
-[node name="MinigameInteractable" type="Area2D" parent="Avalanche" unique_id=1144489678]
+[node name="MinigameInteractable" type="Area2D" parent="Avalanche"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Brrr~ Hey! You know how to ski, right?", "I live way up top of Mount Everest, but it's a treacherous journey!", "Things keep hitting me, and then I tumble all the way back down.", "Can you help me call the shots?", "Just tell me where to go, and help me get past these darn icicles!"])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Avalanche/MinigameInteractable" unique_id=530140602]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Avalanche/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Pitch" type="Sprite2D" parent="." unique_id=1003153146]
+[node name="Pitch" type="Sprite2D" parent="."]
 position = Vector2(45.000004, 18)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("47_dyf5v")
 flip_h = true
 
-[node name="MinigameInteractable" type="Area2D" parent="Pitch" unique_id=894197094]
+[node name="MinigameInteractable" type="Area2D" parent="Pitch"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Yes! It is me, famous soccer player Ronaldo Messi!", "I'm kidding of course, I'm just Chistrian Lion.", "I need to cinch my next foul kick, but I'm...", "Very drunk.", "Ah, but you're a great coach, I'm sure. Right?", "I'll just wind up my leg and, when you say go, I'll go!", "It's only the World Cup, no pressure!"])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pitch/MinigameInteractable" unique_id=1164906156]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pitch/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Homerun" type="Sprite2D" parent="." unique_id=754468593]
+[node name="Homerun" type="Sprite2D" parent="."]
 position = Vector2(11, 146)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("48_ovnv5")
 
-[node name="MinigameInteractable" type="Area2D" parent="Homerun" unique_id=340953591]
+[node name="MinigameInteractable" type="Area2D" parent="Homerun"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Woah woah! Back up! I almost hit you!", "I'm trying to warm up my hitting arm! The game-winning hit is on me!", "Wait a second... Let me take a look at you...", "Those well defined arms, that menacing focus in your eye...", "You've got to hit for me! Here, I have a spare set of clothes...", "Alright, it's a deal right? You'll hit a homerun for me, and I'll", "I'll do something for you, eventually.", "You can trust me, or my name's not Showhay Ohtawni!", "You've got this champ!"])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Homerun/MinigameInteractable" unique_id=1442497243]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Homerun/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="bomb" type="Sprite2D" parent="." unique_id=1132914685]
+[node name="bomb" type="Sprite2D" parent="."]
 position = Vector2(231, 123)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("49_c4qf0")
 
-[node name="MinigameInteractable" type="Area2D" parent="bomb" unique_id=1533197652]
+[node name="MinigameInteractable" type="Area2D" parent="bomb"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["This is just a lit bomb. ", "You should probably do something about this."])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bomb/MinigameInteractable" unique_id=63656415]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bomb/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Luigi" type="Sprite2D" parent="." unique_id=924913446]
+[node name="Luigi" type="Sprite2D" parent="."]
 position = Vector2(147, 147)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("50_13ap7")
 
-[node name="MinigameInteractable" type="Area2D" parent="Luigi" unique_id=1024087484]
+[node name="MinigameInteractable" type="Area2D" parent="Luigi"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Its'a me! Luigi!", "I'a dont'a wanna do'a my job'a!", "You'a seem'a like'a you'a know'a your'a way'a round'a pipes!", "You'a dont'a mind'a doin' world'a famous Luigi a favor, right?", "Just'a, fix'a uppa those'a pipes down there, okay?", "WAHOO! "])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Luigi/MinigameInteractable" unique_id=2096012302]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Luigi/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Circle" type="Sprite2D" parent="." unique_id=213068313]
+[node name="Circle" type="Sprite2D" parent="."]
 position = Vector2(171, 152)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("51_m6dmn")
 flip_h = true
 
-[node name="MinigameInteractable" type="Area2D" parent="Circle" unique_id=1821614082]
+[node name="MinigameInteractable" type="Area2D" parent="Circle"]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Oh my son! My poor, poor son!", "He's gotten himself mixed up with that terrible crowd again.", "All those edgy teens, what was he thinking!", "You seems like an upstanding citizen. Would you do Mrs. Circle a favor?", "He's off in that crowd somewhere, can you find him?", "Oh please bring my boy back, or else he'll start sprouting corners!"])
-minigame_group = ExtResource("21_ijakw")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/MinigameInteractable" unique_id=1881198548]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/MinigameInteractable"]
 shape = SubResource("RectangleShape2D_mohvt")
 
-[node name="Chair1" type="Sprite2D" parent="." unique_id=1674325451]
+[node name="Chair1" type="Sprite2D" parent="."]
 position = Vector2(42, 114)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("43_tg0b6")
 
-[node name="Chair2" type="Sprite2D" parent="." unique_id=1064047298]
+[node name="Chair2" type="Sprite2D" parent="."]
 position = Vector2(83, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("44_g3hol")
 
-[node name="Chair3" type="Sprite2D" parent="." unique_id=2051507756]
+[node name="Chair3" type="Sprite2D" parent="."]
 position = Vector2(120, 107)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("45_q6ki4")
 
-[node name="Chair4" type="Sprite2D" parent="." unique_id=9682680]
+[node name="Chair4" type="Sprite2D" parent="."]
 position = Vector2(83, 88)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("46_pkam6")
