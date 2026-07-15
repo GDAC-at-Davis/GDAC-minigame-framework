@@ -12,6 +12,7 @@ extends Minigame
 var elapsed_time: float = 0.0
 
 func start():
+	GameManager.play_music(load("res://minigames/avalanche_escape/AvalancheMinor.mp3"), difficulty, false)
 	randomize()
 	target_survival_time = countdown_time
 	elapsed_time = 0.0
