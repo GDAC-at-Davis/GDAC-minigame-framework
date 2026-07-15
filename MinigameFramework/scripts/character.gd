@@ -18,6 +18,9 @@ var ANIMATIONS = {
 
 func move(direction: Vector2, speed: float):
 	velocity = direction.normalized() * speed
+	
+func stop():
+	velocity = Vector2.ZERO
 
 func play_animation(animation_name: StringName):
 	animated_sprite.play(animation_name)

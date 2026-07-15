@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwqc1yd5512xs"]
+[gd_scene format=3 uid="uid://bwqc1yd5512xs"]
 
 [ext_resource type="Script" uid="uid://bwmyciuynxuo1" path="res://scripts/main.gd" id="1_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://d37y2041mrhtw" path="res://scenes/minigame_manager.tscn" id="2_0wfyh"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" unique_id=1477549386]
 script = ExtResource("1_0bbpv")
 metadata/_custom_type_script = "uid://bwmyciuynxuo1"
 
-[node name="MinigameManager" parent="." instance=ExtResource("2_0wfyh")]
+[node name="MinigameManager" parent="." unique_id=1642322747 instance=ExtResource("2_0wfyh")]
