@@ -43,18 +43,29 @@
 [ext_resource type="Texture2D" uid="uid://bobkjgeh6vwwn" path="res://assets/environment/backroom north wall 1.png" id="38_bbr2d"]
 [ext_resource type="Texture2D" uid="uid://c8bedde3eiajx" path="res://assets/environment/backroom north wall 2- bottom.png" id="39_k6px3"]
 [ext_resource type="Texture2D" uid="uid://cjiu1c1h7rkdr" path="res://assets/interactables/snake.png" id="40_g3hol"]
+[ext_resource type="Resource" uid="uid://ble3i0g188go8" path="res://resources/minigame_groups/snake_minigames.tres" id="42_j0oj4"]
 [ext_resource type="Texture2D" uid="uid://cftt7cff66a5u" path="res://assets/interactables/ninja.png" id="43_mto7r"]
 [ext_resource type="Texture2D" uid="uid://gtxcwovyd3ea" path="res://assets/environment/Teal_LChair.png" id="43_tg0b6"]
+[ext_resource type="Resource" uid="uid://5djlnmuvl4sl" path="res://resources/minigame_groups/ninja_minigames.tres" id="44_3dfs3"]
 [ext_resource type="Texture2D" uid="uid://ouiwpkcltdig" path="res://assets/environment/Yellow_LChair.png" id="44_g3hol"]
 [ext_resource type="Texture2D" uid="uid://bworh48aj2raj" path="res://assets/interactables/browser.png" id="45_dyf5v"]
 [ext_resource type="Texture2D" uid="uid://ca5ui8ex4amet" path="res://assets/environment/Gray_RChair.png" id="45_q6ki4"]
 [ext_resource type="Texture2D" uid="uid://r1llgh0w4y4j" path="res://assets/interactables/avalanche.png" id="46_ovnv5"]
 [ext_resource type="Texture2D" uid="uid://xioals8uy6tm" path="res://assets/environment/Gray_LChair.png" id="46_pkam6"]
 [ext_resource type="Texture2D" uid="uid://ds5xt6lwlpci2" path="res://assets/interactables/pitch.png" id="47_dyf5v"]
+[ext_resource type="Resource" uid="uid://cm1vygf1irthl" path="res://resources/minigame_groups/browser_minigames.tres" id="48_nopne"]
 [ext_resource type="Texture2D" uid="uid://bmo25kvbdtgyg" path="res://assets/interactables/baseball.png" id="48_ovnv5"]
 [ext_resource type="Texture2D" uid="uid://d3v7erppnudog" path="res://assets/interactables/bomb.png" id="49_c4qf0"]
 [ext_resource type="Texture2D" uid="uid://dsr546ttgt2ta" path="res://assets/interactables/luigi.png" id="50_13ap7"]
+[ext_resource type="Resource" uid="uid://bhdewpncfa5os" path="res://resources/minigame_groups/avalanche.tres" id="50_wvt78"]
 [ext_resource type="Texture2D" uid="uid://qt5jt2eobdv0" path="res://assets/interactables/circle.png" id="51_m6dmn"]
+[ext_resource type="Resource" uid="uid://dkbc8c02nwj8c" path="res://resources/minigame_groups/pitch_minigames.tres" id="52_8qed1"]
+[ext_resource type="Texture2D" uid="uid://wdhxi7ggoo6c" path="res://assets/interactables/clock.png" id="53_qkmyr"]
+[ext_resource type="Resource" uid="uid://dqvjd31sy8d1b" path="res://resources/minigame_groups/homerun_minigames.tres" id="54_nmcip"]
+[ext_resource type="Resource" uid="uid://dbo7xstrsiaqa" path="res://resources/minigame_groups/bomb_minigames.tres" id="56_mwcuu"]
+[ext_resource type="Resource" uid="uid://5x20yyqdi7t1" path="res://resources/minigame_groups/luigi_minigames.tres" id="58_qbqlr"]
+[ext_resource type="Resource" uid="uid://bdvxc1dh0f5a" path="res://resources/minigame_groups/circle_minigames.tres" id="60_bhq1m"]
+[ext_resource type="Resource" uid="uid://1kmwne5lplsy" path="res://resources/minigame_groups/clock_minigames.tres" id="62_ms1mm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_haatd"]
 texture = ExtResource("7_7vfb1")
@@ -456,7 +467,7 @@ texture = ExtResource("40_g3hol")
 [node name="MinigameInteractable" type="Area2D" parent="Snake" unique_id=1377407781]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["hihi!", "ooo itssss ssssso bright!", "ooo sssssso warm!", "aw ssssnap, I'm hungry...", "my eyesssssss ,itssss too bright!", "Can you show me where all da food is!", "Thankssssss "])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("42_j0oj4")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake/MinigameInteractable" unique_id=729077498]
@@ -470,7 +481,7 @@ texture = ExtResource("43_mto7r")
 [node name="MinigameInteractable" type="Area2D" parent="Ninja" unique_id=1939424318]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["That monster! He has some technique, some forbidden jutsu.", "You! You might be the one who'll take him down!", "Mikey Tysen, \"The Monster\"", "I can tell you fight, just by the way you move. You might be a match for him!", "Keep an eye out for his signature move, the \"project every punch\".", "I've been fighting him for decades, but I still can't figure out how to beat it!", "But you, you might be able to do it!", "I know you've been training your whole life for this opportunity. You've got this!"])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("44_3dfs3")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ninja/MinigameInteractable" unique_id=353218759]
@@ -499,7 +510,7 @@ flip_h = true
 [node name="MinigameInteractable" type="Area2D" parent="Browser" unique_id=1684639081]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["AAAAAAAAAA!", "The cops-I mean, my parents are gonna kill me!", "I left all my browser tabs open!", "You'll help me right? I don't have the APM to do it before \"they\" get here- uh, home!", "Help me close all the weird tabs, okay?", "You've got it, k thx bye bye!"])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("48_nopne")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Browser/MinigameInteractable" unique_id=1005398908]
@@ -514,7 +525,7 @@ flip_h = true
 [node name="MinigameInteractable" type="Area2D" parent="Avalanche" unique_id=1144489678]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Brrr~ Hey! You know how to ski, right?", "I live way up top of Mount Everest, but it's a treacherous journey!", "Things keep hitting me, and then I tumble all the way back down.", "Can you help me call the shots?", "Just tell me where to go, and help me get past these darn icicles!"])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("50_wvt78")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Avalanche/MinigameInteractable" unique_id=530140602]
@@ -529,7 +540,7 @@ flip_h = true
 [node name="MinigameInteractable" type="Area2D" parent="Pitch" unique_id=894197094]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Yes! It is me, famous soccer player Ronaldo Messi!", "I'm kidding of course, I'm just Chistrian Lion.", "I need to cinch my next foul kick, but I'm...", "Very drunk.", "Ah, but you're a great coach, I'm sure. Right?", "I'll just wind up my leg and, when you say go, I'll go!", "It's only the World Cup, no pressure!"])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("52_8qed1")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pitch/MinigameInteractable" unique_id=1164906156]
@@ -543,7 +554,7 @@ texture = ExtResource("48_ovnv5")
 [node name="MinigameInteractable" type="Area2D" parent="Homerun" unique_id=340953591]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Woah woah! Back up! I almost hit you!", "I'm trying to warm up my hitting arm! The game-winning hit is on me!", "Wait a second... Let me take a look at you...", "Those well defined arms, that menacing focus in your eye...", "You've got to hit for me! Here, I have a spare set of clothes...", "Alright, it's a deal right? You'll hit a homerun for me, and I'll", "I'll do something for you, eventually.", "You can trust me, or my name's not Showhay Ohtawni!", "You've got this champ!"])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("54_nmcip")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Homerun/MinigameInteractable" unique_id=1442497243]
@@ -557,7 +568,7 @@ texture = ExtResource("49_c4qf0")
 [node name="MinigameInteractable" type="Area2D" parent="bomb" unique_id=1533197652]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["This is just a lit bomb. ", "You should probably do something about this."])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("56_mwcuu")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bomb/MinigameInteractable" unique_id=63656415]
@@ -571,7 +582,7 @@ texture = ExtResource("50_13ap7")
 [node name="MinigameInteractable" type="Area2D" parent="Luigi" unique_id=1024087484]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Its'a me! Luigi!", "I'a dont'a wanna do'a my job'a!", "You'a seem'a like'a you'a know'a your'a way'a round'a pipes!", "You'a dont'a mind'a doin' world'a famous Luigi a favor, right?", "Just'a, fix'a uppa those'a pipes down there, okay?", "WAHOO! "])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("58_qbqlr")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Luigi/MinigameInteractable" unique_id=2096012302]
@@ -586,10 +597,24 @@ flip_h = true
 [node name="MinigameInteractable" type="Area2D" parent="Circle" unique_id=1821614082]
 script = ExtResource("20_ijakw")
 interaction_text = Array[String](["Oh my son! My poor, poor son!", "He's gotten himself mixed up with that terrible crowd again.", "All those edgy teens, what was he thinking!", "You seems like an upstanding citizen. Would you do Mrs. Circle a favor?", "He's off in that crowd somewhere, can you find him?", "Oh please bring my boy back, or else he'll start sprouting corners!"])
-minigame_group = ExtResource("21_ijakw")
+minigame_group = ExtResource("60_bhq1m")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/MinigameInteractable" unique_id=1881198548]
+shape = SubResource("RectangleShape2D_mohvt")
+
+[node name="Clock" type="Sprite2D" parent="." unique_id=237577037]
+position = Vector2(117, 52)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("53_qkmyr")
+
+[node name="MinigameInteractable" type="Area2D" parent="Clock" unique_id=2005172468]
+script = ExtResource("20_ijakw")
+interaction_text = Array[String](["Hey! Watch it", "If you're going to step on my face, can you at least tell me when class ends?", "What do you mean there's no class?", "The professor is a \"smog beast\"? I don't even know what that is.", "I'm just a first year student! Is this a prank?", "Is that Ronaldo Messi? I must be dreaming...", "Just tell me what time it is, so I can get out of this nightmare."])
+minigame_group = ExtResource("62_ms1mm")
+metadata/_custom_type_script = "uid://dh23numijpv1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Clock/MinigameInteractable" unique_id=549017904]
 shape = SubResource("RectangleShape2D_mohvt")
 
 [node name="Chair1" type="Sprite2D" parent="." unique_id=1674325451]

@@ -1,8 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://l6kb54ekjomj"]
+[gd_scene format=3 uid="uid://l6kb54ekjomj"]
 
 [ext_resource type="Script" uid="uid://brjv4oyg7s5td" path="res://scripts/cutscene.gd" id="1_edmg7"]
 
-[node name="Cutscene" type="Control"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_edmg7"]
+load_path = "res://.godot/imported/0.png-2a44e22bb274025a0135811c2227b0c5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a320b"]
+load_path = "res://.godot/imported/1.png-0881f30bf3cb038fd9881c7985c121b4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0sipp"]
+load_path = "res://.godot/imported/2.png-e387975c95fe3c249fbd644d631435f6.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2bm7f"]
+load_path = "res://.godot/imported/3.png-de8db83603bc048d4ba82503b0bdad21.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fs8wb"]
+load_path = "res://.godot/imported/18.png-f506468a77a4b4bb9fee0122963071ec.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bb0yx"]
+load_path = "res://.godot/imported/7.png-69466f49791fabbfbb77ad473a14aa36.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3ptll"]
+load_path = "res://.godot/imported/8.png-5f975ee740772266d8b7a549a799133b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d18fx"]
+load_path = "res://.godot/imported/9.png-8932513a2193bcbd0eb0462c11935e36.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_75brc"]
+load_path = "res://.godot/imported/10.png-4f08ed5c26fb4fc3ee7a5569b0a012e5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v50sc"]
+load_path = "res://.godot/imported/11.png-36aa454ede0cc3bf0a923a7ae3477dcd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wxq4c"]
+load_path = "res://.godot/imported/12.png-6421cb2ba8a6177586593c150ba3ec1d.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q01xw"]
+load_path = "res://.godot/imported/13.png-e3665783720e3958ff06797b6e1ea109.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ury3t"]
+load_path = "res://.godot/imported/17.png-cfac8261cef4564aafe74825b167bca0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m2h23"]
+load_path = "res://.godot/imported/19.png-0d45c026b51e2a437ed2f465f03b2cad.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8qop0"]
+load_path = "res://.godot/imported/something.png-26d1d812ba62bb278e40de88ca4a0b46.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mu2gi"]
+load_path = "res://.godot/imported/24.png-99cf829ce3a2d8376f077749296e4fb5.ctex"
+
+[node name="Cutscene" type="Control" unique_id=208623859]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,8 +59,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_edmg7")
 dialogues = Array[String](["Long ago, there were two tribes who could not be more different.", "One tribe was the Artisans—lovers of art, humanity, and culture.", "They valued literature and craft and the mastery of all creation.", "The other tribe, Technologists, were experts in science, logic, and mechanics.", "Their society was advanced and efficient—unlike anything the world had ever seen before.", "Both societies were asocial, never acknowledging the world outside their circle.", "But a plague struck both lands.", "Though the Technologists were able to save some of their own with their advanced medicine, those that were cured would quickly succumb to misery without the joy of the arts.", "The Artisans, though happy, had to watch their numbers deplete as their outdated medicine could not keep up with the fast-growing plague.", "The leaders of the tribes decided that this would not last. A solution had to be found or all of their people would meet an early end.", "The two tribes, despite their dislike for interaction outside of their own kind, joined hands.", "The Artisans spread the goodness of song, dance, and craft while the Technologists whipped up life-saving medicine in the blink of an eye.", "From here on, the two tribes would be good allies of one another, always depending on each other in times of need.", "All was well until the tribes were met with their greatest foe.", "A giant beast made of steam and smog terrorized their villages.", "Things should only be made for profit.", "What good is art and technology without the benefits of wealth?", "The monster spread words of discouragement and the people became downtrodden.", "The tribe leaders decided that this would not last. A solution had to be found or the foundations of their societies would crumble.", "So, they rounded up their greatest warriors.", "Make things! they said. Make things just because you want to.", "And so they did.", "They thought and thought and thought,", "Then, they came up with the ultimate culmination of all of their skills.", "VIDEO GAMES.", "With the creation of  INSERT NUMBER OF MINIGAMES HERE cornerstone games, the beast was sealed away."])
+images = Array[Texture2D]([SubResource("CompressedTexture2D_edmg7"), SubResource("CompressedTexture2D_a320b"), SubResource("CompressedTexture2D_0sipp"), SubResource("CompressedTexture2D_2bm7f"), SubResource("CompressedTexture2D_2bm7f"), SubResource("CompressedTexture2D_2bm7f"), SubResource("CompressedTexture2D_fs8wb"), SubResource("CompressedTexture2D_bb0yx"), SubResource("CompressedTexture2D_3ptll"), SubResource("CompressedTexture2D_d18fx"), SubResource("CompressedTexture2D_75brc"), SubResource("CompressedTexture2D_v50sc"), SubResource("CompressedTexture2D_wxq4c"), SubResource("CompressedTexture2D_q01xw"), SubResource("CompressedTexture2D_ury3t"), SubResource("CompressedTexture2D_ury3t"), SubResource("CompressedTexture2D_ury3t"), SubResource("CompressedTexture2D_m2h23"), SubResource("CompressedTexture2D_m2h23"), SubResource("CompressedTexture2D_m2h23"), SubResource("CompressedTexture2D_m2h23"), SubResource("CompressedTexture2D_m2h23"), SubResource("CompressedTexture2D_8qop0"), SubResource("CompressedTexture2D_8qop0"), SubResource("CompressedTexture2D_mu2gi")])
 
-[node name="BG" type="Panel" parent="."]
+[node name="BG" type="Panel" parent="." unique_id=1824783261]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +69,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="." unique_id=100315337]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,14 +81,14 @@ theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 200
 
-[node name="ImageTextVBox" type="VBoxContainer" parent="Margin"]
+[node name="ImageTextVBox" type="VBoxContainer" parent="Margin" unique_id=94627016]
 layout_mode = 2
 alignment = 1
 
-[node name="Image" type="TextureRect" parent="Margin/ImageTextVBox"]
+[node name="Image" type="TextureRect" parent="Margin/ImageTextVBox" unique_id=655030908]
 layout_mode = 2
 
-[node name="Text" type="RichTextLabel" parent="Margin/ImageTextVBox"]
+[node name="Text" type="RichTextLabel" parent="Margin/ImageTextVBox" unique_id=791113110]
 layout_mode = 2
 fit_content = true
 scroll_active = false

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MinigameGroupData" format=3 uid="uid://5x20yyqdi7t1"]
+
+[ext_resource type="PackedScene" uid="uid://jf4ygvge46o5" path="res://minigames/pipe_rearrange/pipe_minigame.tscn" id="1_xph15"]
+[ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="3_vjw6n"]
+[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="4_csp3j"]
+
+[resource]
+script = ExtResource("3_vjw6n")
+minigames = Array[PackedScene]([ExtResource("1_xph15"), ExtResource("1_xph15"), ExtResource("1_xph15"), ExtResource("1_xph15")])
+final_minigame = ExtResource("1_xph15")
+transition_background = ExtResource("4_csp3j")
+total_minigames = 4
+total_lives = 2
+metadata/_custom_type_script = "uid://p73k0qpka7a6"
