@@ -9,7 +9,7 @@ var all_connect: int = 0
 
 func start():
 	# im getting all the pipes into a list and returning to their default
-	#GameManager.play_music("res://minigames/pipe_rearrange/ConnectingPipes.wav", difficulty)
+	GameManager.play_music(load("res://minigames/pipe_rearrange/ConnectingPipes.wav"), difficulty)
 	for pipe in get_children():
 		if pipe is Pipe:
 			pipes.append(pipe)

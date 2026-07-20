@@ -9,7 +9,7 @@ extends Minigame
 func _ready():
 	super._ready()
 	controller.payload.defeated.connect(func() : lose())
-	GameManager.play_music("res://minigames/discus_payload/DiscusPayload.mp3")
+	GameManager.play_music(load("res://minigames/discus_payload/DiscusPayload.mp3"))
 
 	print(difficulty, " ", num_graps.sample(difficulty), " ", num_spike_per_gap.sample(difficulty))
 	$Spikes.generate_spikes(num_graps.sample(difficulty), num_spike_per_gap.sample(difficulty))

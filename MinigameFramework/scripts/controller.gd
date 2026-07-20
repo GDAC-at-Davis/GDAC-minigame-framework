@@ -33,7 +33,7 @@ func _physics_process(delta):
 			possessed.play_animation(&"RightWalk")
 		if Input.is_action_just_pressed("primary"):
 			var space_state: PhysicsDirectSpaceState2D = possessed.get_world_2d().direct_space_state
-			var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(possessed.global_position, possessed.global_position + (20.0 * _prev_direction))
+			var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(possessed.global_position, possessed.global_position + (5.0 * _prev_direction))
 			query.collide_with_areas = true
 			query.collide_with_bodies = false
 			var result: Dictionary = space_state.intersect_ray(query)
