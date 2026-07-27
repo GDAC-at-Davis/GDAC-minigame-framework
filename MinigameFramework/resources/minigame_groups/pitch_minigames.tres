@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MinigameGroupData" format=3 uid="uid://dkbc8c02nwj8c"]
+[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=0 format=3 uid="uid://dkbc8c02nwj8c"]
 
 [ext_resource type="PackedScene" uid="uid://c0g8euwmhj52k" path="res://minigames/pitch_penalties/pitch_penalties.tscn" id="1_wdl8n"]
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="3_4hi8y"]

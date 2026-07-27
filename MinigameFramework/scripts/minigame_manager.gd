@@ -128,6 +128,7 @@ func start(minigame_data: MinigameGroupData, endless: bool = false):
 	## Randomize the order of the minigames
 	data.minigames.shuffle()
 	transition_timer.start()
+	time_left_display.visible = false
 	visible = true
 
 ## Starts the next minigame
@@ -147,6 +148,7 @@ func start_minigame() -> void:
 	instruction_label.visible = true
 	instruction_timer.start(INSTRUCTION_DISPLAY_TIME)
 	instruction_label.text = current_minigame_node.instruction
+	time_left_display.visible = true
 	fade_timer.start(FADE_TIME)
 	
 	var current_speed : float = current_minigame_node.track_speed_difficulty_scaling * current_minigame_node.difficulty
@@ -166,6 +168,7 @@ func stop_minigame() -> void:
 	else:
 		results_label.visible = true
 		results_label.text = "DEFEAT!"
+	time_left_display.visible = false
 	fade_timer.start(FADE_TIME)
 	transition_layer.visible = true
 	transition_timer.start()

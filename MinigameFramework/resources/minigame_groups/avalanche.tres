@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MinigameGroupData" format=3 uid="uid://bhdewpncfa5os"]
+[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=0 format=3 uid="uid://bhdewpncfa5os"]
 
 [ext_resource type="PackedScene" uid="uid://cva5q4y0kucmh" path="res://minigames/avalanche_escape/avalanche_escape.tscn" id="1_kfnvl"]
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="2_v1l4b"]

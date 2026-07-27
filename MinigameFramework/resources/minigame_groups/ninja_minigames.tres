@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MinigameGroupData" format=3 uid="uid://5djlnmuvl4sl"]
+[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=0 format=3 uid="uid://5djlnmuvl4sl"]
 
 [ext_resource type="PackedScene" uid="uid://c0fd5eqxcdio3" path="res://minigames/shadowboxing/shadowboxing.tscn" id="1_7k8u0"]
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="3_bue2f"]

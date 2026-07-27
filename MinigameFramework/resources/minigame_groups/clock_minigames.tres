@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MinigameGroupData" format=3 uid="uid://1kmwne5lplsy"]
+[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=0 format=3 uid="uid://1kmwne5lplsy"]
 
 [ext_resource type="PackedScene" uid="uid://devbppk0jgcyg" path="res://minigames/zeitzusammenpassen/zeitzusammenpassen.tscn" id="1_d5w6e"]
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="3_4jciq"]
