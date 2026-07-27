@@ -36,7 +36,7 @@ var pitcher_animation_player: AnimatedSprite2D
 ## This is called once at the start of the minigame.
 func start() -> void:
 	speed = BASE_SPEED * difficulty
-	
+	GameManager.play_music(load("res://minigames/homerun/baseball.mp3"), difficulty)
 	hit_random_x = randf_range(-120, 120)
 	
 	# Animation initialization

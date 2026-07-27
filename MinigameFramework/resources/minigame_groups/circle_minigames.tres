@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MinigameGroupData" format=3 uid="uid://bdvxc1dh0f5a"]
+
+[ext_resource type="PackedScene" uid="uid://dcd21bs3nleg6" path="res://minigames/circle_clicker/circle_clicker.tscn" id="1_3l0t1"]
+[ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="3_a7fse"]
+[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="4_d3o7o"]
+
+[resource]
+script = ExtResource("3_a7fse")
+minigames = Array[PackedScene]([ExtResource("1_3l0t1"), ExtResource("1_3l0t1"), ExtResource("1_3l0t1"), ExtResource("1_3l0t1")])
+final_minigame = ExtResource("1_3l0t1")
+transition_background = ExtResource("4_d3o7o")
+metadata/_custom_type_script = "uid://p73k0qpka7a6"

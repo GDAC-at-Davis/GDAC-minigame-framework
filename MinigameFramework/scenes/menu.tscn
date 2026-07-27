@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg8vct5mx3mbr"]
+[gd_scene format=3 uid="uid://dg8vct5mx3mbr"]
 
 [ext_resource type="Texture2D" uid="uid://b3wbw01ysetr4" path="res://assets/ui/StartButton.png" id="1_3kf3n"]
 [ext_resource type="Script" uid="uid://cguq5d38jujml" path="res://scripts/menu.gd" id="1_6pedr"]
 
-[node name="Menu" type="Control"]
+[node name="Menu" type="Control" unique_id=515195996]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_6pedr")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="Button" parent="." unique_id=245781970]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,7 +29,7 @@ grow_vertical = 2
 icon = ExtResource("1_3kf3n")
 flat = true
 
-[node name="CollectionButton" type="Button" parent="."]
+[node name="CollectionButton" type="Button" parent="." unique_id=1450264275]
 layout_mode = 0
 offset_left = 560.0
 offset_top = 400.0

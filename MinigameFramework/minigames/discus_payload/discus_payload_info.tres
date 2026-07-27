@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MinigameInfo" load_steps=4 format=3 uid="uid://cx8c1o366r5s3"]
+
+[ext_resource type="Script" uid="uid://vk7irpeekqp4" path="res://scripts/minigame_info.gd" id="1_h5mc7"]
+[ext_resource type="Texture2D" uid="uid://dw7o6dkn88r6e" path="res://minigames/discus_payload/temp_visuals/Discus_Payload_Logo.png" id="1_s5o1b"]
+[ext_resource type="PackedScene" uid="uid://iehijwaprj48" path="res://minigames/discus_payload/discus_payload.tscn" id="1_vibji"]
+
+[resource]
+script = ExtResource("1_h5mc7")
+name = "Discus Payload"
+icon = ExtResource("1_s5o1b")
+scene = ExtResource("1_vibji")
+metadata/_custom_type_script = "uid://vk7irpeekqp4"

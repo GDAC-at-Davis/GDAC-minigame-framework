@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MinigameGroupData" format=3 uid="uid://ble3i0g188go8"]
+
+[ext_resource type="PackedScene" uid="uid://c4kvqs4y1apdg" path="res://minigames/snake/snake.tscn" id="1_yuh50"]
+[ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="2_2ixx5"]
+[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="3_iemdi"]
+
+[resource]
+script = ExtResource("2_2ixx5")
+minigames = Array[PackedScene]([ExtResource("1_yuh50"), ExtResource("1_yuh50"), ExtResource("1_yuh50"), ExtResource("1_yuh50")])
+final_minigame = ExtResource("1_yuh50")
+transition_background = ExtResource("3_iemdi")
+total_minigames = 4
+metadata/_custom_type_script = "uid://p73k0qpka7a6"

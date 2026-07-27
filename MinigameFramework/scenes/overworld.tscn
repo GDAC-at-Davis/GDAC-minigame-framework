@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://blmvycvgmnnxv"]
 
 [ext_resource type="Script" uid="uid://dtmlo62vwyrq0" path="res://scripts/world_manager.gd" id="1_3gvrs"]
-[ext_resource type="Script" path="res://scripts/story_manager.gd" id="2_eab5i"]
+[ext_resource type="Script" uid="uid://bww3o28wdg8me" path="res://scripts/story_manager.gd" id="2_eab5i"]
 [ext_resource type="Script" uid="uid://i52imqyc37cx" path="res://scripts/story_events/introduction.gd" id="3_fkyvp"]
 [ext_resource type="Script" uid="uid://ddvugymy76wgj" path="res://scripts/story_events/storytime.gd" id="4_qjxaj"]
 [ext_resource type="PackedScene" uid="uid://byvkspg3purui" path="res://scenes/dialogue_box.tscn" id="5_e184d"]
 [ext_resource type="Script" uid="uid://bp0cuyt4b7sis" path="res://scripts/story_events/smoke.gd" id="5_qjxaj"]
 [ext_resource type="Script" uid="uid://gqo0amhhlw1w" path="res://scripts/story_events/stars.gd" id="6_e184d"]
 [ext_resource type="Script" uid="uid://uas83n70i0qd" path="res://scripts/story_events/free_play.gd" id="6_qjxaj"]
-[ext_resource type="Script" path="res://scripts/controller.gd" id="7_fkyvp"]
+[ext_resource type="Script" uid="uid://cvopbp8lac0yb" path="res://scripts/controller.gd" id="7_fkyvp"]
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource("1_3gvrs")
@@ -51,6 +51,7 @@ script = ExtResource("7_fkyvp")
 [node name="FullscreenImage" type="TextureRect" parent="UILayer"]
 offset_right = 1280.0
 offset_bottom = 720.0
+expand_mode = 2
 
 [node name="DialogueBox" parent="UILayer" instance=ExtResource("5_e184d")]
 

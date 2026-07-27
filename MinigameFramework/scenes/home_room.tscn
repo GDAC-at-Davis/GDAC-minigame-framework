@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://c4kvqs4y1apdg" path="res://minigames/snake/snake.tscn" id="42_m6dmn"]
 [ext_resource type="Texture2D" uid="uid://cftt7cff66a5u" path="res://assets/interactables/ninja.png" id="43_mto7r"]
 [ext_resource type="Texture2D" uid="uid://gtxcwovyd3ea" path="res://assets/environment/Teal_LChair.png" id="43_tg0b6"]
+[ext_resource type="Resource" uid="uid://5djlnmuvl4sl" path="res://resources/minigame_groups/ninja_minigames.tres" id="44_3dfs3"]
 [ext_resource type="Texture2D" uid="uid://ouiwpkcltdig" path="res://assets/environment/Yellow_LChair.png" id="44_g3hol"]
 [ext_resource type="PackedScene" uid="uid://bpacr2w3cuiyw" path="res://minigames/balloon_popper/balloon_popper.tscn" id="45_avmau"]
 [ext_resource type="Texture2D" uid="uid://bworh48aj2raj" path="res://assets/interactables/browser.png" id="45_dyf5v"]

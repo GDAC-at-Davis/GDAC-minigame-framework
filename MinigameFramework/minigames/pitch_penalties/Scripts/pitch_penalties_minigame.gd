@@ -26,7 +26,7 @@ func _process(_delta) -> void:
 
 func start() -> void:
 	goal_made = false
-	
+	GameManager.play_music(load("res://minigames/pitch_penalties/Assets/pitch_penalties.mp3"), difficulty)
 	ball.position = Vector2(640,630)
 	ball.velocity = Vector2(0,0)
 	

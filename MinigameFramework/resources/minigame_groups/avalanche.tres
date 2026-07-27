@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="MinigameGroupData" format=3 uid="uid://bhdewpncfa5os"]
+
+[ext_resource type="PackedScene" uid="uid://cva5q4y0kucmh" path="res://minigames/avalanche_escape/avalanche_escape.tscn" id="1_kfnvl"]
+[ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="2_v1l4b"]
+[ext_resource type="PackedScene" uid="uid://cdv476t22idne" path="res://scenes/transition_backgrounds/example_transition.tscn" id="3_igs8s"]
+
+[resource]
+script = ExtResource("2_v1l4b")
+minigames = Array[PackedScene]([ExtResource("1_kfnvl"), ExtResource("1_kfnvl"), ExtResource("1_kfnvl"), ExtResource("1_kfnvl")])
+final_minigame = ExtResource("1_kfnvl")
+transition_background = ExtResource("3_igs8s")
+metadata/_custom_type_script = "uid://p73k0qpka7a6"

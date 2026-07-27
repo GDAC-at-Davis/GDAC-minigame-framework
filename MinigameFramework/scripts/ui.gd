@@ -8,7 +8,7 @@ signal dialogue_completed
 @onready var panel = $TextPanel
 
 var single_character_delay : float = 0.05
-var lines : Array[String]
+var lines : Array
 
 var _line_idx : int = 0
 var _character_timer: Timer
