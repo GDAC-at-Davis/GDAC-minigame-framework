@@ -24,6 +24,12 @@ func interact(player: Character):
 	overworld.dialogue_box.dialogue_completed.connect(_on_dialogue_completed)
 	overworld.dialogue_box.play_text(interaction_text)
 
+func set_highlight(is_highlighted: bool):
+	if is_highlighted and not can_interact:
+		return
+	else:
+		super(is_highlighted)
+
 func _on_dialogue_completed():
 	var overworld: Overworld = GameManager.current_scene as Overworld
 	overworld.dialogue_box.dialogue_completed.disconnect(_on_dialogue_completed)

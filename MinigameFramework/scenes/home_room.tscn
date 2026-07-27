@@ -462,11 +462,12 @@ position = Vector2(213, 63)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("40_g3hol")
 
-[node name="MinigameInteractable" type="Area2D" parent="Snake"]
+[node name="MinigameInteractable" type="Area2D" parent="Snake" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"snake"
 interaction_text = Array[String](["hihi!", "ooo itssss ssssso bright!", "ooo sssssso warm!", "aw ssssnap, I'm hungry...", "my eyesssssss ,itssss too bright!", "Can you show me where all da food is!", "Thankssssss "])
 minigame_group = ExtResource("42_j0oj4")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Snake/MinigameInteractable"]
@@ -477,11 +478,12 @@ position = Vector2(234, 153)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("43_mto7r")
 
-[node name="MinigameInteractable" type="Area2D" parent="Ninja"]
+[node name="MinigameInteractable" type="Area2D" parent="Ninja" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"ninja"
 interaction_text = Array[String](["That monster! He has some technique, some forbidden jutsu.", "You! You might be the one who'll take him down!", "Mikey Tysen, \"The Monster\"", "I can tell you fight, just by the way you move. You might be a match for him!", "Keep an eye out for his signature move, the \"project every punch\".", "I've been fighting him for decades, but I still can't figure out how to beat it!", "But you, you might be able to do it!", "I know you've been training your whole life for this opportunity. You've got this!"])
 minigame_group = ExtResource("44_3dfs3")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ninja/MinigameInteractable"]
@@ -492,11 +494,12 @@ position = Vector2(54, 133)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("20_mohvt")
 
-[node name="MinigameInteractable" type="Area2D" parent="Bloon"]
+[node name="MinigameInteractable" type="Area2D" parent="Bloon" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"bloon"
 interaction_text = Array[String](["Oh, a valiant hero! Thank goodness you're here!", "I've been trapped here for a thousand years... slowly deflating...", "Fulfill my last wishes, please!", "My brother must be avenged... kill the Stringies!", "Use those mighty limbs of yours and pop as many as you can!"])
 minigame_group = ExtResource("21_ijakw")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bloon/MinigameInteractable"]
@@ -508,11 +511,12 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("45_dyf5v")
 flip_h = true
 
-[node name="MinigameInteractable" type="Area2D" parent="Browser"]
+[node name="MinigameInteractable" type="Area2D" parent="Browser" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"browser"
 interaction_text = Array[String](["AAAAAAAAAA!", "The cops-I mean, my parents are gonna kill me!", "I left all my browser tabs open!", "You'll help me right? I don't have the APM to do it before \"they\" get here- uh, home!", "Help me close all the weird tabs, okay?", "You've got it, k thx bye bye!"])
 minigame_group = ExtResource("48_nopne")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Browser/MinigameInteractable"]
@@ -524,11 +528,12 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("46_ovnv5")
 flip_h = true
 
-[node name="MinigameInteractable" type="Area2D" parent="Avalanche"]
+[node name="MinigameInteractable" type="Area2D" parent="Avalanche" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"avalanche"
 interaction_text = Array[String](["Brrr~ Hey! You know how to ski, right?", "I live way up top of Mount Everest, but it's a treacherous journey!", "Things keep hitting me, and then I tumble all the way back down.", "Can you help me call the shots?", "Just tell me where to go, and help me get past these darn icicles!"])
 minigame_group = ExtResource("50_wvt78")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Avalanche/MinigameInteractable"]
@@ -540,11 +545,12 @@ scale = Vector2(0.9, 0.9)
 texture = ExtResource("47_dyf5v")
 flip_h = true
 
-[node name="MinigameInteractable" type="Area2D" parent="Pitch"]
+[node name="MinigameInteractable" type="Area2D" parent="Pitch" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"pitch"
 interaction_text = Array[String](["Yes! It is me, famous soccer player Ronaldo Messi!", "I'm kidding of course, I'm just Chistrian Lion.", "I need to cinch my next foul kick, but I'm...", "Very drunk.", "Ah, but you're a great coach, I'm sure. Right?", "I'll just wind up my leg and, when you say go, I'll go!", "It's only the World Cup, no pressure!"])
 minigame_group = ExtResource("52_8qed1")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pitch/MinigameInteractable"]
@@ -555,11 +561,12 @@ position = Vector2(11, 146)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("48_ovnv5")
 
-[node name="MinigameInteractable" type="Area2D" parent="Homerun"]
+[node name="MinigameInteractable" type="Area2D" parent="Homerun" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"homerun"
 interaction_text = Array[String](["Woah woah! Back up! I almost hit you!", "I'm trying to warm up my hitting arm! The game-winning hit is on me!", "Wait a second... Let me take a look at you...", "Those well defined arms, that menacing focus in your eye...", "You've got to hit for me! Here, I have a spare set of clothes...", "Alright, it's a deal right? You'll hit a homerun for me, and I'll", "I'll do something for you, eventually.", "You can trust me, or my name's not Showhay Ohtawni!", "You've got this champ!"])
 minigame_group = ExtResource("54_nmcip")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Homerun/MinigameInteractable"]
@@ -570,11 +577,12 @@ position = Vector2(231, 123)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("49_c4qf0")
 
-[node name="MinigameInteractable" type="Area2D" parent="bomb"]
+[node name="MinigameInteractable" type="Area2D" parent="bomb" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"bomb"
 interaction_text = Array[String](["This is just a lit bomb. ", "You should probably do something about this."])
 minigame_group = ExtResource("56_mwcuu")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bomb/MinigameInteractable"]
@@ -585,11 +593,12 @@ position = Vector2(147, 147)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("50_13ap7")
 
-[node name="MinigameInteractable" type="Area2D" parent="Luigi"]
+[node name="MinigameInteractable" type="Area2D" parent="Luigi" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"luigi"
 interaction_text = Array[String](["Its'a me! Luigi!", "I'a dont'a wanna do'a my job'a!", "You'a seem'a like'a you'a know'a your'a way'a round'a pipes!", "You'a dont'a mind'a doin' world'a famous Luigi a favor, right?", "Just'a, fix'a uppa those'a pipes down there, okay?", "WAHOO! "])
 minigame_group = ExtResource("58_qbqlr")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Luigi/MinigameInteractable"]
@@ -601,11 +610,12 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("51_m6dmn")
 flip_h = true
 
-[node name="MinigameInteractable" type="Area2D" parent="Circle"]
+[node name="MinigameInteractable" type="Area2D" parent="Circle" node_paths=PackedStringArray("sprite_node")]
 script = ExtResource("20_ijakw")
 minigame_id = &"circle"
 interaction_text = Array[String](["Oh my son! My poor, poor son!", "He's gotten himself mixed up with that terrible crowd again.", "All those edgy teens, what was he thinking!", "You seems like an upstanding citizen. Would you do Mrs. Circle a favor?", "He's off in that crowd somewhere, can you find him?", "Oh please bring my boy back, or else he'll start sprouting corners!"])
 minigame_group = ExtResource("60_bhq1m")
+sprite_node = NodePath("..")
 metadata/_custom_type_script = "uid://dh23numijpv1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Circle/MinigameInteractable"]
