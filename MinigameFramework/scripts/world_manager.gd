@@ -1,6 +1,8 @@
 class_name Overworld
 extends Node2D
 
+signal overworld_loading_completed
+
 var dakki: Character
 var gee: Character
 
@@ -30,6 +32,7 @@ func play_minigames(minigame_group: MinigameGroupData):
 	remove_child(world_layer)
 	remove_child(overlay_layer)
 	remove_child(ui_layer)
+	GameManager.minigame_manager.all_minigames_completed.connect(_on_minigames_completed)
 	GameManager.minigame_manager.start(minigame_group)
 
 func add_to_world(node: Node):
@@ -56,3 +59,4 @@ func _on_minigames_completed(won: bool):
 	add_child(world_layer)
 	add_child(overlay_layer)
 	add_child(ui_layer)
+	overworld_loading_completed.emit()
