@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://blmvycvgmnnxv"]
+[gd_scene load_steps=11 format=3 uid="uid://blmvycvgmnnxv"]
 
 [ext_resource type="Script" uid="uid://dtmlo62vwyrq0" path="res://scripts/world_manager.gd" id="1_3gvrs"]
 [ext_resource type="Script" path="res://scripts/story_manager.gd" id="2_eab5i"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://gqo0amhhlw1w" path="res://scripts/story_events/stars.gd" id="6_e184d"]
 [ext_resource type="Script" uid="uid://uas83n70i0qd" path="res://scripts/story_events/free_play.gd" id="6_qjxaj"]
 [ext_resource type="Script" uid="uid://cvopbp8lac0yb" path="res://scripts/controller.gd" id="7_fkyvp"]
+[ext_resource type="Script" uid="uid://dqn2nnhihwkml" path="res://scripts/story_events/ending.gd" id="8_nesqq"]
 
 [node name="Overworld" type="Node2D"]
 script = ExtResource("1_3gvrs")
@@ -31,6 +32,9 @@ script = ExtResource("6_e184d")
 
 [node name="FreePlay" type="Node" parent="StoryManager"]
 script = ExtResource("6_qjxaj")
+
+[node name="Ending" type="Node" parent="StoryManager"]
+script = ExtResource("8_nesqq")
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 

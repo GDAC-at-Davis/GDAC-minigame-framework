@@ -2,6 +2,9 @@ class_name Overworld
 extends Node2D
 
 signal overworld_loading_completed
+signal minigame_completed
+
+var TOTAL_MINIGAMES: int = 10
 
 var dakki: Character
 var gee: Character
@@ -53,6 +56,7 @@ func get_completed_minigame_count() -> int:
 func add_completed_minigame(minigame_id: StringName):
 	if not _completed_minigames.has(minigame_id):
 		_completed_minigames.append(minigame_id)
+		minigame_completed.emit()
 
 func _on_minigames_completed(won: bool):
 	GameManager.minigame_manager.all_minigames_completed.disconnect(_on_minigames_completed)
