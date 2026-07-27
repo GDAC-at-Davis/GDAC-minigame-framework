@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=0 format=3 uid="uid://5x20yyqdi7t1"]
+[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=4 format=3 uid="uid://5x20yyqdi7t1"]
 
 [ext_resource type="PackedScene" uid="uid://jf4ygvge46o5" path="res://minigames/pipe_rearrange/pipe_minigame.tscn" id="1_xph15"]
 [ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="3_vjw6n"]

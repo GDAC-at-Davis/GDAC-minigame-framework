@@ -26,14 +26,11 @@ func _ready():
 	gee = _gee_scene.instantiate()
 	story_manager.progress_story()
 
-func play_minigames(minigame_scene: PackedScene):
+func play_minigames(minigame_group: MinigameGroupData):
 	remove_child(world_layer)
 	remove_child(overlay_layer)
 	remove_child(ui_layer)
-	GameManager.minigame_manager.all_minigames_completed.connect(_on_minigames_completed)
-	var minigame_data: MinigameGroupData = _base_minigame_data.duplicate()
-	minigame_data.minigames = [minigame_scene]
-	GameManager.minigame_manager.start(minigame_data)
+	GameManager.minigame_manager.start(minigame_group)
 
 func add_to_world(node: Node):
 	world_layer.add_child(node)

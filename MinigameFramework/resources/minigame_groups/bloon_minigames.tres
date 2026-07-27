@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource("3_vglde")
-minigames = Array[PackedScene]([ExtResource("1_kva72"), ExtResource("1_kva72"), ExtResource("1_kva72"), ExtResource("1_kva72")])
+minigames = Array[PackedScene]([ExtResource("1_kva72")])
 final_minigame = ExtResource("1_kva72")
 transition_background = ExtResource("4_a7kp1")
 metadata/_custom_type_script = "uid://p73k0qpka7a6"
