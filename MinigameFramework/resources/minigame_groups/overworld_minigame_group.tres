@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MinigameGroupData" load_steps=2 format=3 uid="uid://b1810d2j8h0gc"]
+
+[ext_resource type="Script" uid="uid://p73k0qpka7a6" path="res://scripts/minigame_group.gd" id="1_24eih"]
+
+[resource]
+script = ExtResource("1_24eih")
+metadata/_custom_type_script = "uid://p73k0qpka7a6"

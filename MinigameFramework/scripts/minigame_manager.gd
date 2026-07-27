@@ -63,6 +63,7 @@ var _fade_curve: Curve = preload("res://resources/curves/fade_curve.tres")
 @onready var transition_layer: CanvasLayer = $TransitionLayer
 @onready var time_left_display: ProgressBar = $MinigameUILayer/TimeBar
 @onready var instruction_label: RichTextLabel = $MinigameUILayer/InstructionLabel
+@onready var results_label: RichTextLabel = $TransitionLayer/ResultsLabel
 @onready var health_bar: ProgressBar = $TransitionLayer/HealthBar
 @onready var difficulty_label: RichTextLabel = $TransitionLayer/DifficultyLabel
 @onready var minigames_left_label: RichTextLabel = $TransitionLayer/MinigamesLeftLabel
@@ -116,6 +117,8 @@ func start(minigame_data: MinigameGroupData, endless: bool = false):
 	minigames_completed = 0
 	difficulty_scale = data.starting_difficulty
 	_minigame_idx = 0
+	instruction_label.visible = false
+	results_label.visible = false
 	
 	## Set the background
 	if data.transition_background:
@@ -129,9 +132,6 @@ func start(minigame_data: MinigameGroupData, endless: bool = false):
 
 ## Starts the next minigame
 func start_minigame() -> void:
-	if data.minigames.size() == 0:
-		GameManager.switch_to_world()
-		return
 	playing = true
 	var minigame_scene: PackedScene
 	if minigames_completed == data.total_minigames - 1 and data.final_minigame:
@@ -160,6 +160,12 @@ func stop_minigame() -> void:
 		minigames_completed += 1
 		if minigames_completed % data.difficulty_rate == 0:
 			difficulty_scale += data.difficulty_step
+		if minigames_completed == data.total_minigames:
+			results_label.visible = true
+			results_label.text = "VICTORY!"
+	else:
+		results_label.visible = true
+		results_label.text = "DEFEAT!"
 	fade_timer.start(FADE_TIME)
 	transition_layer.visible = true
 	transition_timer.start()
