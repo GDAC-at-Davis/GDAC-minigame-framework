@@ -38,13 +38,13 @@ script = ExtResource("5_qjxaj")
 [node name="Stars" type="Node" parent="StoryManager"]
 script = ExtResource("6_e184d")
 
-[node name="FreePlay" type="Node" parent="StoryManager"]
-script = ExtResource("6_qjxaj")
-
 [node name="Sealing" type="Node" parent="StoryManager"]
 script = ExtResource("8_nesqq")
 seal_radius_curve = SubResource("Curve_nesqq")
 seal_rotation_speed_curve = SubResource("Curve_lsky2")
+
+[node name="FreePlay" type="Node" parent="StoryManager"]
+script = ExtResource("6_qjxaj")
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 
