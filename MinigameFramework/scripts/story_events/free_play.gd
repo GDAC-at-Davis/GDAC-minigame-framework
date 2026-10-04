@@ -4,6 +4,7 @@ func on_enter():
 	# Let the player control Dakki
 	overworld.controller.possessed = overworld.dakki
 	overworld.minigame_completed.connect(on_minigame_completed)
+	complete() # Remove this
 
 func on_exit():
 	overworld.minigame_completed.disconnect(on_minigame_completed)

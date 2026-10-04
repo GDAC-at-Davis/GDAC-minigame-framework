@@ -31,9 +31,6 @@ func on_enter():
 	overworld.dialogue_box.dialogue_completed.connect(_on_part_completed)
 	overworld.dialogue_box.play_text(_dialogue)
 	overworld.controller.possessed = null
-	_star_seal = StarSeal.new(overworld.TOTAL_MINIGAMES)
-	_star_seal.radius = lerp(seal_radius_min, seal_radius_max, seal_radius_curve.sample(0.0))
-	_star_seal.global_position = Vector2(100.0, 100.0)
 	overworld.add_to_world(_star_seal)
 	_star_timer = Timer.new()
 	_star_timer.autostart = false

@@ -9,6 +9,7 @@ var TOTAL_MINIGAMES: int = 10
 var dakki: Character
 var gee: Character
 
+
 var _completed_minigames: Array[StringName]
 
 var _dakki_scene: PackedScene = preload("res://scenes/player.tscn")
@@ -25,11 +26,13 @@ var _base_minigame_data: MinigameGroupData = preload("res://resources/minigame_g
 @onready var controller: Controller = $WorldLayer/Controller
 @onready var camera: Camera2D = $WorldLayer/Camera2D
 @onready var fullscreen_image: TextureRect = $UILayer/FullscreenImage
+@onready var star_seal: StarSeal = $WorldLayer/StarSeal
 
 func _ready():
 	dakki = _dakki_scene.instantiate()
 	gee = _gee_scene.instantiate()
 	story_manager.progress_story()
+	star_seal.initialize(TOTAL_MINIGAMES)
 
 func play_minigames(minigame_group: MinigameGroupData):
 	remove_child(world_layer)

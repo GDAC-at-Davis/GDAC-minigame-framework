@@ -64,7 +64,6 @@ zoom = Vector2(3, 3)
 script = ExtResource("7_fkyvp")
 
 [node name="StarSeal" type="Node2D" parent="WorldLayer"]
-z_index = 10
 position = Vector2(128, 80)
 script = ExtResource("11_255p0")
 metadata/_custom_type_script = "uid://cmjf70mhtiwag"

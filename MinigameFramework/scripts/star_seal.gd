@@ -9,7 +9,8 @@ var _total_star_count: int
 var _star_scene: PackedScene = preload("res://scenes/star.tscn")
 var _angle_between_stars: float
 
-func _init(total_star_count: int):
+
+func initialize(total_star_count: int):
 	_total_star_count = total_star_count
 	_angle_between_stars = TAU / total_star_count
 
