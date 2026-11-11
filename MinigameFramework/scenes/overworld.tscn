@@ -1,7 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://blmvycvgmnnxv"]
+[gd_scene load_steps=16 format=3 uid="uid://blmvycvgmnnxv"]
 
 [ext_resource type="Script" uid="uid://dtmlo62vwyrq0" path="res://scripts/world_manager.gd" id="1_3gvrs"]
-[ext_resource type="Script" path="res://scripts/story_manager.gd" id="2_eab5i"]
+[ext_resource type="Script" uid="uid://bww3o28wdg8me" path="res://scripts/story_manager.gd" id="2_eab5i"]
 [ext_resource type="Script" uid="uid://i52imqyc37cx" path="res://scripts/story_events/introduction.gd" id="3_fkyvp"]
 [ext_resource type="Script" uid="uid://ddvugymy76wgj" path="res://scripts/story_events/storytime.gd" id="4_qjxaj"]
 [ext_resource type="PackedScene" uid="uid://byvkspg3purui" path="res://scenes/dialogue_box.tscn" id="5_e184d"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cvopbp8lac0yb" path="res://scripts/controller.gd" id="7_fkyvp"]
 [ext_resource type="Script" uid="uid://tldew2trogw5" path="res://scripts/story_events/place_stars.gd" id="8_lsky2"]
 [ext_resource type="Script" uid="uid://dqn2nnhihwkml" path="res://scripts/story_events/sealing.gd" id="8_nesqq"]
+[ext_resource type="Script" uid="uid://cmsbcqnq6udxt" path="res://scripts/story_events/conclusion.gd" id="9_rklxl"]
 [ext_resource type="Script" uid="uid://cmjf70mhtiwag" path="res://scripts/star_seal.gd" id="11_255p0"]
 
 [sub_resource type="Curve" id="Curve_nesqq"]
@@ -50,6 +51,10 @@ script = ExtResource("8_lsky2")
 script = ExtResource("8_nesqq")
 seal_radius_curve = SubResource("Curve_nesqq")
 seal_rotation_speed_curve = SubResource("Curve_lsky2")
+
+[node name="Conclusion" type="Node" parent="StoryManager"]
+script = ExtResource("9_rklxl")
+metadata/_custom_type_script = "uid://dhiep453gufag"
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 

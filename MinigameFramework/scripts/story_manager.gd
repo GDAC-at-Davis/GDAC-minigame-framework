@@ -20,8 +20,11 @@ func progress_story():
 	if story_events[story_event_idx]:
 		story_events[story_event_idx].exit()
 	story_event_idx += 1
-	if story_events[story_event_idx]:
+	if story_event_idx < story_events.size() and story_events[story_event_idx]:
 		story_events[story_event_idx].enter()
+	else:
+		GameManager.pause_music()
+		GameManager.switch_scenes(load("res://scenes/menu.tscn"))
 
 func story_event_completed():
 	progress_story()

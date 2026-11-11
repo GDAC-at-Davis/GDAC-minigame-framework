@@ -1,7 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpkuqvkbyyltt"]
+[gd_scene load_steps=10 format=3 uid="uid://bpkuqvkbyyltt"]
 
-[ext_resource type="Texture2D" uid="uid://vufev4sdxsx4" path="res://assets/collider_environment/Spawn.png" id="1_mcqwg"]
+[ext_resource type="Texture2D" uid="uid://h6t5hqmyqjc8" path="res://assets/star/spinning.png" id="1_mcqwg"]
 
-[node name="Star" type="Sprite2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6vao"]
+atlas = ExtResource("1_mcqwg")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ef0hr"]
+atlas = ExtResource("1_mcqwg")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d8bx"]
+atlas = ExtResource("1_mcqwg")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lrp4"]
+atlas = ExtResource("1_mcqwg")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxbdi"]
+atlas = ExtResource("1_mcqwg")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pexwv"]
+atlas = ExtResource("1_mcqwg")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi7gj"]
+atlas = ExtResource("1_mcqwg")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwpl5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6vao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ef0hr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d8bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lrp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxbdi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pexwv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fi7gj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="Star" type="AnimatedSprite2D"]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_mcqwg")
+sprite_frames = SubResource("SpriteFrames_cwpl5")
+frame_progress = 0.014270407

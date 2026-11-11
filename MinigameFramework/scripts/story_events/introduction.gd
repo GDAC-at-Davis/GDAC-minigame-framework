@@ -28,7 +28,7 @@ var _dialogue: Array[Array] = [
 	["They thought and thought and thought,"],
 	["Then, they came up with the ultimate culmination of all of their skills."],
 	["VIDEO GAMES."],
-	["With the creation of INSERT NUMBER OF MINIGAMES HERE cornerstone games, the beast was sealed away."]
+	["With the creation of ten cornerstone games, the beast was sealed away."]
 	]
 
 var images: Array[String] = [
@@ -66,7 +66,7 @@ func on_enter():
 	# Background images can be shown like this
 	overworld.fullscreen_image.texture = load(images[0])
 	# Use the GameManager to play music
-	GameManager.play_music(load("res://assets/audio/cutscene_audio.wav"))
+	GameManager.play_music(load("res://assets/audio/history.mp3"))
 	# Play the first set of dialogue
 	overworld.dialogue_box.play_text(_dialogue[0])
 

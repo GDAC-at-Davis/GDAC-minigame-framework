@@ -7,13 +7,14 @@ var _dakki: Character
 
 func on_enter():
 	overworld.controller.possessed = null
+	overworld.star_seal.global_position = overworld.dakki.global_position
 	_star_timer = Timer.new()
 	_star_timer.autostart = false
 	_star_timer.one_shot = true
 	_star_timer.timeout.connect(_on_star_timer_timeout)
 	add_child(_star_timer)
 	_star_timer.start(star_timer_delay)
-
+	GameManager.play_music(load("res://assets/audio/boss_fight.mp3"))
 
 func _on_star_timer_timeout():
 	if overworld.star_seal.is_full():
