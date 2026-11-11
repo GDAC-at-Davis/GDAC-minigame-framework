@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyg5r1oj6yhjy"]
+
+[ext_resource type="Script" uid="uid://c7we4uveykfdb" path="res://scripts/character.gd" id="1_uwnm8"]
+[ext_resource type="Texture2D" uid="uid://ubak6k2k0scf" path="res://assets/monster/Overlay.png" id="2_1cbnp"]
+[ext_resource type="Shader" uid="uid://8i0df7nsikus" path="res://resources/shaders/monster.gdshader" id="2_c47ug"]
+[ext_resource type="Texture2D" uid="uid://be4vmi8oat60r" path="res://assets/environment/fog.png" id="3_jlss8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlss8"]
+shader = ExtResource("2_c47ug")
+shader_parameter/noise_texture = ExtResource("3_jlss8")
+shader_parameter/speed = Vector2(0, 0.03)
+shader_parameter/brightness = 0.25
+
+[node name="Monster" type="CharacterBody2D"]
+script = ExtResource("1_uwnm8")
+metadata/_custom_type_script = "uid://c7we4uveykfdb"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jlss8")
+texture = ExtResource("2_1cbnp")

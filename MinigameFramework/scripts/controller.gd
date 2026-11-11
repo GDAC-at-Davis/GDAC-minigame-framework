@@ -23,15 +23,27 @@ func _physics_process(delta):
 		if not move_direction == Vector2.ZERO:
 			_prev_direction = move_direction
 		if _prev_direction.y > 0.0:
-			possessed.play_animation(&"FrontWalk")
+			if not move_direction == Vector2.ZERO:
+				possessed.play_animation(&"FrontWalk")
+			else:
+				possessed.play_animation(&"FrontIdle")
 		elif _prev_direction.y < 0.0:
-			possessed.play_animation(&"BackWalk")
+			if not move_direction == Vector2.ZERO:
+				possessed.play_animation(&"BackWalk")
+			else:
+				possessed.play_animation(&"BackIdle")
 		elif _prev_direction.x < 0.0:
 			possessed.set_sprite_flipped(true)
-			possessed.play_animation(&"RightWalk")
+			if not move_direction == Vector2.ZERO:
+				possessed.play_animation(&"RightWalk")
+			else:
+				possessed.play_animation(&"RightIdle")
 		elif _prev_direction.x > 0.0:
 			possessed.set_sprite_flipped(false)
-			possessed.play_animation(&"RightWalk")
+			if not move_direction == Vector2.ZERO:
+				possessed.play_animation(&"RightWalk")
+			else:
+				possessed.play_animation(&"RightIdle")
 
 		var space_state: PhysicsDirectSpaceState2D = possessed.get_world_2d().direct_space_state
 		var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(possessed.global_position - (0.5 * _interaction_length * _prev_direction), possessed.global_position + (_interaction_length * _prev_direction))

@@ -27,8 +27,8 @@ func _load_info_from_disk(path: String):
 	for dir_name in dir_access.get_directories():
 		_load_info_from_disk(path + "/" + dir_name)
 	for file_name in dir_access.get_files():
-		if file_name.get_extension() == "tres":
-			var info_path = path + "/" + file_name
+		if file_name.ends_with(".tres") or file_name.ends_with(".tres.remap"):
+			var info_path = path + "/" + file_name.replace(".remap", "")
 			var info : Resource = ResourceLoader.load(info_path)
 			if info and info is MinigameInfo:
 				minigame_collection.append(info)

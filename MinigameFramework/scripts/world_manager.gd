@@ -2,9 +2,13 @@ class_name Overworld
 extends Node2D
 
 signal overworld_loading_completed
+signal minigame_completed
+
+var TOTAL_MINIGAMES: int = 10
 
 var dakki: Character
 var gee: Character
+
 
 var _completed_minigames: Array[StringName]
 
@@ -22,11 +26,13 @@ var _base_minigame_data: MinigameGroupData = preload("res://resources/minigame_g
 @onready var controller: Controller = $WorldLayer/Controller
 @onready var camera: Camera2D = $WorldLayer/Camera2D
 @onready var fullscreen_image: TextureRect = $UILayer/FullscreenImage
+@onready var star_seal: StarSeal = $WorldLayer/StarSeal
 
 func _ready():
 	dakki = _dakki_scene.instantiate()
 	gee = _gee_scene.instantiate()
 	story_manager.progress_story()
+	star_seal.initialize(TOTAL_MINIGAMES)
 
 func play_minigames(minigame_group: MinigameGroupData):
 	remove_child(world_layer)
@@ -53,6 +59,7 @@ func get_completed_minigame_count() -> int:
 func add_completed_minigame(minigame_id: StringName):
 	if not _completed_minigames.has(minigame_id):
 		_completed_minigames.append(minigame_id)
+		minigame_completed.emit()
 
 func _on_minigames_completed(won: bool):
 	GameManager.minigame_manager.all_minigames_completed.disconnect(_on_minigames_completed)
